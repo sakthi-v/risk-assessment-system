@@ -1,0 +1,32 @@
+{
+  "asset_name": "Customer Personal Data Repository",
+  "asset_type": "Information Asset",
+  "asset_owner": "Data Protection Officer",
+  "location": "Secure Database Server, Indore, MP",
+  "description": "Sensitive customer information stored for business processing including KYC data and contact database",
+  
+  "threats_and_vulnerabilities": [
+    {
+      "threat": "Electronic Sabotage and malicious code",
+      "vulnerabilities": [
+        "Inadequate OS hardening",
+        "Absence of latest security patches",
+        "Inadequate Anti-virus definition updates",
+        "Inadequate user management procedures",
+        "Insufficient audit trails and lack of review of logs"
+      ],
+      "risk_statement": "Breach associated with personal information"
+    },
+    {
+      "threat": "Inappropriate Information Disclosure",
+      "vulnerabilities": [
+        "Unaware employees on Information Security practices",
+        "Unsafe physical storage of documents",
+        "Papers containing restricted content lying unattended",
+        "Non-Disclosure Agreements not signed",
+        "Lack of Physical Security Controls"
+      ],
+      "risk_statement": "Breach of confidentiality"
+    }
+  ]
+}

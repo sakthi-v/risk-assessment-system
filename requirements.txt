@@ -1,0 +1,102 @@
+# ============================================================================
+# AI Risk Assessment System - Requirements
+# ============================================================================
+# Python Version: 3.9 or higher recommended
+# Installation: pip install -r requirements.txt
+# ============================================================================
+
+# ============================================================================
+# CORE WEB FRAMEWORK
+# ============================================================================
+streamlit>=1.28.0
+
+# ============================================================================
+# AI & AGENT FRAMEWORK
+# ============================================================================
+crewai==0.86.0
+crewai-tools>=0.73.1
+langchain==0.3.13
+langchain-google-genai==2.0.8
+langchain-core==0.3.28
+google-generativeai>=0.3.0
+pydantic==2.10.5
+
+# ============================================================================
+# DATA PROCESSING & ANALYSIS
+# ============================================================================
+pandas>=2.0.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+
+# ============================================================================
+# VISUALIZATION
+# ============================================================================
+plotly>=6.0.0
+
+# ============================================================================
+# DOCUMENT PROCESSING
+# ============================================================================
+python-docx>=0.8.11
+PyPDF2>=3.0.0
+openpyxl>=3.1.0
+
+# ============================================================================
+# CONFIGURATION & ENVIRONMENT
+# ============================================================================
+python-dotenv==1.0.0
+
+# ============================================================================
+# DATABASE (NEW - Turso Cloud SQLite Support)
+# ============================================================================
+libsql-client>=0.3.0
+
+# ============================================================================
+# EMAIL INTEGRATION (For Questionnaire Email Workflow)
+# ============================================================================
+pywin32>=305  # For Outlook email integration (local only)
+
+# ============================================================================
+# ADDITIONAL DEPENDENCIES (Auto-installed with above packages)
+# ============================================================================
+# The following are BUILT-IN Python modules (no installation needed):
+# - sqlite3 (Built-in with Python)
+# - json (Built-in with Python)
+# - datetime (Built-in with Python)
+# - pathlib (Built-in with Python)
+# - typing (Built-in with Python)
+# - os (Built-in with Python)
+# - sys (Built-in with Python)
+# - re (Built-in with Python)
+# - pickle (Built-in with Python)
+# - tempfile (Built-in with Python)
+# - time (Built-in with Python)
+# - hashlib (Built-in with Python)
+# - io (Built-in with Python)
+
+# ============================================================================
+# SETUP INSTRUCTIONS
+# ============================================================================
+# 1. Install Python 3.9 or higher from https://www.python.org/downloads/
+# 2. Open Command Prompt/Terminal in project folder
+# 3. Create virtual environment (recommended):
+#    python -m venv venv
+#    venv\Scripts\activate  (Windows)
+#    source venv/bin/activate  (Mac/Linux)
+# 4. Install requirements:
+#    pip install -r requirements.txt
+# 5. Create .env file with your credentials (see .env.example)
+# 6. Initialize database:
+#    python setup_database.py
+# 7. Run the application:
+#    streamlit run main_app.py
+# ============================================================================
+
+# ============================================================================
+# TROUBLESHOOTING
+# ============================================================================
+# If you encounter SSL errors:
+#   pip install --upgrade certifi
+# If you encounter version conflicts:
+#   pip install --upgrade pip
+#   pip install -r requirements.txt --force-reinstall
+# ============================================================================
