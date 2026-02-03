@@ -1,6 +1,6 @@
 """
 Session Manager - Auto-save and restore agent results
-Saves progress to JSON files so you can resume after laptop restart
+Saves progress to DATABASE (not files) for cloud persistence
 """
 import json
 import os
@@ -8,17 +8,38 @@ from pathlib import Path
 from datetime import datetime
 from typing import Dict, Any, Optional, List
 import streamlit as st
+from database_manager import get_database_connection
 
-# Session storage directory
+# Session storage directory (for backward compatibility with local files)
 SESSIONS_DIR = Path("sessions")
 SESSIONS_DIR.mkdir(exist_ok=True)
 
 class SessionManager:
     """Manages saving and loading of agent execution sessions"""
     
+    def _ensure_sessions_table(self):
+        """Ensure sessions table exists in database"""
+        try:
+            conn = get_database_connection()
+            cursor = conn.cursor()
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS sessions (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    session_name TEXT UNIQUE NOT NULL,
+                    session_data TEXT NOT NULL,
+                    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            """)
+            conn.commit()
+            conn.close()
+        except Exception as e:
+            print(f"Error creating sessions table: {e}")
+    
     def __init__(self):
         self.sessions_dir = SESSIONS_DIR
         self.current_session_file = None
+        self._ensure_sessions_table()
     
     def create_session_id(self, asset_name: str) -> str:
         """Create a unique session ID"""
@@ -34,17 +55,15 @@ class SessionManager:
                     agent_3_result: Optional[Dict] = None,
                     agent_4_result: Optional[Dict] = None) -> str:
         """
-        Save current session to JSON file
-        Returns the session file path
+        Save current session to DATABASE (not file)
+        Returns the session name
         """
-        # Create session ID if not exists
-        if not self.current_session_file:
-            session_id = self.create_session_id(asset_data.get('asset_name', 'unknown'))
-            self.current_session_file = self.sessions_dir / f"{session_id}.json"
+        # Create session ID
+        session_id = self.create_session_id(asset_data.get('asset_name', 'unknown'))
         
         # Prepare session data
         session_data = {
-            'session_id': self.current_session_file.stem,
+            'session_id': session_id,
             'asset_data': asset_data,
             'agent_1_result': agent_1_result,
             'agent_2_result': agent_2_result,
@@ -59,49 +78,90 @@ class SessionManager:
             }
         }
         
-        # Save to file
-        with open(self.current_session_file, 'w', encoding='utf-8') as f:
-            json.dump(session_data, f, indent=2, ensure_ascii=False)
-        
-        return str(self.current_session_file)
+        # Save to DATABASE
+        try:
+            conn = get_database_connection()
+            cursor = conn.cursor()
+            
+            # Insert or replace session
+            cursor.execute("""
+                INSERT OR REPLACE INTO sessions (session_name, session_data, updated_date)
+                VALUES (?, ?, CURRENT_TIMESTAMP)
+            """, (session_id, json.dumps(session_data, ensure_ascii=False)))
+            
+            conn.commit()
+            conn.close()
+            
+            self.current_session_file = session_id
+            return session_id
+        except Exception as e:
+            print(f"Error saving session to database: {e}")
+            return None
     
-    def load_session(self, session_file: Path) -> Dict[str, Any]:
-        """Load session from JSON file"""
-        with open(session_file, 'r', encoding='utf-8') as f:
-            return json.load(f)
+    def load_session(self, session_name: str) -> Dict[str, Any]:
+        """Load session from DATABASE"""
+        try:
+            conn = get_database_connection()
+            cursor = conn.cursor()
+            cursor.execute("SELECT session_data FROM sessions WHERE session_name = ?", (session_name,))
+            result = cursor.fetchone()
+            conn.close()
+            
+            if result:
+                return json.loads(result[0])
+            return None
+        except Exception as e:
+            print(f"Error loading session: {e}")
+            return None
     
     def get_recent_sessions(self, limit: int = 10) -> List[Dict[str, Any]]:
-        """Get list of recent sessions"""
+        """Get list of recent sessions from DATABASE"""
         sessions = []
         
-        # Sort by file modification time (most recent first)
-        session_files = sorted(
-            self.sessions_dir.glob("session_*.json"),
-            key=lambda f: f.stat().st_mtime,
-            reverse=True
-        )[:limit]
-        
-        for session_file in session_files:
-            try:
-                session_data = self.load_session(session_file)
-                sessions.append({
-                    'file': session_file,
-                    'session_id': session_data.get('session_id'),
-                    'asset_name': session_data.get('asset_data', {}).get('asset_name', 'Unknown'),
-                    'last_updated': session_data.get('last_updated'),
-                    'progress': session_data.get('progress', {}),
-                    'data': session_data
-                })
-            except Exception as e:
-                print(f"Error loading session {session_file}: {e}")
-                continue
+        try:
+            conn = get_database_connection()
+            cursor = conn.cursor()
+            cursor.execute("""
+                SELECT session_name, session_data, updated_date
+                FROM sessions
+                ORDER BY updated_date DESC
+                LIMIT ?
+            """, (limit,))
+            
+            rows = cursor.fetchall()
+            conn.close()
+            
+            for row in rows:
+                try:
+                    session_name, session_data_json, updated_date = row
+                    session_data = json.loads(session_data_json)
+                    
+                    sessions.append({
+                        'file': session_name,  # For compatibility
+                        'session_id': session_data.get('session_id'),
+                        'asset_name': session_data.get('asset_data', {}).get('asset_name', 'Unknown'),
+                        'last_updated': session_data.get('last_updated'),
+                        'progress': session_data.get('progress', {}),
+                        'data': session_data
+                    })
+                except Exception as e:
+                    print(f"Error parsing session {session_name}: {e}")
+                    continue
+        except Exception as e:
+            print(f"Error getting recent sessions: {e}")
         
         return sessions
     
-    def delete_session(self, session_file: Path):
-        """Delete a session file"""
-        if session_file.exists():
-            session_file.unlink()
+    def delete_session(self, session_name: str):
+        """Delete a session from DATABASE"""
+        try:
+            conn = get_database_connection()
+            cursor = conn.cursor()
+            cursor.execute("DELETE FROM sessions WHERE session_name = ?", (session_name,))
+            conn.commit()
+            conn.close()
+        except Exception as e:
+            print(f"Error deleting session: {e}")
     
     def restore_to_session_state(self, session_data: Dict[str, Any]):
         """Restore session data to Streamlit session state"""
