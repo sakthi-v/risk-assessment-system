@@ -51,7 +51,7 @@ Thumbs.db
 *.backup
 
 # Session files
-sessions/
+# sessions/  # Commented out to allow sessions folder on cloud
 
 # Output files
-outputs/
+# outputs/  # Commented out to allow outputs folder on cloud

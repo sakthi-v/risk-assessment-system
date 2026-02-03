@@ -1,0 +1,1604 @@
+{
+  "session_id": "session_Data_Leakage_Prevention_20260127_171117",
+  "asset_data": {
+    "asset_name": " Data Leakage Prevention",
+    "asset_type": "Software Assets",
+    "asset_owner": "Vignesh",
+    "location": "On-premise Data Center",
+    "description": "['Network (email, web traffic)', 'Data at Rest (file shares, databases)', 'Endpoints (laptops, desktops)']",
+    "questionnaire_answers": {
+      "Q_ASSET_CLASS_NAME": {
+        "question_text": "What is the specific name or title of this Data Leakage Prevention (DLP) solution or service?",
+        "answer": " Data Leakage Prevention",
+        "question_type": "text",
+        "section": "1. Asset Identification",
+        "help_text": "e.g., 'Company-wide Endpoint DLP', 'Cloud DLP for O365', 'Network DLP Gateway', 'HR Data Protection Policy and Controls'",
+        "why_this_matters": "Provides a unique identifier for the asset within the inventory."
+      },
+      "Q_TYPE_OF_ASSET": {
+        "question_text": "What type of asset best describes this Data Leakage Prevention (DLP) solution?",
+        "answer": "Software Assets",
+        "question_type": "dropdown",
+        "section": "1. Asset Identification",
+        "help_text": "Select the category that most accurately represents the primary nature of the DLP solution (e.g., a software solution, a managed service, or a set of information policies).",
+        "why_this_matters": "Categorizes the asset according to the organization's asset classification framework, aiding in broader asset management and risk aggregation."
+      },
+      "Q_ASSET_CLASS_OWNER": {
+        "question_text": "Who is the Asset Class Owner (person/department responsible for this DLP solution)?",
+        "answer": "Vignesh",
+        "question_type": "text",
+        "section": "1. Asset Identification",
+        "help_text": "e.g., 'CISO Office', 'IT Security Team Lead', 'Data Privacy Officer'",
+        "why_this_matters": "Identifies the primary stakeholder accountable for the asset's security and operation."
+      },
+      "Q_LOCATION": {
+        "question_text": "What is the primary physical or logical location of this DLP solution (if applicable)?",
+        "answer": "On-premise Data Center",
+        "question_type": "text",
+        "section": "1. Asset Identification",
+        "help_text": "e.g., 'On-premise Data Center', 'Cloud (AWS/Azure/GCP)', 'All Endpoints', 'Network Perimeter'",
+        "why_this_matters": "Helps understand the deployment environment and potential exposure."
+      },
+      "Q_UNIQUE_IDENTIFIER": {
+        "question_text": "Does this DLP solution have a unique identifier or asset ID?",
+        "answer": "No",
+        "question_type": "text",
+        "section": "1. Asset Identification",
+        "help_text": "If applicable, provide the internal asset ID or reference number.",
+        "why_this_matters": "Provides an additional reference for tracking and inventory management."
+      },
+      "Q_DLP_BUSINESS_CRITICALITY": {
+        "question_text": "How critical is this DLP solution to the organization's overall business operations and compliance?",
+        "answer": "High",
+        "question_type": "dropdown",
+        "section": "2. Business Context and Scope",
+        "help_text": "Consider the impact if this DLP solution were to fail or be bypassed.",
+        "why_this_matters": "Provides an initial high-level understanding of the asset's importance to the business, informing the overall risk perspective."
+      },
+      "Q_DLP_PROTECTED_DATA_TYPES": {
+        "question_text": "What types of sensitive data is this DLP solution primarily designed to protect?",
+        "answer": [
+          "PII (Personally Identifiable Information)",
+          "Legal Documents"
+        ],
+        "question_type": "multiselect",
+        "section": "2. Business Context and Scope",
+        "help_text": "Select all applicable data types. If 'Other', please describe in the next question.",
+        "why_this_matters": "Identifies the specific sensitive data categories that the DLP solution is intended to safeguard, directly impacting the potential consequences of a leakage."
+      },
+      "Q_DLP_COVERAGE_SCOPE": {
+        "question_text": "What is the scope of coverage for this DLP solution?",
+        "answer": [
+          "Network (email, web traffic)",
+          "Data at Rest (file shares, databases)",
+          "Endpoints (laptops, desktops)"
+        ],
+        "question_type": "multiselect",
+        "section": "2. Business Context and Scope",
+        "help_text": "Select all areas where this DLP solution is actively deployed and monitoring.",
+        "why_this_matters": "Defines the attack surface and potential leakage vectors covered by the DLP, indicating where data is protected and where gaps might exist."
+      },
+      "Q_DLP_VENDOR_PRODUCT": {
+        "question_text": "What is the vendor and product name of this DLP solution?",
+        "answer": "Forcepoint DLP",
+        "question_type": "text",
+        "section": "3. DLP Solution Details and Configuration Facts",
+        "help_text": "e.g., 'Symantec DLP', 'Microsoft Purview DLP', 'Forcepoint DLP'",
+        "why_this_matters": "Identifies the specific technology in use, which can have implications for known vulnerabilities, capabilities, and support."
+      },
+      "Q_DLP_VERSION": {
+        "question_text": "What is the current version of the DLP solution?",
+        "answer": "16.0",
+        "question_type": "text",
+        "section": "3. DLP Solution Details and Configuration Facts",
+        "help_text": "e.g., '16.0', '2023.R1', 'Cloud Service'",
+        "why_this_matters": "Indicates if the solution is up-to-date, which can affect its effectiveness against modern threats."
+      },
+      "Q_DLP_DEPLOYMENT_MODEL": {
+        "question_text": "What is the deployment model for this DLP solution?",
+        "answer": "On-premise",
+        "question_type": "dropdown",
+        "section": "3. DLP Solution Details and Configuration Facts",
+        "help_text": "Indicate if it's hosted internally, as a cloud service, or a combination.",
+        "why_this_matters": "Affects the management, maintenance, and security considerations of the DLP solution."
+      },
+      "Q_DLP_POLICY_MODE": {
+        "question_text": "Are DLP policies primarily configured in 'monitor-only' or 'block' mode?",
+        "answer": "Hybrid (some monitor, some block)",
+        "question_type": "dropdown",
+        "section": "3. DLP Solution Details and Configuration Facts",
+        "help_text": "Indicate the primary operational mode of the DLP policies.",
+        "why_this_matters": "Determines the immediate preventative capability of the DLP solution versus its detection-only capability, directly impacting the severity of potential data leakage."
+      },
+      "Q_DLP_POLICY_TYPES": {
+        "question_text": "What types of DLP policies are actively enforced?",
+        "answer": [
+          "File-based (e.g., file type, metadata)",
+          "User-based (e.g., specific user permissions)",
+          "Content-based (e.g., regex for PII, keywords)"
+        ],
+        "question_type": "multiselect",
+        "section": "3. DLP Solution Details and Configuration Facts",
+        "help_text": "Select the primary methods used to define DLP policies.",
+        "why_this_matters": "Provides insight into the sophistication and granularity of the DLP's detection capabilities."
+      },
+      "Q_DLP_INCIDENT_WORKFLOW": {
+        "question_text": "Is there a defined incident response workflow for DLP alerts?",
+        "answer": "Yes",
+        "question_type": "dropdown",
+        "section": "3. DLP Solution Details and Configuration Facts",
+        "help_text": "Indicate if there's a formal process for handling DLP incidents.",
+        "why_this_matters": "A defined workflow is critical for timely and effective response to potential data leakage events, reducing overall impact."
+      },
+      "Q_DLP_INTEGRATION_SIEM": {
+        "question_text": "Is the DLP solution integrated with a Security Information and Event Management (SIEM) system?",
+        "answer": "No",
+        "question_type": "dropdown",
+        "section": "3. DLP Solution Details and Configuration Facts",
+        "help_text": "Indicate if DLP alerts are forwarded to a central SIEM for correlation and monitoring.",
+        "why_this_matters": "Integration with SIEM enhances visibility, correlation with other security events, and overall incident detection capabilities."
+      },
+      "Q_DLP_POLICY_REVIEW_FREQUENCY": {
+        "question_text": "How frequently are DLP policies reviewed and updated?",
+        "answer": "Annually",
+        "question_type": "dropdown",
+        "section": "4. Operational Controls and Management",
+        "help_text": "Indicate the typical frequency of policy reviews.",
+        "why_this_matters": "Regular review ensures policies remain relevant and effective against evolving threats and business changes."
+      },
+      "Q_DLP_ALERT_MONITORING": {
+        "question_text": "Are DLP alerts actively monitored by a security team?",
+        "answer": "Yes, 24/7",
+        "question_type": "dropdown",
+        "section": "4. Operational Controls and Management",
+        "help_text": "Describe the level of active monitoring for DLP alerts.",
+        "why_this_matters": "Active monitoring is crucial for timely detection and response to potential data leakage incidents."
+      },
+      "Q_DLP_FALSE_POSITIVES_MANAGEMENT": {
+        "question_text": "Is there a process in place to manage and tune DLP false positives?",
+        "answer": "Yes, informally managed",
+        "question_type": "dropdown",
+        "section": "4. Operational Controls and Management",
+        "help_text": "Indicate if there's a method to reduce irrelevant alerts.",
+        "why_this_matters": "Effective false positive management ensures that legitimate alerts are not missed due to alert fatigue and improves the overall efficiency of the DLP solution."
+      },
+      "Q_DLP_USER_TRAINING": {
+        "question_text": "Is regular security awareness training provided to users regarding data handling and DLP policies?",
+        "answer": "Yes, mandatory and regular",
+        "question_type": "dropdown",
+        "section": "4. Operational Controls and Management",
+        "help_text": "Indicate if users are educated on preventing data leakage.",
+        "why_this_matters": "User awareness is a critical human control to prevent accidental or intentional data leakage."
+      },
+      "Q_DLP_EXCEPTIONS_PROCESS": {
+        "question_text": "Is there a formal process for requesting and approving DLP policy exceptions?",
+        "answer": "Yes, a formal documented process",
+        "question_type": "dropdown",
+        "section": "4. Operational Controls and Management",
+        "help_text": "Indicate if there's a controlled method for allowing deviations from DLP policies.",
+        "why_this_matters": "A controlled exception process prevents unauthorized bypasses and maintains the integrity of DLP enforcement."
+      },
+      "Q_OVERALL_IMPACT_RATING": {
+        "question_text": "Considering all identified risks and existing controls, what is the estimated overall 'Impact Rating' if this Data Leakage Prevention (DLP) solution were to be severely compromised (e.g., bypassed, disabled, or misconfigured leading to a significant data breach)?",
+        "answer": 4,
+        "question_type": "dropdown",
+        "section": "5. Overall Risk Perspective",
+        "help_text": "This is your overall business impact assessment, not a technical CIA rating.",
+        "why_this_matters": "Captures the asset owner's holistic view of the potential consequences, which is a critical input for risk quantification."
+      },
+      "Q_OVERALL_PROBABILITY_RATING": {
+        "question_text": "Considering all identified threats and vulnerabilities, what is the estimated 'Probability Rating' of a severe compromise occurring to this Data Leakage Prevention (DLP) solution within the next year?",
+        "answer": 3,
+        "question_type": "dropdown",
+        "section": "5. Overall Risk Perspective",
+        "help_text": "This is your overall assessment of the likelihood of such an event occurring.",
+        "why_this_matters": "Captures the asset owner's holistic view of the likelihood of a severe event, which is a critical input for risk quantification."
+      }
+    },
+    "questionnaire_metadata": {
+      "asset_type_assessed": "Data leakage prevention",
+      "questionnaire_title": "Risk Assessment Questionnaire for Data Leakage Prevention (DLP) Solution",
+      "completed_date": "2026-01-27 17:05:19",
+      "total_questions": 25,
+      "total_answers": 22
+    },
+    "threats_and_vulnerabilities": [
+      {
+        "threat": "Compromise of DLP System Leading to Undetected Data Exfiltration",
+        "threat_category": "Electronic Sabotage and malicious code",
+        "contextual_description": "An advanced persistent threat (APT) or malicious insider could exploit a vulnerability in the Forcepoint DLP solution (version 16.0) or its underlying infrastructure, or compromise administrative credentials, to gain unauthorized access. Due to the lack of integration with a SIEM system, these sophisticated bypass attempts or internal policy modifications within the critical DLP solution would not be correlated with other security events, significantly delaying detection. An informally managed false positive process could further desensitize the 24/7 security team, allowing an attacker to exfiltrate sensitive PII and Legal Documents across the network, data at rest, or endpoints without triggering effective alerts or blocks, resulting in a major data breach.",
+        "risk_statement": "Risk of undetected data exfiltration of PII and Legal Documents from network, data at rest, and endpoints due to compromise of the Forcepoint DLP solution, exacerbated by lack of SIEM integration and informal false positive management, potentially causing a major data breach, regulatory penalties, and severe reputational damage.",
+        "vulnerabilities": [
+          {
+            "vulnerability": "Lack of SIEM integration for centralized logging and correlation.",
+            "description": "Lack of SIEM integration for centralized logging and correlation."
+          },
+          {
+            "vulnerability": "Informal management of false positives leading to potential alert fatigue or policy weakening.",
+            "description": "Informal management of false positives leading to potential alert fatigue or policy weakening."
+          },
+          {
+            "vulnerability": "Potential vulnerabilities in Forcepoint DLP software or underlying OS/infrastructure (general software asset risk).",
+            "description": "Potential vulnerabilities in Forcepoint DLP software or underlying OS/infrastructure (general software asset risk)."
+          }
+        ],
+        "evidence": [
+          "3. DLP Solution Details and Configuration Facts] Q: Is the DLP solution integrated with a Security Information and Event Management (SIEM) system? → Answer: No",
+          "3. DLP Solution Details and Configuration Facts] Q: What types of sensitive data is this DLP solution primarily designed to protect? → Answer: ['PII (Personally Identifiable Information)', 'Legal Documents']",
+          "2. Business Context and Scope] Q: How critical is this DLP solution to the organization's overall business operations and compliance? → Answer: High",
+          "3. DLP Solution Details and Configuration Facts] Q: What is the scope of coverage for this DLP solution? → Answer: ['Network (email, web traffic)', 'Data at Rest (file shares, databases)', 'Endpoints (laptops, desktops)']",
+          "4. Operational Controls and Management] Q: Is there a process in place to manage and tune DLP false positives? → Answer: Yes, informally managed"
+        ],
+        "threat_source": "Intelligent Analysis | Threat Vocabulary Database | RAG Discovery"
+      },
+      {
+        "threat": "Data Leakage Due to Outdated or Ineffective DLP Policies",
+        "threat_category": "Unintentional failure of IT systems (hardware/software)",
+        "contextual_description": "The Forcepoint DLP policies, which are critical for protecting PII and Legal Documents across network, data at rest, and endpoints, are reviewed only annually. This infrequent review cycle creates a significant vulnerability where new data types, communication channels, or evolving regulatory requirements may not be adequately covered by existing policies. For instance, the adoption of a new collaboration tool or cloud service could create an unmonitored channel for data exfiltration. Furthermore, the 'informally managed' false positive process could lead to policies being overly relaxed to reduce alert noise, inadvertently creating loopholes that allow sensitive data to bypass DLP controls, especially for data covered by 'monitor-only' policies, leading to unintentional data leakage.",
+        "risk_statement": "Risk of data leakage of PII and Legal Documents due to outdated or ineffective Forcepoint DLP policies, caused by annual review frequency and informal false positive management, potentially resulting in regulatory non-compliance, financial penalties, and loss of customer trust.",
+        "vulnerabilities": [
+          {
+            "vulnerability": "Infrequent (annual) review and update of DLP policies.",
+            "description": "Infrequent (annual) review and update of DLP policies."
+          },
+          {
+            "vulnerability": "Informal management of false positives leading to potential policy weakening or blind spots.",
+            "description": "Informal management of false positives leading to potential policy weakening or blind spots."
+          },
+          {
+            "vulnerability": "Dynamic nature of data, business processes, and threat landscape not adequately addressed by annual reviews.",
+            "description": "Dynamic nature of data, business processes, and threat landscape not adequately addressed by annual reviews."
+          }
+        ],
+        "evidence": [
+          "4. Operational Controls and Management] Q: How frequently are DLP policies reviewed and updated? → Answer: Annually",
+          "3. DLP Solution Details and Configuration Facts] Q: What types of sensitive data is this DLP solution primarily designed to protect? → Answer: ['PII (Personally Identifiable Information)', 'Legal Documents']",
+          "3. DLP Solution Details and Configuration Facts] Q: Are DLP policies primarily configured in 'monitor-only' or 'block' mode? → Answer: Hybrid (some monitor, some block)",
+          "4. Operational Controls and Management] Q: Is there a process in place to manage and tune DLP false positives? → Answer: Yes, informally managed"
+        ],
+        "threat_source": "Intelligent Analysis | Threat Vocabulary Database"
+      },
+      {
+        "threat": "Malicious or Negligent Insider Bypassing DLP Controls",
+        "threat_category": "Negligent/Uninformed users",
+        "contextual_description": "A malicious insider or a negligent user, potentially with administrative access or a deep understanding of the Forcepoint DLP (version 16.0) configuration and operational procedures, could intentionally or unintentionally bypass existing controls. The 'informally managed' false positive process could be exploited by an insider to generate excessive noise, making it harder for the 24/7 security team to identify genuine data exfiltration attempts of PII and Legal Documents. While security awareness training is mandatory, an insider could leverage knowledge of the annual policy review cycle to exploit temporary gaps in policy coverage, or use the 'monitor-only' policy modes to exfiltrate sensitive data via network, data at rest, or endpoint channels, leading to an insider-driven data breach.",
+        "risk_statement": "Risk of malicious or negligent insider-driven data breach of PII and Legal Documents due to exploitation of Forcepoint DLP configuration weaknesses, informal false positive management, and infrequent policy updates, potentially causing severe regulatory fines, legal liabilities, and reputational damage.",
+        "vulnerabilities": [
+          {
+            "vulnerability": "Informal management of false positives, which can be exploited or lead to alert fatigue.",
+            "description": "Informal management of false positives, which can be exploited or lead to alert fatigue."
+          },
+          {
+            "vulnerability": "Annual policy review frequency, creating potential windows for exploitation.",
+            "description": "Annual policy review frequency, creating potential windows for exploitation."
+          },
+          {
+            "vulnerability": "Reliance on 'monitor-only' policies for some data, requiring effective and vigilant human response.",
+            "description": "Reliance on 'monitor-only' policies for some data, requiring effective and vigilant human response."
+          }
+        ],
+        "evidence": [
+          "4. Operational Controls and Management] Q: Is there a process in place to manage and tune DLP false positives? → Answer: Yes, informally managed",
+          "4. Operational Controls and Management] Q: How frequently are DLP policies reviewed and updated? → Answer: Annually",
+          "3. DLP Solution Details and Configuration Facts] Q: Are DLP policies primarily configured in 'monitor-only' or 'block' mode? → Answer: Hybrid (some monitor, some block)",
+          "3. DLP Solution Details and Configuration Facts] Q: What types of sensitive data is this DLP solution primarily designed to protect? → Answer: ['PII (Personally Identifiable Information)', 'Legal Documents']",
+          "4. Operational Controls and Management] Q: Are DLP alerts actively monitored by a security team? → Answer: Yes, 24/7"
+        ],
+        "threat_source": "Intelligent Analysis | Threat Vocabulary Database"
+      },
+      {
+        "threat": "Delayed Incident Response and Inefficient Management Due to Lack of Unique Asset ID",
+        "threat_category": "Unintentional failure of IT systems (hardware/software)",
+        "contextual_description": "The critical Forcepoint DLP solution (version 16.0), responsible for protecting PII and Legal Documents, lacks a unique identifier or asset ID. In the event of a security incident, a critical vulnerability discovery, or a system outage affecting the DLP, the absence of a clear, unique identifier will significantly hinder efficient incident response, troubleshooting, and asset management processes. This could lead to delays in identifying the specific instance of the DLP system, correlating it with other security tools (especially without SIEM integration), applying patches, or initiating recovery procedures. Such delays would prolong the organization's exposure to data leakage risks and impact the availability and integrity of the DLP service, which is critical to business operations.",
+        "risk_statement": "Risk of delayed incident response, inefficient asset management, and prolonged exposure to threats for the Forcepoint DLP solution due to the absence of a unique asset ID, potentially causing extended data leakage windows, operational disruptions, and increased recovery costs.",
+        "vulnerabilities": [
+          {
+            "vulnerability": "Absence of a unique identifier or asset ID for the critical DLP solution.",
+            "description": "Absence of a unique identifier or asset ID for the critical DLP solution."
+          },
+          {
+            "vulnerability": "Lack of SIEM integration, which would otherwise help in asset identification and correlation.",
+            "description": "Lack of SIEM integration, which would otherwise help in asset identification and correlation."
+          }
+        ],
+        "evidence": [
+          "1. Asset Identification] Q: Does this DLP solution have a unique identifier or asset ID? → Answer: No",
+          "2. Business Context and Scope] Q: How critical is this DLP solution to the organization's overall business operations and compliance? → Answer: High",
+          "3. DLP Solution Details and Configuration Facts] Q: Is the DLP solution integrated with a Security Information and Event Management (SIEM) system? → Answer: No"
+        ],
+        "threat_source": "Intelligent Analysis | RAG Discovery"
+      }
+    ],
+    "threat_discovery_result": {
+      "analysis_summary": {
+        "asset_understanding": "The asset is 'Data Leakage Prevention' (Forcepoint DLP, version 16.0), a critical on-premise software solution owned by Vignesh. It is designed to protect highly sensitive data, specifically PII and Legal Documents, across the network (email, web traffic), data at rest (file shares, databases), and endpoints (laptops, desktops). It operates in a hybrid mode (some monitor, some block) with file-based, user-based, and content-based policies. Its compromise would have a high impact on business operations and compliance.",
+        "key_security_gaps": [
+          "No SIEM integration for centralized logging and correlation of DLP alerts.",
+          "Informal management of DLP false positives, potentially leading to alert fatigue or missed legitimate alerts.",
+          "Annual review frequency for DLP policies, which may be insufficient for dynamic threat landscapes.",
+          "Absence of a unique identifier or asset ID for the DLP solution, hindering asset management and incident response."
+        ],
+        "key_risk_amplifiers": [
+          "High criticality to overall business operations and compliance (Impact Rating: 4).",
+          "Protects highly sensitive data: PII (Personally Identifiable Information) and Legal Documents.",
+          "Broad scope of coverage: Network (email, web traffic), Data at Rest (file shares, databases), Endpoints (laptops, desktops).",
+          "On-premise deployment requires robust internal security and patching.",
+          "Hybrid policy mode means some data leakage attempts are only monitored, not blocked, relying heavily on detection."
+        ],
+        "existing_controls": [
+          "Forcepoint DLP, version 16.0, is deployed.",
+          "DLP policies are configured in a hybrid (monitor/block) mode.",
+          "Active enforcement of file-based, user-based, and content-based DLP policies.",
+          "A defined incident response workflow for DLP alerts is in place.",
+          "DLP alerts are actively monitored 24/7 by a security team.",
+          "Mandatory and regular security awareness training is provided to users.",
+          "A formal documented process exists for requesting and approving DLP policy exceptions."
+        ],
+        "threat_vocabulary_discovered": [
+          "Electronic Sabotage and malicious code",
+          "Unintentional failure of IT systems (hardware/software)",
+          "Negligent/Uninformed users",
+          "Communications Failures (Telecom/ Internet/LAN)"
+        ],
+        "searches_performed": [
+          "What is the Threat Vulnerability Database? What threats are documented?",
+          "What are common vulnerabilities and security weaknesses documented?",
+          "What are common security threats and risks for Software Assets?"
+        ]
+      },
+      "threats_discovered": [
+        {
+          "threat_id": "T1",
+          "threat_category": "Electronic Sabotage and malicious code",
+          "threat_name": "Compromise of DLP System Leading to Undetected Data Exfiltration",
+          "contextual_description": "An advanced persistent threat (APT) or malicious insider could exploit a vulnerability in the Forcepoint DLP solution (version 16.0) or its underlying infrastructure, or compromise administrative credentials, to gain unauthorized access. Due to the lack of integration with a SIEM system, these sophisticated bypass attempts or internal policy modifications within the critical DLP solution would not be correlated with other security events, significantly delaying detection. An informally managed false positive process could further desensitize the 24/7 security team, allowing an attacker to exfiltrate sensitive PII and Legal Documents across the network, data at rest, or endpoints without triggering effective alerts or blocks, resulting in a major data breach.",
+          "vulnerabilities_identified": [
+            "Lack of SIEM integration for centralized logging and correlation.",
+            "Informal management of false positives leading to potential alert fatigue or policy weakening.",
+            "Potential vulnerabilities in Forcepoint DLP software or underlying OS/infrastructure (general software asset risk)."
+          ],
+          "evidence_from_questionnaire": [
+            "3. DLP Solution Details and Configuration Facts] Q: Is the DLP solution integrated with a Security Information and Event Management (SIEM) system? → Answer: No",
+            "3. DLP Solution Details and Configuration Facts] Q: What types of sensitive data is this DLP solution primarily designed to protect? → Answer: ['PII (Personally Identifiable Information)', 'Legal Documents']",
+            "2. Business Context and Scope] Q: How critical is this DLP solution to the organization's overall business operations and compliance? → Answer: High",
+            "3. DLP Solution Details and Configuration Facts] Q: What is the scope of coverage for this DLP solution? → Answer: ['Network (email, web traffic)', 'Data at Rest (file shares, databases)', 'Endpoints (laptops, desktops)']",
+            "4. Operational Controls and Management] Q: Is there a process in place to manage and tune DLP false positives? → Answer: Yes, informally managed"
+          ],
+          "risk_statement": "Risk of undetected data exfiltration of PII and Legal Documents from network, data at rest, and endpoints due to compromise of the Forcepoint DLP solution, exacerbated by lack of SIEM integration and informal false positive management, potentially causing a major data breach, regulatory penalties, and severe reputational damage.",
+          "threat_source": "Intelligent Analysis | Threat Vocabulary Database | RAG Discovery"
+        },
+        {
+          "threat_id": "T2",
+          "threat_category": "Unintentional failure of IT systems (hardware/software)",
+          "threat_name": "Data Leakage Due to Outdated or Ineffective DLP Policies",
+          "contextual_description": "The Forcepoint DLP policies, which are critical for protecting PII and Legal Documents across network, data at rest, and endpoints, are reviewed only annually. This infrequent review cycle creates a significant vulnerability where new data types, communication channels, or evolving regulatory requirements may not be adequately covered by existing policies. For instance, the adoption of a new collaboration tool or cloud service could create an unmonitored channel for data exfiltration. Furthermore, the 'informally managed' false positive process could lead to policies being overly relaxed to reduce alert noise, inadvertently creating loopholes that allow sensitive data to bypass DLP controls, especially for data covered by 'monitor-only' policies, leading to unintentional data leakage.",
+          "vulnerabilities_identified": [
+            "Infrequent (annual) review and update of DLP policies.",
+            "Informal management of false positives leading to potential policy weakening or blind spots.",
+            "Dynamic nature of data, business processes, and threat landscape not adequately addressed by annual reviews."
+          ],
+          "evidence_from_questionnaire": [
+            "4. Operational Controls and Management] Q: How frequently are DLP policies reviewed and updated? → Answer: Annually",
+            "3. DLP Solution Details and Configuration Facts] Q: What types of sensitive data is this DLP solution primarily designed to protect? → Answer: ['PII (Personally Identifiable Information)', 'Legal Documents']",
+            "3. DLP Solution Details and Configuration Facts] Q: Are DLP policies primarily configured in 'monitor-only' or 'block' mode? → Answer: Hybrid (some monitor, some block)",
+            "4. Operational Controls and Management] Q: Is there a process in place to manage and tune DLP false positives? → Answer: Yes, informally managed"
+          ],
+          "risk_statement": "Risk of data leakage of PII and Legal Documents due to outdated or ineffective Forcepoint DLP policies, caused by annual review frequency and informal false positive management, potentially resulting in regulatory non-compliance, financial penalties, and loss of customer trust.",
+          "threat_source": "Intelligent Analysis | Threat Vocabulary Database"
+        },
+        {
+          "threat_id": "T3",
+          "threat_category": "Negligent/Uninformed users",
+          "threat_name": "Malicious or Negligent Insider Bypassing DLP Controls",
+          "contextual_description": "A malicious insider or a negligent user, potentially with administrative access or a deep understanding of the Forcepoint DLP (version 16.0) configuration and operational procedures, could intentionally or unintentionally bypass existing controls. The 'informally managed' false positive process could be exploited by an insider to generate excessive noise, making it harder for the 24/7 security team to identify genuine data exfiltration attempts of PII and Legal Documents. While security awareness training is mandatory, an insider could leverage knowledge of the annual policy review cycle to exploit temporary gaps in policy coverage, or use the 'monitor-only' policy modes to exfiltrate sensitive data via network, data at rest, or endpoint channels, leading to an insider-driven data breach.",
+          "vulnerabilities_identified": [
+            "Informal management of false positives, which can be exploited or lead to alert fatigue.",
+            "Annual policy review frequency, creating potential windows for exploitation.",
+            "Reliance on 'monitor-only' policies for some data, requiring effective and vigilant human response."
+          ],
+          "evidence_from_questionnaire": [
+            "4. Operational Controls and Management] Q: Is there a process in place to manage and tune DLP false positives? → Answer: Yes, informally managed",
+            "4. Operational Controls and Management] Q: How frequently are DLP policies reviewed and updated? → Answer: Annually",
+            "3. DLP Solution Details and Configuration Facts] Q: Are DLP policies primarily configured in 'monitor-only' or 'block' mode? → Answer: Hybrid (some monitor, some block)",
+            "3. DLP Solution Details and Configuration Facts] Q: What types of sensitive data is this DLP solution primarily designed to protect? → Answer: ['PII (Personally Identifiable Information)', 'Legal Documents']",
+            "4. Operational Controls and Management] Q: Are DLP alerts actively monitored by a security team? → Answer: Yes, 24/7"
+          ],
+          "risk_statement": "Risk of malicious or negligent insider-driven data breach of PII and Legal Documents due to exploitation of Forcepoint DLP configuration weaknesses, informal false positive management, and infrequent policy updates, potentially causing severe regulatory fines, legal liabilities, and reputational damage.",
+          "threat_source": "Intelligent Analysis | Threat Vocabulary Database"
+        },
+        {
+          "threat_id": "T4",
+          "threat_category": "Unintentional failure of IT systems (hardware/software)",
+          "threat_name": "Delayed Incident Response and Inefficient Management Due to Lack of Unique Asset ID",
+          "contextual_description": "The critical Forcepoint DLP solution (version 16.0), responsible for protecting PII and Legal Documents, lacks a unique identifier or asset ID. In the event of a security incident, a critical vulnerability discovery, or a system outage affecting the DLP, the absence of a clear, unique identifier will significantly hinder efficient incident response, troubleshooting, and asset management processes. This could lead to delays in identifying the specific instance of the DLP system, correlating it with other security tools (especially without SIEM integration), applying patches, or initiating recovery procedures. Such delays would prolong the organization's exposure to data leakage risks and impact the availability and integrity of the DLP service, which is critical to business operations.",
+          "vulnerabilities_identified": [
+            "Absence of a unique identifier or asset ID for the critical DLP solution.",
+            "Lack of SIEM integration, which would otherwise help in asset identification and correlation."
+          ],
+          "evidence_from_questionnaire": [
+            "1. Asset Identification] Q: Does this DLP solution have a unique identifier or asset ID? → Answer: No",
+            "2. Business Context and Scope] Q: How critical is this DLP solution to the organization's overall business operations and compliance? → Answer: High",
+            "3. DLP Solution Details and Configuration Facts] Q: Is the DLP solution integrated with a Security Information and Event Management (SIEM) system? → Answer: No"
+          ],
+          "risk_statement": "Risk of delayed incident response, inefficient asset management, and prolonged exposure to threats for the Forcepoint DLP solution due to the absence of a unique asset ID, potentially causing extended data leakage windows, operational disruptions, and increased recovery costs.",
+          "threat_source": "Intelligent Analysis | RAG Discovery"
+        }
+      ]
+    }
+  },
+  "agent_1_result": {
+    "discovery_summary": {
+      "cia_methodology": "CIA (Confidentiality, Integrity, Availability)",
+      "cia_rating_scale": "4-level: Insignificant, Moderate, Serious, Extreme",
+      "cia_definitions_source": "Risk Assessment Template_For Agentic AI RM Use Case.xlsx, Sheet: Asset Inventorization Guideline",
+      "business_value_calculation_method": "Asset Value Chart (lookup table combining concatenated CIA ratings)",
+      "business_value_levels": [
+        "Very Low",
+        "Low",
+        "Medium",
+        "High",
+        "Very High"
+      ],
+      "business_value_source": "Risk Assessment Template_For Agentic AI RM Use Case.xlsx, Sheet: Asset Inventory",
+      "criticality_classification_method": "Business Value to Criticality Mapping (Criticality Classification Table)",
+      "criticality_levels": [
+        "Insignificant",
+        "Low Critical",
+        "Medium Critical",
+        "High Critical",
+        "Very High Critical"
+      ],
+      "criticality_source": "Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx, Table 4; Risk Assessment Template_For Agentic AI RM Use Case.xlsx, Sheet: Asset Inventorization Guideline",
+      "searches_performed": [
+        "impact assessment methodology",
+        "CIA impact rating scale and definitions",
+        "Asset Business Value calculation from CIA impact ratings"
+      ]
+    },
+    "threat_analysis": [
+      {
+        "threat_id": "threat_1",
+        "threat_name": "Compromise of DLP System Leading to Undetected Data Exfiltration",
+        "threat_description": "An advanced persistent threat (APT) or malicious insider could exploit a vulnerability in the Forcepoint DLP solution (version 16.0) or its underlying infrastructure, or compromise administrative credentials, to gain unauthorized access. Due to the lack of integration with a SIEM system, these sophisticated bypass attempts or internal policy modifications within the critical DLP solution would not be correlated with other security events, significantly delaying detection. An informally managed false positive process could further desensitize the 24/7 security team, allowing an attacker to exfiltrate sensitive PII and Legal Documents across the network, data at rest, or endpoints without triggering effective alerts or blocks, resulting in a major data breach.",
+        "impact_assessment": {
+          "confidentiality": {
+            "rating": "Extreme",
+            "numeric_value": 4,
+            "reasoning": "Based on questionnaire answer [3. DLP Solution Details and Configuration Facts] stating ['PII (Personally Identifiable Information)', 'Legal Documents'] are protected, and the contextual description indicating 'undetected data exfiltration' and a 'major data breach' of these sensitive types. This meets the discovered definition for 'Extreme': 'Unauthorized disclosure within or outside the organization would cause serious damage to the interests of the organization. Disclosure within the organization will be strictly on a ‘need-to-know’ basis.'"
+          },
+          "integrity": {
+            "rating": "Extreme",
+            "numeric_value": 4,
+            "reasoning": "Based on the contextual description mentioning 'internal policy modifications within the critical DLP solution would not be correlated with other security events', implying potential for unauthorized modification of DLP policies. Given the 'High' criticality of the DLP solution (Fact: [2. Business Context and Scope]), such modifications would have a 'severe and long ranging adverse effect on business operations' by undermining data protection. This meets the discovered definition for 'Extreme': 'Unauthorized modification or damage of information is expected to have severe and long ranging adverse effect on business operations.'"
+          },
+          "availability": {
+            "rating": "Serious",
+            "numeric_value": 3,
+            "reasoning": "Based on the contextual description focusing on 'undetected data exfiltration' due to bypass, rather than outright system shutdown. While the system remains operational, its core function of preventing data leakage is severely compromised, making it effectively unavailable for its intended purpose. Given the 'High' criticality of the DLP solution (Fact: [2. Business Context and Scope]), this functional unavailability would have a 'serious adverse effect on business operations'. This meets the discovered definition for 'Serious': 'Impact of disruption of access or unavailability of information or information asset or services is expected to have a serious adverse effect on business operations.'"
+          }
+        },
+        "overall_impact_calculation": {
+          "confidentiality_numeric": 4,
+          "integrity_numeric": 4,
+          "availability_numeric": 3,
+          "calculation_method": "max(C, I, A)",
+          "calculation": "max(4, 4, 3) = 4",
+          "overall_impact": "4 - Extreme",
+          "overall_impact_numeric": 4
+        }
+      },
+      {
+        "threat_id": "threat_2",
+        "threat_name": "Data Leakage Due to Outdated or Ineffective DLP Policies",
+        "threat_description": "The Forcepoint DLP policies, which are critical for protecting PII and Legal Documents across network, data at rest, and endpoints, are reviewed only annually. This infrequent review cycle creates a significant vulnerability where new data types, communication channels, or evolving regulatory requirements may not be adequately covered by existing policies. For instance, the adoption of a new collaboration tool or cloud service could create an unmonitored channel for data exfiltration. Furthermore, the 'informally managed' false positive process could lead to policies being overly relaxed to reduce alert noise, inadvertently creating loopholes that allow sensitive data to bypass DLP controls, especially for data covered by 'monitor-only' policies, leading to unintentional data leakage.",
+        "impact_assessment": {
+          "confidentiality": {
+            "rating": "Extreme",
+            "numeric_value": 4,
+            "reasoning": "Based on the contextual description stating 'unintentional data leakage' of 'PII and Legal Documents' and the risk statement mentioning 'regulatory non-compliance, financial penalties, and loss of customer trust'. This directly aligns with the 'Extreme' definition: 'Unauthorized disclosure within or outside the organization would cause serious damage to the interests of the organization. Disclosure within the organization will be strictly on a ‘need-to-know’ basis.'"
+          },
+          "integrity": {
+            "rating": "Serious",
+            "numeric_value": 3,
+            "reasoning": "Based on the threat of 'outdated or ineffective DLP policies' leading to data leakage. While not direct data modification, the failure of policies to adequately protect data means the integrity of the data's protected state is compromised. Given the 'High' criticality of the DLP solution (Fact: [2. Business Context and Scope]), this failure would have a 'serious adverse effect on business operations'. This meets the discovered definition for 'Serious': 'Unauthorized modification or damage of information is expected to have a serious adverse effect on business operations.'"
+          },
+          "availability": {
+            "rating": "Moderate",
+            "numeric_value": 2,
+            "reasoning": "Based on the threat focusing on policy effectiveness rather than the availability of the DLP system itself. The system would still be accessible and running, but its protective function is diminished. This is a moderate adverse effect on the availability of effective protection, not the system itself. This meets the discovered definition for 'Moderate': 'Impact of disruption of access or unavailability of information or information asset or services is expected to have a moderate adverse effect on business operations.'"
+          }
+        },
+        "overall_impact_calculation": {
+          "confidentiality_numeric": 4,
+          "integrity_numeric": 3,
+          "availability_numeric": 2,
+          "calculation_method": "max(C, I, A)",
+          "calculation": "max(4, 3, 2) = 4",
+          "overall_impact": "4 - Extreme",
+          "overall_impact_numeric": 4
+        }
+      },
+      {
+        "threat_id": "threat_3",
+        "threat_name": "Malicious or Negligent Insider Bypassing DLP Controls",
+        "threat_description": "A malicious insider or a negligent user, potentially with administrative access or a deep understanding of the Forcepoint DLP (version 16.0) configuration and operational procedures, could intentionally or unintentionally bypass existing controls. The 'informally managed' false positive process could be exploited by an insider to generate excessive noise, making it harder for the 24/7 security team to identify genuine data exfiltration attempts of PII and Legal Documents. While security awareness training is mandatory, an insider could leverage knowledge of the annual policy review cycle to exploit temporary gaps in policy coverage, or use the 'monitor-only' policy modes to exfiltrate sensitive data via network, data at rest, or endpoint channels, leading to an insider-driven data breach.",
+        "impact_assessment": {
+          "confidentiality": {
+            "rating": "Extreme",
+            "numeric_value": 4,
+            "reasoning": "Based on the contextual description stating 'insider-driven data breach of PII and Legal Documents' and the risk statement mentioning 'severe regulatory fines, legal liabilities, and reputational damage'. This directly aligns with the 'Extreme' definition: 'Unauthorized disclosure within or outside the organization would cause serious damage to the interests of the organization. Disclosure within the organization will be strictly on a ‘need-to-know’ basis.'"
+          },
+          "integrity": {
+            "rating": "Extreme",
+            "numeric_value": 4,
+            "reasoning": "Based on the threat involving an insider 'bypassing DLP controls' and exploiting 'Forcepoint DLP configuration weaknesses'. This implies a direct compromise of the integrity of the DLP system's protective mechanisms, potentially through unauthorized modification of policies or data. Given the 'High' criticality of the DLP solution (Fact: [2. Business Context and Scope]), this would have a 'severe and long ranging adverse effect on business operations'. This meets the discovered definition for 'Extreme': 'Unauthorized modification or damage of information is expected to have severe and long ranging adverse effect on business operations.'"
+          },
+          "availability": {
+            "rating": "Moderate",
+            "numeric_value": 2,
+            "reasoning": "Based on the threat focusing on bypassing controls and exfiltrating data, not on making the DLP system unavailable. The system would still be accessible and running, but its protective function is circumvented. This is a moderate adverse effect on the availability of effective protection, not the system itself. This meets the discovered definition for 'Moderate': 'Impact of disruption of access or unavailability of information or information asset or services is expected to have a moderate adverse effect on business operations.'"
+          }
+        },
+        "overall_impact_calculation": {
+          "confidentiality_numeric": 4,
+          "integrity_numeric": 4,
+          "availability_numeric": 2,
+          "calculation_method": "max(C, I, A)",
+          "calculation": "max(4, 4, 2) = 4",
+          "overall_impact": "4 - Extreme",
+          "overall_impact_numeric": 4
+        }
+      },
+      {
+        "threat_id": "threat_4",
+        "threat_name": "Delayed Incident Response and Inefficient Management Due to Lack of Unique Asset ID",
+        "threat_description": "The critical Forcepoint DLP solution (version 16.0), responsible for protecting PII and Legal Documents, lacks a unique identifier or asset ID. In the event of a security incident, a critical vulnerability discovery, or a system outage affecting the DLP, the absence of a clear, unique identifier will significantly hinder efficient incident response, troubleshooting, and asset management processes. This could lead to delays in identifying the specific instance of the DLP system, correlating it with other security tools (especially without SIEM integration), applying patches, or initiating recovery procedures. Such delays would prolong the organization's exposure to data leakage risks and impact the availability and integrity of the DLP service, which is critical to business operations.",
+        "impact_assessment": {
+          "confidentiality": {
+            "rating": "Serious",
+            "numeric_value": 3,
+            "reasoning": "Based on the contextual description stating that the lack of an asset ID 'would prolong the organization's exposure to data leakage risks'. While not a direct cause of disclosure, it significantly increases the window and potential scale of a breach if one occurs. Given the 'High' criticality of the DLP solution (Fact: [2. Business Context and Scope]), this prolonged exposure could lead to 'significant harm'. This meets the discovered definition for 'Serious': 'Unauthorized disclosure within or outside the organization would cause significant harm to the interest of the organization.'"
+          },
+          "integrity": {
+            "rating": "Serious",
+            "numeric_value": 3,
+            "reasoning": "Based on the contextual description stating that delays in 'applying patches, or initiating recovery procedures' and 'inefficient management' could 'impact the availability and integrity of the DLP service'. This means the DLP system itself could operate in a compromised or unpatched state for longer, affecting its ability to maintain data integrity. Given the 'High' criticality of the DLP solution (Fact: [2. Business Context and Scope]), this would have a 'serious adverse effect on business operations'. This meets the discovered definition for 'Serious': 'Unauthorized modification or damage of information is expected to have a serious adverse effect on business operations.'"
+          },
+          "availability": {
+            "rating": "Extreme",
+            "numeric_value": 4,
+            "reasoning": "Based on the contextual description stating that the lack of an asset ID 'will significantly hinder efficient incident response, troubleshooting... and recovery procedures' and 'impacts the availability... of the DLP service'. The risk statement mentions 'operational disruptions'. Given the 'High' criticality of the DLP solution (Fact: [2. Business Context and Scope]), prolonged unavailability or inability to recover would have a 'severe and long ranging adverse effect on business operations'. This meets the discovered definition for 'Extreme': 'Impact of disruption of access or unavailability of information or information asset or services is expected to have severe and long ranging adverse effect on business operations.'"
+          }
+        },
+        "overall_impact_calculation": {
+          "confidentiality_numeric": 3,
+          "integrity_numeric": 3,
+          "availability_numeric": 4,
+          "calculation_method": "max(C, I, A)",
+          "calculation": "max(3, 3, 4) = 4",
+          "overall_impact": "4 - Extreme",
+          "overall_impact_numeric": 4
+        }
+      }
+    ],
+    "asset_cia_ratings": {
+      "confidentiality": {
+        "rating": "Extreme",
+        "numeric_value": 4,
+        "reasoning": "Asset-level CIA: Maximum C value across all threats. Threat 1: Extreme(4), Threat 2: Extreme(4), Threat 3: Extreme(4), Threat 4: Serious(3) → Asset C = Extreme(4)",
+        "threat_breakdown": [
+          "Threat 1: Extreme(4)",
+          "Threat 2: Extreme(4)",
+          "Threat 3: Extreme(4)",
+          "Threat 4: Serious(3)"
+        ]
+      },
+      "integrity": {
+        "rating": "Extreme",
+        "numeric_value": 4,
+        "reasoning": "Asset-level CIA: Maximum I value across all threats. Threat 1: Extreme(4), Threat 2: Serious(3), Threat 3: Extreme(4), Threat 4: Serious(3) → Asset I = Extreme(4)",
+        "threat_breakdown": [
+          "Threat 1: Extreme(4)",
+          "Threat 2: Serious(3)",
+          "Threat 3: Extreme(4)",
+          "Threat 4: Serious(3)"
+        ]
+      },
+      "availability": {
+        "rating": "Extreme",
+        "numeric_value": 4,
+        "reasoning": "Asset-level CIA: Maximum A value across all threats. Threat 1: Serious(3), Threat 2: Moderate(2), Threat 3: Moderate(2), Threat 4: Extreme(4) → Asset A = Extreme(4)",
+        "threat_breakdown": [
+          "Threat 1: Serious(3)",
+          "Threat 2: Moderate(2)",
+          "Threat 3: Moderate(2)",
+          "Threat 4: Extreme(4)"
+        ]
+      },
+      "calculation_note": "Asset-level CIA is calculated as MAXIMUM across all threat-level CIA ratings. This represents the worst-case impact scenario for the asset and is used for Asset Business Value and Criticality Classification per organizational Asset Management Guidelines."
+    },
+    "asset_business_value": {
+      "cia_combination": "Extreme, Extreme, Extreme",
+      "cia_combination_key": "ExtremeExtremeExtreme",
+      "business_value_rating": "Very High",
+      "business_value_numeric": 5,
+      "calculation_method": "Asset Value Chart (discovered from Risk Assessment Template_For Agentic AI RM Use Case.xlsx, Sheet: Asset Inventory)",
+      "calculation_details": "Per discovered Asset Value Chart: CIA combination (Extreme, Extreme, Extreme) maps to Business Value 'Very High'",
+      "source_reference": "Risk Assessment Template_For Agentic AI RM Use Case.xlsx, Sheet: Asset Inventory",
+      "reasoning": "Based on calculated Asset-level CIA ratings (Confidentiality: Extreme, Integrity: Extreme, Availability: Extreme), per the discovered Asset Value Chart in organizational guidelines, the Asset Business Value is 'Very High'."
+    },
+    "asset_criticality": {
+      "criticality_classification": "Very high Critical",
+      "business_value_input": "Very High",
+      "calculation_method": "Criticality Classification Table (discovered from Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx, Table 4)",
+      "calculation_details": "Per discovered Criticality Classification Table: Business Value 'Very High' maps to Criticality 'Very high Critical'",
+      "source_reference": "Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx, Table 4; Risk Assessment Template_For Agentic AI RM Use Case.xlsx, Sheet: Asset Inventorization Guideline",
+      "reasoning": "Based on calculated Asset Business Value 'Very High', per the discovered Criticality Classification Table in organizational Asset Management Guidelines, the Asset Criticality Classification is 'Very high Critical'."
+    }
+  },
+  "agent_2_result": {
+    "discovery_summary": {
+      "methodology": "Semi-quantitative Risk Assessment",
+      "risk_calculation": {
+        "method": "Formula",
+        "formula": "Risk Value (RV) = Risk Impact (RI) * Risk Probability (RP)",
+        "description": "Risk Value is calculated by multiplying the numeric Risk Impact rating by the numeric Risk Probability rating."
+      },
+      "probability_scale": {
+        "type": "Numeric and Categorical",
+        "levels": [
+          "Very Low",
+          "Low",
+          "Medium",
+          "High",
+          "Very High"
+        ],
+        "range": "1 (Greater than one year) to 5 (More than once per month)"
+      },
+      "impact_scale": {
+        "type": "Numeric and Categorical",
+        "levels": [
+          "Very Low",
+          "Low",
+          "Medium",
+          "High",
+          "Very High"
+        ],
+        "range": "1 (negligible impact) to 5 (catastrophic impact)"
+      },
+      "risk_level_mapping": {
+        "method": "Thresholds based on Risk Value Score",
+        "levels": [
+          "Very Low",
+          "Low",
+          "Medium",
+          "High",
+          "Very High"
+        ],
+        "thresholds": "Risk Value 0-5: Rating 1 (Very Low); 6-10: Rating 2 (Low); 11-15: Rating 3 (Medium); 16-20: Rating 4 (High); 21-25: Rating 5 (Very High)"
+      },
+      "acceptance_criteria": "Risk Evaluation Rating 1-2 is Acceptable; Risk Evaluation Rating 3-5 is Non-Acceptable.",
+      "questionnaire_answers_used": true
+    },
+    "summary": {
+      "total_threats_assessed": 4,
+      "highest_risk_value": 16,
+      "non_acceptable_risks_count": 4,
+      "acceptable_risks_count": 0,
+      "overall_risk_level": "NON-ACCEPTABLE"
+    },
+    "threat_risk_quantification": [
+      {
+        "threat": "Compromise of DLP System Leading to Undetected Data Exfiltration",
+        "vulnerabilities": [
+          "Lack of SIEM integration for centralized logging and correlation.",
+          "Informal management of false positives leading to potential alert fatigue or policy weakening.",
+          "Potential vulnerabilities in Forcepoint DLP software or underlying OS/infrastructure (general software asset risk)."
+        ],
+        "risk_statement": "Risk of undetected data exfiltration of PII and Legal Documents from network, data at rest, and endpoints due to compromise of the Forcepoint DLP solution, exacerbated by lack of SIEM integration and informal false positive management, potentially causing a major data breach, regulatory penalties, and severe reputational damage.",
+        "risk_impact": {
+          "rating": 4,
+          "category": "Extreme",
+          "reasoning": "Based on Agent 1 CIA assessment: Confidentiality=Extreme (4), Integrity=Extreme (4), Availability=Serious (3). Overall impact is max(4,4,3) = 4 (Extreme)."
+        },
+        "risk_probability": {
+          "rating": 4,
+          "category": "High",
+          "reasoning": "The lack of SIEM integration (Q15: No) significantly increases the probability of undetected compromise. Informal false positive management (Q18: Informally managed) can lead to alert fatigue. While 24/7 monitoring (Q17: Yes) is a control, its effectiveness is reduced by these factors. This makes a compromise leading to undetected exfiltration likely to occur once every 1-3 months."
+        },
+        "risk_value": {
+          "value": 16,
+          "calculation": "4 (impact) × 4 (probability) = 16"
+        },
+        "risk_evaluation_rating": {
+          "rating": 4,
+          "level": "High",
+          "mapping_rationale": "Risk value 16 maps to Rating 4 (High) per discovered risk level mapping (16-20)."
+        },
+        "risk_classification": {
+          "classification": "NON-ACCEPTABLE",
+          "criteria_applied": "Risk Evaluation Rating 3-5 is Non-Acceptable.",
+          "justification": "Risk Evaluation Rating 4 (High) is non-acceptable per organizational policy."
+        }
+      },
+      {
+        "threat": "Data Leakage Due to Outdated or Ineffective DLP Policies",
+        "vulnerabilities": [
+          "Infrequent (annual) review and update of DLP policies.",
+          "Informal management of false positives leading to potential policy weakening or blind spots.",
+          "Dynamic nature of data, business processes, and threat landscape not adequately addressed by annual reviews."
+        ],
+        "risk_statement": "Risk of data leakage of PII and Legal Documents due to outdated or ineffective Forcepoint DLP policies, caused by annual review frequency and informal false positive management, potentially resulting in regulatory non-compliance, financial penalties, and loss of customer trust.",
+        "risk_impact": {
+          "rating": 4,
+          "category": "Extreme",
+          "reasoning": "Based on Agent 1 CIA assessment: Confidentiality=Extreme (4), Integrity=Serious (3), Availability=Moderate (2). Overall impact is max(4,3,2) = 4 (Extreme)."
+        },
+        "risk_probability": {
+          "rating": 3,
+          "category": "Medium",
+          "reasoning": "DLP policies are reviewed only annually (Q16: Annually), which is infrequent given the dynamic threat landscape. Informal false positive management (Q18: Informally managed) can lead to policy weakening. This makes it moderately likely that policies become outdated or ineffective, potentially leading to leakage once every 4-6 months."
+        },
+        "risk_value": {
+          "value": 12,
+          "calculation": "4 (impact) × 3 (probability) = 12"
+        },
+        "risk_evaluation_rating": {
+          "rating": 3,
+          "level": "Medium",
+          "mapping_rationale": "Risk value 12 maps to Rating 3 (Medium) per discovered risk level mapping (11-15)."
+        },
+        "risk_classification": {
+          "classification": "NON-ACCEPTABLE",
+          "criteria_applied": "Risk Evaluation Rating 3-5 is Non-Acceptable.",
+          "justification": "Risk Evaluation Rating 3 (Medium) is non-acceptable per organizational policy."
+        }
+      },
+      {
+        "threat": "Malicious or Negligent Insider Bypassing DLP Controls",
+        "vulnerabilities": [
+          "Informal management of false positives, which can be exploited or lead to alert fatigue.",
+          "Annual policy review frequency, creating potential windows for exploitation.",
+          "Reliance on 'monitor-only' policies for some data, requiring effective and vigilant human response."
+        ],
+        "risk_statement": "Risk of malicious or negligent insider-driven data breach of PII and Legal Documents due to exploitation of Forcepoint DLP configuration weaknesses, informal false positive management, and infrequent policy updates, potentially causing severe regulatory fines, legal liabilities, and reputational damage.",
+        "risk_impact": {
+          "rating": 4,
+          "category": "Extreme",
+          "reasoning": "Based on Agent 1 CIA assessment: Confidentiality=Extreme (4), Integrity=Extreme (4), Availability=Moderate (2). Overall impact is max(4,4,2) = 4 (Extreme)."
+        },
+        "risk_probability": {
+          "rating": 3,
+          "category": "Medium",
+          "reasoning": "Informal false positive management (Q18: Informally managed) and annual policy review (Q16: Annually) create opportunities for insiders to bypass controls. While security awareness training (Q19: Yes) and a formal exception process (Q20: Yes) exist, these vulnerabilities increase the likelihood of an insider-driven data breach, potentially occurring once every 4-6 months."
+        },
+        "risk_value": {
+          "value": 12,
+          "calculation": "4 (impact) × 3 (probability) = 12"
+        },
+        "risk_evaluation_rating": {
+          "rating": 3,
+          "level": "Medium",
+          "mapping_rationale": "Risk value 12 maps to Rating 3 (Medium) per discovered risk level mapping (11-15)."
+        },
+        "risk_classification": {
+          "classification": "NON-ACCEPTABLE",
+          "criteria_applied": "Risk Evaluation Rating 3-5 is Non-Acceptable.",
+          "justification": "Risk Evaluation Rating 3 (Medium) is non-acceptable per organizational policy."
+        }
+      },
+      {
+        "threat": "Delayed Incident Response and Inefficient Management Due to Lack of Unique Asset ID",
+        "vulnerabilities": [
+          "Absence of a unique identifier or asset ID for the critical DLP solution.",
+          "Lack of SIEM integration, which would otherwise help in asset identification and correlation."
+        ],
+        "risk_statement": "Risk of delayed incident response, inefficient asset management, and prolonged exposure to threats for the Forcepoint DLP solution due to the absence of a unique asset ID, potentially causing extended data leakage windows, operational disruptions, and increased recovery costs.",
+        "risk_impact": {
+          "rating": 4,
+          "category": "Extreme",
+          "reasoning": "Based on Agent 1 CIA assessment: Confidentiality=Serious (3), Integrity=Serious (3), Availability=Extreme (4). Overall impact is max(3,3,4) = 4 (Extreme)."
+        },
+        "risk_probability": {
+          "rating": 4,
+          "category": "High",
+          "reasoning": "The absence of a unique asset ID (Q5: No) directly causes this inefficiency. The lack of SIEM integration (Q15: No) further exacerbates the problem. While an IR workflow exists (Q14: Yes) and monitoring is 24/7 (Q17: Yes), the fundamental lack of identification will cause delays whenever an incident or management task arises. This operational hindrance is highly likely to manifest and cause delays once every 1-3 months."
+        },
+        "risk_value": {
+          "value": 16,
+          "calculation": "4 (impact) × 4 (probability) = 16"
+        },
+        "risk_evaluation_rating": {
+          "rating": 4,
+          "level": "High",
+          "mapping_rationale": "Risk value 16 maps to Rating 4 (High) per discovered risk level mapping (16-20)."
+        },
+        "risk_classification": {
+          "classification": "NON-ACCEPTABLE",
+          "criteria_applied": "Risk Evaluation Rating 3-5 is Non-Acceptable.",
+          "justification": "Risk Evaluation Rating 4 (High) is non-acceptable per organizational policy."
+        }
+      }
+    ],
+    "rag_queries_performed": [
+      "risk quantification methodology"
+    ],
+    "rag_sources_consulted": [
+      "Risk Management Guidelines_For RM Agentic AI Use Case v1.0.docx",
+      "Risk Management SOP_For RM Agentic AI Use Case v1.0.docx"
+    ]
+  },
+  "agent_3_result": {
+    "discovery_summary": {
+      "control_framework": "ISO 27001, ITGC, NIST RMF",
+      "control_categories": [
+        "Preventive",
+        "Detective",
+        "Corrective"
+      ],
+      "control_types": [
+        "Preventive",
+        "Detective",
+        "Corrective"
+      ],
+      "effectiveness_scale": {
+        "type": "Numeric",
+        "range": "1-5",
+        "definitions": "1: Non-existent or has major deficiencies; 2: Limited, high level of risk remains; 3: Controls in place with few deficiencies (medium risk); 4: Designed and operating, with few deficiencies (low risk); 5: Designed and operating, with no deficiencies."
+      },
+      "control_rating_method": "Weighted average: (Preventive Avg × 1.0 + Detective Avg × 0.75 + Corrective Avg × 0.5) / 3",
+      "residual_risk_method": "Risk Evaluation Rating - Control Rating",
+      "questionnaire_answers_used": true
+    },
+    "threat_control_evaluation": [
+      {
+        "threat": "Compromise of DLP System Leading to Undetected Data Exfiltration",
+        "vulnerabilities": [
+          "DLP system compromise",
+          "undetected data exfiltration"
+        ],
+        "controls_identified": [
+          {
+            "control_id": "A.8.12",
+            "control_name": "Data leakage prevention (Hybrid mode)",
+            "category": "Preventive",
+            "current_rating": 3,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Hybrid (some monitor, some block)'",
+            "effectiveness": "ADEQUATE"
+          },
+          {
+            "control_id": "A.8.12",
+            "control_name": "Data leakage prevention (Policy types enforced)",
+            "category": "Preventive",
+            "current_rating": 4,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'File-based, User-based, Content-based' policies actively enforced",
+            "effectiveness": "STRONG"
+          },
+          {
+            "control_id": "A.8.12",
+            "control_name": "Data leakage prevention (Hybrid mode)",
+            "category": "Detective",
+            "current_rating": 3,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Hybrid (some monitor, some block)'",
+            "effectiveness": "ADEQUATE"
+          },
+          {
+            "control_id": "A.8.16",
+            "control_name": "Monitoring activities (DLP alerts 24/7)",
+            "category": "Detective",
+            "current_rating": 4,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, 24/7' DLP alerts actively monitored",
+            "effectiveness": "STRONG"
+          },
+          {
+            "control_id": "A.5.26",
+            "control_name": "Incident management planning and preparation (DLP workflow)",
+            "category": "Corrective",
+            "current_rating": 3,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes' there is a defined incident response workflow for DLP alerts",
+            "effectiveness": "ADEQUATE"
+          }
+        ],
+        "control_rating_calculation": {
+          "weighted_preventive": "3.5 × 1.0 = 3.5",
+          "weighted_detective": "3.5 × 0.75 = 2.625",
+          "weighted_corrective": "3.0 × 0.5 = 1.5",
+          "average_weighted": 2.54,
+          "control_rating": 2.54,
+          "control_rating_text": "LIMITED"
+        },
+        "control_category_averages": {
+          "preventive_avg": 3.5,
+          "detective_avg": 3.5,
+          "corrective_avg": 3.0
+        },
+        "risk_evaluation_rating": 4,
+        "residual_risk": {
+          "risk_evaluation_rating": 4,
+          "control_rating": 2.54,
+          "residual_risk_value": 1.46,
+          "residual_risk_classification": "Low",
+          "calculation": "Risk Evaluation Rating 4 - Control Rating 2.54 = 1.46",
+          "formula": "risk_evaluation_rating - control_rating"
+        },
+        "control_gaps": [
+          {
+            "gap_description": "DLP solution not integrated with SIEM",
+            "evidence": "User indicated: 'No' to SIEM integration",
+            "impact": "Hinders centralized logging, correlation, and comprehensive detection of compromise attempts and exfiltration.",
+            "severity": "HIGH"
+          }
+        ],
+        "recommended_controls": [
+          {
+            "control_id": "A.8.15",
+            "control_name": "Integrate DLP solution with SIEM",
+            "control_type": "Detective",
+            "priority": "HIGH",
+            "rationale": "Enhances centralized logging, correlation, and real-time monitoring for faster detection of DLP system compromises and data exfiltration attempts.",
+            "expected_effectiveness": 4
+          }
+        ]
+      },
+      {
+        "threat": "Data Leakage Due to Outdated or Ineffective DLP Policies",
+        "vulnerabilities": [
+          "outdated DLP policies",
+          "ineffective DLP policies"
+        ],
+        "controls_identified": [
+          {
+            "control_id": "A.8.12",
+            "control_name": "Data leakage prevention (Hybrid mode)",
+            "category": "Preventive",
+            "current_rating": 3,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Hybrid (some monitor, some block)'",
+            "effectiveness": "ADEQUATE"
+          },
+          {
+            "control_id": "A.8.12",
+            "control_name": "Data leakage prevention (Policy types enforced)",
+            "category": "Preventive",
+            "current_rating": 4,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'File-based, User-based, Content-based' policies actively enforced",
+            "effectiveness": "STRONG"
+          },
+          {
+            "control_id": "A.5.1",
+            "control_name": "Policies for information security (DLP policy review)",
+            "category": "Preventive",
+            "current_rating": 3,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Annually' DLP policies are reviewed and updated",
+            "effectiveness": "ADEQUATE"
+          },
+          {
+            "control_id": "A.6.3",
+            "control_name": "Information security awareness, education and training",
+            "category": "Preventive",
+            "current_rating": 4,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, mandatory and regular' security awareness training provided",
+            "effectiveness": "STRONG"
+          },
+          {
+            "control_id": "A.5.18",
+            "control_name": "Access rights management (DLP policy exceptions)",
+            "category": "Preventive",
+            "current_rating": 4,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, a formal documented process' for DLP policy exceptions",
+            "effectiveness": "STRONG"
+          },
+          {
+            "control_id": "A.8.12",
+            "control_name": "Data leakage prevention (Hybrid mode)",
+            "category": "Detective",
+            "current_rating": 3,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Hybrid (some monitor, some block)'",
+            "effectiveness": "ADEQUATE"
+          },
+          {
+            "control_id": "A.8.16",
+            "control_name": "Monitoring activities (DLP alerts 24/7)",
+            "category": "Detective",
+            "current_rating": 4,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, 24/7' DLP alerts actively monitored",
+            "effectiveness": "STRONG"
+          },
+          {
+            "control_id": "A.5.26",
+            "control_name": "Incident management planning and preparation (DLP workflow)",
+            "category": "Corrective",
+            "current_rating": 3,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes' there is a defined incident response workflow for DLP alerts",
+            "effectiveness": "ADEQUATE"
+          },
+          {
+            "control_id": "A.8.16",
+            "control_name": "Monitoring activities (DLP false positive management)",
+            "category": "Corrective",
+            "current_rating": 2,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, informally managed' process for false positives",
+            "effectiveness": "LIMITED"
+          }
+        ],
+        "control_rating_calculation": {
+          "weighted_preventive": "3.6 × 1.0 = 3.6",
+          "weighted_detective": "3.5 × 0.75 = 2.625",
+          "weighted_corrective": "2.5 × 0.5 = 1.25",
+          "average_weighted": 2.49,
+          "control_rating": 2.49,
+          "control_rating_text": "LIMITED"
+        },
+        "control_category_averages": {
+          "preventive_avg": 3.6,
+          "detective_avg": 3.5,
+          "corrective_avg": 2.5
+        },
+        "risk_evaluation_rating": 3,
+        "residual_risk": {
+          "risk_evaluation_rating": 3,
+          "control_rating": 2.49,
+          "residual_risk_value": 0.51,
+          "residual_risk_classification": "Low",
+          "calculation": "Risk Evaluation Rating 3 - Control Rating 2.49 = 0.51",
+          "formula": "risk_evaluation_rating - control_rating"
+        },
+        "control_gaps": [
+          {
+            "gap_description": "Monitoring activities (DLP false positive management) is weak/deficient (rated 2/5)",
+            "control_id": "A.8.16",
+            "current_rating": 2,
+            "evidence": "Low effectiveness rating",
+            "impact": "Insufficient protection - control effectiveness only 2/5",
+            "severity": "MEDIUM"
+          }
+        ],
+        "recommended_controls": []
+      },
+      {
+        "threat": "Malicious or Negligent Insider Bypassing DLP Controls",
+        "vulnerabilities": [
+          "malicious insider",
+          "negligent insider",
+          "bypassing DLP controls"
+        ],
+        "controls_identified": [
+          {
+            "control_id": "A.8.12",
+            "control_name": "Data leakage prevention (Hybrid mode)",
+            "category": "Preventive",
+            "current_rating": 3,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Hybrid (some monitor, some block)'",
+            "effectiveness": "ADEQUATE"
+          },
+          {
+            "control_id": "A.8.12",
+            "control_name": "Data leakage prevention (Policy types enforced)",
+            "category": "Preventive",
+            "current_rating": 4,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'File-based, User-based, Content-based' policies actively enforced",
+            "effectiveness": "STRONG"
+          },
+          {
+            "control_id": "A.6.3",
+            "control_name": "Information security awareness, education and training",
+            "category": "Preventive",
+            "current_rating": 4,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, mandatory and regular' security awareness training provided",
+            "effectiveness": "STRONG"
+          },
+          {
+            "control_id": "A.5.18",
+            "control_name": "Access rights management (DLP policy exceptions)",
+            "category": "Preventive",
+            "current_rating": 4,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, a formal documented process' for DLP policy exceptions",
+            "effectiveness": "STRONG"
+          },
+          {
+            "control_id": "A.8.12",
+            "control_name": "Data leakage prevention (Hybrid mode)",
+            "category": "Detective",
+            "current_rating": 3,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Hybrid (some monitor, some block)'",
+            "effectiveness": "ADEQUATE"
+          },
+          {
+            "control_id": "A.8.16",
+            "control_name": "Monitoring activities (DLP alerts 24/7)",
+            "category": "Detective",
+            "current_rating": 4,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, 24/7' DLP alerts actively monitored",
+            "effectiveness": "STRONG"
+          },
+          {
+            "control_id": "A.5.26",
+            "control_name": "Incident management planning and preparation (DLP workflow)",
+            "category": "Corrective",
+            "current_rating": 3,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes' there is a defined incident response workflow for DLP alerts",
+            "effectiveness": "ADEQUATE"
+          },
+          {
+            "control_id": "A.8.16",
+            "control_name": "Monitoring activities (DLP false positive management)",
+            "category": "Corrective",
+            "current_rating": 2,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, informally managed' process for false positives",
+            "effectiveness": "LIMITED"
+          }
+        ],
+        "control_rating_calculation": {
+          "weighted_preventive": "3.75 × 1.0 = 3.75",
+          "weighted_detective": "3.5 × 0.75 = 2.625",
+          "weighted_corrective": "2.5 × 0.5 = 1.25",
+          "average_weighted": 2.54,
+          "control_rating": 2.54,
+          "control_rating_text": "LIMITED"
+        },
+        "control_category_averages": {
+          "preventive_avg": 3.75,
+          "detective_avg": 3.5,
+          "corrective_avg": 2.5
+        },
+        "risk_evaluation_rating": 3,
+        "residual_risk": {
+          "risk_evaluation_rating": 3,
+          "control_rating": 2.54,
+          "residual_risk_value": 0.46,
+          "residual_risk_classification": "Low",
+          "calculation": "Risk Evaluation Rating 3 - Control Rating 2.54 = 0.46",
+          "formula": "risk_evaluation_rating - control_rating"
+        },
+        "control_gaps": [
+          {
+            "gap_description": "DLP solution not integrated with SIEM",
+            "evidence": "User indicated: 'No' to SIEM integration",
+            "impact": "Limits comprehensive detection and correlation of insider activities that bypass DLP controls.",
+            "severity": "HIGH"
+          }
+        ],
+        "recommended_controls": [
+          {
+            "control_id": "A.8.15",
+            "control_name": "Integrate DLP solution with SIEM",
+            "control_type": "Detective",
+            "priority": "HIGH",
+            "rationale": "Provides centralized logging and correlation capabilities to detect patterns indicative of malicious or negligent insider activity, enhancing the ability to identify and respond to bypass attempts.",
+            "expected_effectiveness": 4
+          }
+        ]
+      },
+      {
+        "threat": "Delayed Incident Response and Inefficient Management Due to Lack of Unique Asset ID",
+        "vulnerabilities": [
+          "lack of unique asset ID",
+          "delayed incident response",
+          "inefficient management"
+        ],
+        "controls_identified": [
+          {
+            "control_id": "A.8.16",
+            "control_name": "Monitoring activities (DLP alerts 24/7)",
+            "category": "Detective",
+            "current_rating": 4,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, 24/7' DLP alerts actively monitored",
+            "effectiveness": "STRONG"
+          },
+          {
+            "control_id": "A.5.26",
+            "control_name": "Incident management planning and preparation (DLP workflow)",
+            "category": "Corrective",
+            "current_rating": 3,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes' there is a defined incident response workflow for DLP alerts",
+            "effectiveness": "ADEQUATE"
+          }
+        ],
+        "control_rating_calculation": {
+          "weighted_preventive": "0.0 × 1.0 = 0.0",
+          "weighted_detective": "4.0 × 0.75 = 3.0",
+          "weighted_corrective": "3.0 × 0.5 = 1.5",
+          "average_weighted": 1.5,
+          "control_rating": 1.5,
+          "control_rating_text": "WEAK"
+        },
+        "control_category_averages": {
+          "preventive_avg": 0.0,
+          "detective_avg": 4.0,
+          "corrective_avg": 3.0
+        },
+        "risk_evaluation_rating": 4,
+        "residual_risk": {
+          "risk_evaluation_rating": 4,
+          "control_rating": 1.5,
+          "residual_risk_value": 2.5,
+          "residual_risk_classification": "Medium",
+          "calculation": "Risk Evaluation Rating 4 - Control Rating 1.5 = 2.5",
+          "formula": "risk_evaluation_rating - control_rating"
+        },
+        "control_gaps": [
+          {
+            "gap_description": "DLP solution does not have a unique identifier or asset ID",
+            "evidence": "User indicated: 'No' to unique identifier or asset ID",
+            "impact": "Significantly delays incident response and hinders efficient management by making it difficult to quickly identify and track the specific DLP asset involved in an incident.",
+            "severity": "HIGH"
+          },
+          {
+            "gap_description": "DLP solution not integrated with SIEM",
+            "evidence": "User indicated: 'No' to SIEM integration",
+            "impact": "Prevents centralized logging and correlation, making it harder to manage incidents efficiently and gain a holistic view of security events related to the DLP solution.",
+            "severity": "HIGH"
+          }
+        ],
+        "recommended_controls": [
+          {
+            "control_id": "A.5.9",
+            "control_name": "Implement unique asset identification for DLP solution",
+            "control_type": "Preventive",
+            "priority": "HIGH",
+            "rationale": "A unique asset ID is crucial for efficient incident response, asset tracking, and overall security management, especially for critical solutions like DLP.",
+            "expected_effectiveness": 4
+          },
+          {
+            "control_id": "A.8.15",
+            "control_name": "Integrate DLP solution with SIEM",
+            "control_type": "Detective",
+            "priority": "HIGH",
+            "rationale": "Centralized logging and correlation through SIEM integration are essential for efficient incident management and response, especially when dealing with multiple security tools.",
+            "expected_effectiveness": 4
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "total_threats_evaluated": 4,
+      "total_controls_identified": 8,
+      "average_control_rating": 2.27,
+      "high_residual_risks": 0
+    }
+  },
+  "agent_4_result": {
+    "metadata": {
+      "asset_name": " Data Leakage Prevention",
+      "generation_date": "2026-01-27",
+      "total_threats": 4
+    },
+    "management_decisions": {
+      "threat_1": {
+        "threat_name": "Compromise of DLP System Leading to Undetected Data Exfiltration",
+        "threat_index": 1,
+        "risk_rating": "4/5",
+        "residual_risk": "1.46/5",
+        "decision_options": [
+          {
+            "value": "TREAT",
+            "label": "Treat the Risk (Implement Controls)",
+            "description": "Treating the risk involves implementing specific controls to reduce the likelihood and/or impact of the DLP system being compromised, leading to undetected data exfiltration. This strategy aims to bring the residual risk down to an acceptable level by actively modifying the risk through mitigation actions. It focuses on strengthening existing defenses and introducing new safeguards to enhance the overall security posture of the DLP solution.",
+            "recommendation": "This option is highly recommended for this threat, as the current risk rating is High (4/5) and the residual risk, while improved, still benefits from further reduction. Implementing the recommended control will directly address a critical gap, significantly enhancing detection capabilities and reducing the likelihood of undetected data exfiltration. The goal is to achieve an acceptable residual risk level of 1 or 2.",
+            "consequences": "Choosing to treat this risk will lead to enhanced security for the DLP system, reducing the probability of undetected data exfiltration and improving incident response capabilities. It will require resource allocation for implementation and ongoing maintenance of new controls. Failure to implement effectively could result in continued vulnerability and potential data breaches.",
+            "estimated_cost": "$10,000 - $75,000 (for SIEM integration and associated configuration)",
+            "typical_timeline": "3-6 months (for planning, integration, and testing)",
+            "approval_required": "Risk Owner (CIO / L1 Head) for the Risk Treatment Plan.",
+            "monitoring_required": "Ongoing monitoring of SIEM integration effectiveness, DLP alerts, and overall residual risk."
+          },
+          {
+            "value": "ACCEPT",
+            "label": "Accept the Risk (Retain)",
+            "description": "Accepting the risk means making an informed decision to retain the current level of residual risk associated with a compromised DLP system and undetected data exfiltration. This option is typically chosen when the risk falls within the organization's acceptable risk criteria or when the cost of further treatment outweighs the potential benefits. It acknowledges the risk without implementing additional specific mitigation measures, relying on existing controls and ongoing monitoring.",
+            "recommendation": "This option is generally not recommended for a High-level threat with a residual risk of 1.46/5, which is still above the ideal acceptable range of 1-2, especially when a clear control gap exists. Accepting this risk would imply that the organization is willing to bear the potential consequences of undetected data exfiltration, which could be severe. A cost-benefit analysis would be required if considering this for a non-acceptable risk.",
+            "consequences": "Accepting this risk means the organization remains exposed to the current residual risk level of undetected data exfiltration, potentially leading to significant financial, reputational, and regulatory impacts. While it avoids immediate treatment costs, it incurs potential future costs from incidents. Regular monitoring would still be required to ensure the risk does not escalate further.",
+            "estimated_cost": "$0 (direct cost of decision), but potential for significant indirect costs from incidents (e.g., fines, reputational damage, recovery efforts)",
+            "typical_timeline": "Immediate (for decision), ongoing (for monitoring and potential incident response)",
+            "approval_required": "Risk Owner (CIO / L1 Head) to accept, and Risk Approver (RCAC) if the risk is considered non-acceptable (>2) or if it significantly impacts corporate security.",
+            "monitoring_required": "Continuous monitoring of DLP system logs, SIEM (if partially integrated), and incident trends to track the accepted risk."
+          },
+          {
+            "value": "TRANSFER",
+            "label": "Transfer the Risk (Share)",
+            "description": "Transferring the risk involves shifting some of the financial or operational impact of a DLP system compromise and undetected data exfiltration to a third party. This can be achieved through mechanisms like cyber insurance, outsourcing certain DLP monitoring functions, or contractual agreements with vendors. While the accountability for the risk ultimately remains with the organization, the burden of potential losses or operational management is shared.",
+            "recommendation": "This option could be considered as a supplementary strategy, particularly for mitigating the financial impact of potential data exfiltration incidents through cyber insurance. However, it does not directly address the technical control gap of SIEM integration. It is not a primary recommendation for reducing the technical likelihood or impact of the threat itself, but rather for managing its consequences.",
+            "consequences": "Transferring the risk can provide financial protection against data breach costs and potentially leverage third-party expertise for monitoring. However, it involves ongoing costs (e.g., insurance premiums, vendor fees) and requires careful due diligence of the third party. The organization retains ultimate accountability and may still face reputational damage or regulatory scrutiny even if financial costs are covered.",
+            "estimated_cost": "$5,000 - $50,000+ annually (for cyber insurance premiums or managed security services)",
+            "typical_timeline": "1-3 months (for policy negotiation, vendor selection, and contract finalization)",
+            "approval_required": "Risk Owner (CIO / L1 Head, Legal) for the Risk Treatment Plan, potentially RCAC as Risk Approver for significant contractual agreements.",
+            "monitoring_required": "Regular review of insurance policy coverage, vendor performance, and contractual compliance."
+          },
+          {
+            "value": "TERMINATE",
+            "label": "Terminate the Risk (Avoid)",
+            "description": "Terminating the risk means avoiding the activity or asset that gives rise to the risk of a compromised DLP system leading to undetected data exfiltration. This would involve ceasing the use of the DLP system or the data processing activities that necessitate its use. It is a drastic measure typically reserved for risks that are deemed intolerable and cannot be effectively treated or transferred.",
+            "recommendation": "This option is generally not recommended as DLP systems are critical for data protection and regulatory compliance. Terminating the use of the DLP system would introduce a much larger risk of widespread, unmonitored data leakage. It would only be considered if the DLP system itself is fundamentally flawed and poses an unacceptable risk that cannot be mitigated, and an alternative solution is not immediately available.",
+            "consequences": "Terminating the use of the DLP system would eliminate the specific risk of its compromise but would introduce a far greater risk of uncontrolled data leakage across the organization. This would likely lead to severe compliance violations, significant data breaches, and substantial financial and reputational damage. It would also require finding alternative, potentially more costly, methods for data protection.",
+            "estimated_cost": "$50,000 - $200,000+ (for decommissioning, data migration, and potential costs of non-compliance/breaches due to lack of protection)",
+            "typical_timeline": "3-9 months (for planning, decommissioning, and implementing alternative data protection strategies)",
+            "approval_required": "Risk Owner (CIO / L1 Head) and potentially RCAC as Risk Approver, given the significant operational and security impact.",
+            "monitoring_required": "Monitoring of alternative data protection measures and overall data security posture to ensure no new risks are introduced."
+          }
+        ],
+        "recommended_controls": [
+          {
+            "control_id": "A.8.15",
+            "control_name": "Integrate DLP solution with SIEM",
+            "control_type": "Detective",
+            "priority": "HIGH",
+            "rationale": "Enhances centralized logging, correlation, and real-time monitoring for faster detection of DLP system compromises and data exfiltration attempts.",
+            "effectiveness_rating": 4,
+            "estimated_cost": "$10,000 - $50,000",
+            "implementation_timeline": "3-6 months",
+            "expected_risk_reduction": "Reduces residual risk by improving detection capabilities, potentially lowering it by 0.5-1.0 points.",
+            "priority_level": "HIGH"
+          }
+        ],
+        "control_gaps": [
+          {
+            "gap_description": "DLP solution not integrated with SIEM",
+            "evidence": "User indicated: 'No' to SIEM integration",
+            "impact": "Hinders centralized logging, correlation, and comprehensive detection of compromise attempts and exfiltration.",
+            "severity": "HIGH"
+          }
+        ]
+      },
+      "threat_2": {
+        "threat_name": "Data Leakage Due to Outdated or Ineffective DLP Policies",
+        "threat_index": 2,
+        "risk_rating": "3/5",
+        "residual_risk": "0.51/5",
+        "decision_options": [
+          {
+            "value": "TREAT",
+            "label": "Treat the Risk (Implement Controls)",
+            "description": "Treating this risk involves enhancing the effectiveness of DLP policies and their management, particularly by improving the process for handling false positives. This strategy aims to reduce the likelihood of data leakage caused by policies that are either outdated, poorly configured, or generate excessive false positives, leading to alert fatigue and missed genuine incidents. It focuses on refining policy lifecycle management and operational efficiency.",
+            "recommendation": "This option is recommended to address the identified gap in 'DLP false positive management' (rated 2/5). While the residual risk is already low (0.51/5), improving this control will enhance the overall effectiveness of DLP policies, reduce operational overhead, and ensure that genuine data leakage attempts are not missed. This will further solidify the organization's data protection posture.",
+            "consequences": "Implementing improvements in DLP policy management, especially false positive handling, will lead to more accurate and effective data leakage prevention. It will reduce alert fatigue for security teams, allowing them to focus on real threats. This requires investment in process refinement, potential tool configuration, and training. Failure to treat could lead to continued inefficiencies and potential undetected data leakage.",
+            "estimated_cost": "$5,000 - $25,000 (for process improvement, policy tuning, and training)",
+            "typical_timeline": "2-4 months (for review, refinement, and implementation of new processes)",
+            "approval_required": "Risk Owner (CIO / L1 Head) for the Risk Treatment Plan.",
+            "monitoring_required": "Ongoing monitoring of DLP policy effectiveness, false positive rates, and incident response metrics."
+          },
+          {
+            "value": "ACCEPT",
+            "label": "Accept the Risk (Retain)",
+            "description": "Accepting this risk means the organization is willing to retain the current residual risk associated with data leakage due to outdated or ineffective DLP policies, including the identified weakness in false positive management. This decision implies that the current level of risk is deemed tolerable, or that further investment in mitigation is not prioritized at this time. The organization would continue to operate with the existing policy effectiveness and false positive management processes.",
+            "recommendation": "This option could be considered given the very low residual risk (0.51/5), which falls within the organization's acceptable risk criteria (1-2). However, the identified control gap in false positive management (rated 2/5) indicates a deficiency that, if left unaddressed, could still lead to missed incidents or operational inefficiencies. A formal acceptance with clear rationale and monitoring plan would be necessary.",
+            "consequences": "Accepting this risk means the organization continues to face the potential for data leakage due to policy deficiencies, even if the overall residual risk is low. The weakness in false positive management could lead to alert fatigue, delayed detection of actual incidents, or inefficient use of security team resources. While avoiding immediate treatment costs, it carries the risk of future operational inefficiencies and potential data breaches.",
+            "estimated_cost": "$0 (direct cost of decision), but potential for indirect costs from operational inefficiencies or missed incidents",
+            "typical_timeline": "Immediate (for decision), ongoing (for monitoring and potential incident response)",
+            "approval_required": "Risk Owner (CIO / L1 Head) to accept, as the residual risk is within acceptable criteria.",
+            "monitoring_required": "Regular review of DLP policy performance, false positive trends, and incident reports to ensure the accepted risk remains tolerable."
+          },
+          {
+            "value": "TRANSFER",
+            "label": "Transfer the Risk (Share)",
+            "description": "Transferring the risk of data leakage due to outdated or ineffective DLP policies would involve shifting some of the responsibility or financial impact to a third party. This could include outsourcing DLP policy management and tuning to a managed security service provider (MSSP) or leveraging cyber insurance to cover financial losses from incidents stemming from policy failures. This approach aims to offload the operational burden or financial consequences.",
+            "recommendation": "This option is less directly applicable to the core issue of policy effectiveness and false positive management, which are internal operational challenges. While an MSSP could help with policy tuning, the fundamental responsibility for defining and owning policies remains internal. Cyber insurance could cover financial impacts but doesn't prevent the leakage itself. It's not a primary recommendation for this specific threat.",
+            "consequences": "Transferring policy management to an MSSP could improve policy effectiveness but introduces vendor management overhead and potential loss of direct control over critical security configurations. Relying solely on insurance provides financial recourse but does not prevent data leakage or reputational damage. This option involves ongoing costs for services or premiums and requires careful contractual agreements.",
+            "estimated_cost": "$15,000 - $60,000+ annually (for MSSP services or cyber insurance premiums)",
+            "typical_timeline": "2-4 months (for vendor selection, contract negotiation, and onboarding)",
+            "approval_required": "Risk Owner (CIO / L1 Head, Legal) for the Risk Treatment Plan, potentially RCAC as Risk Approver for significant contractual agreements.",
+            "monitoring_required": "Regular review of vendor performance, SLA adherence, and insurance policy terms."
+          },
+          {
+            "value": "TERMINATE",
+            "label": "Terminate the Risk (Avoid)",
+            "description": "Terminating the risk of data leakage due to outdated or ineffective DLP policies would involve ceasing the activities that require DLP policies, such as sensitive data processing or transmission. This is an extreme measure that would likely entail significant operational changes, potentially impacting business functions that rely on data sharing. It aims to completely remove the source of the risk.",
+            "recommendation": "This option is not recommended. Eliminating data processing or transmission activities to avoid the risk of ineffective DLP policies would severely cripple business operations and is disproportionate to the identified risk level (Medium, with low residual risk). The focus should be on improving the existing DLP policies and management, not abandoning the underlying business functions.",
+            "consequences": "Terminating the activities that necessitate DLP policies would lead to severe disruption of business operations, potentially halting critical data-driven processes. While it would eliminate the specific risk, it would introduce massive operational inefficiencies, loss of competitive advantage, and potentially render the organization unable to function effectively. This is a last resort for intolerable risks.",
+            "estimated_cost": "$100,000 - $500,000+ (for business disruption, re-engineering processes, and potential loss of revenue)",
+            "typical_timeline": "6-12 months+ (for business process re-engineering and operational adjustments)",
+            "approval_required": "Risk Owner (CIO / L1 Head) and RCAC as Risk Approver, given the profound business impact.",
+            "monitoring_required": "Monitoring of new operational processes and data handling methods to ensure no new risks are introduced."
+          }
+        ],
+        "recommended_controls": [],
+        "control_gaps": [
+          {
+            "gap_description": "Monitoring activities (DLP false positive management) is weak/deficient (rated 2/5)",
+            "control_id": "A.8.16",
+            "current_rating": 2,
+            "evidence": "Low effectiveness rating",
+            "impact": "Insufficient protection - control effectiveness only 2/5",
+            "severity": "MEDIUM"
+          }
+        ]
+      },
+      "threat_3": {
+        "threat_name": "Malicious or Negligent Insider Bypassing DLP Controls",
+        "threat_index": 3,
+        "risk_rating": "3/5",
+        "residual_risk": "0.46/5",
+        "decision_options": [
+          {
+            "value": "TREAT",
+            "label": "Treat the Risk (Implement Controls)",
+            "description": "Treating this risk involves implementing controls to detect and deter malicious or negligent insiders from bypassing DLP controls. This strategy aims to reduce the likelihood and impact of insider threats by enhancing monitoring capabilities and improving the ability to correlate suspicious activities. It focuses on strengthening the detective controls to identify patterns indicative of insider bypass attempts.",
+            "recommendation": "This option is highly recommended to address the identified control gap of 'DLP solution not integrated with SIEM'. While the residual risk is currently low (0.46/5), insider threats are notoriously difficult to detect. Integrating DLP with SIEM will provide crucial centralized logging and correlation, significantly improving the ability to identify and respond to insider bypass attempts, further reducing the risk.",
+            "consequences": "Implementing SIEM integration will enhance the organization's ability to detect and respond to insider threats, reducing the risk of data exfiltration. It requires investment in integration efforts, SIEM configuration, and potentially new analytical capabilities. Failure to treat could leave a critical blind spot for sophisticated insider attacks, leading to significant data breaches and reputational damage.",
+            "estimated_cost": "$10,000 - $75,000 (for SIEM integration and associated configuration)",
+            "typical_timeline": "3-6 months (for planning, integration, and testing)",
+            "approval_required": "Risk Owner (CIO / L1 Head) for the Risk Treatment Plan.",
+            "monitoring_required": "Ongoing monitoring of SIEM alerts, DLP logs, user behavior analytics (if applicable), and incident response metrics."
+          },
+          {
+            "value": "ACCEPT",
+            "label": "Accept the Risk (Retain)",
+            "description": "Accepting this risk means the organization is willing to retain the current residual risk associated with malicious or negligent insiders bypassing DLP controls. This decision implies that the current level of risk, despite the identified SIEM integration gap, is deemed tolerable, or that further investment in mitigation is not prioritized. The organization would continue to rely on existing controls and monitoring without implementing the recommended SIEM integration.",
+            "recommendation": "This option could be considered given the very low residual risk (0.46/5), which falls within the organization's acceptable risk criteria (1-2). However, the identified control gap (lack of SIEM integration) is significant for detecting insider threats. While the current residual risk is low, accepting this could leave the organization vulnerable to sophisticated insider attacks that bypass existing, siloed controls. A formal acceptance with clear rationale and monitoring plan would be necessary.",
+            "consequences": "Accepting this risk means the organization remains exposed to the current residual risk of insider threats bypassing DLP controls, potentially leading to undetected data exfiltration. The lack of SIEM integration limits comprehensive detection and correlation, making it harder to identify subtle insider activities. While avoiding immediate treatment costs, it carries the risk of future data breaches, regulatory fines, and reputational damage.",
+            "estimated_cost": "$0 (direct cost of decision), but potential for significant indirect costs from insider incidents",
+            "typical_timeline": "Immediate (for decision), ongoing (for monitoring and potential incident response)",
+            "approval_required": "Risk Owner (CIO / L1 Head) to accept, as the residual risk is within acceptable criteria.",
+            "monitoring_required": "Regular review of DLP alerts, access logs, and incident reports to ensure the accepted risk remains tolerable."
+          },
+          {
+            "value": "TRANSFER",
+            "label": "Transfer the Risk (Share)",
+            "description": "Transferring the risk of malicious or negligent insiders bypassing DLP controls would involve shifting some of the financial or operational impact to a third party. This could include obtaining cyber insurance that specifically covers insider threat incidents or outsourcing certain aspects of insider threat detection and monitoring to a specialized security service provider. This aims to mitigate the financial consequences or leverage external expertise.",
+            "recommendation": "This option could be considered as a complementary strategy, particularly for financial protection against insider threat incidents through cyber insurance. However, it does not directly address the technical control gap of SIEM integration, which is crucial for proactive detection. It is not a primary recommendation for reducing the technical likelihood or impact of the insider threat itself.",
+            "consequences": "Transferring the risk can provide financial protection against insider threat costs and potentially leverage third-party expertise for monitoring. However, it involves ongoing costs (e.g., insurance premiums, vendor fees) and requires careful due diligence of the third party. The organization retains ultimate accountability and may still face reputational damage or regulatory scrutiny even if financial costs are covered.",
+            "estimated_cost": "$5,000 - $50,000+ annually (for cyber insurance premiums or specialized insider threat services)",
+            "typical_timeline": "1-3 months (for policy negotiation, vendor selection, and contract finalization)",
+            "approval_required": "Risk Owner (CIO / L1 Head, Legal) for the Risk Treatment Plan, potentially RCAC as Risk Approver for significant contractual agreements.",
+            "monitoring_required": "Regular review of insurance policy coverage, vendor performance, and contractual compliance related to insider threat management."
+          },
+          {
+            "value": "TERMINATE",
+            "label": "Terminate the Risk (Avoid)",
+            "description": "Terminating the risk of malicious or negligent insiders bypassing DLP controls would involve eliminating the activities or access that create the opportunity for such bypasses. This could mean severely restricting employee access to sensitive data, discontinuing certain business processes, or even reducing the workforce. This is an extreme measure aimed at completely removing the source of the insider threat.",
+            "recommendation": "This option is not recommended. Drastically restricting employee access or discontinuing business processes to avoid insider threats would severely impede productivity and business operations. While insider threats are serious, the solution lies in robust detection and deterrence, not in crippling the organization's ability to function. This is a last resort for intolerable risks that cannot be otherwise managed.",
+            "consequences": "Terminating activities to avoid insider threats would lead to significant operational inefficiencies, reduced productivity, and potentially a loss of competitive advantage. It would create a highly restrictive work environment, impacting employee morale and potentially hindering innovation. While it might reduce the specific risk, it would introduce massive business disruption and other organizational risks.",
+            "estimated_cost": "$100,000 - $500,000+ (for business disruption, reduced productivity, and potential loss of revenue)",
+            "typical_timeline": "6-12 months+ (for business process re-engineering and operational adjustments)",
+            "approval_required": "Risk Owner (CIO / L1 Head) and RCAC as Risk Approver, given the profound business impact.",
+            "monitoring_required": "Monitoring of new operational processes and access controls to ensure no new risks are introduced."
+          }
+        ],
+        "recommended_controls": [
+          {
+            "control_id": "A.8.15",
+            "control_name": "Integrate DLP solution with SIEM",
+            "control_type": "Detective",
+            "priority": "HIGH",
+            "rationale": "Provides centralized logging and correlation capabilities to detect patterns indicative of malicious or negligent insider activity, enhancing the ability to identify and respond to bypass attempts.",
+            "effectiveness_rating": 4,
+            "estimated_cost": "$10,000 - $50,000",
+            "implementation_timeline": "3-6 months",
+            "expected_risk_reduction": "Reduces residual risk by improving detection of insider bypass attempts, potentially lowering it by 0.5-1.0 points.",
+            "priority_level": "HIGH"
+          }
+        ],
+        "control_gaps": [
+          {
+            "gap_description": "DLP solution not integrated with SIEM",
+            "evidence": "User indicated: 'No' to SIEM integration",
+            "impact": "Limits comprehensive detection and correlation of insider activities that bypass DLP controls.",
+            "severity": "HIGH"
+          }
+        ]
+      },
+      "threat_4": {
+        "threat_name": "Delayed Incident Response and Inefficient Management Due to Lack of Unique Asset ID",
+        "threat_index": 4,
+        "risk_rating": "4/5",
+        "residual_risk": "2.5/5",
+        "decision_options": [
+          {
+            "value": "TREAT",
+            "label": "Treat the Risk (Implement Controls)",
+            "description": "Treating this risk involves implementing controls to establish unique asset identification for the DLP solution and integrating it with SIEM. This strategy aims to significantly improve incident response times and overall management efficiency by providing clear visibility and correlation capabilities. It focuses on foundational improvements in asset management and security information and event management.",
+            "recommendation": "This option is highly recommended for this threat, as the current risk rating is High (4/5) and the residual risk is also High (2.5/5), which is above the acceptable threshold. Implementing both recommended controls (unique asset ID and SIEM integration) will directly address critical gaps, drastically improving incident response and management efficiency. The goal is to bring the residual risk down to an acceptable level (1 or 2).",
+            "consequences": "Implementing unique asset identification and SIEM integration will lead to significantly faster and more efficient incident response, better asset tracking, and improved overall security management for the DLP solution. It requires investment in planning, implementation, and configuration. Failure to treat could result in prolonged incident resolution, increased impact of security incidents, and operational inefficiencies.",
+            "estimated_cost": "$15,000 - $100,000 (for asset ID implementation, SIEM integration, and configuration)",
+            "typical_timeline": "4-8 months (for planning, implementation, and testing of both controls)",
+            "approval_required": "Risk Owner (CIO / L1 Head) for the Risk Treatment Plan.",
+            "monitoring_required": "Ongoing monitoring of asset identification accuracy, SIEM integration effectiveness, and incident response metrics."
+          },
+          {
+            "value": "ACCEPT",
+            "label": "Accept the Risk (Retain)",
+            "description": "Accepting this risk means the organization is willing to retain the current High residual risk (2.5/5) associated with delayed incident response and inefficient management due to the lack of a unique asset ID and SIEM integration for the DLP solution. This decision implies that the organization is prepared to bear the consequences of slower incident resolution and operational inefficiencies, without implementing the recommended foundational improvements.",
+            "recommendation": "This option is NOT recommended for this threat. The residual risk of 2.5/5 is above the organization's acceptable risk criteria (1-2), and the identified gaps directly impact critical incident response capabilities. Accepting this risk would leave the organization highly vulnerable to prolonged incident impacts and inefficient security operations, which is not a sustainable strategy for a High-level risk.",
+            "consequences": "Accepting this risk means the organization will continue to experience delayed incident response, difficulty in tracking DLP assets during incidents, and inefficient security management. This can lead to increased impact from security incidents, higher recovery costs, potential compliance violations, and reputational damage. While avoiding immediate treatment costs, it incurs significant potential future costs and operational burdens.",
+            "estimated_cost": "$0 (direct cost of decision), but potential for significant indirect costs from prolonged incidents and operational inefficiencies",
+            "typical_timeline": "Immediate (for decision), ongoing (for monitoring and managing inefficient incident response)",
+            "approval_required": "Risk Owner (CIO / L1 Head) to accept, and Risk Approver (RCAC) given the risk is non-acceptable (>2) and significantly impacts corporate security.",
+            "monitoring_required": "Manual tracking of DLP assets and incident response efforts, with regular review of incident resolution times and efficiency metrics."
+          },
+          {
+            "value": "TRANSFER",
+            "label": "Transfer the Risk (Share)",
+            "description": "Transferring the risk of delayed incident response and inefficient management would involve shifting some of the operational burden or financial impact to a third party. This could include outsourcing the entire DLP management and incident response function to a Managed Security Service Provider (MSSP) or obtaining cyber insurance that specifically covers losses due to delayed incident handling. This aims to offload the operational challenge or financial consequences.",
+            "recommendation": "This option could be considered as a way to address the operational burden, but it does not directly solve the root cause of lacking a unique asset ID or SIEM integration within the organization's own infrastructure. While an MSSP might manage these aspects for their service, the underlying organizational asset management deficiency would remain. It's a secondary consideration, not a primary solution for the identified gaps.",
+            "consequences": "Transferring the risk to an MSSP could potentially improve incident response efficiency if the provider has robust systems, but it introduces vendor management overhead and reliance on external parties for critical security functions. Cyber insurance provides financial protection but does not prevent operational delays. This option involves ongoing costs for services or premiums and requires careful contractual agreements and due diligence.",
+            "estimated_cost": "$20,000 - $100,000+ annually (for MSSP services or cyber insurance premiums)",
+            "typical_timeline": "2-5 months (for vendor selection, contract negotiation, and onboarding)",
+            "approval_required": "Risk Owner (CIO / L1 Head, Legal) for the Risk Treatment Plan, potentially RCAC as Risk Approver for significant contractual agreements.",
+            "monitoring_required": "Regular review of vendor performance, SLA adherence, and insurance policy terms related to incident response."
+          },
+          {
+            "value": "TERMINATE",
+            "label": "Terminate the Risk (Avoid)",
+            "description": "Terminating the risk of delayed incident response and inefficient management due to lack of unique asset ID would involve ceasing the use of the DLP solution itself, or the critical data processing activities it protects. This extreme measure would eliminate the asset that is difficult to manage, thereby avoiding the associated incident response challenges. It is typically reserved for situations where the asset or activity is deemed too problematic to continue.",
+            "recommendation": "This option is NOT recommended. The DLP solution is critical for data protection. Terminating its use to avoid management inefficiencies would introduce a far greater risk of uncontrolled data leakage and compliance failures. The solution lies in improving the management of the DLP asset, not in its removal. This is a last resort for intolerable risks that cannot be otherwise managed.",
+            "consequences": "Terminating the DLP solution would eliminate the specific management challenges but would expose the organization to massive, unmonitored data leakage risks, severe compliance violations, and significant financial and reputational damage. It would also require finding alternative, potentially more costly, methods for data protection, or abandoning critical data processing activities altogether.",
+            "estimated_cost": "$50,000 - $200,000+ (for decommissioning, data migration, and potential costs of non-compliance/breaches due to lack of protection)",
+            "typical_timeline": "3-9 months (for planning, decommissioning, and implementing alternative data protection strategies)",
+            "approval_required": "Risk Owner (CIO / L1 Head) and RCAC as Risk Approver, given the significant operational and security impact.",
+            "monitoring_required": "Monitoring of alternative data protection measures and overall data security posture to ensure no new risks are introduced."
+          }
+        ],
+        "recommended_controls": [
+          {
+            "control_id": "A.5.9",
+            "control_name": "Implement unique asset identification for DLP solution",
+            "control_type": "Preventive",
+            "priority": "HIGH",
+            "rationale": "A unique asset ID is crucial for efficient incident response, asset tracking, and overall security management, especially for critical solutions like DLP.",
+            "effectiveness_rating": 4,
+            "estimated_cost": "$5,000 - $20,000",
+            "implementation_timeline": "2-4 months",
+            "expected_risk_reduction": "Significantly improves incident response efficiency and asset tracking, potentially lowering residual risk by 0.5-1.0 points.",
+            "priority_level": "HIGH"
+          },
+          {
+            "control_id": "A.8.15",
+            "control_name": "Integrate DLP solution with SIEM",
+            "control_type": "Detective",
+            "priority": "HIGH",
+            "rationale": "Centralized logging and correlation through SIEM integration are essential for efficient incident management and response, especially when dealing with multiple security tools.",
+            "effectiveness_rating": 4,
+            "estimated_cost": "$10,000 - $50,000",
+            "implementation_timeline": "3-6 months",
+            "expected_risk_reduction": "Enhances centralized logging and correlation for incident management, potentially lowering residual risk by 0.5-1.0 points.",
+            "priority_level": "HIGH"
+          }
+        ],
+        "control_gaps": [
+          {
+            "gap_description": "DLP solution does not have a unique identifier or asset ID",
+            "evidence": "User indicated: 'No' to unique identifier or asset ID",
+            "impact": "Significantly delays incident response and hinders efficient management by making it difficult to quickly identify and track the specific DLP asset involved in an incident.",
+            "severity": "HIGH"
+          },
+          {
+            "gap_description": "DLP solution not integrated with SIEM",
+            "evidence": "User indicated: 'No' to SIEM integration",
+            "impact": "Prevents centralized logging and correlation, making it harder to manage incidents efficiently and gain a holistic view of security events related to the DLP solution.",
+            "severity": "HIGH"
+          }
+        ]
+      }
+    }
+  },
+  "agent_5_result": null,
+  "last_updated": "2026-01-27 17:20:05",
+  "progress": {
+    "agent_1": "complete",
+    "agent_2": "complete",
+    "agent_3": "complete",
+    "agent_4": "complete",
+    "agent_5": "pending"
+  }
+}

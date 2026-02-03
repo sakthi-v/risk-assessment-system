@@ -1,0 +1,422 @@
+{
+  "session_id": "session_Microsoft_Dynamics_365_20260108_112446",
+  "asset_data": {
+    "asset_name": "Microsoft Dynamics 365",
+    "asset_type": "ERP Application",
+    "asset_owner": "IT Applications Manager",
+    "location": "hybrid",
+    "description": "Manages financial accounting, procurement, and inventory for the EMEA region",
+    "questionnaire_answers": {
+      "erp_name": {
+        "question_text": "What is the full name of this ERP Application?",
+        "answer": "Microsoft Dynamics 365",
+        "question_type": "text",
+        "section": "1. Asset Identification",
+        "help_text": "e.g., SAP S/4HANA, Oracle E-Business Suite, Microsoft Dynamics 365, Workday, Infor ERP",
+        "why_this_matters": "Provides a clear identifier for the asset being assessed."
+      },
+      "erp_description": {
+        "question_text": "Please provide a brief description of the ERP Application's primary functions and modules used.",
+        "answer": "Manages financial accounting, procurement, and inventory for the EMEA region",
+        "question_type": "textarea",
+        "section": "1. Asset Identification",
+        "help_text": "e.g., 'Manages financial accounting, procurement, and inventory for the EMEA region.'",
+        "why_this_matters": "Helps understand the scope and critical functions of the ERP, informing potential impact areas."
+      },
+      "asset_owner": {
+        "question_text": "Who is the primary Asset Owner (individual or department) responsible for this ERP Application?",
+        "answer": "IT Applications Manager",
+        "question_type": "text",
+        "section": "1. Asset Identification",
+        "help_text": "e.g., 'Head of Finance', 'IT Applications Manager'",
+        "why_this_matters": "Identifies the accountable party for the asset and its associated risks."
+      },
+      "technical_owner": {
+        "question_text": "Who is the primary Technical Owner (individual or department) responsible for the technical management and maintenance of this ERP Application?",
+        "answer": "IT Operations",
+        "question_type": "text",
+        "section": "1. Asset Identification",
+        "help_text": "e.g., 'IT Operations', 'Cloud Services Team'",
+        "why_this_matters": "Identifies the technical point of contact for detailed control information and implementation."
+      },
+      "erp_hosting_location": {
+        "question_text": "Where is this ERP Application primarily hosted?",
+        "answer": "hybrid",
+        "question_type": "dropdown",
+        "section": "1. Asset Identification",
+        "help_text": "Select the primary hosting environment.",
+        "why_this_matters": "Determines the scope of organizational control and shared responsibility models, influencing security posture."
+      },
+      "erp_vendor": {
+        "question_text": "Who is the primary vendor or service provider for this ERP Application?",
+        "answer": "Microsoft",
+        "question_type": "text",
+        "section": "1. Asset Identification",
+        "help_text": "e.g., 'SAP', 'Oracle', 'Microsoft', 'Workday'",
+        "why_this_matters": "Identifies external dependencies and potential third-party risk factors."
+      },
+      "erp_purpose": {
+        "question_text": "What is the primary business purpose of this ERP Application?",
+        "answer": "The primary business purpose of an ERP application is to integrate core business functions into a single system, thereby streamlining workflows, enhancing efficiency, and providing a centralized platform for managing business operations",
+        "question_type": "textarea",
+        "section": "2. Business Context & Criticality",
+        "help_text": "Describe how the ERP supports core business objectives.",
+        "why_this_matters": "Establishes the fundamental value and role of the ERP in the organization, informing impact analysis."
+      },
+      "business_processes_supported": {
+        "question_text": "Which critical business processes are directly dependent on this ERP Application?",
+        "answer": [
+          "financial_management",
+          "human_resources",
+          "supply_chain_management",
+          "manufacturing",
+          "customer_relationship_management",
+          "project_management",
+          "reporting_analytics"
+        ],
+        "question_type": "multiselect",
+        "section": "2. Business Context & Criticality",
+        "help_text": "Select all that apply. If 'Other', please list them.",
+        "why_this_matters": "Highlights the breadth of impact if the ERP is compromised, directly feeding into availability and integrity impact."
+      },
+      "number_of_users": {
+        "question_text": "Approximately how many internal users access this ERP Application?",
+        "answer": 500,
+        "question_type": "number",
+        "section": "2. Business Context & Criticality",
+        "help_text": "Provide an estimated number.",
+        "why_this_matters": "Indicates the scale of access management and potential attack surface from internal users."
+      },
+      "external_users": {
+        "question_text": "Does this ERP Application allow access for external users (e.g., customers, partners, vendors)?",
+        "answer": "yes",
+        "question_type": "dropdown",
+        "section": "2. Business Context & Criticality",
+        "help_text": "",
+        "why_this_matters": "External access introduces additional security considerations and potential attack vectors."
+      },
+      "external_user_count": {
+        "question_text": "If yes, approximately how many external users access this ERP Application?",
+        "answer": 200,
+        "question_type": "number",
+        "section": "2. Business Context & Criticality",
+        "help_text": "Provide an estimated number.",
+        "why_this_matters": "Quantifies the scope of external access, which can increase the attack surface."
+      },
+      "business_criticality": {
+        "question_text": "Based on its role in supporting critical business processes, what is the overall business criticality of this ERP Application?",
+        "answer": "4",
+        "question_type": "dropdown",
+        "section": "2. Business Context & Criticality",
+        "help_text": "Consider the impact on business operations if the application were to become unavailable or data compromised.",
+        "why_this_matters": "Provides the asset owner's overall perspective on the asset's importance, which is a key input for impact analysis."
+      },
+      "data_types_stored": {
+        "question_text": "What types of sensitive data are stored or processed by this ERP Application?",
+        "answer": [
+          "pii",
+          "pci",
+          "phi",
+          "financial_records",
+          "intellectual_property",
+          "employee_data",
+          "customer_data",
+          "operational_data"
+        ],
+        "question_type": "multiselect",
+        "section": "3. Data & Information Security Facts",
+        "help_text": "Select all applicable types of sensitive data.",
+        "why_this_matters": "Directly informs the Confidentiality and Integrity impact analysis based on regulatory and business requirements."
+      },
+      "data_volume": {
+        "question_text": "What is the approximate volume of sensitive data stored in this ERP Application?",
+        "answer": "high",
+        "question_type": "dropdown",
+        "section": "3. Data & Information Security Facts",
+        "help_text": "Estimate the total volume of data.",
+        "why_this_matters": "Larger volumes of sensitive data can increase the scale of a potential breach and recovery efforts."
+      },
+      "data_residency_requirements": {
+        "question_text": "Are there specific data residency or sovereignty requirements for the data stored in this ERP Application?",
+        "answer": "no",
+        "question_type": "dropdown",
+        "section": "3. Data & Information Security Facts",
+        "help_text": "e.g., 'Data must remain within the EU' or 'Data must be stored in country X'.",
+        "why_this_matters": "Indicates compliance obligations and potential legal/regulatory impacts if data is mishandled or stored improperly."
+      },
+      "mfa_enabled": {
+        "question_text": "Is Multi-Factor Authentication (MFA) enforced for all users accessing this ERP Application?",
+        "answer": "no",
+        "question_type": "dropdown",
+        "section": "3. Data & Information Security Facts",
+        "help_text": "",
+        "why_this_matters": "MFA is a critical control against unauthorized access and credential compromise."
+      },
+      "role_based_access": {
+        "question_text": "Is access to the ERP Application and its data managed using a Role-Based Access Control (RBAC) model?",
+        "answer": "no",
+        "question_type": "dropdown",
+        "section": "3. Data & Information Security Facts",
+        "help_text": "",
+        "why_this_matters": "RBAC ensures users only have access to the resources necessary for their job functions, reducing the risk of excessive privileges."
+      },
+      "least_privilege": {
+        "question_text": "Are access privileges regularly reviewed and aligned with the principle of least privilege?",
+        "answer": "yes_ad_hoc",
+        "question_type": "dropdown",
+        "section": "3. Data & Information Security Facts",
+        "help_text": "",
+        "why_this_matters": "Ensures that users do not retain unnecessary access rights, minimizing the impact of compromised accounts."
+      },
+      "data_at_rest_encryption": {
+        "question_text": "Is sensitive data stored within the ERP Application (at rest, e.g., database, file system) encrypted?",
+        "answer": "yes_some",
+        "question_type": "dropdown",
+        "section": "3. Data & Information Security Facts",
+        "help_text": "",
+        "why_this_matters": "Encryption at rest protects data from unauthorized access if storage media are compromised."
+      },
+      "data_in_transit_encryption": {
+        "question_text": "Is data transmitted to and from the ERP Application (in transit) encrypted?",
+        "answer": "yes_some",
+        "question_type": "dropdown",
+        "section": "3. Data & Information Security Facts",
+        "help_text": "",
+        "why_this_matters": "Encryption in transit protects data from eavesdropping and tampering during network communication."
+      },
+      "backup_frequency": {
+        "question_text": "How frequently are full backups of the ERP Application's data performed?",
+        "answer": "less_frequent",
+        "question_type": "dropdown",
+        "section": "3. Data & Information Security Facts",
+        "help_text": "",
+        "why_this_matters": "Backup frequency directly impacts the Recovery Point Objective (RPO) and the amount of data loss in a disaster."
+      },
+      "backup_retention": {
+        "question_text": "What is the retention period for backups of the ERP Application's data?",
+        "answer": "60 days",
+        "question_type": "text",
+        "section": "3. Data & Information Security Facts",
+        "help_text": "e.g., '30 days', '1 year', 'indefinite'",
+        "why_this_matters": "Backup retention determines how far back data can be recovered, impacting recovery capabilities for historical data loss."
+      },
+      "integration_points": {
+        "question_text": "Does this ERP Application integrate with other internal or external systems?",
+        "answer": "no",
+        "question_type": "dropdown",
+        "section": "3. Data & Information Security Facts",
+        "help_text": "",
+        "why_this_matters": "Integration points can introduce additional attack vectors and dependencies, increasing the overall risk surface."
+      },
+      "patch_management_frequency": {
+        "question_text": "How frequently are security patches and updates applied to the ERP Application and its underlying infrastructure (OS, database)?",
+        "answer": "ad_hoc",
+        "question_type": "dropdown",
+        "section": "4. Operational & Control Facts",
+        "help_text": "",
+        "why_this_matters": "Regular patching is vital to address known vulnerabilities and reduce the attack surface."
+      },
+      "vulnerability_scanning": {
+        "question_text": "Is regular vulnerability scanning performed on the ERP Application and its hosting environment?",
+        "answer": "yes_external_only",
+        "question_type": "dropdown",
+        "section": "4. Operational & Control Facts",
+        "help_text": "",
+        "why_this_matters": "Vulnerability scanning helps identify security weaknesses that could be exploited."
+      },
+      "penetration_testing": {
+        "question_text": "Has penetration testing been conducted on this ERP Application within the last 12 months?",
+        "answer": "planned",
+        "question_type": "dropdown",
+        "section": "4. Operational & Control Facts",
+        "help_text": "",
+        "why_this_matters": "Penetration testing provides a realistic assessment of the application's security posture against real-world attacks."
+      },
+      "logging_enabled": {
+        "question_text": "Are security-relevant events (e.g., login attempts, access to sensitive data, configuration changes) logged within the ERP Application?",
+        "answer": "yes_some",
+        "question_type": "dropdown",
+        "section": "4. Operational & Control Facts",
+        "help_text": "",
+        "why_this_matters": "Comprehensive logging is essential for detection, investigation, and forensic analysis of security incidents."
+      },
+      "logs_monitored": {
+        "question_text": "Are the ERP Application's security logs regularly monitored and reviewed for suspicious activity?",
+        "answer": "yes_automated_alerts",
+        "question_type": "dropdown",
+        "section": "4. Operational & Control Facts",
+        "help_text": "",
+        "why_this_matters": "Active monitoring of logs enables timely detection and response to security incidents."
+      },
+      "dr_plan_exists": {
+        "question_text": "Is there a documented Disaster Recovery (DR) plan specifically for this ERP Application?",
+        "answer": "in_progress",
+        "question_type": "dropdown",
+        "section": "4. Operational & Control Facts",
+        "help_text": "",
+        "why_this_matters": "A DR plan is crucial for restoring critical business functions after a major disruption, impacting availability."
+      },
+      "dr_plan_tested": {
+        "question_text": "If a DR plan exists, has it been tested within the last 12 months?",
+        "answer": "n_a",
+        "question_type": "dropdown",
+        "section": "4. Operational & Control Facts",
+        "help_text": "",
+        "why_this_matters": "Regular testing ensures the DR plan is effective and can be executed successfully when needed."
+      },
+      "incident_response_plan": {
+        "question_text": "Is there an Incident Response (IR) plan that includes procedures for handling security incidents related to this ERP Application?",
+        "answer": "yes",
+        "question_type": "dropdown",
+        "section": "4. Operational & Control Facts",
+        "help_text": "",
+        "why_this_matters": "An IR plan ensures a structured and timely response to security breaches, minimizing damage and recovery time."
+      },
+      "security_awareness_training": {
+        "question_text": "Are users of this ERP Application required to complete regular security awareness training?",
+        "answer": "yes_annually",
+        "question_type": "dropdown",
+        "section": "4. Operational & Control Facts",
+        "help_text": "",
+        "why_this_matters": "User awareness is a key control against social engineering and other human-factor risks."
+      },
+      "third_party_access_management": {
+        "question_text": "If external parties (e.g., vendors, consultants) have access to the ERP Application, are their access rights managed and reviewed according to a formal process?",
+        "answer": "yes",
+        "question_type": "dropdown",
+        "section": "4. Operational & Control Facts",
+        "help_text": "",
+        "why_this_matters": "Managing third-party access is crucial to control external risk exposure and ensure compliance."
+      },
+      "overall_impact_rating": {
+        "question_text": "Considering all identified risks and existing controls, what is the estimated overall 'Impact Rating' if this ERP Application were to be severely compromised (e.g., data breach, prolonged outage, complete loss)?",
+        "answer": "5",
+        "question_type": "dropdown",
+        "section": "5. Overall Risk Perspective",
+        "help_text": "This is your overall business judgment of the severity of consequences, independent of how likely it is to happen.",
+        "why_this_matters": "Captures the asset owner's holistic view of potential business impact, which is a critical input for risk quantification and prioritization."
+      },
+      "overall_probability_rating": {
+        "question_text": "Considering all identified threats and vulnerabilities, what is the estimated 'Probability Rating' of a severe compromise occurring to this ERP Application within the next year?",
+        "answer": "5",
+        "question_type": "dropdown",
+        "section": "5. Overall Risk Perspective",
+        "help_text": "This is your overall business judgment of how likely such a severe compromise is to occur, considering existing controls.",
+        "why_this_matters": "Captures the asset owner's holistic view of the likelihood of a severe event, which is a critical input for risk quantification and prioritization."
+      }
+    },
+    "questionnaire_metadata": {
+      "asset_type_assessed": "ERP Application",
+      "questionnaire_title": "Risk Assessment Questionnaire for ERP Application",
+      "completed_date": "2026-01-08 11:20:39",
+      "total_questions": 37,
+      "total_answers": 35
+    },
+    "threats_and_vulnerabilities": [
+      {
+        "threat": "Security threats to ERP Application",
+        "risk_statement": "Comprehensive risk assessment for Microsoft Dynamics 365 based on 35 detailed questionnaire responses covering security posture, controls, and compliance",
+        "vulnerabilities": [
+          {
+            "vulnerability": "Security gaps identified through questionnaire assessment",
+            "description": "Analysis of 35 questionnaire answers covering access controls, data protection, backup strategies, monitoring capabilities, and incident response readiness"
+          }
+        ]
+      }
+    ]
+  },
+  "agent_1_result": {
+    "discovery_summary": {
+      "cia_methodology": "CIA (Confidentiality, Integrity, Availability)",
+      "cia_rating_scale": "4-level: Insignificant, Moderate, Serious, Extreme",
+      "cia_definitions_source": "Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx, Table 3",
+      "business_value_calculation_method": "Asset Value Chart/Matrix",
+      "business_value_levels": [
+        "Very Low",
+        "Low",
+        "Medium",
+        "High",
+        "Very High"
+      ],
+      "business_value_source": "Risk Assessment Template_For Agentic AI RM Use Case.xlsx, Sheet: Asset Inventory",
+      "criticality_classification_method": "Business Value to Criticality Mapping",
+      "criticality_levels": [
+        "Insignificant",
+        "Low Critical",
+        "Medium Critical",
+        "High Critical",
+        "Very high Critical"
+      ],
+      "criticality_source": "Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx, Table 4",
+      "searches_performed": [
+        "What impact assessment methodology is used? CIA? DREAD? Custom?",
+        "What rating scale is used for CIA impact ratings? What are the definitions for each CIA impact level?",
+        "How is Asset Business Value calculated or determined from CIA impact ratings? Is there a matrix, chart, or formula?",
+        "What are the Asset Business Value levels? What values can Asset Business Value take?",
+        "How is Asset Criticality Classification determined from Asset Business Value?"
+      ]
+    },
+    "threat_analysis": [
+      {
+        "threat_id": "threat_1",
+        "threat_name": "Security threats to ERP Application",
+        "threat_description": "Comprehensive risk assessment for Microsoft Dynamics 365 based on 35 detailed questionnaire responses covering security posture, controls, and compliance",
+        "impact_assessment": {
+          "confidentiality": {
+            "rating": "Extreme",
+            "numeric_value": 4,
+            "reasoning": "Based on questionnaire answers stating the asset stores PII, PCI, PHI, financial records, intellectual property, employee data, customer data, and operational data, with a high volume of sensitive data. Furthermore, MFA is not enforced, RBAC is not used, access privileges are reviewed ad-hoc, and only some data is encrypted at rest and in transit. The asset also allows access for 200 external users. Unauthorized disclosure would cause serious damage to the organization's interests, meeting the discovered definition for 'Extreme': 'Unauthorized disclosure within or outside the organization would cause serious damage to the interests of the organization. Disclosure within the organization will be strictly on a ‘need-to-know’ basis.'"
+          },
+          "integrity": {
+            "rating": "Extreme",
+            "numeric_value": 4,
+            "reasoning": "Based on facts indicating the asset manages critical business processes including financial management, human resources, supply chain management, manufacturing, customer relationship management, project management, and reporting & analytics. The asset lacks RBAC, has ad-hoc privilege reviews, only partial encryption at rest and in transit, ad-hoc security patching, only external vulnerability scanning, no recent penetration testing (planned), and only some security-relevant events are logged. Unauthorized modification or damage of information is expected to have severe and long ranging adverse effects on these critical business operations, meeting the discovered definition for 'Extreme': 'Unauthorized modification or damage of information is expected to have severe and long ranging adverse effect on business operations.'"
+          },
+          "availability": {
+            "rating": "Extreme",
+            "numeric_value": 4,
+            "reasoning": "Based on facts that all critical business processes (financial management, supply chain, manufacturing, etc.) are directly dependent on this ERP, impacting 500 internal and 200 external users. Backups are 'less_frequent', and a documented Disaster Recovery (DR) plan is 'in_progress' and thus not tested. Ad-hoc patching, only external vulnerability scanning, and no recent penetration testing also contribute to availability risks. The impact of disruption or unavailability would have severe and long ranging adverse effects on business operations, meeting the discovered definition for 'Extreme': 'Impact of disruption of access or unavailability of information or information asset or services is expected to have severe and long ranging adverse effect on business operations.'"
+          }
+        },
+        "overall_impact_calculation": {
+          "confidentiality_numeric": 4,
+          "integrity_numeric": 4,
+          "availability_numeric": 4,
+          "calculation_method": "Derived from Asset Business Value, which is calculated from CIA ratings using the Asset Value Chart. The Asset Business Value 'Very High' maps to an overall impact numeric of 5 based on the general Impact Rating scale.",
+          "calculation": "CIA (Extreme, Extreme, Extreme) -> Asset Business Value 'Very High' -> Overall Impact Numeric 5",
+          "overall_impact": "Very High",
+          "overall_impact_numeric": 5
+        }
+      }
+    ],
+    "asset_business_value": {
+      "cia_combination": "Extreme, Extreme, Extreme",
+      "cia_combination_key": "Extreme|Extreme|Extreme",
+      "business_value_rating": "Very High",
+      "calculation_method": "Asset Value Chart (discovered from Risk Assessment Template_For Agentic AI RM Use Case.xlsx, Sheet: Asset Inventory)",
+      "calculation_details": "Per discovered Asset Value Chart (Risk Assessment Template_For Agentic AI RM Use Case.xlsx, Sheet: Asset Inventory), the CIA combination (Extreme, Extreme, Extreme) maps to Business Value 'Very High'",
+      "source_reference": "Risk Assessment Template_For Agentic AI RM Use Case.xlsx, Sheet: Asset Inventory",
+      "reasoning": "Based on calculated CIA ratings (Confidentiality: Extreme, Integrity: Extreme, Availability: Extreme), per the discovered Asset Value Chart in the 'Risk Assessment Template_For Agentic AI RM Use Case.xlsx' (Sheet: Asset Inventory), the Asset Business Value is 'Very High'."
+    },
+    "asset_criticality": {
+      "criticality_classification": "Very high Critical",
+      "business_value_input": "Very High",
+      "calculation_method": "Criticality Classification Table (discovered from Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx, Table 4)",
+      "calculation_details": "Per discovered Criticality Classification Table (Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx, Table 4): Business Value 'Very High' maps to Criticality 'Very high Critical'",
+      "source_reference": "Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx, Table 4",
+      "reasoning": "Based on calculated Asset Business Value 'Very High', per the discovered Criticality Classification Table in organizational 'Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx' (Table 4), the Asset Criticality Classification is 'Very high Critical'."
+    }
+  },
+  "agent_2_result": null,
+  "agent_3_result": null,
+  "agent_4_result": null,
+  "agent_5_result": null,
+  "last_updated": "2026-01-08 11:24:46",
+  "progress": {
+    "agent_1": "complete",
+    "agent_2": "pending",
+    "agent_3": "pending",
+    "agent_4": "pending",
+    "agent_5": "pending"
+  }
+}

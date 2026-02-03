@@ -1,0 +1,1495 @@
+{
+  "session_id": "session_John_Does_Laptop_20260111_202150",
+  "asset_data": {
+    "asset_name": "John Doe's Laptop",
+    "asset_type": "Physical Assets",
+    "asset_owner": " IT Department",
+    "location": "Head Office - Floor 3",
+    "description": "4",
+    "questionnaire_answers": {
+      "Q_ASSET_CLASS_NAME": {
+        "question_text": "What is the specific name or identifier for this Employee Laptop (e.g., 'John Doe's Laptop', 'HR-Laptop-001')?",
+        "answer": "John Doe's Laptop",
+        "question_type": "text",
+        "section": "1. Asset Identification",
+        "help_text": "Provide a unique and descriptive name or ID for this specific laptop.",
+        "why_this_matters": "Ensures the asset is uniquely identifiable in the inventory for tracking and management."
+      },
+      "Q_TYPE_OF_ASSET": {
+        "question_text": "What type of asset is this?",
+        "answer": "Physical Assets",
+        "question_type": "dropdown",
+        "section": "1. Asset Identification",
+        "help_text": "Select the primary category that best describes this asset. For an Employee Laptop, 'Physical Assets' is typically appropriate.",
+        "why_this_matters": "Categorizes the asset according to organizational standards, guiding subsequent risk analysis."
+      },
+      "Q_ASSET_CLASS_OWNER": {
+        "question_text": "Who is the primary Asset Class Owner (e.g., IT Department, specific business unit head) responsible for this laptop's overall management and security?",
+        "answer": " IT Department",
+        "question_type": "text",
+        "section": "1. Asset Identification",
+        "help_text": "Specify the individual or department accountable for the asset.",
+        "why_this_matters": "Identifies accountability for the asset and its associated risks."
+      },
+      "Q_CUSTODIAN": {
+        "question_text": "Who is the primary user/custodian of this Employee Laptop?",
+        "answer": "Sakthi",
+        "question_type": "text",
+        "section": "1. Asset Identification",
+        "help_text": "Provide the name or employee ID of the individual primarily using this laptop.",
+        "why_this_matters": "Identifies the direct user, which is critical for understanding usage patterns and direct responsibility."
+      },
+      "Q_LOCATION": {
+        "question_text": "What is the primary physical location where this laptop is used (e.g., 'Head Office - Floor 3', 'Remote - USA', 'Field Operations')?",
+        "answer": "Head Office - Floor 3",
+        "question_type": "text",
+        "section": "1. Asset Identification",
+        "help_text": "Indicate the typical physical environment of use.",
+        "why_this_matters": "Location can influence physical security controls and environmental risks."
+      },
+      "Q_UNIQUE_IDENTIFIER": {
+        "question_text": "Does this laptop have a unique organizational identifier (e.g., asset tag, serial number, inventory ID)? If yes, please provide it.",
+        "answer": "Dell-x8368",
+        "question_type": "text",
+        "section": "1. Asset Identification",
+        "help_text": "Enter the unique ID if available.",
+        "why_this_matters": "Provides an additional unique identifier for asset tracking and management."
+      },
+      "Q_BUSINESS_CRITICALITY": {
+        "question_text": "What is the overall business criticality of this Employee Laptop to the organization's operations?",
+        "answer": "4",
+        "question_type": "dropdown",
+        "section": "2. Business Context & Usage",
+        "help_text": "Consider the impact on business processes if this laptop were unavailable or compromised. This is an overall business value, not a security impact rating.",
+        "why_this_matters": "Helps prioritize the asset for risk assessment and resource allocation."
+      },
+      "Q_BUSINESS_PROCESSES_DEPENDENT": {
+        "question_text": "List the primary business processes or functions that heavily rely on this Employee Laptop.",
+        "answer": "'Sales order processing', 'Software development', 'Financial reporting', 'Customer support'",
+        "question_type": "textarea",
+        "section": "2. Business Context & Usage",
+        "help_text": "e.g., 'Sales order processing', 'Software development', 'Financial reporting', 'Customer support'.",
+        "why_this_matters": "Identifies the direct operational impact if the asset is compromised or unavailable."
+      },
+      "Q_REMOTE_ACCESS_FREQUENCY": {
+        "question_text": "How frequently is this laptop used for remote access to corporate resources (e.g., VPN, cloud services)?",
+        "answer": "Occasionally (1-3 times a month)",
+        "question_type": "dropdown",
+        "section": "2. Business Context & Usage",
+        "help_text": "Indicate how often the laptop connects to internal systems from outside the corporate network.",
+        "why_this_matters": "Remote access increases exposure to external threats and requires specific controls."
+      },
+      "Q_DATA_CLASSIFICATION": {
+        "question_text": "What is the highest data classification level of information typically stored or processed on this Employee Laptop?",
+        "answer": "Restricted",
+        "question_type": "dropdown",
+        "section": "3. Data Stored & Processed",
+        "help_text": "Select the highest classification based on organizational data classification policies.",
+        "why_this_matters": "Directly indicates the potential impact of a data breach on confidentiality."
+      },
+      "Q_SENSITIVE_DATA_TYPES": {
+        "question_text": "Does this Employee Laptop store or process any of the following sensitive data types?",
+        "answer": [
+          "PHI",
+          "PII",
+          "PCI_DSS",
+          "Financial_Proprietary"
+        ],
+        "question_type": "multiselect",
+        "section": "3. Data Stored & Processed",
+        "help_text": "Select all applicable types of sensitive data.",
+        "why_this_matters": "Specific data types trigger regulatory compliance requirements and higher impact levels."
+      },
+      "Q_DATA_VOLUME": {
+        "question_text": "Estimate the volume of sensitive data (if any) stored on this laptop.",
+        "answer": "Medium (e.g., hundreds of documents/records)",
+        "question_type": "dropdown",
+        "section": "3. Data Stored & Processed",
+        "help_text": "Provide an approximate volume of sensitive data.",
+        "why_this_matters": "The volume of sensitive data directly correlates with the scale of potential impact in case of a breach."
+      },
+      "Q_DISK_ENCRYPTION_ENABLED": {
+        "question_text": "Is full disk encryption enabled and enforced on this Employee Laptop (e.g., BitLocker, FileVault)?",
+        "answer": "Yes",
+        "question_type": "dropdown",
+        "section": "4. Technical & Security Configuration Facts",
+        "help_text": "Confirms if data at rest is protected against unauthorized access if the device is lost or stolen.",
+        "why_this_matters": "Full disk encryption is a primary control against data loss from physical theft or loss."
+      },
+      "Q_MFA_FOR_LOGIN": {
+        "question_text": "Is Multi-Factor Authentication (MFA) required for logging into this Employee Laptop or accessing its primary operating system?",
+        "answer": "No",
+        "question_type": "dropdown",
+        "section": "4. Technical & Security Configuration Facts",
+        "help_text": "Indicate if an additional authentication factor (e.g., token, biometric) is needed beyond a password.",
+        "why_this_matters": "MFA significantly reduces the risk of unauthorized access due to compromised credentials."
+      },
+      "Q_ENDPOINT_PROTECTION_INSTALLED": {
+        "question_text": "Is an Endpoint Detection and Response (EDR) or Antivirus/Anti-malware solution installed and actively running on this laptop?",
+        "answer": "No",
+        "question_type": "dropdown",
+        "section": "4. Technical & Security Configuration Facts",
+        "help_text": "Confirms the presence of security software to detect and prevent malicious activity.",
+        "why_this_matters": "Endpoint protection is critical for defending against malware, viruses, and other cyber threats."
+      },
+      "Q_PATCHING_FREQUENCY": {
+        "question_text": "How frequently are security patches and operating system updates applied to this Employee Laptop?",
+        "answer": "Annually",
+        "question_type": "dropdown",
+        "section": "4. Technical & Security Configuration Facts",
+        "help_text": "Indicate the typical schedule for applying security updates.",
+        "why_this_matters": "Regular patching addresses known vulnerabilities, reducing the attack surface."
+      },
+      "Q_BACKUP_SOLUTION": {
+        "question_text": "Is there a centralized or automated backup solution in place for critical data stored on this Employee Laptop?",
+        "answer": "Yes, automated to cloud/network storage",
+        "question_type": "dropdown",
+        "section": "4. Technical & Security Configuration Facts",
+        "help_text": "Confirms if data is regularly backed up to prevent loss.",
+        "why_this_matters": "Backups are essential for data recovery in case of system failure, corruption, or ransomware attacks."
+      },
+      "Q_REMOTE_WIPE_CAPABILITY": {
+        "question_text": "Does the organization have the capability to remotely wipe or lock this Employee Laptop if it is lost or stolen?",
+        "answer": "Unknown",
+        "question_type": "dropdown",
+        "section": "4. Technical & Security Configuration Facts",
+        "help_text": "Indicate if remote data destruction or device locking is possible.",
+        "why_this_matters": "Remote wipe/lock is a critical control to prevent data exfiltration from lost or stolen devices."
+      },
+      "Q_ADMIN_PRIVILEGES": {
+        "question_text": "Does the primary user of this laptop have local administrator privileges?",
+        "answer": "Yes",
+        "question_type": "dropdown",
+        "section": "4. Technical & Security Configuration Facts",
+        "help_text": "Indicate if the user can install software or make system-wide changes.",
+        "why_this_matters": "Restricting admin privileges reduces the risk of malware installation and unauthorized system changes."
+      },
+      "Q_PHYSICAL_SECURITY_POLICY": {
+        "question_text": "Are there organizational policies or guidelines in place regarding the physical security of employee laptops (e.g., 'do not leave unattended', 'secure in office')?",
+        "answer": "Yes, but not strictly enforced",
+        "question_type": "dropdown",
+        "section": "5. Physical & Environmental Control Facts",
+        "help_text": "Indicate if policies exist and their level of enforcement.",
+        "why_this_matters": "Policies guide user behavior to protect the physical asset."
+      },
+      "Q_TRAVEL_FREQUENCY": {
+        "question_text": "How frequently does this Employee Laptop travel outside of secure corporate premises (e.g., for business travel, remote work from public places)?",
+        "answer": "Occasionally (1-3 times a month)",
+        "question_type": "dropdown",
+        "section": "5. Physical & Environmental Control Facts",
+        "help_text": "Estimate how often the laptop is taken off-site.",
+        "why_this_matters": "Increased travel increases exposure to physical theft and loss."
+      },
+      "Q_OVERALL_IMPACT_RATING": {
+        "question_text": "Considering all identified risks and existing controls, what is the estimated overall 'Impact Rating' if this Employee Laptop were to be severely compromised (e.g., significant data breach, prolonged unavailability, complete loss)?",
+        "answer": "4",
+        "question_type": "dropdown",
+        "section": "6. Overall Risk Perspective",
+        "help_text": "This is your overall business impact perspective, not a specific security impact (Confidentiality, Integrity, Availability) rating.",
+        "why_this_matters": "Captures the asset owner's holistic view of potential business harm, which is a key input for risk quantification."
+      },
+      "Q_OVERALL_PROBABILITY_RATING": {
+        "question_text": "Considering all identified threats and vulnerabilities, what is the estimated 'Probability Rating' of a severe compromise occurring to this Employee Laptop within the next year?",
+        "answer": "4",
+        "question_type": "dropdown",
+        "section": "6. Overall Risk Perspective",
+        "help_text": "This is your overall perspective on the likelihood of a severe compromise, not a specific threat probability.",
+        "why_this_matters": "Captures the asset owner's holistic view of the likelihood of a risk event, which is a key input for risk quantification."
+      }
+    },
+    "questionnaire_metadata": {
+      "asset_type_assessed": "Employee Laptop",
+      "questionnaire_title": "Risk Assessment Questionnaire for Employee Laptop",
+      "completed_date": "2026-01-11 19:00:11",
+      "total_questions": 23,
+      "total_answers": 23
+    },
+    "threats_and_vulnerabilities": [
+      {
+        "threat": "Ransomware/Malware Attack and System Compromise",
+        "threat_category": "Electronic Sabotage and malicious code",
+        "contextual_description": "John Doe's Laptop, used by Sakthi for critical functions like sales order processing and financial reporting, is highly susceptible to ransomware or advanced malware attacks. The complete absence of an Endpoint Detection and Response (EDR) or Antivirus/Anti-malware solution means that malicious code will likely go undetected and unprevented. Furthermore, security patches and OS updates are applied only annually, leaving the system vulnerable to exploitation of known weaknesses for extended periods. With Sakthi having local administrator privileges, a successful malware infection could easily escalate, encrypting the medium volume of Restricted data, including PHI, PII, PCI_DSS, and Financial_Proprietary information, and potentially spreading to other corporate network resources during occasional remote access.",
+        "risk_statement": "Risk of ransomware or advanced malware attack on John Doe's Laptop due to absence of EDR/Antivirus, annual patching, and local administrator privileges, potentially causing data encryption, loss of Restricted data (PHI, PII, PCI_DSS, Financial_Proprietary), and disruption to critical business operations like sales order processing and financial reporting.",
+        "vulnerabilities": [
+          {
+            "vulnerability": "Absence of EDR/Antivirus solution",
+            "description": "Absence of EDR/Antivirus solution"
+          },
+          {
+            "vulnerability": "Infrequent security patching (annually)",
+            "description": "Infrequent security patching (annually)"
+          },
+          {
+            "vulnerability": "Local administrator privileges for user",
+            "description": "Local administrator privileges for user"
+          },
+          {
+            "vulnerability": "Inadequate information security awareness amongst users (implied by potential for social engineering/negligence)",
+            "description": "Inadequate information security awareness amongst users (implied by potential for social engineering/negligence)"
+          }
+        ],
+        "evidence": [
+          "4. Technical & Security Configuration Facts] Q: Is an Endpoint Detection and Response (EDR) or Antivirus/Anti-malware solution installed and actively running on this laptop? → Answer: No",
+          "4. Technical & Security Configuration Facts] Q: How frequently are security patches and operating system updates applied to this Employee Laptop? → Answer: Annually",
+          "4. Technical & Security Configuration Facts] Q: Does the primary user of this laptop have local administrator privileges? → Answer: Yes",
+          "3. Data Stored & Processed] Q: What is the highest data classification level of information typically stored or processed on this Employee Laptop? → Answer: Restricted",
+          "3. Data Stored & Processed] Q: Does this Employee Laptop store or process any of the following sensitive data types? → Answer: ['PHI', 'PII', 'PCI_DSS', 'Financial_Proprietary']",
+          "3. Data Stored & Processed] Q: Estimate the volume of sensitive data (if any) stored on this laptop. → Answer: Medium (e.g., hundreds of documents/records)",
+          "2. Business Context & Usage] Q: List the primary business processes or functions that heavily rely on this Employee Laptop. → Answer: 'Sales order processing', 'Software development', 'Financial reporting', 'Customer support'"
+        ],
+        "threat_source": "Threat Vocabulary Database | Intelligent Analysis"
+      },
+      {
+        "threat": "Unauthorized Data Breach via Compromised Credentials",
+        "threat_category": "Electronic Sabotage and malicious code",
+        "contextual_description": "John Doe's Laptop, containing Restricted data including PHI, PII, PCI_DSS, and Financial_Proprietary information, is vulnerable to unauthorized access through compromised user credentials. The lack of Multi-Factor Authentication (MFA) for logging into the operating system means that a single compromised password (e.g., via phishing or weak password guessing) grants an attacker full access. With Sakthi having local administrator privileges, the attacker could not only access the medium volume of sensitive data but also install persistent backdoors, exfiltrate data, or pivot to other corporate systems, especially when the laptop is used for occasional remote access to corporate resources.",
+        "risk_statement": "Risk of unauthorized data breach and system compromise on John Doe's Laptop due to lack of Multi-Factor Authentication (MFA) for OS login and local administrator privileges, potentially causing exposure of Restricted data (PHI, PII, PCI_DSS, Financial_Proprietary), regulatory penalties, and reputational damage.",
+        "vulnerabilities": [
+          {
+            "vulnerability": "Lack of Multi-Factor Authentication (MFA) for OS login",
+            "description": "Lack of Multi-Factor Authentication (MFA) for OS login"
+          },
+          {
+            "vulnerability": "Local administrator privileges for user",
+            "description": "Local administrator privileges for user"
+          },
+          {
+            "vulnerability": "Infrequent security patching (annually) contributing to system vulnerability and potential credential compromise",
+            "description": "Infrequent security patching (annually) contributing to system vulnerability and potential credential compromise"
+          }
+        ],
+        "evidence": [
+          "4. Technical & Security Configuration Facts] Q: Is Multi-Factor Authentication (MFA) required for logging into this Employee Laptop or accessing its primary operating system? → Answer: No",
+          "4. Technical & Security Configuration Facts] Q: Does the primary user of this laptop have local administrator privileges? → Answer: Yes",
+          "3. Data Stored & Processed] Q: What is the highest data classification level of information typically stored or processed on this Employee Laptop? → Answer: Restricted",
+          "3. Data Stored & Processed] Q: Does this Employee Laptop store or process any of the following sensitive data types? → Answer: ['PHI', 'PII', 'PCI_DSS', 'Financial_Proprietary']",
+          "3. Data Stored & Processed] Q: Estimate the volume of sensitive data (if any) stored on this laptop. → Answer: Medium (e.g., hundreds of documents/records)",
+          "2. Business Context & Usage] Q: How frequently is this laptop used for remote access to corporate resources (e.g., VPN, cloud services)? → Answer: Occasionally (1-3 times a month)"
+        ],
+        "threat_source": "Threat Vocabulary Database | Intelligent Analysis"
+      },
+      {
+        "threat": "Physical Theft and Sensitive Data Exposure",
+        "threat_category": "Unauthorized physical access/ Physical theft",
+        "contextual_description": "John Doe's Laptop, which travels occasionally outside secure corporate premises and contains a medium volume of Restricted data (PHI, PII, PCI_DSS, Financial_Proprietary), faces a significant risk of physical theft. Although full disk encryption is enabled, the fact that organizational policies regarding physical security are 'not strictly enforced' increases the likelihood of the laptop being left unattended or unsecured. If the laptop is stolen while unlocked, or if an attacker bypasses the encryption (e.g., through a cold boot attack or by obtaining login credentials), the sensitive data could be exposed. The organization's unknown capability to remotely wipe or lock the device further amplifies the risk of data exposure and loss of control post-theft.",
+        "risk_statement": "Risk of physical theft of John Doe's Laptop and subsequent data exposure due to non-enforcement of physical security policies and unknown remote wipe/lock capabilities, potentially causing unauthorized disclosure of Restricted data (PHI, PII, PCI_DSS, Financial_Proprietary), regulatory non-compliance, and reputational damage.",
+        "vulnerabilities": [
+          {
+            "vulnerability": "Physical security policy not strictly enforced",
+            "description": "Physical security policy not strictly enforced"
+          },
+          {
+            "vulnerability": "Unknown remote wipe/lock capability",
+            "description": "Unknown remote wipe/lock capability"
+          },
+          {
+            "vulnerability": "Inadequate protection of material in transit (due to occasional travel and non-enforcement of policies)",
+            "description": "Inadequate protection of material in transit (due to occasional travel and non-enforcement of policies)"
+          }
+        ],
+        "evidence": [
+          "5. Physical & Environmental Control Facts] Q: Are there organizational policies or guidelines in place regarding the physical security of employee laptops (e.g., 'do not leave unattended', 'secure in office')? → Answer: Yes, but not strictly enforced",
+          "5. Physical & Environmental Control Facts] Q: How frequently does this Employee Laptop travel outside of secure corporate premises (e.g., for business travel, remote work from public places)? → Answer: Occasionally (1-3 times a month)",
+          "4. Technical & Security Configuration Facts] Q: Does the organization have the capability to remotely wipe or lock this Employee Laptop if it is lost or stolen? → Answer: Unknown",
+          "3. Data Stored & Processed] Q: What is the highest data classification level of information typically stored or processed on this Employee Laptop? → Answer: Restricted",
+          "3. Data Stored & Processed] Q: Does this Employee Laptop store or process any of the following sensitive data types? → Answer: ['PHI', 'PII', 'PCI_DSS', 'Financial_Proprietary']",
+          "3. Data Stored & Processed] Q: Estimate the volume of sensitive data (if any) stored on this laptop. → Answer: Medium (e.g., hundreds of documents/records)",
+          "4. Technical & Security Configuration Facts] Q: Is full disk encryption enabled and enforced on this Employee Laptop (e.g., BitLocker, FileVault)? → Answer: Yes"
+        ],
+        "threat_source": "Threat Vocabulary Database | RAG Discovery | Intelligent Analysis"
+      },
+      {
+        "threat": "Data Loss or Corruption from System Failure or Undetected Malware",
+        "threat_category": "Unintentional failure of IT systems (hardware/software)",
+        "contextual_description": "John Doe's Laptop, critical for sales order processing, software development, financial reporting, and customer support, is at risk of data loss or corruption from system failures or undetected malware. While an automated backup solution is in place for critical data, the annual patching cycle and the complete absence of an EDR/Antivirus solution significantly increase the likelihood of system instability, hardware/software failures, or persistent, undetected malware. Such events could lead to the corruption or unavailability of the medium volume of Restricted data (PHI, PII, PCI_DSS, Financial_Proprietary). Although backups exist, the lack of real-time detection and remediation means that corrupted or infected data might be backed up, or recovery efforts could be prolonged, impacting business continuity and potentially leading to data loss if backups are also compromised or outdated.",
+        "risk_statement": "Risk of data loss or corruption on John Doe's Laptop due to system failure or undetected malware, exacerbated by the absence of EDR/Antivirus and annual patching, potentially causing disruption to critical business processes (sales, finance, development) and unavailability of Restricted data (PHI, PII, PCI_DSS, Financial_Proprietary).",
+        "vulnerabilities": [
+          {
+            "vulnerability": "Absence of EDR/Antivirus solution",
+            "description": "Absence of EDR/Antivirus solution"
+          },
+          {
+            "vulnerability": "Infrequent security patching (annually)",
+            "description": "Infrequent security patching (annually)"
+          },
+          {
+            "vulnerability": "Local administrator privileges (increasing impact of system failure/malware)",
+            "description": "Local administrator privileges (increasing impact of system failure/malware)"
+          },
+          {
+            "vulnerability": "Lack of capacity management and performance monitoring procedures (implied by potential for system failure)",
+            "description": "Lack of capacity management and performance monitoring procedures (implied by potential for system failure)"
+          }
+        ],
+        "evidence": [
+          "4. Technical & Security Configuration Facts] Q: Is an Endpoint Detection and Response (EDR) or Antivirus/Anti-malware solution installed and actively running on this laptop? → Answer: No",
+          "4. Technical & Security Configuration Facts] Q: How frequently are security patches and operating system updates applied to this Employee Laptop? → Answer: Annually",
+          "4. Technical & Security Configuration Facts] Q: Is there a centralized or automated backup solution in place for critical data stored on this Employee Laptop? → Answer: Yes, automated to cloud/network storage",
+          "2. Business Context & Usage] Q: List the primary business processes or functions that heavily rely on this Employee Laptop. → Answer: 'Sales order processing', 'Software development', 'Financial reporting', 'Customer support'",
+          "3. Data Stored & Processed] Q: What is the highest data classification level of information typically stored or processed on this Employee Laptop? → Answer: Restricted",
+          "3. Data Stored & Processed] Q: Does this Employee Laptop store or process any of the following sensitive data types? → Answer: ['PHI', 'PII', 'PCI_DSS', 'Financial_Proprietary']",
+          "3. Data Stored & Processed] Q: Estimate the volume of sensitive data (if any) stored on this laptop. → Answer: Medium (e.g., hundreds of documents/records)"
+        ],
+        "threat_source": "Threat Vocabulary Database | RAG Discovery | Intelligent Analysis"
+      }
+    ],
+    "threat_discovery_result": {
+      "analysis_summary": {
+        "asset_understanding": "John Doe's Laptop (Dell-x8368) is a highly critical physical asset used by Sakthi in the Head Office, but travels occasionally. It is essential for core business functions including sales order processing, software development, financial reporting, and customer support. The laptop stores a medium volume of Restricted data, encompassing highly sensitive types such as PHI, PII, PCI_DSS, and Financial_Proprietary information. Both the estimated impact and probability of a severe compromise are rated as high (4).",
+        "key_security_gaps": [
+          "No Multi-Factor Authentication (MFA) for operating system login.",
+          "No Endpoint Detection and Response (EDR) or Antivirus/Anti-malware solution installed and actively running.",
+          "Security patches and operating system updates are applied only annually.",
+          "Organization has unknown capability to remotely wipe or lock the laptop if lost or stolen.",
+          "Primary user (Sakthi) has local administrator privileges.",
+          "Organizational policies regarding physical security of laptops are not strictly enforced."
+        ],
+        "key_risk_amplifiers": [
+          "High business criticality (4) impacting core operations.",
+          "Stores Restricted data, including PHI, PII, PCI_DSS, and Financial_Proprietary.",
+          "Medium volume of sensitive data (hundreds of documents/records).",
+          "User has local administrator privileges, increasing potential impact of compromise.",
+          "Laptop travels occasionally outside secure corporate premises, increasing exposure.",
+          "High estimated overall impact (4) and probability (4) of severe compromise."
+        ],
+        "existing_controls": [
+          "Full Disk Encryption (FDE) is enabled and enforced.",
+          "Automated backup solution is in place for critical data to cloud/network storage.",
+          "Laptop has a unique organizational identifier (Dell-x8368)."
+        ],
+        "threat_vocabulary_discovered": [
+          "Electronic Sabotage and malicious code",
+          "Unauthorized physical access/ Physical theft",
+          "Negligent/Uninformed users",
+          "Unintentional failure of IT systems (hardware/software)",
+          "Communications Failures (Telecom/ Internet/LAN)",
+          "Public Utilities Failure (Power/Water)",
+          "Adverse Environmental Conditions",
+          "Storms/Wind/Lightning",
+          "Fire",
+          "Flood",
+          "Earthquake",
+          "Medical Emergencies",
+          "Loss of key personnel/ Attrition/ Poaching"
+        ],
+        "searches_performed": [
+          "What is the Threat Vulnerability Database? What threats are documented? What are common vulnerabilities and security weaknesses documented?",
+          "What are common security threats and risks for employee laptops?"
+        ]
+      },
+      "threats_discovered": [
+        {
+          "threat_id": "T1",
+          "threat_category": "Electronic Sabotage and malicious code",
+          "threat_name": "Ransomware/Malware Attack and System Compromise",
+          "contextual_description": "John Doe's Laptop, used by Sakthi for critical functions like sales order processing and financial reporting, is highly susceptible to ransomware or advanced malware attacks. The complete absence of an Endpoint Detection and Response (EDR) or Antivirus/Anti-malware solution means that malicious code will likely go undetected and unprevented. Furthermore, security patches and OS updates are applied only annually, leaving the system vulnerable to exploitation of known weaknesses for extended periods. With Sakthi having local administrator privileges, a successful malware infection could easily escalate, encrypting the medium volume of Restricted data, including PHI, PII, PCI_DSS, and Financial_Proprietary information, and potentially spreading to other corporate network resources during occasional remote access.",
+          "vulnerabilities_identified": [
+            "Absence of EDR/Antivirus solution",
+            "Infrequent security patching (annually)",
+            "Local administrator privileges for user",
+            "Inadequate information security awareness amongst users (implied by potential for social engineering/negligence)"
+          ],
+          "evidence_from_questionnaire": [
+            "4. Technical & Security Configuration Facts] Q: Is an Endpoint Detection and Response (EDR) or Antivirus/Anti-malware solution installed and actively running on this laptop? → Answer: No",
+            "4. Technical & Security Configuration Facts] Q: How frequently are security patches and operating system updates applied to this Employee Laptop? → Answer: Annually",
+            "4. Technical & Security Configuration Facts] Q: Does the primary user of this laptop have local administrator privileges? → Answer: Yes",
+            "3. Data Stored & Processed] Q: What is the highest data classification level of information typically stored or processed on this Employee Laptop? → Answer: Restricted",
+            "3. Data Stored & Processed] Q: Does this Employee Laptop store or process any of the following sensitive data types? → Answer: ['PHI', 'PII', 'PCI_DSS', 'Financial_Proprietary']",
+            "3. Data Stored & Processed] Q: Estimate the volume of sensitive data (if any) stored on this laptop. → Answer: Medium (e.g., hundreds of documents/records)",
+            "2. Business Context & Usage] Q: List the primary business processes or functions that heavily rely on this Employee Laptop. → Answer: 'Sales order processing', 'Software development', 'Financial reporting', 'Customer support'"
+          ],
+          "risk_statement": "Risk of ransomware or advanced malware attack on John Doe's Laptop due to absence of EDR/Antivirus, annual patching, and local administrator privileges, potentially causing data encryption, loss of Restricted data (PHI, PII, PCI_DSS, Financial_Proprietary), and disruption to critical business operations like sales order processing and financial reporting.",
+          "threat_source": "Threat Vocabulary Database | Intelligent Analysis"
+        },
+        {
+          "threat_id": "T2",
+          "threat_category": "Electronic Sabotage and malicious code",
+          "threat_name": "Unauthorized Data Breach via Compromised Credentials",
+          "contextual_description": "John Doe's Laptop, containing Restricted data including PHI, PII, PCI_DSS, and Financial_Proprietary information, is vulnerable to unauthorized access through compromised user credentials. The lack of Multi-Factor Authentication (MFA) for logging into the operating system means that a single compromised password (e.g., via phishing or weak password guessing) grants an attacker full access. With Sakthi having local administrator privileges, the attacker could not only access the medium volume of sensitive data but also install persistent backdoors, exfiltrate data, or pivot to other corporate systems, especially when the laptop is used for occasional remote access to corporate resources.",
+          "vulnerabilities_identified": [
+            "Lack of Multi-Factor Authentication (MFA) for OS login",
+            "Local administrator privileges for user",
+            "Infrequent security patching (annually) contributing to system vulnerability and potential credential compromise"
+          ],
+          "evidence_from_questionnaire": [
+            "4. Technical & Security Configuration Facts] Q: Is Multi-Factor Authentication (MFA) required for logging into this Employee Laptop or accessing its primary operating system? → Answer: No",
+            "4. Technical & Security Configuration Facts] Q: Does the primary user of this laptop have local administrator privileges? → Answer: Yes",
+            "3. Data Stored & Processed] Q: What is the highest data classification level of information typically stored or processed on this Employee Laptop? → Answer: Restricted",
+            "3. Data Stored & Processed] Q: Does this Employee Laptop store or process any of the following sensitive data types? → Answer: ['PHI', 'PII', 'PCI_DSS', 'Financial_Proprietary']",
+            "3. Data Stored & Processed] Q: Estimate the volume of sensitive data (if any) stored on this laptop. → Answer: Medium (e.g., hundreds of documents/records)",
+            "2. Business Context & Usage] Q: How frequently is this laptop used for remote access to corporate resources (e.g., VPN, cloud services)? → Answer: Occasionally (1-3 times a month)"
+          ],
+          "risk_statement": "Risk of unauthorized data breach and system compromise on John Doe's Laptop due to lack of Multi-Factor Authentication (MFA) for OS login and local administrator privileges, potentially causing exposure of Restricted data (PHI, PII, PCI_DSS, Financial_Proprietary), regulatory penalties, and reputational damage.",
+          "threat_source": "Threat Vocabulary Database | Intelligent Analysis"
+        },
+        {
+          "threat_id": "T3",
+          "threat_category": "Unauthorized physical access/ Physical theft",
+          "threat_name": "Physical Theft and Sensitive Data Exposure",
+          "contextual_description": "John Doe's Laptop, which travels occasionally outside secure corporate premises and contains a medium volume of Restricted data (PHI, PII, PCI_DSS, Financial_Proprietary), faces a significant risk of physical theft. Although full disk encryption is enabled, the fact that organizational policies regarding physical security are 'not strictly enforced' increases the likelihood of the laptop being left unattended or unsecured. If the laptop is stolen while unlocked, or if an attacker bypasses the encryption (e.g., through a cold boot attack or by obtaining login credentials), the sensitive data could be exposed. The organization's unknown capability to remotely wipe or lock the device further amplifies the risk of data exposure and loss of control post-theft.",
+          "vulnerabilities_identified": [
+            "Physical security policy not strictly enforced",
+            "Unknown remote wipe/lock capability",
+            "Inadequate protection of material in transit (due to occasional travel and non-enforcement of policies)"
+          ],
+          "evidence_from_questionnaire": [
+            "5. Physical & Environmental Control Facts] Q: Are there organizational policies or guidelines in place regarding the physical security of employee laptops (e.g., 'do not leave unattended', 'secure in office')? → Answer: Yes, but not strictly enforced",
+            "5. Physical & Environmental Control Facts] Q: How frequently does this Employee Laptop travel outside of secure corporate premises (e.g., for business travel, remote work from public places)? → Answer: Occasionally (1-3 times a month)",
+            "4. Technical & Security Configuration Facts] Q: Does the organization have the capability to remotely wipe or lock this Employee Laptop if it is lost or stolen? → Answer: Unknown",
+            "3. Data Stored & Processed] Q: What is the highest data classification level of information typically stored or processed on this Employee Laptop? → Answer: Restricted",
+            "3. Data Stored & Processed] Q: Does this Employee Laptop store or process any of the following sensitive data types? → Answer: ['PHI', 'PII', 'PCI_DSS', 'Financial_Proprietary']",
+            "3. Data Stored & Processed] Q: Estimate the volume of sensitive data (if any) stored on this laptop. → Answer: Medium (e.g., hundreds of documents/records)",
+            "4. Technical & Security Configuration Facts] Q: Is full disk encryption enabled and enforced on this Employee Laptop (e.g., BitLocker, FileVault)? → Answer: Yes"
+          ],
+          "risk_statement": "Risk of physical theft of John Doe's Laptop and subsequent data exposure due to non-enforcement of physical security policies and unknown remote wipe/lock capabilities, potentially causing unauthorized disclosure of Restricted data (PHI, PII, PCI_DSS, Financial_Proprietary), regulatory non-compliance, and reputational damage.",
+          "threat_source": "Threat Vocabulary Database | RAG Discovery | Intelligent Analysis"
+        },
+        {
+          "threat_id": "T4",
+          "threat_category": "Unintentional failure of IT systems (hardware/software)",
+          "threat_name": "Data Loss or Corruption from System Failure or Undetected Malware",
+          "contextual_description": "John Doe's Laptop, critical for sales order processing, software development, financial reporting, and customer support, is at risk of data loss or corruption from system failures or undetected malware. While an automated backup solution is in place for critical data, the annual patching cycle and the complete absence of an EDR/Antivirus solution significantly increase the likelihood of system instability, hardware/software failures, or persistent, undetected malware. Such events could lead to the corruption or unavailability of the medium volume of Restricted data (PHI, PII, PCI_DSS, Financial_Proprietary). Although backups exist, the lack of real-time detection and remediation means that corrupted or infected data might be backed up, or recovery efforts could be prolonged, impacting business continuity and potentially leading to data loss if backups are also compromised or outdated.",
+          "vulnerabilities_identified": [
+            "Absence of EDR/Antivirus solution",
+            "Infrequent security patching (annually)",
+            "Local administrator privileges (increasing impact of system failure/malware)",
+            "Lack of capacity management and performance monitoring procedures (implied by potential for system failure)"
+          ],
+          "evidence_from_questionnaire": [
+            "4. Technical & Security Configuration Facts] Q: Is an Endpoint Detection and Response (EDR) or Antivirus/Anti-malware solution installed and actively running on this laptop? → Answer: No",
+            "4. Technical & Security Configuration Facts] Q: How frequently are security patches and operating system updates applied to this Employee Laptop? → Answer: Annually",
+            "4. Technical & Security Configuration Facts] Q: Is there a centralized or automated backup solution in place for critical data stored on this Employee Laptop? → Answer: Yes, automated to cloud/network storage",
+            "2. Business Context & Usage] Q: List the primary business processes or functions that heavily rely on this Employee Laptop. → Answer: 'Sales order processing', 'Software development', 'Financial reporting', 'Customer support'",
+            "3. Data Stored & Processed] Q: What is the highest data classification level of information typically stored or processed on this Employee Laptop? → Answer: Restricted",
+            "3. Data Stored & Processed] Q: Does this Employee Laptop store or process any of the following sensitive data types? → Answer: ['PHI', 'PII', 'PCI_DSS', 'Financial_Proprietary']",
+            "3. Data Stored & Processed] Q: Estimate the volume of sensitive data (if any) stored on this laptop. → Answer: Medium (e.g., hundreds of documents/records)"
+          ],
+          "risk_statement": "Risk of data loss or corruption on John Doe's Laptop due to system failure or undetected malware, exacerbated by the absence of EDR/Antivirus and annual patching, potentially causing disruption to critical business processes (sales, finance, development) and unavailability of Restricted data (PHI, PII, PCI_DSS, Financial_Proprietary).",
+          "threat_source": "Threat Vocabulary Database | RAG Discovery | Intelligent Analysis"
+        }
+      ]
+    }
+  },
+  "agent_1_result": {
+    "discovery_summary": {
+      "cia_methodology": "CIA (Confidentiality, Integrity, Availability)",
+      "cia_rating_scale": "4-level: Insignificant, Moderate, Serious, Extreme",
+      "cia_definitions_source": "Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx (Table 3)",
+      "business_value_calculation_method": "Asset Value Chart (Matrix)",
+      "business_value_levels": [
+        "Very Low",
+        "Low",
+        "Medium",
+        "High",
+        "Very High"
+      ],
+      "business_value_source": "Risk Assessment Template_For Agentic AI RM Use Case.xlsx (Sheet: Asset Inventorization Guideline)",
+      "criticality_classification_method": "Business Value to Criticality Mapping",
+      "criticality_levels": [
+        "Insignificant",
+        "Low Critical",
+        "Medium Critical",
+        "High Critical",
+        "Very high Critical"
+      ],
+      "criticality_source": "Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx (Table 4), Risk Assessment Template_For Agentic AI RM Use Case.xlsx (Sheet: Asset Inventorization Guideline)",
+      "searches_performed": [
+        "What impact assessment methodology is used? CIA? DREAD? Custom?",
+        "What rating scale is used for Confidentiality, Integrity, and Availability (CIA) impact ratings? What are the levels and definitions for each?",
+        "How is Asset Business Value calculated or determined from CIA impact ratings? Is there a matrix, chart, or formula? What are the Asset Business Value levels?",
+        "What are the numeric values for Insignificant, Moderate, Serious, and Extreme CIA impact ratings?"
+      ]
+    },
+    "threat_analysis": [
+      {
+        "threat_id": "threat_1",
+        "threat_name": "Ransomware/Malware Attack and System Compromise",
+        "threat_description": "John Doe's Laptop, used by Sakthi for critical functions like sales order processing and financial reporting, is highly susceptible to ransomware or advanced malware attacks. The complete absence of an Endpoint Detection and Response (EDR) or Antivirus/Anti-malware solution means that malicious code will likely go undetected and unprevented. Furthermore, security patches and OS updates are applied only annually, leaving the system vulnerable to exploitation of known weaknesses for extended periods. With Sakthi having local administrator privileges, a successful malware infection could easily escalate, encrypting the medium volume of Restricted data, including PHI, PII, PCI_DSS, and Financial_Proprietary information, and potentially spreading to other corporate network resources during occasional remote access.",
+        "impact_assessment": {
+          "confidentiality": {
+            "rating": "Extreme",
+            "numeric_value": 5,
+            "reasoning": "Based on questionnaire answer [3. Data Stored & Processed] stating 'Restricted' data classification, and sensitive data types ['PHI', 'PII', 'PCI_DSS', 'Financial_Proprietary'] with 'Medium' volume, unauthorized disclosure due to ransomware would cause 'serious damage to the interests of the organization'. This meets the discovered definition for 'Extreme' Confidentiality from Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx (Table 3)."
+          },
+          "integrity": {
+            "rating": "Extreme",
+            "numeric_value": 5,
+            "reasoning": "Based on questionnaire answer [2. Business Context & Usage] listing critical functions like 'Sales order processing', 'Software development', 'Financial reporting', and the presence of 'Restricted' data including ['PHI', 'PII', 'PCI_DSS', 'Financial_Proprietary'], unauthorized modification or damage by ransomware/malware would have 'severe and long ranging adverse effect on business operations'. This meets the discovered definition for 'Extreme' Integrity from Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx (Table 3)."
+          },
+          "availability": {
+            "rating": "Extreme",
+            "numeric_value": 5,
+            "reasoning": "Based on questionnaire answer [2. Business Context & Usage] listing critical functions like 'Sales order processing', 'Software development', 'Financial reporting', and 'Customer support', the disruption or unavailability caused by ransomware/malware would have 'severe and long ranging adverse effect on business operations'. This meets the discovered definition for 'Extreme' Availability from Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx (Table 3)."
+          }
+        },
+        "overall_impact_calculation": {
+          "confidentiality_numeric": 5,
+          "integrity_numeric": 5,
+          "availability_numeric": 5,
+          "calculation_method": "max(C_numeric, I_numeric, A_numeric)",
+          "calculation": "max(5, 5, 5) = 5",
+          "overall_impact": "5 - Very High",
+          "overall_impact_numeric": 5
+        }
+      },
+      {
+        "threat_id": "threat_2",
+        "threat_name": "Unauthorized Data Breach via Compromised Credentials",
+        "threat_description": "John Doe's Laptop, containing Restricted data including PHI, PII, PCI_DSS, and Financial_Proprietary information, is vulnerable to unauthorized access through compromised user credentials. The lack of Multi-Factor Authentication (MFA) for logging into the operating system means that a single compromised password (e.g., via phishing or weak password guessing) grants an attacker full access. With Sakthi having local administrator privileges, the attacker could not only access the medium volume of sensitive data but also install persistent backdoors, exfiltrate data, or pivot to other corporate systems, especially when the laptop is used for occasional remote access to corporate resources.",
+        "impact_assessment": {
+          "confidentiality": {
+            "rating": "Extreme",
+            "numeric_value": 5,
+            "reasoning": "Based on questionnaire answer [3. Data Stored & Processed] stating 'Restricted' data classification, and sensitive data types ['PHI', 'PII', 'PCI_DSS', 'Financial_Proprietary'] with 'Medium' volume, unauthorized disclosure via compromised credentials would cause 'serious damage to the interests of the organization'. This meets the discovered definition for 'Extreme' Confidentiality from Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx (Table 3)."
+          },
+          "integrity": {
+            "rating": "Extreme",
+            "numeric_value": 5,
+            "reasoning": "Based on questionnaire answer [2. Business Context & Usage] listing critical functions and the presence of 'Restricted' data including ['PHI', 'PII', 'PCI_DSS', 'Financial_Proprietary'], an attacker with compromised credentials and local admin privileges could cause 'severe and long ranging adverse effect on business operations' through unauthorized modification or damage. This meets the discovered definition for 'Extreme' Integrity from Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx (Table 3)."
+          },
+          "availability": {
+            "rating": "Extreme",
+            "numeric_value": 5,
+            "reasoning": "Based on questionnaire answer [2. Business Context & Usage] listing critical functions like 'Sales order processing', 'Software development', 'Financial reporting', and 'Customer support', an attacker with compromised credentials could render the system unavailable, leading to 'severe and long ranging adverse effect on business operations'. This meets the discovered definition for 'Extreme' Availability from Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx (Table 3)."
+          }
+        },
+        "overall_impact_calculation": {
+          "confidentiality_numeric": 5,
+          "integrity_numeric": 5,
+          "availability_numeric": 5,
+          "calculation_method": "max(C_numeric, I_numeric, A_numeric)",
+          "calculation": "max(5, 5, 5) = 5",
+          "overall_impact": "5 - Very High",
+          "overall_impact_numeric": 5
+        }
+      },
+      {
+        "threat_id": "threat_3",
+        "threat_name": "Physical Theft and Sensitive Data Exposure",
+        "threat_description": "John Doe's Laptop, which travels occasionally outside secure corporate premises and contains a medium volume of Restricted data (PHI, PII, PCI_DSS, Financial_Proprietary), faces a significant risk of physical theft. Although full disk encryption is enabled, the fact that organizational policies regarding physical security are 'not strictly enforced' increases the likelihood of the laptop being left unattended or unsecured. If the laptop is stolen while unlocked, or if an attacker bypasses the encryption (e.g., through a cold boot attack or by obtaining login credentials), the sensitive data could be exposed. The organization's unknown capability to remotely wipe or lock the device further amplifies the risk of data exposure and loss of control post-theft.",
+        "impact_assessment": {
+          "confidentiality": {
+            "rating": "Extreme",
+            "numeric_value": 5,
+            "reasoning": "Based on questionnaire answer [3. Data Stored & Processed] stating 'Restricted' data classification, and sensitive data types ['PHI', 'PII', 'PCI_DSS', 'Financial_Proprietary'] with 'Medium' volume, and [5. Physical & Environmental Control Facts] indicating policies are 'not strictly enforced' and remote wipe is 'Unknown', unauthorized disclosure due to physical theft would cause 'serious damage to the interests of the organization'. This meets the discovered definition for 'Extreme' Confidentiality from Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx (Table 3)."
+          },
+          "integrity": {
+            "rating": "Serious",
+            "numeric_value": 4,
+            "reasoning": "Based on questionnaire answer [3. Data Stored & Processed] indicating 'Restricted' data including ['PHI', 'PII', 'PCI_DSS', 'Financial_Proprietary'], if a stolen laptop is accessed, unauthorized modification or damage of this information is expected to have a 'serious adverse effect on business operations'. This meets the discovered definition for 'Serious' Integrity from Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx (Table 3)."
+          },
+          "availability": {
+            "rating": "Extreme",
+            "numeric_value": 5,
+            "reasoning": "Based on questionnaire answer [2. Business Context & Usage] listing critical functions like 'Sales order processing', 'Software development', 'Financial reporting', and 'Customer support', the complete and permanent unavailability of the laptop due to physical theft would have 'severe and long ranging adverse effect on business operations'. This meets the discovered definition for 'Extreme' Availability from Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx (Table 3)."
+          }
+        },
+        "overall_impact_calculation": {
+          "confidentiality_numeric": 5,
+          "integrity_numeric": 4,
+          "availability_numeric": 5,
+          "calculation_method": "max(C_numeric, I_numeric, A_numeric)",
+          "calculation": "max(5, 4, 5) = 5",
+          "overall_impact": "5 - Very High",
+          "overall_impact_numeric": 5
+        }
+      },
+      {
+        "threat_id": "threat_4",
+        "threat_name": "Data Loss or Corruption from System Failure or Undetected Malware",
+        "threat_description": "John Doe's Laptop, critical for sales order processing, software development, financial reporting, and customer support, is at risk of data loss or corruption from system failures or undetected malware. While an automated backup solution is in place for critical data, the annual patching cycle and the complete absence of an EDR/Antivirus solution significantly increase the likelihood of system instability, hardware/software failures, or persistent, undetected malware. Such events could lead to the corruption or unavailability of the medium volume of Restricted data (PHI, PII, PCI_DSS, Financial_Proprietary). Although backups exist, the lack of real-time detection and remediation means that corrupted or infected data might be backed up, or recovery efforts could be prolonged, impacting business continuity and potentially leading to data loss if backups are also compromised or outdated.",
+        "impact_assessment": {
+          "confidentiality": {
+            "rating": "Extreme",
+            "numeric_value": 5,
+            "reasoning": "Based on questionnaire answer [3. Data Stored & Processed] stating 'Restricted' data classification, and sensitive data types ['PHI', 'PII', 'PCI_DSS', 'Financial_Proprietary'] with 'Medium' volume, undetected malware (due to absence of EDR/Antivirus) could lead to unauthorized disclosure, causing 'serious damage to the interests of the organization'. This meets the discovered definition for 'Extreme' Confidentiality from Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx (Table 3)."
+          },
+          "integrity": {
+            "rating": "Extreme",
+            "numeric_value": 5,
+            "reasoning": "Based on questionnaire answer [2. Business Context & Usage] listing critical functions like 'Sales order processing', 'Software development', 'Financial reporting', and the presence of 'Restricted' data including ['PHI', 'PII', 'PCI_DSS', 'Financial_Proprietary'], data loss or corruption would have 'severe and long ranging adverse effect on business operations'. This meets the discovered definition for 'Extreme' Integrity from Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx (Table 3)."
+          },
+          "availability": {
+            "rating": "Serious",
+            "numeric_value": 4,
+            "reasoning": "Based on questionnaire answer [2. Business Context & Usage] listing critical functions like 'Sales order processing', 'Software development', 'Financial reporting', and 'Customer support', the disruption or unavailability due to system failure or malware, even with automated backups, would have a 'serious adverse effect on business operations' during recovery. This meets the discovered definition for 'Serious' Availability from Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx (Table 3)."
+          }
+        },
+        "overall_impact_calculation": {
+          "confidentiality_numeric": 5,
+          "integrity_numeric": 5,
+          "availability_numeric": 4,
+          "calculation_method": "max(C_numeric, I_numeric, A_numeric)",
+          "calculation": "max(5, 5, 4) = 5",
+          "overall_impact": "5 - Very High",
+          "overall_impact_numeric": 5
+        }
+      }
+    ],
+    "asset_business_value": {
+      "cia_combination": "Extreme, Extreme, Extreme",
+      "cia_combination_key": "Extreme|Extreme|Extreme",
+      "business_value_rating": "Very High",
+      "calculation_method": "Asset Value Chart",
+      "calculation_details": "Per discovered Asset Value Chart (Risk Assessment Template_For Agentic AI RM Use Case.xlsx, Sheet: Asset Inventorization Guideline): CIA combination (Confidentiality: Extreme, Integrity: Extreme, Availability: Extreme) maps to Business Value 'Very High'",
+      "source_reference": "Risk Assessment Template_For Agentic AI RM Use Case.xlsx (Sheet: Asset Inventorization Guideline)",
+      "reasoning": "Based on the highest calculated CIA ratings across all threats for the asset (Confidentiality: Extreme, Integrity: Extreme, Availability: Extreme), per the discovered Asset Value Chart in organizational guidelines, the Asset Business Value is 'Very High'."
+    },
+    "asset_criticality": {
+      "criticality_classification": "Very high Critical",
+      "business_value_input": "Very High",
+      "calculation_method": "Criticality Classification Table",
+      "calculation_details": "Per discovered Criticality Classification Table (Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx, Table 4; Risk Assessment Template_For Agentic AI RM Use Case.xlsx, Sheet: Asset Inventorization Guideline): Business Value 'Very High' maps to Criticality 'Very high Critical'",
+      "source_reference": "Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx (Table 4), Risk Assessment Template_For Agentic AI RM Use Case.xlsx (Sheet: Asset Inventorization Guideline)",
+      "reasoning": "Based on calculated Asset Business Value 'Very High', per the discovered Criticality Classification Table in organizational Asset Management Guidelines, the Asset Criticality Classification is 'Very high Critical'."
+    }
+  },
+  "agent_2_result": {
+    "discovery_summary": {
+      "methodology": "Semi-quantitative Risk Assessment",
+      "risk_calculation": {
+        "method": "Formula",
+        "formula": "Impact × Probability",
+        "description": "Risk Value (RV) is computed by multiplying the Risk Impact (RI) rating by the Risk Probability (RP) rating. The resulting score ranges from 1 to 25."
+      },
+      "probability_scale": {
+        "type": "Numeric and Categorical",
+        "levels": [
+          "1 - Very Low (Greater than one year)",
+          "2 - Low (Once every year)",
+          "3 - Medium (Once every 4-6 months)",
+          "4 - High (Once every 1-3 months)",
+          "5 - Very High (More than once per month)"
+        ],
+        "range": "1-5"
+      },
+      "impact_scale": {
+        "type": "Numeric and Categorical",
+        "levels": [
+          "1 - Very Low (negligible impact)",
+          "2 - Low (not significant impact)",
+          "3 - Medium (minimum impact)",
+          "4 - High (serious impact)",
+          "5 - Very High (catastrophic impact)"
+        ],
+        "range": "1-5"
+      },
+      "risk_level_mapping": {
+        "method": "Thresholds based on Risk Value Score",
+        "levels": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "thresholds": "Risk value score 0-5 maps to Risk Rating 1; 6-10 maps to Risk Rating 2; 11-15 maps to Risk Rating 3; 16-20 maps to Risk Rating 4; 21-25 maps to Risk Rating 5."
+      },
+      "acceptance_criteria": "Risk Rating 1 and 2 are considered as acceptable risk. Risk Rating 3, 4 and 5 are considered as non-acceptable risk.",
+      "questionnaire_answers_used": true
+    },
+    "summary": {
+      "total_threats_assessed": 4,
+      "highest_risk_value": 25,
+      "non_acceptable_risks_count": 4,
+      "acceptable_risks_count": 0,
+      "overall_risk_level": "NON-ACCEPTABLE (Risk Rating 5)"
+    },
+    "threat_risk_quantification": [
+      {
+        "threat": "Ransomware/Malware Attack and System Compromise",
+        "vulnerabilities": [
+          "Absence of EDR/Antivirus solution",
+          "Infrequent security patching (annually)",
+          "Local administrator privileges for user",
+          "Inadequate information security awareness amongst users (implied by potential for social engineering/negligence)"
+        ],
+        "risk_statement": "Risk of ransomware or advanced malware attack on John Doe's Laptop due to absence of EDR/Antivirus, annual patching, and local administrator privileges, potentially causing data encryption, loss of Restricted data (PHI, PII, PCI_DSS, Financial_Proprietary), and disruption to critical business operations like sales order processing and financial reporting.",
+        "risk_impact": {
+          "rating": 5,
+          "category": "Very High",
+          "reasoning": "Based on Agent 1 CIA assessment: Confidentiality=Extreme (5), Integrity=Extreme (5), Availability=Extreme (5). Overall impact is max(5,5,5) = 5 - Very High."
+        },
+        "risk_probability": {
+          "rating": 5,
+          "category": "Very High",
+          "reasoning": "The complete absence of EDR/Antivirus (Q15: 'No') and annual patching (Q16: 'Annually') create a highly vulnerable environment. Local administrator privileges (Q19: 'Yes') amplify the potential for system compromise. Occasional remote access (Q9: 'Occasionally') increases exposure to external threats. These factors indicate a very high likelihood of occurrence, more than once per month."
+        },
+        "risk_value": {
+          "value": 25,
+          "calculation": "5 (impact) × 5 (probability) = 25"
+        },
+        "risk_evaluation_rating": {
+          "rating": 5,
+          "level": "5",
+          "mapping_rationale": "Risk value 25 maps to Risk Rating 5 per discovered risk level mapping (21-25)."
+        },
+        "risk_classification": {
+          "classification": "NON-ACCEPTABLE",
+          "criteria_applied": "Risk Rating 3, 4 and 5 are considered as non-acceptable risk.",
+          "justification": "Risk Rating 5 is non-acceptable per organizational policy."
+        }
+      },
+      {
+        "threat": "Unauthorized Data Breach via Compromised Credentials",
+        "vulnerabilities": [
+          "Lack of Multi-Factor Authentication (MFA) for OS login",
+          "Local administrator privileges for user",
+          "Infrequent security patching (annually) contributing to system vulnerability and potential credential compromise"
+        ],
+        "risk_statement": "Risk of unauthorized data breach and system compromise on John Doe's Laptop due to lack of Multi-Factor Authentication (MFA) for OS login and local administrator privileges, potentially causing exposure of Restricted data (PHI, PII, PCI_DSS, Financial_Proprietary), regulatory penalties, and reputational damage.",
+        "risk_impact": {
+          "rating": 5,
+          "category": "Very High",
+          "reasoning": "Based on Agent 1 CIA assessment: Confidentiality=Extreme (5), Integrity=Extreme (5), Availability=Extreme (5). Overall impact is max(5,5,5) = 5 - Very High."
+        },
+        "risk_probability": {
+          "rating": 4,
+          "category": "High",
+          "reasoning": "The lack of MFA for OS login (Q14: 'No') is a major vulnerability. Local administrator privileges (Q19: 'Yes') grant extensive control upon compromise. Infrequent patching (Q16: 'Annually') could facilitate credential theft. Occasional remote access (Q9: 'Occasionally') increases exposure to external credential compromise attempts. These factors indicate a high likelihood of occurrence, once every 1-3 months."
+        },
+        "risk_value": {
+          "value": 20,
+          "calculation": "5 (impact) × 4 (probability) = 20"
+        },
+        "risk_evaluation_rating": {
+          "rating": 4,
+          "level": "4",
+          "mapping_rationale": "Risk value 20 maps to Risk Rating 4 per discovered risk level mapping (16-20)."
+        },
+        "risk_classification": {
+          "classification": "NON-ACCEPTABLE",
+          "criteria_applied": "Risk Rating 3, 4 and 5 are considered as non-acceptable risk.",
+          "justification": "Risk Rating 4 is non-acceptable per organizational policy."
+        }
+      },
+      {
+        "threat": "Physical Theft and Sensitive Data Exposure",
+        "vulnerabilities": [
+          "Physical security policy not strictly enforced",
+          "Unknown remote wipe/lock capability",
+          "Inadequate protection of material in transit (due to occasional travel and non-enforcement of policies)"
+        ],
+        "risk_statement": "Risk of physical theft of John Doe's Laptop and subsequent data exposure due to non-enforcement of physical security policies and unknown remote wipe/lock capabilities, potentially causing unauthorized disclosure of Restricted data (PHI, PII, PCI_DSS, Financial_Proprietary), regulatory non-compliance, and reputational damage.",
+        "risk_impact": {
+          "rating": 5,
+          "category": "Very High",
+          "reasoning": "Based on Agent 1 CIA assessment: Confidentiality=Extreme (5), Integrity=Serious (4), Availability=Extreme (5). Overall impact is max(5,4,5) = 5 - Very High."
+        },
+        "risk_probability": {
+          "rating": 4,
+          "category": "High",
+          "reasoning": "Physical security policy not strictly enforced (Q20: 'Yes, but not strictly enforced') combined with occasional travel outside secure premises (Q21: 'Occasionally') significantly increases the probability of physical theft. These factors indicate a high likelihood of occurrence, once every 1-3 months."
+        },
+        "risk_value": {
+          "value": 20,
+          "calculation": "5 (impact) × 4 (probability) = 20"
+        },
+        "risk_evaluation_rating": {
+          "rating": 4,
+          "level": "4",
+          "mapping_rationale": "Risk value 20 maps to Risk Rating 4 per discovered risk level mapping (16-20)."
+        },
+        "risk_classification": {
+          "classification": "NON-ACCEPTABLE",
+          "criteria_applied": "Risk Rating 3, 4 and 5 are considered as non-acceptable risk.",
+          "justification": "Risk Rating 4 is non-acceptable per organizational policy."
+        }
+      },
+      {
+        "threat": "Data Loss or Corruption from System Failure or Undetected Malware",
+        "vulnerabilities": [
+          "Absence of EDR/Antivirus solution",
+          "Infrequent security patching (annually)",
+          "Local administrator privileges (increasing impact of system failure/malware)",
+          "Lack of capacity management and performance monitoring procedures (implied by potential for system failure)"
+        ],
+        "risk_statement": "Risk of data loss or corruption on John Doe's Laptop due to system failure or undetected malware, exacerbated by the absence of EDR/Antivirus and annual patching, potentially causing disruption to critical business processes (sales, finance, development) and unavailability of Restricted data (PHI, PII, PCI_DSS, Financial_Proprietary).",
+        "risk_impact": {
+          "rating": 5,
+          "category": "Very High",
+          "reasoning": "Based on Agent 1 CIA assessment: Confidentiality=Extreme (5), Integrity=Extreme (5), Availability=Serious (4). Overall impact is max(5,5,4) = 5 - Very High."
+        },
+        "risk_probability": {
+          "rating": 5,
+          "category": "Very High",
+          "reasoning": "The complete absence of EDR/Antivirus (Q15: 'No') and annual patching (Q16: 'Annually') create a highly vulnerable environment for undetected malware and system instability. Local administrator privileges (Q19: 'Yes') increase the potential for widespread corruption. These factors indicate a very high likelihood of occurrence, more than once per month."
+        },
+        "risk_value": {
+          "value": 25,
+          "calculation": "5 (impact) × 5 (probability) = 25"
+        },
+        "risk_evaluation_rating": {
+          "rating": 5,
+          "level": "5",
+          "mapping_rationale": "Risk value 25 maps to Risk Rating 5 per discovered risk level mapping (21-25)."
+        },
+        "risk_classification": {
+          "classification": "NON-ACCEPTABLE",
+          "criteria_applied": "Risk Rating 3, 4 and 5 are considered as non-acceptable risk.",
+          "justification": "Risk Rating 5 is non-acceptable per organizational policy."
+        }
+      }
+    ],
+    "rag_queries_performed": [
+      "risk quantification methodology"
+    ],
+    "rag_sources_consulted": [
+      "Risk Management SOP_For RM Agentic AI Use Case v1.0.docx",
+      "Risk Management Guidelines_For RM Agentic AI Use Case v1.0.docx"
+    ]
+  },
+  "agent_3_result": {
+    "discovery_summary": {
+      "control_framework": "ISO 27001, IT General Controls (ITGC)",
+      "control_categories": [
+        "Organizational",
+        "People",
+        "Physical",
+        "Technological",
+        "Preventive",
+        "Detective",
+        "Corrective"
+      ],
+      "control_types": [
+        "Preventive",
+        "Detective",
+        "Corrective"
+      ],
+      "effectiveness_scale": {
+        "type": "Numeric",
+        "range": "1-5",
+        "definitions": "1: Non-existent or has major deficiencies; 2: Limited, high level of risk remains; 3: Controls in place with few deficiencies (medium risk); 4: Designed and operating with few deficiencies (low risk); 5: Designed and operating with no deficiencies."
+      },
+      "control_rating_method": "Weighted average: FLOOR(AVERAGE(Preventive Control Rating × 1.0, Detective Control Rating × 0.75, Corrective Control Rating × 0.5))",
+      "residual_risk_method": "Risk Evaluation Rating - Control Rating",
+      "questionnaire_answers_used": true
+    },
+    "threat_control_evaluation": [
+      {
+        "threat": "Ransomware/Malware Attack and System Compromise",
+        "vulnerabilities": [
+          "Absence of Endpoint Detection and Response (EDR) or Antivirus/Anti-malware solution",
+          "User having local administrator privileges"
+        ],
+        "controls_identified": [],
+        "control_rating_calculation": {
+          "weighted_preventive": "0 × 1.0 = 0",
+          "weighted_detective": "0 × 0.75 = 0",
+          "weighted_corrective": "0 × 0.5 = 0",
+          "average_weighted": 0.0,
+          "control_rating": 0,
+          "control_rating_text": "WEAK"
+        },
+        "control_category_averages": {
+          "preventive_avg": 0.0,
+          "detective_avg": 0.0,
+          "corrective_avg": 0.0
+        },
+        "risk_evaluation_rating": 5,
+        "residual_risk": {
+          "risk_evaluation_rating": 5,
+          "control_rating": 0,
+          "residual_risk_value": 5.0,
+          "residual_risk_classification": "CRITICAL",
+          "calculation": "Risk Evaluation Rating 5 - Control Rating 0 = 5.0",
+          "formula": "risk_evaluation_rating - control_rating"
+        },
+        "control_gaps": [
+          {
+            "gap_description": "Endpoint Detection and Response (EDR) or Antivirus/Anti-malware solution missing",
+            "evidence": "User indicated: 'No' for Question 15",
+            "impact": "Increases susceptibility to malware, ransomware, and system compromise, leading to data loss, corruption, and unavailability.",
+            "severity": "HIGH"
+          },
+          {
+            "gap_description": "Principle of Least Privilege / Restriction of Admin Privileges (User has local administrator privileges)",
+            "evidence": "User indicated: 'Yes' for Question 19",
+            "impact": "Elevated privileges allow malware to execute with higher permissions, increasing the scope and impact of a system compromise.",
+            "severity": "HIGH"
+          }
+        ],
+        "recommended_controls": [
+          {
+            "control_id": "A.8.7",
+            "control_name": "Implement Protection against malware (EDR/Antivirus)",
+            "control_type": "Preventive/Detective",
+            "priority": "HIGH",
+            "rationale": "Directly mitigates ransomware/malware attacks by preventing infection and detecting malicious activity.",
+            "expected_effectiveness": 4
+          },
+          {
+            "control_id": "A.8.2",
+            "control_name": "Implement Privileged access rights (Principle of Least Privilege)",
+            "control_type": "Preventive",
+            "priority": "HIGH",
+            "rationale": "Restricting local administrator privileges reduces the attack surface and limits the impact of successful malware execution.",
+            "expected_effectiveness": 4
+          }
+        ]
+      },
+      {
+        "threat": "Unauthorized Data Breach via Compromised Credentials",
+        "vulnerabilities": [
+          "Absence of Multi-Factor Authentication (MFA)",
+          "User having local administrator privileges"
+        ],
+        "controls_identified": [],
+        "control_rating_calculation": {
+          "weighted_preventive": "0 × 1.0 = 0",
+          "weighted_detective": "0 × 0.75 = 0",
+          "weighted_corrective": "0 × 0.5 = 0",
+          "average_weighted": 0.0,
+          "control_rating": 0,
+          "control_rating_text": "WEAK"
+        },
+        "control_category_averages": {
+          "preventive_avg": 0.0,
+          "detective_avg": 0.0,
+          "corrective_avg": 0.0
+        },
+        "risk_evaluation_rating": 4,
+        "residual_risk": {
+          "risk_evaluation_rating": 4,
+          "control_rating": 0,
+          "residual_risk_value": 4.0,
+          "residual_risk_classification": "CRITICAL",
+          "calculation": "Risk Evaluation Rating 4 - Control Rating 0 = 4.0",
+          "formula": "risk_evaluation_rating - control_rating"
+        },
+        "control_gaps": [
+          {
+            "gap_description": "Multi-Factor Authentication (MFA) missing for laptop login",
+            "evidence": "User indicated: 'No' for Question 14",
+            "impact": "Increases the risk of unauthorized access if credentials are compromised, leading to data breaches.",
+            "severity": "HIGH"
+          },
+          {
+            "gap_description": "Principle of Least Privilege / Restriction of Admin Privileges (User has local administrator privileges)",
+            "evidence": "User indicated: 'Yes' for Question 19",
+            "impact": "Compromised credentials with administrative privileges can lead to wider system access and more significant data breaches.",
+            "severity": "HIGH"
+          }
+        ],
+        "recommended_controls": [
+          {
+            "control_id": "A.8.5",
+            "control_name": "Implement Secure authentication (MFA) for laptop login",
+            "control_type": "Preventive",
+            "priority": "HIGH",
+            "rationale": "MFA significantly reduces the risk of unauthorized access even if primary credentials are stolen or guessed.",
+            "expected_effectiveness": 4
+          },
+          {
+            "control_id": "A.8.2",
+            "control_name": "Implement Privileged access rights (Principle of Least Privilege)",
+            "control_type": "Preventive",
+            "priority": "HIGH",
+            "rationale": "Restricting local administrator privileges limits the potential damage an attacker can cause with compromised credentials.",
+            "expected_effectiveness": 4
+          }
+        ]
+      },
+      {
+        "threat": "Physical Theft and Sensitive Data Exposure",
+        "vulnerabilities": [
+          "Lack of remote wipe/lock capability",
+          "Physical security policies not strictly enforced"
+        ],
+        "controls_identified": [
+          {
+            "control_id": "A.8.23",
+            "control_name": "Use of cryptography (Full Disk Encryption)",
+            "category": "Preventive",
+            "current_rating": 4,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes'",
+            "effectiveness": "STRONG"
+          },
+          {
+            "control_id": "A.7.7 / A.7.9",
+            "control_name": "Physical Security Policies/Guidelines (e.g., Clear desk and clear screen policy, Security of assets off-premises)",
+            "category": "Preventive",
+            "current_rating": 2,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, but not strictly enforced'",
+            "effectiveness": "LIMITED"
+          }
+        ],
+        "control_rating_calculation": {
+          "weighted_preventive": "3.0 × 1.0 = 3.0",
+          "weighted_detective": "0.0 × 0.75 = 0.0",
+          "weighted_corrective": "0.0 × 0.5 = 0.0",
+          "average_weighted": 1.0,
+          "control_rating": 1,
+          "control_rating_text": "WEAK"
+        },
+        "control_category_averages": {
+          "preventive_avg": 3.0,
+          "detective_avg": 0.0,
+          "corrective_avg": 0.0
+        },
+        "risk_evaluation_rating": 4,
+        "residual_risk": {
+          "risk_evaluation_rating": 4,
+          "control_rating": 1,
+          "residual_risk_value": 3.0,
+          "residual_risk_classification": "HIGH",
+          "calculation": "Risk Evaluation Rating 4 - Control Rating 1 = 3.0",
+          "formula": "risk_evaluation_rating - control_rating"
+        },
+        "control_gaps": [
+          {
+            "gap_description": "Remote Wipe or Lock capability unknown/missing",
+            "evidence": "User indicated: 'Unknown' for Question 18",
+            "impact": "Inability to remotely secure or wipe a lost/stolen laptop increases the risk of sensitive data exposure.",
+            "severity": "HIGH"
+          }
+        ],
+        "recommended_controls": [
+          {
+            "control_id": "A.8.1",
+            "control_name": "Implement Remote wipe/lock for user endpoint devices",
+            "control_type": "Corrective",
+            "priority": "HIGH",
+            "rationale": "Provides a critical mechanism to protect data on lost or stolen devices, preventing sensitive data exposure.",
+            "expected_effectiveness": 4
+          },
+          {
+            "control_id": "A.5.1",
+            "control_name": "Strengthen enforcement of Physical security policies for information security",
+            "control_type": "Preventive",
+            "priority": "MEDIUM",
+            "rationale": "Improved enforcement of physical security policies can reduce the likelihood of physical theft.",
+            "expected_effectiveness": 3
+          }
+        ]
+      },
+      {
+        "threat": "Data Loss or Corruption from System Failure or Undetected Malware",
+        "vulnerabilities": [
+          "Absence of Endpoint Detection and Response (EDR) or Antivirus/Anti-malware solution"
+        ],
+        "controls_identified": [
+          {
+            "control_id": "A.8.13",
+            "control_name": "Information backup (Automated Backup Solution)",
+            "category": "Corrective",
+            "current_rating": 4,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, automated to cloud/network storage'",
+            "effectiveness": "STRONG"
+          }
+        ],
+        "control_rating_calculation": {
+          "weighted_preventive": "0.0 × 1.0 = 0.0",
+          "weighted_detective": "0.0 × 0.75 = 0.0",
+          "weighted_corrective": "4.0 × 0.5 = 2.0",
+          "average_weighted": 0.6666666666666666,
+          "control_rating": 0,
+          "control_rating_text": "WEAK"
+        },
+        "control_category_averages": {
+          "preventive_avg": 0.0,
+          "detective_avg": 0.0,
+          "corrective_avg": 4.0
+        },
+        "risk_evaluation_rating": 5,
+        "residual_risk": {
+          "risk_evaluation_rating": 5,
+          "control_rating": 0,
+          "residual_risk_value": 5.0,
+          "residual_risk_classification": "CRITICAL",
+          "calculation": "Risk Evaluation Rating 5 - Control Rating 0 = 5.0",
+          "formula": "risk_evaluation_rating - control_rating"
+        },
+        "control_gaps": [
+          {
+            "gap_description": "Endpoint Detection and Response (EDR) or Antivirus/Anti-malware solution missing",
+            "evidence": "User indicated: 'No' for Question 15",
+            "impact": "Increases the risk of data corruption or loss due to undetected malware, bypassing the effectiveness of backups.",
+            "severity": "HIGH"
+          }
+        ],
+        "recommended_controls": [
+          {
+            "control_id": "A.8.7",
+            "control_name": "Implement Protection against malware (EDR/Antivirus)",
+            "control_type": "Preventive/Detective",
+            "priority": "HIGH",
+            "rationale": "Prevents data corruption and loss caused by malware, complementing backup solutions by addressing the root cause.",
+            "expected_effectiveness": 4
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "total_threats_evaluated": 4,
+      "total_controls_identified": 3,
+      "average_control_rating": 0.25,
+      "high_residual_risks": 4
+    }
+  },
+  "agent_4_result": {
+    "metadata": {
+      "asset_name": "John Doe's Laptop",
+      "generation_date": "2026-01-11",
+      "total_threats": 4
+    },
+    "management_decisions": [
+      {
+        "threat_name": "Ransomware/Malware Attack and System Compromise",
+        "threat_index": 1,
+        "risk_rating": "5/5",
+        "residual_risk": "5.0/5",
+        "decision_options": [
+          {
+            "value": "TREAT",
+            "label": "Treat the Risk (Implement Controls)",
+            "description": "Treating the risk involves implementing specific controls to reduce the likelihood and/or impact of the Ransomware/Malware Attack and System Compromise. This strategy aims to modify the risk by lowering its probability or negative consequences, bringing the risk evaluation rating down to an acceptable level (typically 1 or 2). It requires identifying, implementing, and continuously monitoring the effectiveness of preventive, detective, and corrective measures. This is the recommended approach for risks with a high initial rating.",
+            "recommendation": "This option is highly recommended given the current high risk rating of 5/5 and a residual risk of 5.0/5, indicating no existing controls. Implementing controls is mandatory for all risks with a rating above 2. The proposed controls directly address the identified gaps and are expected to significantly reduce the susceptibility to ransomware/malware attacks and limit the impact of system compromise.",
+            "consequences": "Choosing to treat the risk will lead to a reduction in the likelihood and impact of ransomware/malware attacks. Successful implementation of controls will lower the residual risk to an acceptable level, protecting John Doe's laptop and potentially other organizational assets from compromise. Failure to implement or maintain controls effectively could result in the risk persisting or re-emerging, leading to data loss, operational disruption, and potential financial and reputational damage.",
+            "estimated_cost": "$500 - $2,000 (per endpoint for EDR/Antivirus license and implementation, plus administrative overhead for least privilege enforcement)",
+            "typical_timeline": "1-3 months (for procurement, deployment, and initial configuration of EDR/Antivirus; policy enforcement for least privilege)",
+            "approval_required": "Risk Owner (e.g., CIO / L1 Head for corporate security/infrastructure impact) must approve the Risk Treatment Plan. Asset Class Owner (John Doe's Manager/IT Asset Manager) is responsible for developing the plan.",
+            "monitoring_required": "Continuous monitoring of EDR/Antivirus alerts, regular vulnerability scans, periodic review of privileged access logs, and annual review of control effectiveness and residual risk."
+          },
+          {
+            "value": "ACCEPT",
+            "label": "Accept the Risk (Retain Risk)",
+            "description": "Accepting the risk means making an informed decision to retain the current level of risk associated with Ransomware/Malware Attack and System Compromise. This option is typically chosen when the risk is deemed acceptable (rating 1 or 2), or when the cost of implementing controls outweighs the potential benefits, or if control implementation is not feasible due to financial, administrative, or technical reasons. Accepted risks are subject to ongoing monitoring and periodic review.",
+            "recommendation": "This option is generally NOT recommended for a risk with a rating of 5/5 and 5.0/5 residual risk, as it falls significantly outside the organization's acceptable risk criteria (1 or 2). It should only be considered if a comprehensive cost-benefit analysis clearly demonstrates that implementing controls is entirely unfeasible or prohibitively expensive, and the organization is prepared to bear the full burden of potential loss.",
+            "consequences": "If this risk is accepted, John Doe's laptop remains highly vulnerable to ransomware/malware attacks and system compromise. This could lead to significant data loss, data corruption, system unavailability, potential spread of malware to other network assets, and severe operational disruption. The organization would bear the full financial and reputational impact of any successful attack, including recovery costs, potential regulatory fines, and loss of customer trust.",
+            "estimated_cost": "Variable, potentially $0 upfront for controls, but high potential costs from incident response, data recovery, business interruption, and reputational damage (e.g., $10,000 - $1,000,000+ per incident depending on scope).",
+            "typical_timeline": "Ongoing, as the risk is continuously retained. Periodic review (e.g., annually) is required.",
+            "approval_required": "Risk Owner (e.g., CIO / L1 Head for corporate security/infrastructure impact) must accept the risk. For risks above acceptable criteria, a Risk Approver (e.g., RCAC) is required to approve the acceptance. If affecting engagement, customer approving authority may also be needed.",
+            "monitoring_required": "Periodic review of the accepted risk (e.g., annually) to ensure the risk context has not changed and the decision to accept remains valid. No specific control monitoring is implied, but general threat intelligence monitoring is advisable."
+          },
+          {
+            "value": "TRANSFER",
+            "label": "Transfer the Risk (Share Risk)",
+            "description": "Transferring the risk involves shifting the financial or operational impact of the Ransomware/Malware Attack and System Compromise to a third party, such as an insurer or a managed service provider. While the impact can be shared, the ultimate accountability for the risk always remains with the organization. This strategy is typically employed for non-acceptable risks where a third party can manage or absorb the consequences more effectively.",
+            "recommendation": "This option could be considered as a supplementary strategy, particularly for the financial impact of a ransomware attack (e.g., through cyber insurance). However, it does not eliminate the operational risk or the need for basic preventative controls. It is not a substitute for treating a high-rated risk, but rather a way to mitigate financial exposure. A thorough cost-benefit analysis of insurance premiums versus potential losses is essential.",
+            "consequences": "Transferring the risk, typically through cyber insurance, can provide financial compensation for losses incurred due to a ransomware/malware attack, such as recovery costs, business interruption, and legal fees. However, it does not prevent the attack itself or the operational disruption. The organization would still need to manage the incident response, and reputational damage may not be fully covered. Accountability for the risk remains with the organization.",
+            "estimated_cost": "$1,000 - $10,000+ annually (for cyber insurance premiums, depending on coverage and organizational size).",
+            "typical_timeline": "1-3 months (for policy procurement and activation, or vendor contract negotiation). Ongoing for the duration of the policy/contract.",
+            "approval_required": "Risk Owner (e.g., CIO / L1 Head) is responsible for transferring non-acceptable risks. Legal and Procurement teams would be involved in contract negotiation and approval for insurance or third-party services.",
+            "monitoring_required": "Regular review of insurance policy terms and coverage, monitoring of third-party service provider performance (if applicable), and annual review of the transfer mechanism's effectiveness."
+          },
+          {
+            "value": "TERMINATE",
+            "label": "Terminate the Risk (Avoid Risk)",
+            "description": "Terminating the risk means eliminating the activity or asset that gives rise to the Ransomware/Malware Attack and System Compromise. This is achieved by ceasing the activity or decommissioning the asset that presents the risk, thereby removing the risk entirely. This option is typically reserved for non-acceptable risks where the activity's benefits do not outweigh the inherent risks, and other treatment options are not viable.",
+            "recommendation": "This option would involve decommissioning John Doe's laptop or ceasing its use in a manner that exposes it to ransomware/malware. While it would eliminate the risk associated with this specific asset, it is generally not a practical solution for essential corporate assets like laptops. It should only be considered if the laptop is non-essential, severely compromised beyond repair, or if its continued use poses an unacceptable and untreatable risk to the wider organization.",
+            "consequences": "If John Doe's laptop is terminated, the risk of ransomware/malware attack and system compromise on that specific asset is eliminated. However, this would result in the loss of the asset's functionality and John Doe's ability to perform work requiring the laptop. This could lead to productivity loss, potential data loss if not backed up, and the need to procure and configure a replacement asset, incurring new costs and operational delays.",
+            "estimated_cost": "$0 (for risk elimination), but high indirect costs from loss of productivity, potential data loss, and replacement asset procurement (e.g., $1,000 - $3,000+ for a new laptop and setup).",
+            "typical_timeline": "Immediate (for cessation of activity/decommissioning).",
+            "approval_required": "Risk Owner (e.g., CIO / L1 Head) is responsible for avoiding non-acceptable risks. Management approval (e.g., Risk Committee / CRO / Business Head) is required for risk termination, especially for critical assets or activities.",
+            "monitoring_required": "Verification that the asset has been securely decommissioned or the activity ceased. No ongoing risk monitoring for the terminated risk itself, but monitoring for new risks arising from the cessation of the activity."
+          }
+        ],
+        "recommended_controls": [
+          {
+            "control_id": "A.8.7",
+            "control_name": "Implement Protection against malware (EDR/Antivirus)",
+            "control_type": "Preventive/Detective",
+            "priority": "HIGH",
+            "rationale": "Directly mitigates ransomware/malware attacks by preventing infection and detecting malicious activity. This addresses the critical gap of missing endpoint protection, which is the primary defense against such threats.",
+            "expected_effectiveness": 4,
+            "why_needed": "Addresses the 'Endpoint Detection and Response (EDR) or Antivirus/Anti-malware solution missing' gap, which currently leaves the laptop highly vulnerable to infection.",
+            "estimated_cost": "$50 - $200 per endpoint annually (for license and basic management).",
+            "implementation_timeline": "2-4 weeks (for procurement, deployment, and initial configuration across endpoints).",
+            "expected_risk_reduction": "Significant reduction in the likelihood of successful malware/ransomware infection and early detection of malicious activity, lowering the overall risk rating by at least 2 points."
+          },
+          {
+            "control_id": "A.8.2",
+            "control_name": "Implement Privileged access rights (Principle of Least Privilege)",
+            "control_type": "Preventive",
+            "priority": "HIGH",
+            "rationale": "Restricting local administrator privileges reduces the attack surface and limits the impact of successful malware execution. This control minimizes the damage a compromised user account or malware can inflict on the system.",
+            "expected_effectiveness": 4,
+            "why_needed": "Addresses the 'Principle of Least Privilege / Restriction of Admin Privileges (User has local administrator privileges)' gap, which currently allows malware to execute with elevated permissions, increasing the scope and impact of a system compromise.",
+            "estimated_cost": "$100 - $500 per endpoint (for policy enforcement tools, configuration, and administrative overhead).",
+            "implementation_timeline": "4-8 weeks (for policy definition, testing, and phased rollout across user groups).",
+            "expected_risk_reduction": "Moderate to significant reduction in the impact severity of a successful compromise, limiting malware's ability to spread or cause widespread damage, lowering the overall risk rating by at least 1-2 points."
+          }
+        ],
+        "control_gaps": [
+          {
+            "gap_description": "Endpoint Detection and Response (EDR) or Antivirus/Anti-malware solution missing",
+            "evidence": "User indicated: 'No' for Question 15",
+            "impact": "Increases susceptibility to malware, ransomware, and system compromise, leading to data loss, corruption, and unavailability.",
+            "severity": "HIGH"
+          },
+          {
+            "gap_description": "Principle of Least Privilege / Restriction of Admin Privileges (User has local administrator privileges)",
+            "evidence": "User indicated: 'Yes' for Question 19",
+            "impact": "Elevated privileges allow malware to execute with higher permissions, increasing the scope and impact of a system compromise.",
+            "severity": "HIGH"
+          }
+        ]
+      },
+      {
+        "threat_name": "Unauthorized Data Breach via Compromised Credentials",
+        "threat_index": 2,
+        "risk_rating": "4/5",
+        "residual_risk": "4.0/5",
+        "decision_options": [
+          {
+            "value": "TREAT",
+            "label": "Treat the Risk (Implement Controls)",
+            "description": "Treating the risk involves implementing specific controls to reduce the likelihood or impact of the 'Unauthorized Data Breach via Compromised Credentials' threat. The primary goal is to lower the current residual risk rating of 4.0/5 to an acceptable level (1 or 2). This strategy focuses on proactive measures to strengthen the organization's security posture and protect sensitive data on John Doe's laptop. It requires identifying, implementing, and continuously monitoring the effectiveness of new security controls.",
+            "recommendation": "This option is highly recommended given the current high risk rating of 4/5 and the complete absence of existing controls (0/5). Implementing the recommended controls, such as MFA and Principle of Least Privilege, directly addresses the identified gaps and is crucial for mitigating the significant threat of a data breach. It is appropriate when the organization has the resources and commitment to actively reduce risk to an acceptable level.",
+            "consequences": "Choosing to treat the risk will lead to a significant reduction in the likelihood and impact of an unauthorized data breach, enhancing data security and compliance. Failure to implement controls effectively could result in the risk remaining high, potentially leading to data loss, reputational damage, and regulatory fines. Successful treatment will improve the overall security posture of John Doe's laptop and similar assets.",
+            "estimated_cost": "Variable, dependent on specific control implementation (e.g., software licenses, configuration time, training). Estimated range: $50 - $500 per user/device for initial setup and ongoing maintenance.",
+            "typical_timeline": "1-3 months for planning, implementation, and initial verification of controls.",
+            "approval_required": "Risk Owner (CIO/L1 Head) and potentially the RCAC for significant infrastructure-wide changes or budget allocation.",
+            "monitoring_required": "Continuous monitoring of control effectiveness, regular audits, and periodic review of residual risk to ensure controls remain operational and effective against evolving threats."
+          },
+          {
+            "value": "ACCEPT",
+            "label": "Accept the Risk (Retain Risk)",
+            "description": "Accepting the risk means making an informed decision to tolerate the current level of risk associated with 'Unauthorized Data Breach via Compromised Credentials' without implementing further controls. This option is typically chosen when the risk is already at an acceptable level (1 or 2), or when the cost of treatment outweighs the potential benefits, or when treatment is not feasible. It acknowledges the potential for a data breach and its consequences, but no immediate action is taken to reduce it.",
+            "recommendation": "This option is generally not recommended for risks with a rating above 2, especially for a critical threat like an unauthorized data breach with a current residual risk of 4.0/5. It should only be considered if a comprehensive cost-benefit analysis clearly demonstrates that implementing controls is financially or operationally unfeasible, and the organization is prepared to bear the full consequences of a breach. This would require strong justification.",
+            "consequences": "Accepting this high-rated risk means the organization remains fully exposed to the 'Unauthorized Data Breach via Compromised Credentials' threat. This could lead to severe consequences, including significant data loss, regulatory non-compliance (e.g., GDPR, HIPAA), substantial financial penalties, reputational damage, and potential legal action. The organization would be responsible for all costs and impacts resulting from a breach.",
+            "estimated_cost": "Minimal immediate cost (no control implementation), but potentially very high costs in the event of a breach (e.g., incident response, legal fees, fines, reputational damage).",
+            "typical_timeline": "Immediate decision, but ongoing exposure to risk.",
+            "approval_required": "Risk Owner (CIO/L1 Head) and Risk Approver (RCAC) due to the risk being above the acceptable threshold (rating > 2). A detailed cost-benefit analysis and justification are mandatory.",
+            "monitoring_required": "Accepted risks are subject to monitoring and review. This would involve tracking any incidents related to compromised credentials or data breaches on similar assets to reassess the risk acceptance decision periodically."
+          },
+          {
+            "value": "TRANSFER",
+            "label": "Transfer the Risk (Share Risk)",
+            "description": "Transferring the risk involves shifting the financial or operational impact of the 'Unauthorized Data Breach via Compromised Credentials' to a third party. While the impact is transferred, the ultimate accountability for the risk typically remains with the organization. This often involves mechanisms like cyber insurance, outsourcing certain security functions, or contractual agreements with vendors that assume specific liabilities.",
+            "recommendation": "This option could be considered as a supplementary strategy, especially for the financial impact of a data breach, but it does not eliminate the underlying vulnerability. It is appropriate when the organization wants to mitigate the financial consequences of a high-impact event, or when a third party is better equipped to manage specific aspects of the risk. A cost-benefit analysis is crucial to determine if the cost of transfer (e.g., insurance premiums) is justified.",
+            "consequences": "Transferring the risk can provide financial protection against the costs associated with a data breach (e.g., legal fees, notification costs, fines, recovery). However, it does not prevent the breach itself, nor does it fully mitigate reputational damage or operational disruption. The organization must carefully review the scope and exclusions of any transfer mechanism, as residual risks will almost certainly remain.",
+            "estimated_cost": "Variable, dependent on the transfer method (e.g., cyber insurance premiums, vendor service fees). Estimated range: $1,000 - $10,000+ annually for comprehensive cyber insurance, plus potential deductibles.",
+            "typical_timeline": "1-3 months for negotiation and implementation of transfer mechanisms (e.g., obtaining insurance, finalizing vendor contracts).",
+            "approval_required": "Risk Owner (CIO/L1 Head) and Risk Approver (RCAC), especially if it involves significant financial outlay or contractual agreements with third parties.",
+            "monitoring_required": "Regular review of transfer agreements (e.g., insurance policies, vendor contracts) to ensure coverage remains adequate and relevant. Monitoring of the third party's performance if services are outsourced."
+          },
+          {
+            "value": "TERMINATE",
+            "label": "Terminate the Risk (Avoid Risk)",
+            "description": "Terminating the risk means eliminating the 'Unauthorized Data Breach via Compromised Credentials' threat by ceasing the activity or removing the asset that gives rise to the risk. This is the most drastic option and is typically reserved for risks that are deemed unacceptable and cannot be effectively treated or transferred. For John Doe's laptop, this would mean removing the laptop from service or discontinuing its use for sensitive data processing.",
+            "recommendation": "This option is generally considered when the risk is extremely high (rating > 2) and the asset or activity is not critical, or when the costs and efforts of treatment or transfer are prohibitive. For John Doe's laptop, this would imply that the laptop's function is not essential, or the risk of using it for sensitive data is too great to bear. It is a last resort for non-acceptable risks.",
+            "consequences": "Terminating the risk would completely eliminate the possibility of an 'Unauthorized Data Breach via Compromised Credentials' originating from John Doe's laptop. However, it would also result in the loss of the laptop's functionality or the ability to perform the associated tasks, potentially impacting productivity or business operations. This option should only be chosen if the operational impact of ceasing the activity is less than the potential impact of the breach.",
+            "estimated_cost": "Cost of decommissioning the asset, potential loss of productivity, or cost of finding alternative solutions. Estimated range: $100 - $1,000 (decommissioning) plus indirect operational costs.",
+            "typical_timeline": "Immediate decision and implementation, with potential for longer-term operational adjustments.",
+            "approval_required": "Risk Owner (CIO/L1 Head) and Risk Approver (RCAC) due to the significant operational impact of ceasing an activity or removing an asset.",
+            "monitoring_required": "Verification that the activity has ceased or the asset has been securely decommissioned. Monitoring for any new risks arising from the alternative solutions or processes implemented."
+          }
+        ],
+        "recommended_controls": [
+          {
+            "control_id": "A.8.5",
+            "control_name": "Implement Secure authentication (MFA) for laptop login",
+            "control_type": "Preventive",
+            "priority": "HIGH",
+            "rationale": "MFA significantly reduces the risk of unauthorized access even if primary credentials are stolen or guessed, directly addressing the 'MFA missing' gap. This control is needed because the current lack of MFA leaves the laptop highly vulnerable to credential compromise.",
+            "expected_effectiveness": 4,
+            "estimated_cost": "$10 - $50 per user (software license, setup time)",
+            "implementation_timeline": "2-4 weeks",
+            "expected_risk_reduction": "Reduces likelihood of unauthorized access by 2 points",
+            "priority_level": "Critical"
+          },
+          {
+            "control_id": "A.8.2",
+            "control_name": "Implement Privileged access rights (Principle of Least Privilege)",
+            "control_type": "Preventive",
+            "priority": "HIGH",
+            "rationale": "Restricting local administrator privileges limits the potential damage an attacker can cause with compromised credentials, directly addressing the 'User has local administrator privileges' gap. This control is needed to minimize the impact of a successful breach by containing potential lateral movement and data exfiltration.",
+            "expected_effectiveness": 4,
+            "estimated_cost": "$20 - $100 per user (configuration, policy management)",
+            "implementation_timeline": "4-6 weeks",
+            "expected_risk_reduction": "Reduces impact of unauthorized access by 1-2 points",
+            "priority_level": "Critical"
+          }
+        ],
+        "control_gaps": [
+          {
+            "gap_description": "Multi-Factor Authentication (MFA) missing for laptop login",
+            "evidence": "User indicated: 'No' for Question 14",
+            "impact": "Increases the risk of unauthorized access if credentials are compromised, leading to data breaches.",
+            "severity": "HIGH"
+          },
+          {
+            "gap_description": "Principle of Least Privilege / Restriction of Admin Privileges (User has local administrator privileges)",
+            "evidence": "User indicated: 'Yes' for Question 19",
+            "impact": "Compromised credentials with administrative privileges can lead to wider system access and more significant data breaches.",
+            "severity": "HIGH"
+          }
+        ]
+      },
+      {
+        "threat_name": "Physical Theft and Sensitive Data Exposure",
+        "threat_index": 3,
+        "risk_rating": "4/5",
+        "residual_risk": "3.0/5",
+        "decision_options": [
+          {
+            "value": "TREAT",
+            "label": "Treat the Risk (Implement Controls)",
+            "description": "Treating the risk involves implementing appropriate controls to reduce the risk evaluation rating to an acceptable level, typically 1 or 2. This strategy focuses on modifying the likelihood or the consequences of the risk by introducing new safeguards or strengthening existing ones. The goal is to actively manage and mitigate the identified vulnerabilities that contribute to the risk.",
+            "recommendation": "This option is recommended for all risks with a risk evaluation rating above 2, which includes the current risk of 4/5. Given the high severity of potential data exposure, active treatment is crucial to reduce the residual risk to an acceptable level. It is particularly suitable when effective controls can be identified and implemented within reasonable cost and timeframes.",
+            "consequences": "Choosing to treat the risk will lead to a reduction in the likelihood and/or impact of physical theft and sensitive data exposure. This will enhance the organization's security posture and compliance, but it requires resource allocation for control implementation and ongoing maintenance. Failure to implement controls effectively could result in the risk remaining at an unacceptable level.",
+            "estimated_cost": "$5,000 - $20,000 (initial implementation + licensing)",
+            "typical_timeline": "1-3 months (for implementation and initial rollout)",
+            "approval_required": "Risk Owner (e.g., CIO for Infrastructure/Application/Data assets, BU Head for Project/Engagement assets) must review and approve the Risk Treatment Plan. For this asset (John Doe's Laptop, implying an endpoint device and data), the CIO would likely be the Risk Owner.",
+            "monitoring_required": "Ongoing monitoring of control effectiveness, regular review of the residual risk, and periodic audits to ensure compliance with physical security policies and remote wipe/lock capabilities. Accepted risks are subject to monitoring and review."
+          },
+          {
+            "value": "ACCEPT",
+            "label": "Accept the Risk",
+            "description": "Accepting the risk is an informed decision to take a particular risk, either with or without prior treatment. This means the organization acknowledges the risk and its potential impact but chooses not to implement further controls or transfer it. Accepted risks are subject to monitoring and review, and this option is typically chosen when the cost of treatment outweighs the potential impact, or the risk falls within the organization's acceptable risk appetite.",
+            "recommendation": "This option is generally appropriate for risks with an evaluation rating of 1 or 2, which are considered acceptable. For risks above 2 (like this one), acceptance is only considered if control implementation is not feasible due to significant financial, administrative, or technical constraints, and a thorough cost-benefit analysis supports this decision. Given the high severity of sensitive data exposure, this option should be carefully considered and justified.",
+            "consequences": "If the risk is accepted, the organization will bear the full consequences of physical theft and sensitive data exposure if an incident occurs. This could include financial losses, reputational damage, legal penalties, and operational disruption. While it avoids immediate control implementation costs, it shifts the burden to potential future incident response and recovery, which can be significantly higher.",
+            "estimated_cost": "$0 (immediate cost), but potential for significant costs ($50,000 - $500,000+) in case of incident (e.g., data breach fines, legal fees, reputational damage).",
+            "typical_timeline": "Immediate (decision), but ongoing monitoring and review are required (e.g., quarterly/annually).",
+            "approval_required": "For risks affecting infrastructure/application/corporate security (like a laptop with sensitive data), the CIO/L1 Head acts as the Risk Owner, and the Risk & Compliance Approval Committee (RCAC) acts as the Risk Approver. If the risk affects a project/engagement, the BU Head is the Risk Owner, and the Delivery Compliance Officer - Lead is the Risk Approver. A cost-benefit analysis is mandatory.",
+            "monitoring_required": "Accepted risks must be periodically reviewed (e.g., quarterly or annually) to ensure the risk context has not changed and the acceptance decision remains valid. This includes tracking any changes in threat landscape or asset criticality."
+          },
+          {
+            "value": "TRANSFER",
+            "label": "Transfer the Risk",
+            "description": "Transferring the risk involves shifting the financial or operational impact of a risk to a third party, typically through mechanisms like insurance, outsourcing, or contractual agreements. While the accountability for the risk ultimately remains with the organization, the financial burden or operational responsibility for managing certain aspects of the risk is shared or delegated. This is a form of risk sharing.",
+            "recommendation": "This option is suitable for certain risks with a risk evaluation rating above 2, especially when the financial impact of an incident is high and can be reasonably covered by insurance, or when a third party is better equipped to manage the risk. For physical theft and data exposure, cyber insurance can cover financial losses, while managed security services could transfer operational aspects of device management. A cost-benefit analysis is required.",
+            "consequences": "Transferring the risk can reduce the direct financial impact of an incident, such as data breach costs or legal liabilities, depending on the scope of the transfer mechanism (e.g., insurance policy). However, it incurs costs for premiums or service fees, and the organization retains ultimate accountability and potential reputational damage. Careful due diligence on the third party and clear contractual terms are essential to avoid unexpected residual risks.",
+            "estimated_cost": "$1,000 - $10,000 annually (for cyber insurance premiums or managed service fees, depending on coverage and scope).",
+            "typical_timeline": "1-3 months (for policy procurement or contract negotiation and implementation).",
+            "approval_required": "The Risk Owner (e.g., CIO for this asset) is responsible for transferring non-acceptable risks. This typically involves legal and financial review, and potentially higher-level management approval depending on the financial commitment and strategic implications. Risk & Compliance provides guidance.",
+            "monitoring_required": "Regular review of insurance policies or third-party contracts to ensure coverage remains adequate and terms are met. Monitoring of the third party's performance and security posture is also crucial, along with periodic reassessment of residual risks not covered by the transfer."
+          },
+          {
+            "value": "TERMINATE",
+            "label": "Terminate the Risk (Avoid the Activity)",
+            "description": "Terminating the risk means eliminating it entirely by deciding not to start or continue with the activity that gives rise to the risk, or by removing the risk source. This is the most drastic treatment option and is typically reserved for non-acceptable risks where the potential impact is too high and other treatment options are either infeasible or insufficient. It effectively removes the exposure by ceasing the risky operation.",
+            "recommendation": "This option is applicable for risks with a risk evaluation rating above 2, where the risk is deemed intolerable and cannot be effectively treated or transferred. For 'Physical Theft and Sensitive Data Exposure' on John Doe's Laptop, this would mean ceasing the use of the laptop for sensitive data, or removing the sensitive data from the laptop entirely, or even discontinuing the business activity that necessitates such data on a portable device. This is a last resort.",
+            "consequences": "Choosing to terminate the risk will completely eliminate the possibility of physical theft and sensitive data exposure from this specific asset/activity. However, it will likely result in a loss of operational capability or efficiency, as the activity giving rise to the risk is ceased. This could impact productivity, business processes, or even strategic objectives, requiring a re-evaluation of how the affected tasks are performed.",
+            "estimated_cost": "$0 (direct cost), but potential for significant indirect costs due to loss of productivity, operational changes, or business impact (e.g., $10,000 - $100,000+ in lost revenue or efficiency).",
+            "typical_timeline": "Immediate (decision), but operational changes and alternative arrangements may take 1-6 months.",
+            "approval_required": "The Risk Owner (e.g., CIO for this asset) is responsible for avoiding non-acceptable risks. Approval from the Risk Committee / CRO / Business Head is required. For critical risks, Board approval is necessary due to the significant operational or strategic impact of ceasing an activity.",
+            "monitoring_required": "Monitoring is required to ensure the activity giving rise to the risk has indeed ceased and that no new, similar risks are introduced by alternative processes. Regular review of the business impact of the terminated activity is also necessary."
+          }
+        ],
+        "recommended_controls": [
+          {
+            "control_id": "A.8.1",
+            "control_name": "Implement Remote wipe/lock for user endpoint devices",
+            "control_type": "Corrective",
+            "priority": "HIGH",
+            "rationale": "Provides a critical mechanism to protect data on lost or stolen devices, preventing sensitive data exposure. This directly addresses the identified gap of 'Remote Wipe or Lock capability unknown/missing'.",
+            "expected_effectiveness": 4,
+            "estimated_cost": "$500 - $2,000 (per device, or part of an MDM solution)",
+            "implementation_timeline": "1-2 months (for solution selection, deployment, and user training)",
+            "expected_risk_reduction": "HIGH (significantly reduces data exposure impact)",
+            "risk_owner_suggestion": "CIO (as owner of Data and Application assets)"
+          },
+          {
+            "control_id": "A.5.1",
+            "control_name": "Strengthen enforcement of Physical security policies for information security",
+            "control_type": "Preventive",
+            "priority": "MEDIUM",
+            "rationale": "Improved enforcement of physical security policies can reduce the likelihood of physical theft. This addresses the 'Physical Security Policies/Guidelines' control, which was rated 'LIMITED' due to lack of strict enforcement.",
+            "expected_effectiveness": 3,
+            "estimated_cost": "$1,000 - $5,000 (for awareness campaigns, training, and management oversight)",
+            "implementation_timeline": "2-3 months (for policy review, communication, and initial enforcement measures)",
+            "expected_risk_reduction": "MEDIUM (reduces likelihood of theft)",
+            "risk_owner_suggestion": "Admin Head (as owner of Physical Assets) in collaboration with CIO"
+          }
+        ],
+        "control_gaps": [
+          {
+            "gap_description": "Remote Wipe or Lock capability unknown/missing",
+            "evidence": "User indicated: 'Unknown' for Question 18",
+            "impact": "Inability to remotely secure or wipe a lost/stolen laptop increases the risk of sensitive data exposure.",
+            "severity": "HIGH"
+          }
+        ]
+      },
+      {
+        "threat_name": "Data Loss or Corruption from System Failure or Undetected Malware",
+        "threat_index": 4,
+        "risk_rating": "5/5",
+        "residual_risk": "5.0/5",
+        "decision_options": [
+          {
+            "value": "TREAT",
+            "label": "Treat the Risk (Implement Controls)",
+            "description": "Treating the risk involves implementing specific controls to reduce the likelihood or impact of the identified threat, bringing the risk level down to an acceptable threshold. This strategy focuses on actively modifying the risk by introducing preventive, detective, or corrective measures. The goal is to minimize the potential for data loss or corruption by addressing the underlying vulnerabilities and threats directly, rather than simply accepting or avoiding them. This option is typically chosen when the current risk level is unacceptable and effective controls are available.",
+            "recommendation": "This option is highly recommended given the current high residual risk of 5.0/5 and the identified critical control gap (missing EDR/Antivirus). Implementing the recommended EDR/Antivirus solution will directly address the root cause of data corruption or loss from malware, significantly reducing the likelihood of the threat materializing. It complements the existing backup solution by preventing the initial compromise.",
+            "consequences": "Choosing to treat the risk will lead to a significant reduction in the likelihood and impact of data loss or corruption from malware. It will enhance the security posture of John Doe's laptop, protecting critical data and ensuring business continuity. The primary consequence is the investment of resources (cost and time) for implementation, but this is offset by the reduced potential for costly incidents and improved compliance.",
+            "estimated_cost": "$100 - $500 (initial software license and setup for a single laptop, potentially higher for enterprise deployment)",
+            "typical_timeline": "1-4 weeks (for procurement, installation, and initial configuration)",
+            "approval_required": "Risk Owner (e.g., IT/Security Department Head or John Doe's Business Unit Head) for the Risk Treatment Plan.",
+            "monitoring_required": "Ongoing monitoring of the implemented EDR/Antivirus solution for alerts, regular updates, and periodic reviews of its effectiveness. The residual risk value and control effectiveness should be reviewed periodically."
+          },
+          {
+            "value": "ACCEPT",
+            "label": "Accept the Risk (Retain Risk)",
+            "description": "Accepting the risk means making an informed decision to tolerate the current level of risk without implementing further controls to reduce it. This strategy is typically chosen when the cost of treatment outweighs the potential impact of the risk, or when no feasible treatment options are available. While the risk is accepted, it is not ignored; it remains subject to monitoring and review to ensure its impact does not escalate beyond acceptable limits. A cost-benefit analysis is crucial before deciding to accept a non-acceptable risk.",
+            "recommendation": "This option is generally not recommended for a critical risk with a 5.0/5 residual rating, especially when a clear and effective control (EDR/Antivirus) has been identified. Accepting this risk would mean tolerating a high probability of data loss or corruption due to undetected malware, which could lead to significant operational disruption and financial costs. It should only be considered if the implementation of the recommended control is genuinely infeasible due to extreme financial, administrative, or technical constraints, and a thorough cost-benefit analysis supports this decision.",
+            "consequences": "If this risk is accepted, John Doe's laptop remains highly vulnerable to data loss or corruption from malware, despite existing backups. The organization would bear the full financial and operational impact of any incident, including potential data recovery costs, productivity loss, reputational damage, and potential legal liabilities. While no immediate cost for controls is incurred, the potential future costs from incidents are substantial and likely to exceed the cost of treatment. Accepted risks are still subject to monitoring.",
+            "estimated_cost": "$1,000 - $10,000+ per incident (potential data recovery, productivity loss, reputational damage)",
+            "typical_timeline": "Immediate (decision to accept)",
+            "approval_required": "Risk Owner (e.g., IT/Security Department Head or John Doe's Business Unit Head) for the initial decision. For risks above acceptable criteria (like this 5.0/5 risk), approval from a higher-level Risk Approver (e.g., RCAC, Delivery Compliance Officer - Lead, or CIO/L1 Head depending on impact coverage) is required.",
+            "monitoring_required": "Accepted risks are subject to ongoing monitoring and periodic review to ensure the risk level does not change and to re-evaluate the acceptance decision. This includes tracking potential incidents and their impacts."
+          },
+          {
+            "value": "TRANSFER",
+            "label": "Transfer the Risk (Shift Impact to Third Party)",
+            "description": "Transferring the risk involves shifting the financial or operational impact of a risk to a third party, such as an insurer or a service provider, through contractual agreements. While the accountability for the risk ultimately remains with the organization, the burden of loss or the responsibility for managing certain aspects of the risk is shared. This strategy is often employed for risks that are difficult or costly to treat internally, or when specialized expertise from a third party can manage the risk more effectively. It requires careful due diligence and clear contractual terms.",
+            "recommendation": "This option could be considered as a supplementary measure or if internal treatment is deemed insufficient or excessively costly. For a laptop-specific malware risk, transferring typically involves cyber insurance to cover financial losses from data breaches or system failures, or outsourcing endpoint security management to a third-party vendor. While it doesn't prevent the malware, it mitigates the financial consequences. It's less direct than 'Treat' for preventing the incident itself but can be part of a broader risk management strategy.",
+            "consequences": "Transferring the risk can provide financial protection against the costs associated with data loss or corruption, such as recovery expenses, legal fees, and business interruption. However, it does not eliminate the risk itself, and the organization retains ultimate accountability. There will be ongoing costs in the form of premiums or service fees. The effectiveness depends heavily on the scope and clarity of the transfer agreement, and residual risks may still remain, requiring internal management.",
+            "estimated_cost": "$500 - $2,000 annually (for basic cyber insurance coverage, potentially part of a broader policy or managed service fees)",
+            "typical_timeline": "4-8 weeks (for policy procurement, contract negotiation, and implementation)",
+            "approval_required": "Risk Owner (e.g., IT/Security Department Head or John Doe's Business Unit Head) for the decision to transfer. Depending on the contract value and scope, higher-level management or legal department approval may also be required.",
+            "monitoring_required": "Regular review of the transfer agreement (e.g., insurance policy, vendor contract) to ensure coverage remains adequate and terms are met. Monitoring of the third-party's performance if services are outsourced, and assessment of any residual risks."
+          },
+          {
+            "value": "TERMINATE",
+            "label": "Terminate the Risk (Cease Activity)",
+            "description": "Terminating the risk involves eliminating the risk entirely by ceasing the activity or decommissioning the asset that gives rise to the risk. This is the most drastic risk treatment option and is typically chosen when the risk is unacceptably high, cannot be effectively treated or transferred, and the benefits of the activity do not outweigh the potential harm. It effectively removes the risk source, but it also means foregoing the benefits associated with the activity or asset. A thorough justification and impact analysis are required before pursuing this option.",
+            "recommendation": "This option would involve decommissioning John Doe's laptop or ceasing the activities that expose it to malware, which is generally not practical for an essential business asset. It is only recommended if the laptop's function is non-critical, the risk of data loss is catastrophic and untreatable, and the cost of maintaining the asset or the risk it poses far outweighs its utility. Given that a clear treatment option (EDR/Antivirus) exists, terminating the asset is likely an overreaction and would incur significant productivity loss.",
+            "consequences": "Terminating the risk by decommissioning John Doe's laptop would eliminate the threat of data loss or corruption from malware on that specific device. However, it would also result in the loss of productivity for John Doe, potential costs for replacing the asset or finding alternative means to perform the work, and potential data migration challenges. This option should only be considered as a last resort when all other treatment strategies are infeasible or insufficient for a critical risk.",
+            "estimated_cost": "$1,000 - $3,000 (cost of replacing the laptop, potential data migration, and significant productivity loss)",
+            "typical_timeline": "2-6 weeks (for decommissioning, data migration, and procuring alternative resources)",
+            "approval_required": "Management Approval (e.g., Risk Committee, CRO, Business Head) and potentially Board approval for critical risks, as this involves ceasing an operational activity or asset.",
+            "monitoring_required": "No ongoing monitoring for the terminated risk itself, as the source is removed. However, monitoring would be required for any new processes or assets introduced to replace the terminated activity to ensure new risks are not introduced."
+          }
+        ],
+        "recommended_controls": [
+          {
+            "control_id": "A.8.7",
+            "control_name": "Implement Protection against malware (EDR/Antivirus)",
+            "control_type": "Preventive/Detective",
+            "priority": "HIGH",
+            "rationale": "Prevents data corruption and loss caused by malware, complementing backup solutions by addressing the root cause. This directly addresses the identified control gap and the high residual risk.",
+            "expected_effectiveness": 4,
+            "estimated_cost": "$100 - $500 (initial license and setup)",
+            "implementation_timeline": "1-4 weeks",
+            "expected_risk_reduction": "Reduces likelihood of malware infection from High to Medium/Low, significantly lowering the overall residual risk.",
+            "addresses_gap": "Endpoint Detection and Response (EDR) or Antivirus/Anti-malware solution missing"
+          }
+        ],
+        "control_gaps": [
+          {
+            "gap_description": "Endpoint Detection and Response (EDR) or Antivirus/Anti-malware solution missing",
+            "evidence": "User indicated: 'No' for Question 15",
+            "impact": "Increases the risk of data corruption or loss due to undetected malware, bypassing the effectiveness of backups.",
+            "severity": "HIGH"
+          }
+        ]
+      }
+    ]
+  },
+  "agent_5_result": null,
+  "last_updated": "2026-01-11 20:21:50",
+  "progress": {
+    "agent_1": "complete",
+    "agent_2": "complete",
+    "agent_3": "complete",
+    "agent_4": "complete",
+    "agent_5": "pending"
+  }
+}

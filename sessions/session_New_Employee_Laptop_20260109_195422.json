@@ -1,0 +1,688 @@
+{
+  "session_id": "session_New_Employee_Laptop_20260109_195422",
+  "asset_data": {
+    "asset_name": "New Employee Laptop",
+    "asset_type": "Employee Laptop",
+    "asset_owner": "Ganesh",
+    "location": "",
+    "description": "Dell",
+    "questionnaire_answers": {
+      "laptop_id": {
+        "question_text": "What is the unique asset tag or serial number of this Employee Laptop?",
+        "answer": "Dell",
+        "question_type": "text",
+        "section": "1. Asset Identification",
+        "help_text": "e.g., LPT-00123, Dell-XYZ789",
+        "why_this_matters": "Provides a unique identifier for tracking and management of the specific asset."
+      },
+      "asset_owner": {
+        "question_text": "Who is the primary user/owner of this Employee Laptop?",
+        "answer": "Ganesh",
+        "question_type": "text",
+        "section": "1. Asset Identification",
+        "help_text": "Name and Department of the primary user.",
+        "why_this_matters": "Identifies the individual accountable for the laptop's usage and security, and the 'Asset Class Owner' as per organizational terminology."
+      },
+      "laptop_model": {
+        "question_text": "What is the make and model of the Employee Laptop?",
+        "answer": "Dell Latitude 7420",
+        "question_type": "text",
+        "section": "1. Asset Identification",
+        "help_text": "e.g., Dell Latitude 7420, Apple MacBook Pro M1",
+        "why_this_matters": "Helps understand hardware capabilities, potential vulnerabilities, and support lifecycle."
+      },
+      "operating_system": {
+        "question_text": "What is the operating system installed on this Employee Laptop?",
+        "answer": "Windows 10",
+        "question_type": "text",
+        "section": "1. Asset Identification",
+        "help_text": "e.g., Windows 10, macOS Ventura, Ubuntu Linux",
+        "why_this_matters": "Indicates the software environment, which has implications for security controls, patching, and known vulnerabilities."
+      },
+      "business_purpose": {
+        "question_text": "What is the primary business purpose or function of this Employee Laptop?",
+        "answer": "Daily operations - Finance analysis",
+        "question_type": "textarea",
+        "section": "2. Business Context and Usage",
+        "help_text": "Describe how this laptop is used in daily operations.",
+        "why_this_matters": "Helps determine the business processes supported and the impact if the laptop is compromised or unavailable."
+      },
+      "business_criticality": {
+        "question_text": "What is the overall business criticality of this Employee Laptop to the organization?",
+        "answer": "3",
+        "question_type": "dropdown",
+        "section": "2. Business Context and Usage",
+        "help_text": "Consider the impact on business operations if this laptop were to be unavailable or compromised.",
+        "why_this_matters": "Provides the asset owner's perspective on the overall importance of the asset, guiding the prioritization of risk analysis."
+      },
+      "network_connectivity": {
+        "question_text": "How does this Employee Laptop typically connect to the corporate network?",
+        "answer": [
+          "wifi_corporate",
+          "vpn"
+        ],
+        "question_type": "multiselect",
+        "section": "2. Business Context and Usage",
+        "help_text": "Select all applicable connection methods.",
+        "why_this_matters": "Indicates exposure to different network environments and potential attack vectors."
+      },
+      "off_network_usage": {
+        "question_text": "Is this Employee Laptop regularly used outside of corporate premises (e.g., home, travel)?",
+        "answer": "yes_occasionally",
+        "question_type": "dropdown",
+        "section": "2. Business Context and Usage",
+        "help_text": "How often is the laptop used off-site?",
+        "why_this_matters": "Higher mobility increases risks of physical loss/theft and exposure to less secure networks."
+      },
+      "data_types_stored": {
+        "question_text": "What types of sensitive or critical data are stored or processed on this Employee Laptop?",
+        "answer": [
+          "financial_corporate"
+        ],
+        "question_type": "multiselect",
+        "section": "3. Data & Application Facts",
+        "help_text": "Select all applicable types of data. If 'None sensitive' is selected, no other options should be chosen.",
+        "why_this_matters": "Directly impacts the potential consequences of a data breach (Confidentiality impact)."
+      },
+      "data_volume": {
+        "question_text": "Approximately how much sensitive data (if any) is stored locally on this laptop?",
+        "answer": "medium",
+        "question_type": "dropdown",
+        "section": "3. Data & Application Facts",
+        "help_text": "Estimate the volume of sensitive data stored directly on the laptop's hard drive.",
+        "why_this_matters": "The volume of sensitive data affects the scale of a potential data breach."
+      },
+      "critical_applications": {
+        "question_text": "Does this laptop run any business-critical applications that are not easily replaceable or have unique configurations?",
+        "answer": "yes",
+        "question_type": "dropdown",
+        "section": "3. Data & Application Facts",
+        "help_text": "e.g., specialized engineering software, legacy applications, unique development environments.",
+        "why_this_matters": "Indicates potential availability and integrity impacts if the laptop or its applications are compromised."
+      },
+      "admin_privileges": {
+        "question_text": "Does the primary user of this laptop have local administrator privileges?",
+        "answer": "no",
+        "question_type": "dropdown",
+        "section": "3. Data & Application Facts",
+        "help_text": "Can the user install software or change system settings without IT intervention?",
+        "why_this_matters": "Local admin privileges increase the risk of malware installation and system misconfiguration."
+      },
+      "disk_encryption": {
+        "question_text": "Is full disk encryption enabled on this Employee Laptop?",
+        "answer": "yes",
+        "question_type": "dropdown",
+        "section": "4. Security Control Facts",
+        "help_text": "e.g., BitLocker for Windows, FileVault for macOS.",
+        "why_this_matters": "A critical control for protecting data at rest, especially against physical loss or theft."
+      },
+      "anti_malware": {
+        "question_text": "Is anti-malware/antivirus software installed and actively running with up-to-date definitions on this Employee Laptop?",
+        "answer": "yes",
+        "question_type": "dropdown",
+        "section": "4. Security Control Facts",
+        "help_text": "Confirms the presence and operational status of endpoint protection.",
+        "why_this_matters": "Protects against malware, viruses, and other malicious software, impacting integrity and availability."
+      },
+      "patch_management": {
+        "question_text": "Are operating system and application security patches applied regularly (e.g., monthly, automatically) to this Employee Laptop?",
+        "answer": "no",
+        "question_type": "dropdown",
+        "section": "4. Security Control Facts",
+        "help_text": "Ensures known vulnerabilities are addressed.",
+        "why_this_matters": "Regular patching reduces the attack surface and prevents exploitation of known vulnerabilities."
+      },
+      "mfa_login": {
+        "question_text": "Is Multi-Factor Authentication (MFA) required for logging into this Employee Laptop or its primary applications?",
+        "answer": "yes_laptop",
+        "question_type": "dropdown",
+        "section": "4. Security Control Facts",
+        "help_text": "e.g., password + token, biometric, smart card.",
+        "why_this_matters": "Significantly enhances authentication security, reducing the risk of unauthorized access."
+      },
+      "backup_solution": {
+        "question_text": "Is a corporate backup solution (e.g., cloud backup, network drive sync) actively used for data on this Employee Laptop?",
+        "answer": "yes_automatic",
+        "question_type": "dropdown",
+        "section": "4. Security Control Facts",
+        "help_text": "Ensures data recoverability in case of loss or corruption.",
+        "why_this_matters": "Protects against data loss and supports availability and integrity in case of system failure or compromise."
+      },
+      "physical_security_measures": {
+        "question_text": "What physical security measures are typically employed for this laptop when not in use?",
+        "answer": [
+          "always_with_user"
+        ],
+        "question_type": "multiselect",
+        "section": "4. Security Control Facts",
+        "help_text": "Select all applicable measures.",
+        "why_this_matters": "Reduces the risk of physical theft or unauthorized access when the laptop is unattended."
+      },
+      "overall_impact_rating": {
+        "question_text": "Considering all identified risks and existing controls, what is the estimated overall 'Impact Rating' if this Employee Laptop were to be severely compromised (e.g., data breach, prolonged outage, complete loss)?",
+        "answer": "4",
+        "question_type": "dropdown",
+        "section": "5. Overall Risk Perspective",
+        "help_text": "This is your overall business impact perspective, not a technical breakdown.",
+        "why_this_matters": "Captures the asset owner's high-level understanding of the potential consequences, which is a critical input for risk evaluation."
+      },
+      "overall_probability_rating": {
+        "question_text": "Considering all identified threats and vulnerabilities, what is the estimated 'Probability Rating' of a severe compromise occurring to this Employee Laptop within the next year?",
+        "answer": "3",
+        "question_type": "dropdown",
+        "section": "5. Overall Risk Perspective",
+        "help_text": "This is your overall likelihood perspective, not a technical calculation.",
+        "why_this_matters": "Captures the asset owner's high-level understanding of the likelihood of a risk event, which is a critical input for risk evaluation."
+      }
+    },
+    "questionnaire_metadata": {
+      "asset_type_assessed": "Employee Laptop",
+      "questionnaire_title": "Risk Assessment Questionnaire for Employee Laptop",
+      "completed_date": "2026-01-09 19:49:15",
+      "total_questions": 20,
+      "total_answers": 20
+    },
+    "threats_and_vulnerabilities": [
+      {
+        "threat": "Security threats to Employee Laptop",
+        "risk_statement": "Comprehensive risk assessment for New Employee Laptop based on 20 detailed questionnaire responses covering security posture, controls, and compliance",
+        "vulnerabilities": [
+          {
+            "vulnerability": "Security gaps identified through questionnaire assessment",
+            "description": "Analysis of 20 questionnaire answers covering access controls, data protection, backup strategies, monitoring capabilities, and incident response readiness"
+          }
+        ]
+      }
+    ]
+  },
+  "agent_1_result": {
+    "discovery_summary": {
+      "cia_methodology": "CIA (Confidentiality, Integrity, Availability) assessed using a 4-level qualitative scale, then mapped to Asset Business Value, then to Criticality.",
+      "cia_rating_scale": "4-level: Insignificant, Moderate, Serious, Extreme",
+      "cia_definitions_source": "Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx, Table 3; Risk Assessment Template_For Agentic AI RM Use Case.xlsx, Sheet: Asset Inventorization Guideline",
+      "business_value_calculation_method": "Asset Value Chart/Matrix (lookup table based on CIA combinations)",
+      "business_value_levels": [
+        "Very Low",
+        "Low",
+        "Medium",
+        "High",
+        "Very High"
+      ],
+      "business_value_source": "Risk Assessment Template_For Agentic AI RM Use Case.xlsx, Sheet: Asset Inventory (lookup logic)",
+      "criticality_classification_method": "Business Value to Criticality Mapping Table",
+      "criticality_levels": [
+        "Insignificant",
+        "Low Critical",
+        "Medium Critical",
+        "High Critical",
+        "Very High Critical"
+      ],
+      "criticality_source": "Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx, Table 4; Asset Management SOP, Table 3",
+      "searches_performed": [
+        "What impact assessment methodology is used? CIA? DREAD? Custom?",
+        "What rating scale is used for CIA impact ratings? What are the levels?",
+        "How is Asset Business Value calculated or determined from CIA impact ratings? Is there a matrix, chart, or formula?",
+        "How is Asset Criticality Classification determined from Asset Business Value?",
+        "Mapping from Insignificant, Moderate, Serious, Extreme to numeric values 1-5 for CIA impact ratings or overall impact calculation"
+      ]
+    },
+    "threat_analysis": [
+      {
+        "threat_id": "threat_1",
+        "threat_name": "Security threats to Employee Laptop",
+        "threat_description": "Comprehensive risk assessment for New Employee Laptop based on 20 detailed questionnaire responses covering security posture, controls, and compliance",
+        "impact_assessment": {
+          "confidentiality": {
+            "rating": "Serious",
+            "numeric_value": 3,
+            "reasoning": "Based on questionnaire answer '[3. Data & Application Facts] Q: What types of sensitive or critical data are stored or processed on this Employee Laptop? Answer: ['financial_corporate']' and '[3. Data & Application Facts] Q: Approximately how much sensitive data (if any) is stored locally on this laptop? Answer: medium', unauthorized disclosure of 'financial_corporate' data, even a medium amount, would cause significant harm to the organization's interests. This meets the discovered definition for 'Serious' for Loss of Confidentiality: 'Unauthorized disclosure within or outside the organization would cause significant harm to the interest of the organization.' While full disk encryption and MFA are present, the presence of sensitive financial data locally elevates the impact."
+          },
+          "integrity": {
+            "rating": "Serious",
+            "numeric_value": 3,
+            "reasoning": "Based on questionnaire answer '[2. Business Context and Usage] Q: What is the primary business purpose or function of this Employee Laptop? Answer: Daily operations - Finance analysis', '[3. Data & Application Facts] Q: What types of sensitive or critical data are stored or processed on this Employee Laptop? Answer: ['financial_corporate']', and '[3. Data & Application Facts] Q: Does this laptop run any business-critical applications that are not easily replaceable or have unique configurations? Answer: yes', the laptop handles critical financial data and applications. The fact that '[4. Security Control Facts] Q: Are operating system and application security patches applied regularly (e.g., monthly, automatically) to this Employee Laptop? Answer: no' indicates a significant vulnerability. Unauthorized modification or damage to financial analysis data or business-critical applications, exacerbated by patching gaps, is expected to have a serious adverse effect on business operations. This meets the discovered definition for 'Serious' for Loss of Integrity: 'Unauthorized modification or damage of information is expected to have a serious adverse effect on business operations.'"
+          },
+          "availability": {
+            "rating": "Serious",
+            "numeric_value": 3,
+            "reasoning": "Based on questionnaire answer '[2. Business Context and Usage] Q: What is the primary business purpose or function of this Employee Laptop? Answer: Daily operations - Finance analysis' and '[3. Data & Application Facts] Q: Does this laptop run any business-critical applications that are not easily replaceable or have unique configurations? Answer: yes', the laptop is critical for daily finance operations and runs business-critical applications. Although '[4. Security Control Facts] Q: Is a corporate backup solution (e.g., cloud backup, network drive sync) actively used for data on this Employee Laptop? Answer: yes_automatic' provides some mitigation, the lack of regular OS and application patching ('[4. Security Control Facts] Q: Are operating system and application security patches applied regularly (e.g., monthly, automatically) to this Employee Laptop? Answer: no') increases the risk of prolonged unavailability. Disruption of access to these critical functions and data would have a serious adverse effect on business operations. This meets the discovered definition for 'Serious' for Loss of Availability: 'Impact of disruption of access or unavailability of information or information asset or services is expected to have a serious adverse effect on business operations.'"
+          }
+        },
+        "overall_impact_calculation": {
+          "confidentiality_numeric": 3,
+          "integrity_numeric": 3,
+          "availability_numeric": 3,
+          "calculation_method": "Derived from Asset Business Value mapping to Impact Category",
+          "calculation": "Asset Business Value 'High' maps to Impact Rating '4'",
+          "overall_impact": "High",
+          "overall_impact_numeric": 4
+        }
+      }
+    ],
+    "asset_business_value": {
+      "cia_combination": "Serious, Serious, Serious",
+      "cia_combination_key": "Serious|Serious|Serious",
+      "business_value_rating": "High",
+      "calculation_method": "Asset Value Chart (discovered from Risk Assessment Template_For Agentic AI RM Use Case.xlsx, Sheet: Asset Inventory)",
+      "calculation_details": "Per discovered Asset Value Chart: CIA combination (Serious, Serious, Serious) maps to Business Value 'High'",
+      "source_reference": "Risk Assessment Template_For Agentic AI RM Use Case.xlsx, Sheet: Asset Inventory",
+      "reasoning": "Based on calculated CIA ratings (Confidentiality: Serious, Integrity: Serious, Availability: Serious), per the discovered Asset Value Chart in the organizational Risk Assessment Template, the Asset Business Value is 'High'."
+    },
+    "asset_criticality": {
+      "criticality_classification": "High Critical",
+      "business_value_input": "High",
+      "calculation_method": "Criticality Classification Table (discovered from Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx, Table 4)",
+      "calculation_details": "Per discovered Criticality Classification Table: Business Value 'High' maps to Criticality 'High Critical'",
+      "source_reference": "Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx, Table 4",
+      "reasoning": "Based on calculated Asset Business Value 'High', per the discovered Criticality Classification Table in the organizational Asset Management Guidelines, the Asset Criticality Classification is 'High Critical'."
+    }
+  },
+  "agent_2_result": {
+    "discovery_summary": {
+      "methodology": "Quantitative",
+      "risk_calculation": {
+        "method": "Formula",
+        "formula": "Risk Impact Rating × Risk Probability Rating",
+        "description": "Risk Value (RV) is computed by multiplying the Risk Impact Rating (RI) by the Risk Probability Rating (RP). The resulting RV is then mapped to a Risk Evaluation Rating."
+      },
+      "probability_scale": {
+        "type": "Numeric",
+        "levels": [
+          "Very Low",
+          "Low",
+          "Medium",
+          "High",
+          "Very High"
+        ],
+        "range": "1-5"
+      },
+      "impact_scale": {
+        "type": "Numeric",
+        "levels": [
+          "Very Low",
+          "Low",
+          "Medium",
+          "High",
+          "Very High"
+        ],
+        "range": "1-5"
+      },
+      "risk_level_mapping": {
+        "method": "Value range mapping",
+        "levels": [
+          "Rating 1",
+          "Rating 2",
+          "Rating 3",
+          "Rating 4",
+          "Rating 5"
+        ],
+        "thresholds": "Risk Value 0-5 maps to Rating 1; 6-10 maps to Rating 2; 11-15 maps to Rating 3; 16-20 maps to Rating 4; 21-25 maps to Rating 5"
+      },
+      "acceptance_criteria": "Risk Ratings 1-2 are Acceptable Risk; Risk Ratings 3-5 are Non Acceptable Risk",
+      "questionnaire_answers_used": true
+    },
+    "summary": {
+      "total_threats_assessed": 1,
+      "highest_risk_value": 12,
+      "non_acceptable_risks_count": 1,
+      "acceptable_risks_count": 0,
+      "overall_risk_level": "Rating 3"
+    },
+    "threat_risk_quantification": [
+      {
+        "threat": "Security threats to Employee Laptop",
+        "vulnerabilities": [
+          "Security gaps identified through questionnaire assessment"
+        ],
+        "risk_statement": "Comprehensive risk assessment for New Employee Laptop based on 20 detailed questionnaire responses covering security posture, controls, and compliance",
+        "risk_impact": {
+          "rating": 4,
+          "category": "High",
+          "reasoning": "Based on Agent 1 CIA assessment: Confidentiality=Serious (3), Integrity=Serious (3), Availability=Serious (3). Overall impact derived from Asset Business Value 'High' mapping to Impact Rating '4'."
+        },
+        "risk_probability": {
+          "rating": 3,
+          "category": "Medium",
+          "reasoning": "Based on questionnaire answer '[4. Security Control Facts] Q: Are operating system and application security patches applied regularly (e.g., monthly, automatically) to this Employee Laptop? Answer: no', indicating a critical vulnerability that significantly increases the probability of exploitation. Also, '[2. Business Context and Usage] Q: Is this Employee Laptop regularly used outside of corporate premises (e.g., home, travel)? Answer: yes_occasionally' increases exposure. The asset owner's own assessment in '[5. Overall Risk Perspective] Q: Considering all identified threats and vulnerabilities, what is the estimated 'Probability Rating' of a severe compromise occurring to this Employee Laptop within the next year? Answer: 3' aligns with a 'Medium' probability (once every 4-6 months)."
+        },
+        "risk_value": {
+          "value": 12,
+          "calculation": "4 (impact) × 3 (probability) = 12"
+        },
+        "risk_evaluation_rating": {
+          "rating": 3,
+          "level": "Rating 3",
+          "mapping_rationale": "Risk value 12 maps to Risk Rating 3 per discovered risk evaluation table (11 to 15)."
+        },
+        "risk_classification": {
+          "classification": "NON-ACCEPTABLE",
+          "criteria_applied": "Risk Ratings 3 to 5 are classified as Non Acceptable Risk.",
+          "justification": "Risk Evaluation Rating 3 falls within the Non Acceptable Risk category per organizational policy."
+        }
+      }
+    ],
+    "rag_queries_performed": [
+      "risk quantification methodology"
+    ],
+    "rag_sources_consulted": [
+      "Risk Management Guidelines_For RM Agentic AI Use Case v1.0.docx",
+      "Risk Management SOP_For RM Agentic AI Use Case v1.0.docx",
+      "ISO IEC 27005-2022.pdf"
+    ]
+  },
+  "agent_3_result": {
+    "discovery_summary": {
+      "control_framework": "ISO 27001, ITGC",
+      "control_categories": [
+        "Organizational",
+        "People",
+        "Physical",
+        "Technological",
+        "Access to Programs and Data",
+        "Program Change Management",
+        "Program Development",
+        "Computer Operations",
+        "System / Infrastructure Security",
+        "IT Governance / Policy Management",
+        "Preventive",
+        "Detective",
+        "Corrective"
+      ],
+      "control_types": [
+        "Preventive",
+        "Detective",
+        "Corrective"
+      ],
+      "effectiveness_scale": {
+        "type": "Numeric",
+        "range": "1-5",
+        "definitions": "1: Non-existent or major deficiencies; 2: Limited, high risk remains; 3: Controls in place, few medium risk deficiencies; 4: Designed and operating, few low risk deficiencies; 5: Designed and operating, no deficiencies."
+      },
+      "control_rating_method": "Weighted average: (Preventive × 1.0 + Detective × 0.75 + Corrective × 0.5) / 3. The final control_rating is the numeric average_weighted value.",
+      "residual_risk_method": "Risk Evaluation Rating - Control Rating",
+      "questionnaire_answers_used": true
+    },
+    "threat_control_evaluation": [
+      {
+        "threat": "Security threats to Employee Laptop",
+        "vulnerabilities": [
+          "Missing regular operating system and application security patches"
+        ],
+        "controls_identified": [
+          {
+            "control_id": "A.6.5 / A.8.1",
+            "control_name": "Remote Working Policy/Security for Mobile Devices",
+            "category": "Preventive",
+            "current_rating": 3,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'yes_occasionally' to Q8 (Is this Employee Laptop regularly used outside of corporate premises?)",
+            "effectiveness": "ADEQUATE"
+          },
+          {
+            "control_id": "A.8.7 / A.8.10",
+            "control_name": "Business Critical Application Management / Configuration Management",
+            "category": "Preventive",
+            "current_rating": 3,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'yes' to Q11 (Does this laptop run any business-critical applications?)",
+            "effectiveness": "ADEQUATE"
+          },
+          {
+            "control_id": "A.8.24 / A.8.1",
+            "control_name": "Full Disk Encryption",
+            "category": "Preventive",
+            "current_rating": 4,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'yes' to Q13 (Is full disk encryption enabled?)",
+            "effectiveness": "STRONG"
+          },
+          {
+            "control_id": "A.8.23",
+            "control_name": "Anti-malware/Antivirus Protection",
+            "category": "Preventive",
+            "current_rating": 4,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'yes' to Q14 (Is anti-malware/antivirus software installed and actively running?)",
+            "effectiveness": "STRONG"
+          },
+          {
+            "control_id": "A.8.5",
+            "control_name": "Multi-Factor Authentication (Laptop Login)",
+            "category": "Preventive",
+            "current_rating": 4,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'yes_laptop' to Q16 (Is Multi-Factor Authentication (MFA) required for logging into this Employee Laptop?)",
+            "effectiveness": "STRONG"
+          },
+          {
+            "control_id": "A.8.13",
+            "control_name": "Corporate Data Backup Solution",
+            "category": "Corrective",
+            "current_rating": 4,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'yes_automatic' to Q17 (Is a corporate backup solution actively used?)",
+            "effectiveness": "STRONG"
+          },
+          {
+            "control_id": "A.8.2",
+            "control_name": "Least Privilege / Restricted Administrator Privileges",
+            "category": "Preventive",
+            "current_rating": 4,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'no' to Q12 (Does the primary user of this laptop have local administrator privileges?)",
+            "effectiveness": "STRONG"
+          }
+        ],
+        "control_rating_calculation": {
+          "weighted_preventive": "3.67 × 1.0 = 3.67",
+          "weighted_detective": "0.00 × 0.75 = 0.00",
+          "weighted_corrective": "4.00 × 0.5 = 2.00",
+          "average_weighted": 1.89,
+          "control_rating": 1.89,
+          "control_rating_text": "LIMITED"
+        },
+        "control_category_averages": {
+          "preventive_avg": 3.67,
+          "detective_avg": 0.0,
+          "corrective_avg": 4.0
+        },
+        "risk_evaluation_rating": 3,
+        "residual_risk": {
+          "risk_evaluation_rating": 3,
+          "control_rating": 1.89,
+          "residual_risk_value": 1.11,
+          "residual_risk_classification": "LOW",
+          "calculation": "Risk Evaluation Rating 3 - Control Rating 1.89 = 1.11",
+          "formula": "risk_evaluation_rating - control_rating"
+        },
+        "control_gaps": [
+          {
+            "gap_description": "Missing Regular Patch Management for Operating System and Applications",
+            "evidence": "User indicated: 'no' to Q15 (Are operating system and application security patches applied regularly?)",
+            "impact": "Increases vulnerability to exploits, potentially leading to system compromise, data breaches, or service disruption.",
+            "severity": "HIGH"
+          }
+        ],
+        "recommended_controls": [
+          {
+            "control_id": "A.8.8",
+            "control_name": "Implement Regular and Automated OS and Application Security Patching",
+            "control_type": "Preventive",
+            "priority": "HIGH",
+            "rationale": "Addresses a critical vulnerability by ensuring systems are protected against known security flaws, reducing the attack surface.",
+            "expected_effectiveness": 4
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "total_threats_evaluated": 1,
+      "total_controls_identified": 7,
+      "average_control_rating": 1.89,
+      "high_residual_risks": 0
+    }
+  },
+  "agent_4_result": {
+    "metadata": {
+      "questionnaire_type": "Risk Treatment Decision Questionnaire",
+      "asset_name": "New Employee Laptop",
+      "generation_date": "2026-01-09"
+    },
+    "risk_context": {
+      "risk_summary": "This questionnaire addresses the security threats to a New Employee Laptop. Despite existing controls, a critical gap in patch management has been identified, leading to a residual risk that requires a management decision.",
+      "current_risk_status": {
+        "threat": "Security threats to Employee Laptop",
+        "risk_rating": "3/5 (Medium-High)",
+        "current_control_rating": "1.89/5 (Limited effectiveness)",
+        "residual_risk_value": "1.11/5 (Low-Medium, but requires attention due to underlying high severity gap)",
+        "risk_evaluation_threshold": "Risks with a rating above 2 require treatment or a formal acceptance/transfer/termination decision."
+      },
+      "existing_controls": [
+        {
+          "control_id": "A.6.5 / A.8.1",
+          "control_name": "Remote Working Policy/Security for Mobile Devices",
+          "category": "Preventive",
+          "current_rating": 3,
+          "effectiveness": "ADEQUATE"
+        },
+        {
+          "control_id": "A.8.7 / A.8.10",
+          "control_name": "Business Critical Application Management / Configuration Management",
+          "category": "Preventive",
+          "current_rating": 3,
+          "effectiveness": "ADEQUATE"
+        },
+        {
+          "control_id": "A.8.24 / A.8.1",
+          "control_name": "Full Disk Encryption",
+          "category": "Preventive",
+          "current_rating": 4,
+          "effectiveness": "STRONG"
+        },
+        {
+          "control_id": "A.8.23",
+          "control_name": "Anti-malware/Antivirus Protection",
+          "category": "Preventive",
+          "current_rating": 4,
+          "effectiveness": "STRONG"
+        },
+        {
+          "control_id": "A.8.5",
+          "control_name": "Multi-Factor Authentication (Laptop Login)",
+          "category": "Preventive",
+          "current_rating": 4,
+          "effectiveness": "STRONG"
+        },
+        {
+          "control_id": "A.8.13",
+          "control_name": "Corporate Data Backup Solution",
+          "category": "Corrective",
+          "current_rating": 4,
+          "effectiveness": "STRONG"
+        },
+        {
+          "control_id": "A.8.2",
+          "control_name": "Least Privilege / Restricted Administrator Privileges",
+          "category": "Preventive",
+          "current_rating": 4,
+          "effectiveness": "STRONG"
+        }
+      ],
+      "control_gaps_identified": [
+        {
+          "gap_description": "Missing Regular Patch Management for Operating System and Applications",
+          "evidence": "User indicated: 'no' to Q15 (Are operating system and application security patches applied regularly?)",
+          "impact": "Increases vulnerability to exploits, potentially leading to system compromise, data breaches, or service disruption.",
+          "severity": "HIGH"
+        }
+      ],
+      "recommended_controls_to_implement": [
+        {
+          "control_id": "A.8.8",
+          "control_name": "Implement Regular and Automated OS and Application Security Patching",
+          "control_type": "Preventive",
+          "priority": "HIGH",
+          "rationale": "Addresses a critical vulnerability by ensuring systems are protected against known security flaws, reducing the attack surface. This directly mitigates the 'Missing Regular Patch Management' gap.",
+          "expected_effectiveness": 4,
+          "estimated_cost": "Medium (e.g., $50-$200 per laptop annually for tooling/management, plus initial setup costs)",
+          "implementation_timeline": "Short-term (1-3 months for initial rollout, ongoing thereafter)",
+          "expected_risk_reduction": "Significant reduction in vulnerability to known exploits and malware, improving the overall residual risk rating by at least 0.5-1 point.",
+          "suggested_risk_owner": "CIO / L1 Head (IT Operations/Security)"
+        }
+      ],
+      "risk_rating": "3/5",
+      "current_risk_rating": "3/5",
+      "residual_risk_after_existing_controls": "1.11/5",
+      "residual_risk_rating": "1.11/5"
+    },
+    "sections": [
+      {
+        "section_id": "s1_treatment_decision",
+        "section_title": "Risk Treatment Decision for New Employee Laptop Security Threats",
+        "questions": [
+          {
+            "question_id": "Q_TREATMENT_OPTION",
+            "question_text": "Based on the current risk context and identified control gaps, please select the most appropriate risk treatment strategy for the 'Security threats to Employee Laptop' risk.",
+            "question_type": "radio",
+            "required": true,
+            "options": [
+              {
+                "value": "TREAT",
+                "label": "Treat the Risk (Implement Controls)",
+                "description": "Treating the risk involves taking actions to lessen the probability, negative consequences, or both, associated with the identified risk. This typically means implementing new controls or enhancing existing ones to reduce the risk to an acceptable level. The goal is to proactively mitigate vulnerabilities and strengthen the organization's security posture.",
+                "recommendation": "This option is recommended when the risk evaluation rating is above 2, and effective controls can be implemented to reduce the risk to an acceptable level (1 or 2). It is particularly appropriate when a clear, high-severity control gap exists, and a feasible solution (like automated patching) is available to directly address it.",
+                "consequences": "Choosing to treat the risk will lead to improved security posture, reduced likelihood of security incidents, and better protection of organizational assets and data. It requires resource allocation for implementation and ongoing management of the new controls. Failure to implement effectively could result in continued exposure.",
+                "estimated_cost": "Medium (e.g., $50-$200 per laptop annually for tooling/management, plus initial setup costs for the recommended patching solution).",
+                "typical_timeline": "Short-term (1-3 months for initial rollout and configuration of automated patching, with ongoing maintenance).",
+                "approval_required": "Risk Owner (CIO / L1 Head for Infrastructure/Corporate Security) must review and approve the Risk Treatment Plan.",
+                "monitoring_required": "Continuous monitoring of patch deployment success rates, vulnerability scanning, and regular review of the control's effectiveness (e.g., quarterly)."
+              },
+              {
+                "value": "ACCEPT",
+                "label": "Accept the Risk",
+                "description": "Accepting the risk is an informed decision to take on the burden of potential loss associated with a risk, without implementing further controls to reduce it. This decision is typically made when the risk is already at an acceptable level (rating 1 or 2), or when the cost or impracticality of further treatment outweighs the potential benefits. Accepted risks are subject to ongoing monitoring and review.",
+                "recommendation": "This option is appropriate if the residual risk (currently 1.11/5) is deemed acceptable by management, or if the cost-benefit analysis shows that implementing the recommended patching control is not feasible due to financial, administrative, or technical reasons. Given the 'HIGH' severity of the patch management gap, formal acceptance requires strong justification.",
+                "consequences": "If accepted, the organization will bear the full potential impact of the 'Missing Regular Patch Management' gap, including increased vulnerability to exploits, potential system compromise, data breaches, or service disruption. While no immediate costs for new controls are incurred, the potential future costs from an incident could be significantly higher. Accepted risks require periodic review.",
+                "estimated_cost": "Low immediate cost (no new controls implemented), but potentially High future cost if the risk materializes (e.g., incident response, data recovery, reputational damage).",
+                "typical_timeline": "Immediate decision, with ongoing monitoring and review typically on a quarterly or annual basis.",
+                "approval_required": "Risk Owner (CIO / L1 Head) must accept the risk. For non-acceptable risks (rating > 2, or high severity gap), the Risk Approver (RCAC) must also approve the acceptance.",
+                "monitoring_required": "Periodic review of the accepted risk (e.g., using a Risk Acceptance Tracker) to ensure its status and impact remain within acceptable parameters. This includes monitoring for new threats that might increase the risk level."
+              },
+              {
+                "value": "TRANSFER",
+                "label": "Transfer the Risk",
+                "description": "Transferring the risk involves sharing with another party the burden of loss or benefit of gain for a risk. This shifts the financial or operational impact to a third party, such as an insurer, vendor, or contractor, through mechanisms like insurance policies, outsourcing agreements, or service level agreements (SLAs). It's important to note that accountability for the risk generally remains with the organization.",
+                "recommendation": "This option could be considered if the organization wishes to offload the financial or operational burden of managing patch management to a specialized third-party service provider or through a cyber insurance policy. It is typically suitable for risks with a residual risk value above 2, where external expertise or financial protection is a viable and cost-effective solution.",
+                "consequences": "Transferring the risk can reduce the direct financial exposure and operational burden on the organization. However, it introduces vendor management overhead, requires careful contractual agreements, and does not eliminate the risk entirely (accountability remains). There will be costs associated with the transfer mechanism (e.g., insurance premiums, service fees).",
+                "estimated_cost": "Medium-High (e.g., annual premiums for cyber insurance covering patching failures, or monthly fees for managed IT services that include patch management).",
+                "typical_timeline": "Medium-term (3-6 months for vendor selection, contract negotiation, and implementation of transfer mechanism).",
+                "approval_required": "Risk Owner (CIO / L1 Head) is responsible for transferring non-acceptable risks. A cost-benefit analysis is required prior to this decision.",
+                "monitoring_required": "Regular review of the third-party's performance (e.g., via SLAs), contract compliance, and the scope of coverage. Periodic assessment of residual risk after transfer."
+              },
+              {
+                "value": "TERMINATE",
+                "label": "Terminate the Risk (Avoid the Activity)",
+                "description": "Terminating the risk, also known as risk avoidance, involves making a decision not to become involved in, or taking action to withdraw from, the activity that gives rise to the risk. This eliminates the risk entirely by ceasing the activity or objective that presents the threat. It is the most drastic form of risk treatment.",
+                "recommendation": "This option is generally considered for risks with a high evaluation rating (above 2) where the activity itself is deemed too risky to continue, and other treatment options are either ineffective or too costly. For 'Security threats to Employee Laptop', this would imply ceasing the use of employee laptops or the specific activity that creates the patch management vulnerability.",
+                "consequences": "Choosing to terminate the risk would eliminate the 'Security threats to Employee Laptop' risk by, for example, discontinuing the use of employee laptops or specific applications that require patching. This would have significant operational impacts, potentially hindering productivity and business functions. While the specific risk is removed, new operational challenges or risks might emerge.",
+                "estimated_cost": "Potentially High (e.g., costs associated with replacing laptops with alternative devices, loss of productivity, re-engineering business processes).",
+                "typical_timeline": "Medium-Long term (6-12+ months for phasing out laptops or re-architecting IT infrastructure and business processes).",
+                "approval_required": "Risk Owner (CIO / L1 Head) is responsible for avoiding non-acceptable risks. This decision would likely require executive-level approval due to its significant operational impact.",
+                "monitoring_required": "Monitoring to ensure the activity giving rise to the risk has indeed ceased and that no new, unforeseen risks have been introduced by the avoidance strategy."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "agent_5_result": null,
+  "last_updated": "2026-01-09 20:59:49",
+  "progress": {
+    "agent_1": "complete",
+    "agent_2": "complete",
+    "agent_3": "complete",
+    "agent_4": "complete",
+    "agent_5": "pending"
+  }
+}

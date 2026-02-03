@@ -1,0 +1,1321 @@
+{
+  "session_id": "session_Company-wide_Endpoint_Protecti_20260120_152450",
+  "asset_data": {
+    "asset_name": "Company-wide Endpoint Protection Platform",
+    "asset_type": "Software Assets",
+    "asset_owner": "Abishek",
+    "location": "On-premise Data Center - Rack 12",
+    "description": "Manufacturing Line Control",
+    "questionnaire_answers": {
+      "Q_ASSET_CLASS_NAME": {
+        "question_text": "What is the specific name/title of this Antivirus & Endpoint Security Software asset?",
+        "answer": "Company-wide Endpoint Protection Platform",
+        "question_type": "text",
+        "section": "1. Asset Identification",
+        "help_text": "e.g., 'Company-wide Endpoint Protection Platform', 'Server Antivirus Solution', 'Specific Vendor EDR System'",
+        "why_this_matters": "Provides a unique identifier for the asset within the inventory."
+      },
+      "Q_TYPE_OF_ASSET": {
+        "question_text": "What type of asset is this?",
+        "answer": "Software Assets",
+        "question_type": "dropdown",
+        "section": "1. Asset Identification",
+        "help_text": "Select the category that best describes this asset.",
+        "why_this_matters": "Categorizes the asset according to organizational standards, aiding in consistent risk management."
+      },
+      "Q_ASSET_CLASS_OWNER": {
+        "question_text": "Who is the Asset Class Owner for this Antivirus & Endpoint Security Software?",
+        "answer": "Abishek",
+        "question_type": "text",
+        "section": "1. Asset Identification",
+        "help_text": "Provide the name or department responsible for the maintenance and implementation of controls on this asset.",
+        "why_this_matters": "Identifies the primary stakeholder accountable for the asset's security and operations."
+      },
+      "Q_LOCATION": {
+        "question_text": "Where is the primary management console or central server for this software located (physical or logical)?",
+        "answer": "On-premise Data Center - Rack 12",
+        "question_type": "text",
+        "section": "1. Asset Identification",
+        "help_text": "e.g., 'On-premise Data Center - Rack 12', 'Cloud Provider - AWS Region us-east-1', 'Managed by Vendor'",
+        "why_this_matters": "Helps understand the physical/logical environment and potential environmental risks."
+      },
+      "Q_BUSINESS_PROCESSES_DEPENDENT": {
+        "question_text": "Which critical business processes or functions heavily depend on the protection provided by this Antivirus & Endpoint Security Software?",
+        "answer": "Manufacturing Line Control",
+        "question_type": "textarea",
+        "section": "2. Business Context and Scope",
+        "help_text": "List the key business operations that would be severely impacted if this software failed or was compromised. e.g., 'Customer Service Operations', 'Financial Transactions Processing', 'Manufacturing Line Control'",
+        "why_this_matters": "Establishes the direct link between the asset's security and core business operations, informing potential business impact."
+      },
+      "Q_NUMBER_OF_ENDPOINTS_PROTECTED": {
+        "question_text": "Approximately how many endpoints (e.g., workstations, servers, mobile devices) are protected by this software?",
+        "answer": 50,
+        "question_type": "number",
+        "section": "2. Business Context and Scope",
+        "help_text": "Provide an approximate count of devices under its protection.",
+        "why_this_matters": "Indicates the scale of the asset's deployment and the potential blast radius of a compromise."
+      },
+      "Q_TYPES_OF_ENDPOINTS_PROTECTED": {
+        "question_text": "What types of endpoints are protected by this software?",
+        "answer": [
+          "Windows Workstations",
+          "Windows Servers",
+          "Virtual Desktops (VDI)"
+        ],
+        "question_type": "multiselect",
+        "section": "2. Business Context and Scope",
+        "help_text": "Select all applicable endpoint types. If 'Other' is selected, please specify.",
+        "why_this_matters": "Provides insight into the diversity and criticality of the protected environment, influencing potential vulnerabilities and impact."
+      },
+      "Q_REAL_TIME_SCANNING_ENABLED": {
+        "question_text": "Is real-time (on-access) scanning enabled on all protected endpoints?",
+        "answer": "Partially",
+        "question_type": "dropdown",
+        "section": "3. Software Configuration and Operational Facts",
+        "help_text": "If partially, please describe which endpoints or conditions apply.",
+        "why_this_matters": "Real-time scanning is a fundamental control for immediate threat detection. Its absence or partial implementation indicates a significant vulnerability."
+      },
+      "Q_AUTOMATIC_UPDATES_ENABLED": {
+        "question_text": "Are signature/definition updates and software version updates configured to occur automatically?",
+        "answer": "Yes, both are automatic",
+        "question_type": "dropdown",
+        "section": "3. Software Configuration and Operational Facts",
+        "help_text": "Describe the frequency if manual, or any exceptions.",
+        "why_this_matters": "Timely updates are crucial for protection against new threats. Manual processes introduce delays and potential for human error."
+      },
+      "Q_CENTRALIZED_MANAGEMENT": {
+        "question_text": "Is the Antivirus & Endpoint Security Software managed via a centralized console or platform?",
+        "answer": "Yes",
+        "question_type": "dropdown",
+        "section": "3. Software Configuration and Operational Facts",
+        "help_text": "If managed by a third-party, please specify the provider.",
+        "why_this_matters": "Centralized management allows for consistent policy enforcement, monitoring, and rapid response, reducing configuration drift and improving security posture."
+      },
+      "Q_ADVANCED_FEATURES_ENABLED": {
+        "question_text": "Which of the following advanced security features are enabled and actively used?",
+        "answer": [
+          "Device Control (e.g., USB blocking)",
+          "Data Loss Prevention (DLP) capabilities"
+        ],
+        "question_type": "multiselect",
+        "section": "3. Software Configuration and Operational Facts",
+        "help_text": "Select all features that are configured and operational.",
+        "why_this_matters": "Indicates the depth of protection beyond basic antivirus, revealing the robustness of the endpoint security strategy."
+      },
+      "Q_ADMIN_ACCESS_CONTROLS": {
+        "question_text": "Are administrative access to the management console or individual endpoint agents protected by Multi-Factor Authentication (MFA)?",
+        "answer": "Yes, for all administrative access",
+        "question_type": "dropdown",
+        "section": "3. Software Configuration and Operational Facts",
+        "help_text": "Specify if there are exceptions.",
+        "why_this_matters": "MFA is a critical control against unauthorized access to security management systems, preventing attackers from disabling protection."
+      },
+      "Q_EXCLUSIONS_CONFIGURED": {
+        "question_text": "Are there any significant exclusions (e.g., specific files, folders, processes) configured in the Antivirus & Endpoint Security Software policies?",
+        "answer": "Yes, significant exclusions exist",
+        "question_type": "dropdown",
+        "section": "3. Software Configuration and Operational Facts",
+        "help_text": "If 'Yes, significant exclusions exist', please briefly describe the nature of these exclusions and their justification.",
+        "why_this_matters": "Exclusions can create blind spots for malware. Understanding their scope helps assess potential vulnerabilities."
+      },
+      "Q_ALERTS_MONITORED": {
+        "question_text": "Are alerts and logs generated by the Antivirus & Endpoint Security Software actively monitored?",
+        "answer": "Yes, 24/7 by security operations center (SOC)",
+        "question_type": "dropdown",
+        "section": "4. Monitoring and Incident Response",
+        "help_text": "Specify who performs the monitoring if applicable.",
+        "why_this_matters": "Active monitoring ensures that detected threats are promptly addressed, reducing the window of exposure."
+      },
+      "Q_INTEGRATION_SIEM": {
+        "question_text": "Are logs and alerts from this software integrated with a Security Information and Event Management (SIEM) system or other central logging solution?",
+        "answer": "Yes",
+        "question_type": "dropdown",
+        "section": "4. Monitoring and Incident Response",
+        "help_text": "If yes, specify the SIEM/logging solution.",
+        "why_this_matters": "Integration with a SIEM enhances threat correlation, centralized visibility, and overall incident detection capabilities."
+      },
+      "Q_INCIDENT_RESPONSE_PLAN": {
+        "question_text": "Is there a defined incident response plan specifically addressing security incidents detected by endpoint security software?",
+        "answer": "Yes, a specific plan exists and is regularly tested",
+        "question_type": "dropdown",
+        "section": "4. Monitoring and Incident Response",
+        "help_text": "Briefly describe the key steps if a plan exists.",
+        "why_this_matters": "A well-defined and tested incident response plan is crucial for minimizing the impact of security breaches."
+      },
+      "Q_OVERALL_IMPACT_RATING": {
+        "question_text": "Considering all identified risks and existing controls, what is the estimated overall 'Impact Rating' if this Antivirus & Endpoint Security Software were to be severely compromised (e.g., widespread malware infection, complete failure of protection, data exfiltration from endpoints)?",
+        "answer": 3,
+        "question_type": "dropdown",
+        "section": "5. Overall Risk Perspective",
+        "help_text": "Rate the overall business impact on a scale of 1 to 5, considering financial, reputational, operational, and regulatory consequences.",
+        "why_this_matters": "Captures the asset owner's high-level understanding of the potential severity of a compromise, which is a key input for risk quantification."
+      },
+      "Q_OVERALL_PROBABILITY_RATING": {
+        "question_text": "Considering all identified threats and vulnerabilities, what is the estimated 'Probability Rating' of a severe compromise occurring to this Antivirus & Endpoint Security Software (leading to widespread infection or failure) within the next year?",
+        "answer": 3,
+        "question_type": "dropdown",
+        "section": "5. Overall Risk Perspective",
+        "help_text": "Rate the overall likelihood of such a severe event occurring within the next year.",
+        "why_this_matters": "Captures the asset owner's high-level understanding of the likelihood of a severe event, which is a key input for risk quantification."
+      }
+    },
+    "questionnaire_metadata": {
+      "asset_type_assessed": "Antivirus & Endpoint Security Software",
+      "questionnaire_title": "Risk Assessment Questionnaire for Antivirus & Endpoint Security Software",
+      "completed_date": "2026-01-19 15:09:06",
+      "total_questions": 18,
+      "total_answers": 18
+    },
+    "threats_and_vulnerabilities": [
+      {
+        "threat": "Widespread Malware Infection due to Partial Real-time Scanning Coverage",
+        "threat_category": "Electronic Sabotage and malicious code",
+        "contextual_description": "The 'Company-wide Endpoint Protection Platform' is critical for 'Manufacturing Line Control' and protects 50 diverse endpoints, including 'Windows Workstations', 'Windows Servers', and 'Virtual Desktops (VDI)'. However, real-time (on-access) scanning is only 'Partially' enabled across these endpoints. This creates a significant security gap where specific endpoints or file access paths are not continuously monitored for threats. An attacker could exploit this partial coverage by introducing malware or malicious scripts into the unprotected segments, potentially leading to a widespread infection that could disrupt the 'Manufacturing Line Control' operations and impact the 50 protected endpoints.",
+        "risk_statement": "Risk of widespread malware infection to the Company-wide Endpoint Protection Platform due to partially enabled real-time scanning on critical endpoints, potentially causing disruption to Manufacturing Line Control and operational downtime.",
+        "vulnerabilities": [
+          {
+            "vulnerability": "Inadequate Anti-virus definition updates (if real-time scanning is not fully active, updates might not be fully effective on all files).",
+            "description": "Inadequate Anti-virus definition updates (if real-time scanning is not fully active, updates might not be fully effective on all files)."
+          },
+          {
+            "vulnerability": "Inadequate procedures on OS hardening (unprotected areas might be more susceptible to compromise).",
+            "description": "Inadequate procedures on OS hardening (unprotected areas might be more susceptible to compromise)."
+          },
+          {
+            "vulnerability": "Absence of latest security patches (if real-time scanning is not fully enabled, it might miss detecting vulnerabilities that patches would fix).",
+            "description": "Absence of latest security patches (if real-time scanning is not fully enabled, it might miss detecting vulnerabilities that patches would fix)."
+          }
+        ],
+        "evidence": [
+          "Q: Is real-time (on-access) scanning enabled on all protected endpoints? → Answer: Partially",
+          "Q: Which critical business processes or functions heavily depend on the protection provided by this Antivirus & Endpoint Security Software? → Answer: Manufacturing Line Control",
+          "Q: What types of endpoints are protected by this software? → Answer: ['Windows Workstations', 'Windows Servers', 'Virtual Desktops (VDI)']"
+        ],
+        "threat_source": "Intelligent Analysis | Threat Vocabulary Database"
+      },
+      {
+        "threat": "Bypass of Endpoint Protection via Exploitation of Significant Exclusions",
+        "threat_category": "Electronic Sabotage and malicious code",
+        "contextual_description": "The 'Company-wide Endpoint Protection Platform' has 'significant exclusions' configured in its policies, which protect 50 endpoints vital for 'Manufacturing Line Control'. While automatic updates and advanced features like DLP are in place, these exclusions represent a critical blind spot. A sophisticated attacker could leverage knowledge of these exclusions (e.g., specific files, folders, or processes necessary for manufacturing operations) to deploy malware or exfiltrate data undetected. This could lead to a compromise of the 'Manufacturing Line Control' systems, resulting in operational disruption, data integrity issues, or even safety concerns within the manufacturing environment.",
+        "risk_statement": "Risk of targeted malware attacks or data exfiltration to the Company-wide Endpoint Protection Platform due to significant exclusions in security policies, potentially leading to compromise of Manufacturing Line Control and severe operational impact.",
+        "vulnerabilities": [
+          {
+            "vulnerability": "Inadequately protected security software/tools (exclusions weaken the overall protection posture).",
+            "description": "Inadequately protected security software/tools (exclusions weaken the overall protection posture)."
+          },
+          {
+            "vulnerability": "Inadequate network access restrictions (if exclusions allow malicious traffic or communication).",
+            "description": "Inadequate network access restrictions (if exclusions allow malicious traffic or communication)."
+          },
+          {
+            "vulnerability": "Insufficient audit trails and lack of review of logs (if activity within excluded paths is not properly logged or monitored, hindering detection).",
+            "description": "Insufficient audit trails and lack of review of logs (if activity within excluded paths is not properly logged or monitored, hindering detection)."
+          }
+        ],
+        "evidence": [
+          "Q: Are there any significant exclusions (e.g., specific files, folders, processes) configured in the Antivirus & Endpoint Security Software policies? → Answer: Yes, significant exclusions exist",
+          "Q: Which critical business processes or functions heavily depend on the protection provided by this Antivirus & Endpoint Security Software? → Answer: Manufacturing Line Control",
+          "Q: What types of endpoints are protected by this software? → Answer: ['Windows Workstations', 'Windows Servers', 'Virtual Desktops (VDI)']"
+        ],
+        "threat_source": "Intelligent Analysis | Threat Vocabulary Database"
+      },
+      {
+        "threat": "Operational Disruption from Unintentional Software Failure on Manufacturing Endpoints",
+        "threat_category": "Unintentional failure of IT systems (hardware/software)",
+        "contextual_description": "The 'Company-wide Endpoint Protection Platform' is a critical 'Software Asset' located in an 'On-premise Data Center - Rack 12', protecting 50 endpoints essential for 'Manufacturing Line Control'. Despite automatic updates and centralized management, software assets can experience unintentional failures (e.g., bugs, conflicts with OS updates, or resource exhaustion) that could lead to the endpoint protection agent crashing or malfunctioning on some of the diverse endpoints (Windows Workstations, Windows Servers, VDI). Such a failure, even if temporary, could leave critical manufacturing systems unprotected, potentially causing instability or disruption to the 'Manufacturing Line Control' process, especially if not immediately detected and remediated by the 24/7 SOC.",
+        "risk_statement": "Risk of operational disruption to Manufacturing Line Control due to unintentional software failure of the Company-wide Endpoint Protection Platform on critical endpoints, potentially causing temporary loss of protection and system instability.",
+        "vulnerabilities": [
+          {
+            "vulnerability": "Lack of capacity management and performance monitoring procedures (to detect resource issues leading to software failure).",
+            "description": "Lack of capacity management and performance monitoring procedures (to detect resource issues leading to software failure)."
+          },
+          {
+            "vulnerability": "Inadequate incident reporting procedures (if internal software failures are not promptly escalated or resolved).",
+            "description": "Inadequate incident reporting procedures (if internal software failures are not promptly escalated or resolved)."
+          },
+          {
+            "vulnerability": "Absence of periodic equipment maintenance (if underlying hardware issues contribute to software instability).",
+            "description": "Absence of periodic equipment maintenance (if underlying hardware issues contribute to software instability)."
+          }
+        ],
+        "evidence": [
+          "Q: What is the specific name/title of this Antivirus & Endpoint Security Software asset? → Answer: Company-wide Endpoint Protection Platform",
+          "Q: What type of asset is this? → Answer: Software Assets",
+          "Q: Which critical business processes or functions heavily depend on the protection provided by this Antivirus & Endpoint Security Software? → Answer: Manufacturing Line Control",
+          "Q: What types of endpoints are protected by this software? → Answer: ['Windows Workstations', 'Windows Servers', 'Virtual Desktops (VDI)']"
+        ],
+        "threat_source": "Intelligent Analysis | Threat Vocabulary Database"
+      }
+    ],
+    "threat_discovery_result": {
+      "analysis_summary": {
+        "asset_understanding": "The asset is a 'Company-wide Endpoint Protection Platform' (Software Assets) located in an 'On-premise Data Center - Rack 12'. It is critical for 'Manufacturing Line Control' and protects 50 endpoints, including 'Windows Workstations', 'Windows Servers', and 'Virtual Desktops (VDI)'. Its compromise has an estimated 'Impact Rating' of 3 and a 'Probability Rating' of 3.",
+        "key_security_gaps": [
+          "Real-time (on-access) scanning is only 'Partially' enabled on protected endpoints, leaving some areas vulnerable.",
+          "Significant exclusions exist in the Antivirus & Endpoint Security Software policies, creating potential bypass opportunities."
+        ],
+        "key_risk_amplifiers": [
+          "The asset is business-critical, supporting 'Manufacturing Line Control', meaning any disruption would have high operational impact.",
+          "The platform protects diverse endpoint types ('Windows Workstations', 'Windows Servers', 'Virtual Desktops (VDI)'), increasing complexity in ensuring consistent and comprehensive protection across all systems."
+        ],
+        "existing_controls": [
+          "Signature/definition updates and software version updates are configured to occur automatically.",
+          "The software is managed via a centralized console or platform.",
+          "Advanced security features like 'Device Control (e.g., USB blocking)' and 'Data Loss Prevention (DLP) capabilities' are enabled.",
+          "Administrative access to the management console and individual endpoint agents is protected by Multi-Factor Authentication (MFA).",
+          "Alerts and logs generated by the software are actively monitored 24/7 by a Security Operations Center (SOC).",
+          "Logs and alerts are integrated with a Security Information and Event Management (SIEM) system.",
+          "A defined incident response plan specifically addressing security incidents detected by endpoint security software exists and is regularly tested."
+        ],
+        "threat_vocabulary_discovered": [
+          "Earthquake",
+          "Flood",
+          "Fire",
+          "Storms/Wind/Lightning",
+          "Adverse Environmental Conditions",
+          "Public Utilities Failure (Power/Water)",
+          "Communications Failures (Telecom/Internet/LAN)",
+          "Unintentional failure of IT systems (hardware/software)",
+          "Electronic Sabotage and malicious code",
+          "Medical Emergencies",
+          "Unauthorized physical access/Physical theft",
+          "Loss of key personnel/Attrition/Poaching",
+          "Negligent/Uninformed users"
+        ],
+        "searches_performed": [
+          "What is the Threat Vulnerability Database? What threats are documented?",
+          "What are common vulnerabilities and security weaknesses documented?",
+          "What are common security threats and risks for Software Assets?",
+          "What are industry-specific threats for manufacturing industry?"
+        ]
+      },
+      "threats_discovered": [
+        {
+          "threat_id": "T1",
+          "threat_category": "Electronic Sabotage and malicious code",
+          "threat_name": "Widespread Malware Infection due to Partial Real-time Scanning Coverage",
+          "contextual_description": "The 'Company-wide Endpoint Protection Platform' is critical for 'Manufacturing Line Control' and protects 50 diverse endpoints, including 'Windows Workstations', 'Windows Servers', and 'Virtual Desktops (VDI)'. However, real-time (on-access) scanning is only 'Partially' enabled across these endpoints. This creates a significant security gap where specific endpoints or file access paths are not continuously monitored for threats. An attacker could exploit this partial coverage by introducing malware or malicious scripts into the unprotected segments, potentially leading to a widespread infection that could disrupt the 'Manufacturing Line Control' operations and impact the 50 protected endpoints.",
+          "vulnerabilities_identified": [
+            "Inadequate Anti-virus definition updates (if real-time scanning is not fully active, updates might not be fully effective on all files).",
+            "Inadequate procedures on OS hardening (unprotected areas might be more susceptible to compromise).",
+            "Absence of latest security patches (if real-time scanning is not fully enabled, it might miss detecting vulnerabilities that patches would fix)."
+          ],
+          "evidence_from_questionnaire": [
+            "Q: Is real-time (on-access) scanning enabled on all protected endpoints? → Answer: Partially",
+            "Q: Which critical business processes or functions heavily depend on the protection provided by this Antivirus & Endpoint Security Software? → Answer: Manufacturing Line Control",
+            "Q: What types of endpoints are protected by this software? → Answer: ['Windows Workstations', 'Windows Servers', 'Virtual Desktops (VDI)']"
+          ],
+          "risk_statement": "Risk of widespread malware infection to the Company-wide Endpoint Protection Platform due to partially enabled real-time scanning on critical endpoints, potentially causing disruption to Manufacturing Line Control and operational downtime.",
+          "threat_source": "Intelligent Analysis | Threat Vocabulary Database"
+        },
+        {
+          "threat_id": "T2",
+          "threat_category": "Electronic Sabotage and malicious code",
+          "threat_name": "Bypass of Endpoint Protection via Exploitation of Significant Exclusions",
+          "contextual_description": "The 'Company-wide Endpoint Protection Platform' has 'significant exclusions' configured in its policies, which protect 50 endpoints vital for 'Manufacturing Line Control'. While automatic updates and advanced features like DLP are in place, these exclusions represent a critical blind spot. A sophisticated attacker could leverage knowledge of these exclusions (e.g., specific files, folders, or processes necessary for manufacturing operations) to deploy malware or exfiltrate data undetected. This could lead to a compromise of the 'Manufacturing Line Control' systems, resulting in operational disruption, data integrity issues, or even safety concerns within the manufacturing environment.",
+          "vulnerabilities_identified": [
+            "Inadequately protected security software/tools (exclusions weaken the overall protection posture).",
+            "Inadequate network access restrictions (if exclusions allow malicious traffic or communication).",
+            "Insufficient audit trails and lack of review of logs (if activity within excluded paths is not properly logged or monitored, hindering detection)."
+          ],
+          "evidence_from_questionnaire": [
+            "Q: Are there any significant exclusions (e.g., specific files, folders, processes) configured in the Antivirus & Endpoint Security Software policies? → Answer: Yes, significant exclusions exist",
+            "Q: Which critical business processes or functions heavily depend on the protection provided by this Antivirus & Endpoint Security Software? → Answer: Manufacturing Line Control",
+            "Q: What types of endpoints are protected by this software? → Answer: ['Windows Workstations', 'Windows Servers', 'Virtual Desktops (VDI)']"
+          ],
+          "risk_statement": "Risk of targeted malware attacks or data exfiltration to the Company-wide Endpoint Protection Platform due to significant exclusions in security policies, potentially leading to compromise of Manufacturing Line Control and severe operational impact.",
+          "threat_source": "Intelligent Analysis | Threat Vocabulary Database"
+        },
+        {
+          "threat_id": "T3",
+          "threat_category": "Unintentional failure of IT systems (hardware/software)",
+          "threat_name": "Operational Disruption from Unintentional Software Failure on Manufacturing Endpoints",
+          "contextual_description": "The 'Company-wide Endpoint Protection Platform' is a critical 'Software Asset' located in an 'On-premise Data Center - Rack 12', protecting 50 endpoints essential for 'Manufacturing Line Control'. Despite automatic updates and centralized management, software assets can experience unintentional failures (e.g., bugs, conflicts with OS updates, or resource exhaustion) that could lead to the endpoint protection agent crashing or malfunctioning on some of the diverse endpoints (Windows Workstations, Windows Servers, VDI). Such a failure, even if temporary, could leave critical manufacturing systems unprotected, potentially causing instability or disruption to the 'Manufacturing Line Control' process, especially if not immediately detected and remediated by the 24/7 SOC.",
+          "vulnerabilities_identified": [
+            "Lack of capacity management and performance monitoring procedures (to detect resource issues leading to software failure).",
+            "Inadequate incident reporting procedures (if internal software failures are not promptly escalated or resolved).",
+            "Absence of periodic equipment maintenance (if underlying hardware issues contribute to software instability)."
+          ],
+          "evidence_from_questionnaire": [
+            "Q: What is the specific name/title of this Antivirus & Endpoint Security Software asset? → Answer: Company-wide Endpoint Protection Platform",
+            "Q: What type of asset is this? → Answer: Software Assets",
+            "Q: Which critical business processes or functions heavily depend on the protection provided by this Antivirus & Endpoint Security Software? → Answer: Manufacturing Line Control",
+            "Q: What types of endpoints are protected by this software? → Answer: ['Windows Workstations', 'Windows Servers', 'Virtual Desktops (VDI)']"
+          ],
+          "risk_statement": "Risk of operational disruption to Manufacturing Line Control due to unintentional software failure of the Company-wide Endpoint Protection Platform on critical endpoints, potentially causing temporary loss of protection and system instability.",
+          "threat_source": "Intelligent Analysis | Threat Vocabulary Database"
+        }
+      ]
+    }
+  },
+  "agent_1_result": {
+    "discovery_summary": {
+      "cia_methodology": "Custom (Aligned with CIA Principles)",
+      "cia_rating_scale": "4-level: Insignificant, Moderate, Serious, Extreme",
+      "cia_definitions_source": "Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx (Table 3)",
+      "business_value_calculation_method": "Asset Value Chart (matrix lookup)",
+      "business_value_levels": [
+        "Very Low",
+        "Low",
+        "Medium",
+        "High",
+        "Very High"
+      ],
+      "business_value_source": "Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx (Asset Valuation section) and Risk Assessment Template_For Agentic AI RM Use Case.xlsx (Sheet: Asset Inventorization Guideline)",
+      "criticality_classification_method": "Business Value to Criticality Mapping",
+      "criticality_levels": [
+        "Insignificant",
+        "Low Critical",
+        "Medium Critical",
+        "High Critical",
+        "Very high Critical"
+      ],
+      "criticality_source": "Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx (Table 4)",
+      "searches_performed": [
+        "What impact assessment methodology is used? CIA? DREAD? Custom?",
+        "How is Asset Business Value calculated or determined from CIA impact ratings? Is there a matrix, chart, or formula?",
+        "How is Asset Criticality Classification determined from Asset Business Value?"
+      ]
+    },
+    "threat_analysis": [
+      {
+        "threat_id": "threat_1",
+        "threat_name": "Widespread Malware Infection due to Partial Real-time Scanning Coverage",
+        "threat_description": "The 'Company-wide Endpoint Protection Platform' is critical for 'Manufacturing Line Control' and protects 50 diverse endpoints, including 'Windows Workstations', 'Windows Servers', and 'Virtual Desktops (VDI)'. However, real-time (on-access) scanning is only 'Partially' enabled across these endpoints. This creates a significant security gap where specific endpoints or file access paths are not continuously monitored for threats. An attacker could exploit this partial coverage by introducing malware or malicious scripts into the unprotected segments, potentially leading to a widespread infection that could disrupt the 'Manufacturing Line Control' operations and impact the 50 protected endpoints.",
+        "impact_assessment": {
+          "confidentiality": {
+            "rating": "Moderate",
+            "numeric_value": 2,
+            "reasoning": "Based on the contextual description, a widespread malware infection could lead to data exposure, which 'may harm the interest of the organization'. While not explicitly stating 'serious damage' or 'significant harm' to sensitive data, the nature of a widespread infection implies a moderate risk of unauthorized disclosure. This meets the discovered definition for 'Moderate': 'Unauthorized disclosure within or outside the organization may harm the interest of the organization'."
+          },
+          "integrity": {
+            "rating": "Serious",
+            "numeric_value": 3,
+            "reasoning": "The threat of 'widespread malware infection' directly impacts the accuracy and completeness of data and systems. Given that the asset protects 'Manufacturing Line Control', unauthorized modification or damage of information is expected to have a 'serious adverse effect on business operations'. This meets the discovered definition for 'Serious': 'Unauthorized modification or damage of information is expected to have a serious adverse effect on business operations'."
+          },
+          "availability": {
+            "rating": "Extreme",
+            "numeric_value": 4,
+            "reasoning": "The contextual description and risk statement clearly indicate 'disruption to Manufacturing Line Control' and 'operational downtime' due to widespread malware. The unavailability of critical manufacturing systems would have a 'severe and long ranging adverse effect on business operations'. This meets the discovered definition for 'Extreme': 'Impact of disruption of access or unavailability of information or information asset or services is expected to have severe and long ranging adverse effect on business operations'."
+          }
+        },
+        "overall_impact_calculation": {
+          "confidentiality_numeric": 2,
+          "integrity_numeric": 3,
+          "availability_numeric": 4,
+          "calculation_method": "max(C, I, A)",
+          "calculation": "max(2, 3, 4) = 4",
+          "overall_impact": "4 - Extreme",
+          "overall_impact_numeric": 4
+        }
+      },
+      {
+        "threat_id": "threat_2",
+        "threat_name": "Bypass of Endpoint Protection via Exploitation of Significant Exclusions",
+        "threat_description": "The 'Company-wide Endpoint Protection Platform' has 'significant exclusions' configured in its policies, which protect 50 endpoints vital for 'Manufacturing Line Control'. While automatic updates and advanced features like DLP are in place, these exclusions represent a critical blind spot. A sophisticated attacker could leverage knowledge of these exclusions (e.g., specific files, folders, or processes necessary for manufacturing operations) to deploy malware or exfiltrate data undetected. This could lead to a compromise of the 'Manufacturing Line Control' systems, resulting in operational disruption, data integrity issues, or even safety concerns within the manufacturing environment.",
+        "impact_assessment": {
+          "confidentiality": {
+            "rating": "Extreme",
+            "numeric_value": 4,
+            "reasoning": "The threat explicitly states 'data exfiltration undetected' from systems vital for 'Manufacturing Line Control'. Unauthorized disclosure of such data would cause 'serious damage to the interests of the organization'. This meets the discovered definition for 'Extreme': 'Unauthorized disclosure within or outside the organization would cause serious damage to the interests of the organization'."
+          },
+          "integrity": {
+            "rating": "Extreme",
+            "numeric_value": 4,
+            "reasoning": "The threat involves 'deploy malware' and explicitly mentions 'data integrity issues' and 'compromise of the 'Manufacturing Line Control' systems'. Unauthorized modification or damage of information in this critical context is expected to have 'severe and long ranging adverse effect on business operations'. This meets the discovered definition for 'Extreme': 'Unauthorized modification or damage of information is expected to have severe and long ranging adverse effect on business operations'."
+          },
+          "availability": {
+            "rating": "Extreme",
+            "numeric_value": 4,
+            "reasoning": "The threat explicitly states 'operational disruption' and 'compromise of the 'Manufacturing Line Control' systems'. The unavailability of these critical systems due to a bypass of endpoint protection would have a 'severe and long ranging adverse effect on business operations'. This meets the discovered definition for 'Extreme': 'Impact of disruption of access or unavailability of information or information asset or services is expected to have severe and long ranging adverse effect on business operations'."
+          }
+        },
+        "overall_impact_calculation": {
+          "confidentiality_numeric": 4,
+          "integrity_numeric": 4,
+          "availability_numeric": 4,
+          "calculation_method": "max(C, I, A)",
+          "calculation": "max(4, 4, 4) = 4",
+          "overall_impact": "4 - Extreme",
+          "overall_impact_numeric": 4
+        }
+      },
+      {
+        "threat_id": "threat_3",
+        "threat_name": "Operational Disruption from Unintentional Software Failure on Manufacturing Endpoints",
+        "threat_description": "The 'Company-wide Endpoint Protection Platform' is a critical 'Software Asset' located in an 'On-premise Data Center - Rack 12', protecting 50 endpoints essential for 'Manufacturing Line Control'. Despite automatic updates and centralized management, software assets can experience unintentional failures (e.g., bugs, conflicts with OS updates, or resource exhaustion) that could lead to the endpoint protection agent crashing or malfunctioning on some of the diverse endpoints (Windows Workstations, Windows Servers, VDI). Such a failure, even if temporary, could leave critical manufacturing systems unprotected, potentially causing instability or disruption to the 'Manufacturing Line Control' process, especially if not immediately detected and remediated by the 24/7 SOC.",
+        "impact_assessment": {
+          "confidentiality": {
+            "rating": "Insignificant",
+            "numeric_value": 1,
+            "reasoning": "The threat describes an 'unintentional software failure' leading to 'operational disruption' and 'temporary loss of protection'. The primary impact is not unauthorized disclosure of information. While a subsequent attack *could* exploit the temporary unprotected state, the direct consequence of the software failure itself does not directly cause harm through disclosure. This aligns with 'Insignificant': 'Disclosure within or outside the organization will not harm the interest of the organization but maybe considered inappropriate'."
+          },
+          "integrity": {
+            "rating": "Moderate",
+            "numeric_value": 2,
+            "reasoning": "An 'unintentional software failure' leading to 'system instability' and 'temporary loss of protection' means that the integrity of the protected systems could be compromised. While not a direct malicious modification, the failure could lead to an environment where unauthorized modifications are more likely or where system integrity is degraded. This is expected to have a 'moderate adverse effect on business operations'. This meets the discovered definition for 'Moderate': 'Unauthorized modification or damage of information is expected to have a moderate adverse effect on business operations'."
+          },
+          "availability": {
+            "rating": "Serious",
+            "numeric_value": 3,
+            "reasoning": "The threat explicitly states 'operational disruption to Manufacturing Line Control' and 'system instability' due to the software failure. The unavailability of the endpoint protection or the instability of the protected systems would have a 'serious adverse effect on business operations'. This meets the discovered definition for 'Serious': 'Impact of disruption of access or unavailability of information or information asset or services is expected to have a serious adverse effect on business operations'."
+          }
+        },
+        "overall_impact_calculation": {
+          "confidentiality_numeric": 1,
+          "integrity_numeric": 2,
+          "availability_numeric": 3,
+          "calculation_method": "max(C, I, A)",
+          "calculation": "max(1, 2, 3) = 3",
+          "overall_impact": "3 - Serious",
+          "overall_impact_numeric": 3
+        }
+      }
+    ],
+    "asset_cia_ratings": {
+      "confidentiality": {
+        "rating": "Extreme",
+        "numeric_value": 4,
+        "reasoning": "Asset-level CIA: Maximum C value across all threats. Threat 1: Moderate(2), Threat 2: Extreme(4), Threat 3: Insignificant(1) → Asset C = Extreme(4)",
+        "threat_breakdown": [
+          "Threat 1: Moderate(2)",
+          "Threat 2: Extreme(4)",
+          "Threat 3: Insignificant(1)"
+        ]
+      },
+      "integrity": {
+        "rating": "Extreme",
+        "numeric_value": 4,
+        "reasoning": "Asset-level CIA: Maximum I value across all threats. Threat 1: Serious(3), Threat 2: Extreme(4), Threat 3: Moderate(2) → Asset I = Extreme(4)",
+        "threat_breakdown": [
+          "Threat 1: Serious(3)",
+          "Threat 2: Extreme(4)",
+          "Threat 3: Moderate(2)"
+        ]
+      },
+      "availability": {
+        "rating": "Extreme",
+        "numeric_value": 4,
+        "reasoning": "Asset-level CIA: Maximum A value across all threats. Threat 1: Extreme(4), Threat 2: Extreme(4), Threat 3: Serious(3) → Asset A = Extreme(4)",
+        "threat_breakdown": [
+          "Threat 1: Extreme(4)",
+          "Threat 2: Extreme(4)",
+          "Threat 3: Serious(3)"
+        ]
+      },
+      "calculation_note": "Asset-level CIA is calculated as MAXIMUM across all threat-level CIA ratings. This represents the worst-case impact scenario for the asset and is used for Asset Business Value and Criticality Classification per organizational Asset Management Guidelines."
+    },
+    "asset_business_value": {
+      "cia_combination": "Extreme, Extreme, Extreme",
+      "cia_combination_key": "Extreme|Extreme|Extreme",
+      "business_value_rating": "Very High",
+      "business_value_numeric": 5,
+      "calculation_method": "Asset Value Chart (discovered from Asset Management Guidelines)",
+      "calculation_details": "Per discovered Asset Value Chart: CIA combination (Extreme, Extreme, Extreme) maps to Business Value 'Very High'",
+      "source_reference": "Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx (Asset Valuation section) and Risk Assessment Template_For Agentic AI RM Use Case.xlsx (Sheet: Asset Inventorization Guideline)",
+      "reasoning": "Based on calculated CIA ratings (Confidentiality: Extreme, Integrity: Extreme, Availability: Extreme), per the discovered Asset Value Chart in organizational guidelines, the Asset Business Value is 'Very High'."
+    },
+    "asset_criticality": {
+      "criticality_classification": "Very high Critical",
+      "business_value_input": "Very High",
+      "calculation_method": "Criticality Classification Table (discovered from Asset Management Guidelines)",
+      "calculation_details": "Per discovered Criticality Classification Table: Business Value 'Very High' maps to Criticality 'Very high Critical'",
+      "source_reference": "Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx (Table 4)",
+      "reasoning": "Based on calculated Asset Business Value 'Very High', per the discovered Criticality Classification Table in organizational Asset Management Guidelines, the Asset Criticality Classification is 'Very high Critical'."
+    }
+  },
+  "agent_2_result": {
+    "discovery_summary": {
+      "methodology": "Semi-quantitative",
+      "risk_calculation": {
+        "method": "Formula (Inferred)",
+        "formula": "Impact Rating × Probability Rating",
+        "description": "Risk Value is calculated by multiplying the numeric Impact Rating (1-5) by the numeric Probability Rating (1-5). This formula is inferred based on the 1-5 scales for Impact and Probability and the maximum Risk Value of 25 in the Risk Evaluation Rating table."
+      },
+      "probability_scale": {
+        "type": "Numeric and Categorical",
+        "levels": [
+          "Very Low",
+          "Low",
+          "Medium",
+          "High",
+          "Very High"
+        ],
+        "range": "1-5"
+      },
+      "impact_scale": {
+        "type": "Numeric and Categorical",
+        "levels": [
+          "Very Low",
+          "Low",
+          "Medium",
+          "High",
+          "Very High"
+        ],
+        "range": "1-5"
+      },
+      "risk_level_mapping": {
+        "method": "Thresholds based on Risk Value Score",
+        "levels": [
+          "Risk Rating 1",
+          "Risk Rating 2",
+          "Risk Rating 3",
+          "Risk Rating 4",
+          "Risk Rating 5"
+        ],
+        "thresholds": "Risk Value 0-5 = Rating 1, 6-10 = Rating 2, 11-15 = Rating 3, 16-20 = Rating 4, 21-25 = Rating 5"
+      },
+      "acceptance_criteria": "Risk Ratings 1-2 are Acceptable Risk; Risk Ratings 3-5 are Non Acceptable Risk.",
+      "questionnaire_answers_used": true
+    },
+    "summary": {
+      "total_threats_assessed": 3,
+      "highest_risk_value": 16,
+      "non_acceptable_risks_count": 2,
+      "acceptable_risks_count": 1,
+      "overall_risk_level": "NON-ACCEPTABLE"
+    },
+    "threat_risk_quantification": [
+      {
+        "threat": "Widespread Malware Infection due to Partial Real-time Scanning Coverage",
+        "vulnerabilities": [
+          "Inadequate Anti-virus definition updates (if real-time scanning is not fully active, updates might not be fully effective on all files).",
+          "Inadequate procedures on OS hardening (unprotected areas might be more susceptible to compromise).",
+          "Absence of latest security patches (if real-time scanning is not fully enabled, it might miss detecting vulnerabilities that patches would fix)."
+        ],
+        "risk_statement": "Risk of widespread malware infection to the Company-wide Endpoint Protection Platform due to partially enabled real-time scanning on critical endpoints, potentially causing disruption to Manufacturing Line Control and operational downtime.",
+        "risk_impact": {
+          "rating": 4,
+          "category": "High",
+          "reasoning": "Based on Agent 1 CIA assessment: Confidentiality=Moderate (2), Integrity=Serious (3), Availability=Extreme (4). Overall impact is max(2,3,4) = 4, which maps to 'High' on the discovered 1-5 impact scale."
+        },
+        "risk_probability": {
+          "rating": 3,
+          "category": "Medium",
+          "reasoning": "The user indicated in questionnaire Q8 that real-time scanning is 'Partially' enabled, creating a significant vulnerability for malware infection. While updates are automatic (Q9) and monitoring is 24/7 by SOC (Q14), the fundamental scanning gap remains. This elevates the probability. The asset owner's overall probability rating (Q18) was 3, aligning with 'Medium' (once every 4-6 months) on the discovered scale."
+        },
+        "risk_value": {
+          "value": 12,
+          "calculation": "4 (impact) × 3 (probability) = 12"
+        },
+        "risk_evaluation_rating": {
+          "rating": 3,
+          "level": "Risk Rating 3",
+          "mapping_rationale": "Risk value 12 falls into the 11-15 range, which maps to 'Risk Rating 3' per the discovered risk level mapping (Table 6)."
+        },
+        "risk_classification": {
+          "classification": "NON-ACCEPTABLE",
+          "criteria_applied": "Risk Ratings 3-5 are Non Acceptable Risk",
+          "justification": "Risk Rating 3 is classified as 'NON-ACCEPTABLE' per organizational policy (Table 7)."
+        }
+      },
+      {
+        "threat": "Bypass of Endpoint Protection via Exploitation of Significant Exclusions",
+        "vulnerabilities": [
+          "Inadequately protected security software/tools (exclusions weaken the overall protection posture).",
+          "Inadequate network access restrictions (if exclusions allow malicious traffic or communication).",
+          "Insufficient audit trails and lack of review of logs (if activity within excluded paths is not properly logged or monitored, hindering detection)."
+        ],
+        "risk_statement": "Risk of targeted malware attacks or data exfiltration to the Company-wide Endpoint Protection Platform due to significant exclusions in security policies, potentially leading to compromise of Manufacturing Line Control and severe operational impact.",
+        "risk_impact": {
+          "rating": 4,
+          "category": "High",
+          "reasoning": "Based on Agent 1 CIA assessment: Confidentiality=Extreme (4), Integrity=Extreme (4), Availability=Extreme (4). Overall impact is max(4,4,4) = 4, which maps to 'High' on the discovered 1-5 impact scale."
+        },
+        "risk_probability": {
+          "rating": 4,
+          "category": "High",
+          "reasoning": "The user confirmed in questionnaire Q13 that 'significant exclusions exist' in the security policies, creating a direct bypass vulnerability. While MFA is enabled for admin access (Q12), it doesn't prevent exploitation of existing exclusions. The effectiveness of 24/7 SOC monitoring (Q14) is reduced if activity within excluded paths is not properly logged or reviewed, as per the identified vulnerability. Given the critical nature of 'Manufacturing Line Control' (Q5) and the clear bypass, the probability of exploitation is 'High' (once every 1-3 months)."
+        },
+        "risk_value": {
+          "value": 16,
+          "calculation": "4 (impact) × 4 (probability) = 16"
+        },
+        "risk_evaluation_rating": {
+          "rating": 4,
+          "level": "Risk Rating 4",
+          "mapping_rationale": "Risk value 16 falls into the 16-20 range, which maps to 'Risk Rating 4' per the discovered risk level mapping (Table 6)."
+        },
+        "risk_classification": {
+          "classification": "NON-ACCEPTABLE",
+          "criteria_applied": "Risk Ratings 3-5 are Non Acceptable Risk",
+          "justification": "Risk Rating 4 is classified as 'NON-ACCEPTABLE' per organizational policy (Table 7)."
+        }
+      },
+      {
+        "threat": "Operational Disruption from Unintentional Software Failure on Manufacturing Endpoints",
+        "vulnerabilities": [
+          "Lack of capacity management and performance monitoring procedures (to detect resource issues leading to software failure).",
+          "Inadequate incident reporting procedures (if internal software failures are not promptly escalated or resolved).",
+          "Absence of periodic equipment maintenance (if underlying hardware issues contribute to software instability)."
+        ],
+        "risk_statement": "Risk of operational disruption to Manufacturing Line Control due to unintentional software failure of the Company-wide Endpoint Protection Platform on critical endpoints, potentially causing temporary loss of protection and system instability.",
+        "risk_impact": {
+          "rating": 3,
+          "category": "Medium",
+          "reasoning": "Based on Agent 1 CIA assessment: Confidentiality=Insignificant (1), Integrity=Moderate (2), Availability=Serious (3). Overall impact is max(1,2,3) = 3, which maps to 'Medium' on the discovered 1-5 impact scale."
+        },
+        "risk_probability": {
+          "rating": 3,
+          "category": "Medium",
+          "reasoning": "Unintentional software failures are common. The listed vulnerabilities (lack of capacity management, inadequate incident reporting, absence of periodic equipment maintenance) directly contribute to this. While 24/7 SOC monitoring (Q14) and a defined IR plan (Q16) help with detection and recovery, they don't prevent the initial failure. Given 50 diverse endpoints (Q6, Q7), a disruption significant enough to impact 'Manufacturing Line Control' could occur 'once every 4-6 months', aligning with 'Medium' probability. The asset owner's overall probability rating (Q18) was 3."
+        },
+        "risk_value": {
+          "value": 9,
+          "calculation": "3 (impact) × 3 (probability) = 9"
+        },
+        "risk_evaluation_rating": {
+          "rating": 2,
+          "level": "Risk Rating 2",
+          "mapping_rationale": "Risk value 9 falls into the 6-10 range, which maps to 'Risk Rating 2' per the discovered risk level mapping (Table 6)."
+        },
+        "risk_classification": {
+          "classification": "ACCEPTABLE",
+          "criteria_applied": "Risk Ratings 1-2 are Acceptable Risk",
+          "justification": "Risk Rating 2 is classified as 'ACCEPTABLE' per organizational policy (Table 7)."
+        }
+      }
+    ],
+    "rag_queries_performed": [
+      "risk quantification methodology",
+      "risk calculation formula"
+    ],
+    "rag_sources_consulted": [
+      "Risk Management Guidelines_For RM Agentic AI Use Case v1.0.docx",
+      "ISO IEC 27005-2022.pdf"
+    ]
+  },
+  "agent_3_result": {
+    "discovery_summary": {
+      "control_framework": "ISO 27001:2022 (primary for controls), IT General Controls (ITGC)",
+      "control_categories": [
+        "Organizational Controls (ISO)",
+        "People Controls (ISO)",
+        "Physical Controls (ISO)",
+        "Technological Controls (ISO)",
+        "Access to Programs and Data (ITGC)",
+        "Program Change Management (ITGC)",
+        "Program Development (ITGC)",
+        "Computer Operations (ITGC)",
+        "System / Infrastructure Security (ITGC)",
+        "IT Governance / Policy Management (ITGC)"
+      ],
+      "control_types": [
+        "Preventive",
+        "Detective",
+        "Corrective"
+      ],
+      "effectiveness_scale": {
+        "type": "Numeric",
+        "range": "1-5",
+        "definitions": "1=Non-existent/Major Deficiencies, 2=Limited/Significant Deficiencies, 3=Few Deficiencies (Medium Risk), 4=Few Deficiencies (Low Risk), 5=No Deficiencies"
+      },
+      "control_rating_method": "FLOOR(AVERAGE(Preventive Control Rating * 1.0, Detective Control Rating * 0.75, Corrective Control Rating * 0.5))",
+      "residual_risk_method": "Risk Evaluation Rating - Control Rating",
+      "questionnaire_answers_used": true
+    },
+    "threat_control_evaluation": [
+      {
+        "threat": "Widespread Malware Infection due to Partial Real-time Scanning Coverage",
+        "vulnerabilities": [
+          "Partial Real-time Scanning Coverage",
+          "Significant Exclusions"
+        ],
+        "controls_identified": [
+          {
+            "control_id": "A.8.8 / A.8.7 / ITGC.5",
+            "control_name": "Automated Signature/Software Updates",
+            "category": "Preventive",
+            "current_rating": 5,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, both are automatic'",
+            "effectiveness": "VERY STRONG",
+            "relevance_justification": "Automatically updated signatures and software versions directly prevent widespread malware infection by ensuring the endpoint protection platform is current against the latest threats."
+          },
+          {
+            "control_id": "A.8.1 / A.8.7 / ITGC.5",
+            "control_name": "Centralized Management of Endpoint Protection",
+            "category": "Preventive",
+            "current_rating": 5,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes'",
+            "effectiveness": "VERY STRONG",
+            "relevance_justification": "Centralized management ensures consistent application of security policies and configurations across all endpoints, reducing the likelihood of widespread infection due to misconfiguration."
+          },
+          {
+            "control_id": "A.8.7 / A.8.9",
+            "control_name": "Exclusion Management in Endpoint Protection",
+            "category": "Preventive",
+            "current_rating": 2,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, significant exclusions exist'",
+            "effectiveness": "LIMITED",
+            "relevance_justification": "While a control, the existence of 'significant exclusions' directly contributes to the vulnerability of widespread malware infection by creating potential bypasses for the endpoint protection. Its current rating reflects this deficiency."
+          },
+          {
+            "control_id": "A.8.16 / A.5.25 / ITGC.4 / ITGC.5",
+            "control_name": "24/7 Security Monitoring by SOC",
+            "category": "Detective",
+            "current_rating": 5,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, 24/7 by security operations center (SOC)'",
+            "effectiveness": "VERY STRONG",
+            "relevance_justification": "Active 24/7 monitoring by a SOC allows for rapid detection of malware activity or indicators of compromise, limiting the spread of a widespread infection."
+          },
+          {
+            "control_id": "A.8.15 / A.8.16 / ITGC.5",
+            "control_name": "SIEM Integration for Logs and Alerts",
+            "category": "Detective",
+            "current_rating": 5,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes'",
+            "effectiveness": "VERY STRONG",
+            "relevance_justification": "Integration with a SIEM centralizes security event data, enhancing the ability to detect widespread malware infections through correlation and analysis of alerts from multiple endpoints."
+          },
+          {
+            "control_id": "A.5.24 / A.5.26 / ITGC.4",
+            "control_name": "Defined and Tested Incident Response Plan",
+            "category": "Corrective",
+            "current_rating": 5,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, a specific plan exists and is regularly tested'",
+            "effectiveness": "VERY STRONG",
+            "relevance_justification": "A well-defined and tested incident response plan is crucial for containing, eradicating, and recovering from a widespread malware infection, minimizing its overall impact."
+          }
+        ],
+        "control_rating_calculation": {
+          "weighted_preventive": "4.0 × 1.0 = 4.0",
+          "weighted_detective": "5.0 × 0.75 = 3.75",
+          "weighted_corrective": "5.0 × 0.5 = 2.5",
+          "average_weighted": 3.4166666666666665,
+          "control_rating": 3,
+          "control_rating_text": "ADEQUATE"
+        },
+        "control_category_averages": {
+          "preventive_avg": 4.0,
+          "detective_avg": 5.0,
+          "corrective_avg": 5.0
+        },
+        "risk_evaluation_rating": 3,
+        "residual_risk": {
+          "risk_evaluation_rating": 3,
+          "control_rating": 3,
+          "residual_risk_value": 0,
+          "residual_risk_classification": "LOW",
+          "calculation": "Risk Evaluation Rating 3 - Control Rating 3 = 0",
+          "formula": "risk_evaluation_rating - control_rating"
+        },
+        "control_gaps": [
+          {
+            "gap_description": "Partial Real-time Scanning Coverage",
+            "evidence": "User indicated: 'Partially'",
+            "impact": "Increases the window of vulnerability for new threats and allows undetected malware execution.",
+            "severity": "HIGH"
+          }
+        ],
+        "recommended_controls": [
+          {
+            "control_id": "A.8.7",
+            "control_name": "Implement Full Real-time Scanning Coverage",
+            "control_type": "Preventive",
+            "priority": "HIGH",
+            "rationale": "Addresses the critical gap of partial real-time scanning, which leaves endpoints vulnerable to immediate threats.",
+            "expected_effectiveness": 5
+          },
+          {
+            "control_id": "A.8.7 / A.8.9",
+            "control_name": "Review and Minimize Significant Exclusions",
+            "control_type": "Preventive",
+            "priority": "HIGH",
+            "rationale": "Reduces the attack surface by closing known bypasses for malware, directly mitigating the 'significant exclusions' vulnerability.",
+            "expected_effectiveness": 4
+          }
+        ]
+      },
+      {
+        "threat": "Bypass of Endpoint Protection via Exploitation of Significant Exclusions",
+        "vulnerabilities": [
+          "Significant Exclusions"
+        ],
+        "controls_identified": [
+          {
+            "control_id": "A.8.8 / A.8.7 / ITGC.5",
+            "control_name": "Automated Signature/Software Updates",
+            "category": "Preventive",
+            "current_rating": 5,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, both are automatic'",
+            "effectiveness": "VERY STRONG",
+            "relevance_justification": "Keeps the endpoint protection platform updated to address new methods of bypassing protection, including those that might exploit exclusions."
+          },
+          {
+            "control_id": "A.8.1 / A.8.7 / ITGC.5",
+            "control_name": "Centralized Management of Endpoint Protection",
+            "category": "Preventive",
+            "current_rating": 5,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes'",
+            "effectiveness": "VERY STRONG",
+            "relevance_justification": "Ensures that exclusion policies are consistently managed and deployed from a central point, reducing the risk of unauthorized or unreviewed exclusions."
+          },
+          {
+            "control_id": "A.8.5 / A.5.17 / ITGC.1",
+            "control_name": "MFA for Administrative Access to Management Console",
+            "category": "Preventive",
+            "current_rating": 5,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, for all administrative access'",
+            "effectiveness": "VERY STRONG",
+            "relevance_justification": "Protects the management console where exclusions are configured, preventing unauthorized modification or creation of exclusions that could lead to bypass."
+          },
+          {
+            "control_id": "A.8.7 / A.8.9",
+            "control_name": "Exclusion Management in Endpoint Protection",
+            "category": "Preventive",
+            "current_rating": 2,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, significant exclusions exist'",
+            "effectiveness": "LIMITED",
+            "relevance_justification": "This control directly addresses the management of exclusions. Its low rating reflects the deficiency ('significant exclusions') that makes the system vulnerable to bypass."
+          },
+          {
+            "control_id": "A.8.16 / A.5.25 / ITGC.4 / ITGC.5",
+            "control_name": "24/7 Security Monitoring by SOC",
+            "category": "Detective",
+            "current_rating": 5,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, 24/7 by security operations center (SOC)'",
+            "effectiveness": "VERY STRONG",
+            "relevance_justification": "Detects suspicious activity that might indicate an attempt to bypass endpoint protection via exploitation of exclusions."
+          },
+          {
+            "control_id": "A.8.15 / A.8.16 / ITGC.5",
+            "control_name": "SIEM Integration for Logs and Alerts",
+            "category": "Detective",
+            "current_rating": 5,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes'",
+            "effectiveness": "VERY STRONG",
+            "relevance_justification": "Centralizes logs and alerts, enabling better correlation and detection of exploitation attempts through exclusions."
+          },
+          {
+            "control_id": "A.5.24 / A.5.26 / ITGC.4",
+            "control_name": "Defined and Tested Incident Response Plan",
+            "category": "Corrective",
+            "current_rating": 5,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, a specific plan exists and is regularly tested'",
+            "effectiveness": "VERY STRONG",
+            "relevance_justification": "Provides a structured approach to respond and recover if endpoint protection is successfully bypassed due to exploited exclusions."
+          }
+        ],
+        "control_rating_calculation": {
+          "weighted_preventive": "4.25 × 1.0 = 4.25",
+          "weighted_detective": "5.0 × 0.75 = 3.75",
+          "weighted_corrective": "5.0 × 0.5 = 2.5",
+          "average_weighted": 3.5,
+          "control_rating": 3,
+          "control_rating_text": "ADEQUATE"
+        },
+        "control_category_averages": {
+          "preventive_avg": 4.25,
+          "detective_avg": 5.0,
+          "corrective_avg": 5.0
+        },
+        "risk_evaluation_rating": 4,
+        "residual_risk": {
+          "risk_evaluation_rating": 4,
+          "control_rating": 3,
+          "residual_risk_value": 1,
+          "residual_risk_classification": "LOW",
+          "calculation": "Risk Evaluation Rating 4 - Control Rating 3 = 1",
+          "formula": "risk_evaluation_rating - control_rating"
+        },
+        "control_gaps": [
+          {
+            "gap_description": "Significant Exclusions in Endpoint Protection Policies",
+            "evidence": "User indicated: 'Yes, significant exclusions exist'",
+            "impact": "Creates known pathways for attackers to bypass security controls, increasing the probability of successful exploitation.",
+            "severity": "HIGH"
+          }
+        ],
+        "recommended_controls": [
+          {
+            "control_id": "A.8.7 / A.8.9",
+            "control_name": "Review and Minimize Significant Exclusions",
+            "control_type": "Preventive",
+            "priority": "HIGH",
+            "rationale": "Directly addresses the vulnerability by reducing the attack surface and closing potential bypasses for endpoint protection.",
+            "expected_effectiveness": 4
+          }
+        ]
+      },
+      {
+        "threat": "Operational Disruption from Unintentional Software Failure on Manufacturing Endpoints",
+        "vulnerabilities": [
+          "Unintentional Software Failure"
+        ],
+        "controls_identified": [
+          {
+            "control_id": "A.8.8 / A.8.7 / ITGC.5",
+            "control_name": "Automated Signature/Software Updates",
+            "category": "Preventive",
+            "current_rating": 5,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, both are automatic'",
+            "effectiveness": "VERY STRONG",
+            "relevance_justification": "Ensures the endpoint protection software is stable and free from known bugs that could lead to unintentional failure, preventing operational disruption."
+          },
+          {
+            "control_id": "A.8.1 / A.8.7 / ITGC.5",
+            "control_name": "Centralized Management of Endpoint Protection",
+            "category": "Preventive",
+            "current_rating": 5,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes'",
+            "effectiveness": "VERY STRONG",
+            "relevance_justification": "Centralized management ensures consistent and stable deployment of the software, reducing the risk of configuration errors that could cause operational disruption."
+          },
+          {
+            "control_id": "A.8.7 / A.8.9",
+            "control_name": "Exclusion Management in Endpoint Protection",
+            "category": "Preventive",
+            "current_rating": 2,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, significant exclusions exist'",
+            "effectiveness": "LIMITED",
+            "relevance_justification": "Poorly managed or overly broad exclusions can lead to unexpected software behavior or conflicts, potentially causing unintentional software failure and operational disruption. Its current rating reflects this deficiency."
+          },
+          {
+            "control_id": "A.8.16 / A.5.25 / ITGC.4 / ITGC.5",
+            "control_name": "24/7 Security Monitoring by SOC",
+            "category": "Detective",
+            "current_rating": 5,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, 24/7 by security operations center (SOC)'",
+            "effectiveness": "VERY STRONG",
+            "relevance_justification": "Detects abnormal software behavior or failures on manufacturing endpoints, allowing for early intervention to prevent or mitigate operational disruption."
+          },
+          {
+            "control_id": "A.8.15 / A.8.16 / ITGC.5",
+            "control_name": "SIEM Integration for Logs and Alerts",
+            "category": "Detective",
+            "current_rating": 5,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes'",
+            "effectiveness": "VERY STRONG",
+            "relevance_justification": "Centralized logging and analysis through SIEM aids in identifying patterns or root causes of software failures, supporting quicker resolution and preventing widespread disruption."
+          },
+          {
+            "control_id": "A.5.24 / A.5.26 / ITGC.4",
+            "control_name": "Defined and Tested Incident Response Plan",
+            "category": "Corrective",
+            "current_rating": 5,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, a specific plan exists and is regularly tested'",
+            "effectiveness": "VERY STRONG",
+            "relevance_justification": "A robust incident response plan is essential for managing and recovering from operational disruptions caused by software failures, minimizing downtime and impact."
+          }
+        ],
+        "control_rating_calculation": {
+          "weighted_preventive": "4.0 × 1.0 = 4.0",
+          "weighted_detective": "5.0 × 0.75 = 3.75",
+          "weighted_corrective": "5.0 × 0.5 = 2.5",
+          "average_weighted": 3.4166666666666665,
+          "control_rating": 3,
+          "control_rating_text": "ADEQUATE"
+        },
+        "control_category_averages": {
+          "preventive_avg": 4.0,
+          "detective_avg": 5.0,
+          "corrective_avg": 5.0
+        },
+        "risk_evaluation_rating": 2,
+        "residual_risk": {
+          "risk_evaluation_rating": 2,
+          "control_rating": 3,
+          "residual_risk_value": -1,
+          "residual_risk_classification": "LOW",
+          "calculation": "Risk Evaluation Rating 2 - Control Rating 3 = -1",
+          "formula": "risk_evaluation_rating - control_rating"
+        },
+        "control_gaps": [
+          {
+            "gap_description": "Partial Real-time Scanning Coverage",
+            "evidence": "User indicated: 'Partially'",
+            "impact": "Can lead to undetected issues or conflicts that contribute to software instability and potential operational disruption.",
+            "severity": "MEDIUM"
+          }
+        ],
+        "recommended_controls": [
+          {
+            "control_id": "A.8.7",
+            "control_name": "Implement Full Real-time Scanning Coverage",
+            "control_type": "Preventive",
+            "priority": "MEDIUM",
+            "rationale": "Ensuring full real-time scanning can prevent software conflicts or undetected issues that might lead to unintentional software failures on critical manufacturing endpoints.",
+            "expected_effectiveness": 5
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "total_threats_evaluated": 3,
+      "total_controls_identified": 7,
+      "average_control_rating": 3,
+      "high_residual_risks": 0
+    }
+  },
+  "agent_4_result": {
+    "metadata": {
+      "asset_name": "Company-wide Endpoint Protection Platform",
+      "generation_date": "2026-01-20",
+      "total_threats": 3
+    },
+    "management_decisions": {
+      "threat_1": {
+        "threat_name": "Widespread Malware Infection due to Partial Real-time Scanning Coverage",
+        "threat_index": 1,
+        "risk_rating": "3/5",
+        "residual_risk": "0/5",
+        "decision_options": [
+          {
+            "value": "TREAT",
+            "label": "Treat the Risk (Implement Controls)",
+            "description": "Treating this risk involves implementing specific controls to reduce the likelihood and impact of a widespread malware infection. This strategy aims to bring the risk evaluation rating down to an acceptable level by addressing identified vulnerabilities. It focuses on proactive measures to enhance the endpoint protection platform's capabilities and close existing security gaps. The goal is to significantly lower the probability of a successful attack and minimize potential damage.",
+            "recommendation": "This option is highly recommended for 'Widespread Malware Infection due to Partial Real-time Scanning Coverage' given its current risk rating of 3/5, which is above the acceptable threshold. Implementing the recommended controls will directly address the critical gap of partial real-time scanning, thereby reducing the attack surface and improving overall endpoint security posture. This proactive approach is essential to prevent significant operational disruption and data loss.",
+            "consequences": "Choosing to treat this risk will lead to enhanced security, reduced vulnerability to malware, and improved compliance. The primary consequence is the investment of resources (time, budget, personnel) for control implementation and ongoing maintenance. Failure to implement effective controls could result in continued exposure to widespread malware infections, leading to data breaches, system downtime, and reputational damage.",
+            "estimated_cost": "$5,000 - $50,000 (for software/configuration changes, personnel time)",
+            "typical_timeline": "1-3 months (for planning, implementation, and initial verification)",
+            "approval_required": "Risk Owner (CIO / L1 Head) for the Risk Treatment Plan, potentially higher management for significant budget allocation.",
+            "monitoring_required": "Continuous monitoring of control effectiveness, regular review of residual risk, and periodic audits to ensure controls are operating as intended and the risk remains within acceptable limits."
+          },
+          {
+            "value": "ACCEPT",
+            "label": "Accept the Risk",
+            "description": "Accepting this risk means making an informed decision to tolerate the 'Widespread Malware Infection due to Partial Real-time Scanning Coverage' without implementing further treatment controls. This strategy is typically chosen when the cost of treatment outweighs the potential impact of the risk, or when the risk is already within the organization's acceptable risk appetite. It acknowledges the potential for a widespread malware infection but relies on existing controls and incident response capabilities.",
+            "recommendation": "This option is generally not recommended for a risk with a rating of 3/5, as it falls above the organization's acceptable risk criteria. Acceptance should only be considered if a thorough cost-benefit analysis demonstrates that treatment is not feasible due to overwhelming financial, administrative, or technical constraints, and the organization is prepared to bear the full consequences of a potential widespread infection. This would require explicit management approval.",
+            "consequences": "Accepting this risk means the organization remains vulnerable to widespread malware infections, potentially leading to significant operational disruption, data loss, and financial penalties. While direct treatment costs are avoided, the organization assumes the full burden of potential losses and recovery efforts if the risk materializes. This could also negatively impact reputation and customer trust.",
+            "estimated_cost": "$0 (direct cost), but potential for significant indirect costs from incident response, recovery, and business interruption (e.g., $100,000 - $1,000,000+ per incident).",
+            "typical_timeline": "Immediate decision, with continuous monitoring required.",
+            "approval_required": "Risk Owner (CIO / L1 Head) and Risk Approver (RCAC) are required, especially since the risk rating is above 2/5. A cost-benefit analysis must be completed prior to approval.",
+            "monitoring_required": "Regular review of the accepted risk to ensure it remains within the organization's risk appetite, monitoring for changes in likelihood or impact, and re-evaluation at defined intervals (e.g., annually or bi-annually)."
+          },
+          {
+            "value": "TRANSFER",
+            "label": "Transfer the Risk",
+            "description": "Transferring this risk involves shifting the financial or operational impact of a 'Widespread Malware Infection' to a third party, such as an insurance provider or a managed security service provider (MSSP). While accountability for the risk ultimately remains with the organization, the burden of loss or the responsibility for managing the risk is shared. This strategy aims to mitigate the financial consequences or operational overhead associated with the threat.",
+            "recommendation": "This option could be considered as a supplementary strategy, particularly for mitigating the financial impact of a widespread malware infection through cyber insurance. It is less suitable as a primary treatment for the technical vulnerability itself, as the organization still needs to manage the underlying security gaps. If outsourcing endpoint protection management, ensure the vendor's capabilities fully address the identified gaps.",
+            "consequences": "Transferring the risk can reduce the direct financial burden of a malware incident and potentially offload operational management to experts. However, it incurs ongoing costs (premiums, service fees) and requires careful contract management to define scope and liabilities. The organization retains ultimate accountability and may still face reputational damage or operational disruption not covered by the transfer mechanism.",
+            "estimated_cost": "$10,000 - $100,000+ annually (for cyber insurance premiums or MSSP fees).",
+            "typical_timeline": "1-3 months (for vendor selection, contract negotiation, and implementation).",
+            "approval_required": "Risk Owner (CIO / L1 Head), Legal/Procurement for contract review, and potentially executive management for significant financial commitments.",
+            "monitoring_required": "Periodic review of the transfer mechanism (e.g., insurance policy renewal, vendor performance against SLA), monitoring of residual risks, and ensuring the third party is meeting its obligations as per the agreement."
+          },
+          {
+            "value": "TERMINATE",
+            "label": "Terminate the Risk",
+            "description": "Terminating this risk means eliminating the possibility of a 'Widespread Malware Infection due to Partial Real-time Scanning Coverage' by ceasing the activity or decommissioning the asset that presents the risk. This is the most drastic risk treatment option, as it involves removing the source of the risk entirely. For an Endpoint Protection Platform, this would imply discontinuing its use or the systems it protects.",
+            "recommendation": "This option is generally not feasible or recommended for a core 'Company-wide Endpoint Protection Platform' as it would mean discontinuing endpoint protection entirely, which is critical for business operations. Terminating the risk would only be appropriate if the platform itself is deemed irreparable or obsolete, and a complete replacement or alternative strategy is immediately available to maintain security coverage.",
+            "consequences": "Terminating the use of a company-wide endpoint protection platform would eliminate this specific risk but would introduce far greater, unmanaged security risks across the organization. It would lead to significant operational disruption, potential loss of critical business functions, and massive exposure to all forms of cyber threats. The costs associated with decommissioning and finding an alternative solution could also be substantial.",
+            "estimated_cost": "$10,000 - $500,000+ (for decommissioning, data migration, and potential loss of business functionality).",
+            "typical_timeline": "3-6 months (for planning, decommissioning, and managing dependencies).",
+            "approval_required": "Risk Owner (CIO / L1 Head), Asset Class Owner, and executive management due to the significant impact on business operations and security posture.",
+            "monitoring_required": "Verification that the activity/asset has been fully ceased/decommissioned, confirmation that associated risks are eliminated, and monitoring for any unforeseen residual impacts or new risks introduced by the termination."
+          }
+        ],
+        "recommended_controls": [
+          {
+            "control_id": "A.8.7",
+            "control_name": "Implement Full Real-time Scanning Coverage",
+            "control_type": "Preventive",
+            "priority": "HIGH",
+            "rationale": "Addresses the critical gap of partial real-time scanning, which leaves endpoints vulnerable to immediate threats.",
+            "expected_effectiveness": 5,
+            "estimated_cost": "$5,000 - $15,000 (configuration changes, testing, potential license upgrades)",
+            "implementation_timeline": "2-4 weeks",
+            "expected_risk_reduction": "Significant reduction in malware infection likelihood (e.g., 20-30% reduction in overall risk rating)",
+            "risk_owner": "CIO / L1 Head"
+          },
+          {
+            "control_id": "A.8.7 / A.8.9",
+            "control_name": "Review and Minimize Significant Exclusions",
+            "control_type": "Preventive",
+            "priority": "HIGH",
+            "rationale": "Reduces the attack surface by closing known bypasses for malware, directly mitigating the 'significant exclusions' vulnerability.",
+            "expected_effectiveness": 4,
+            "estimated_cost": "$2,000 - $10,000 (personnel time for review, testing, and policy updates)",
+            "implementation_timeline": "4-8 weeks",
+            "expected_risk_reduction": "Moderate to significant reduction in malware infection likelihood (e.g., 15-25% reduction in overall risk rating)",
+            "risk_owner": "CIO / L1 Head"
+          }
+        ],
+        "control_gaps": [
+          {
+            "gap_description": "Partial Real-time Scanning Coverage",
+            "evidence": "User indicated: 'Partially'",
+            "impact": "Increases the window of vulnerability for new threats and allows undetected malware execution.",
+            "severity": "HIGH"
+          }
+        ]
+      },
+      "threat_2": {
+        "threat_name": "Bypass of Endpoint Protection via Exploitation of Significant Exclusions",
+        "threat_index": 2,
+        "risk_rating": "4/5",
+        "residual_risk": "1/5",
+        "decision_options": [
+          {
+            "value": "TREAT",
+            "label": "Treat the Risk (Implement Controls)",
+            "description": "Treating this risk involves implementing specific controls to reduce the likelihood and impact of endpoint protection bypass via exploited exclusions. This strategy aims to bring the risk evaluation rating down to an acceptable level by directly addressing the vulnerability of significant exclusions. It focuses on strengthening the configuration and management of the endpoint protection platform to prevent unauthorized bypasses. The goal is to close known attack vectors and enhance the integrity of security controls.",
+            "recommendation": "This option is strongly recommended for 'Bypass of Endpoint Protection via Exploitation of Significant Exclusions' given its high risk rating of 4/5. Addressing the 'significant exclusions' gap is critical to prevent attackers from bypassing security controls and gaining unauthorized access. Implementing the recommended control will directly reduce the attack surface and significantly improve the effectiveness of the endpoint protection platform.",
+            "consequences": "Choosing to treat this risk will lead to a more robust endpoint protection system, reduced attack surface, and improved overall security posture. The primary consequence is the investment of resources (time, budget, personnel) for control implementation, review, and ongoing maintenance. Failure to implement effective controls could result in continued vulnerability to bypasses, leading to data breaches, system compromise, and potential regulatory non-compliance.",
+            "estimated_cost": "$2,000 - $10,000 (personnel time for review, testing, and policy updates)",
+            "typical_timeline": "1-2 months (for policy review, testing, and deployment)",
+            "approval_required": "Risk Owner (CIO / L1 Head) for the Risk Treatment Plan, potentially higher management for significant policy changes.",
+            "monitoring_required": "Continuous monitoring of exclusion policies, regular audits to ensure no new significant exclusions are introduced without proper review, and periodic testing of endpoint protection effectiveness."
+          },
+          {
+            "value": "ACCEPT",
+            "label": "Accept the Risk",
+            "description": "Accepting this risk means making an informed decision to tolerate the 'Bypass of Endpoint Protection via Exploitation of Significant Exclusions' without implementing further treatment controls. This strategy is typically chosen when the cost of treatment outweighs the potential impact of the risk, or when the risk is already within the organization's acceptable risk appetite. It acknowledges the potential for a bypass but relies on existing detective and corrective controls.",
+            "recommendation": "This option is not recommended for a risk with a rating of 4/5, as it represents a critical vulnerability that could lead to severe consequences. Acceptance should only be considered under extreme circumstances where treatment is absolutely unfeasible, and the organization is fully prepared to absorb the significant impact of a successful bypass. This would require explicit, high-level management approval and a clear understanding of the potential ramifications.",
+            "consequences": "Accepting this risk means the organization remains highly vulnerable to attackers exploiting known exclusions to bypass endpoint protection. This could lead to unauthorized access, data exfiltration, system compromise, and severe operational disruption. The organization would bear the full financial and reputational costs of such an incident, which could be substantial and long-lasting.",
+            "estimated_cost": "$0 (direct cost), but potential for significant indirect costs from incident response, recovery, legal fees, and reputational damage (e.g., $200,000 - $2,000,000+ per incident).",
+            "typical_timeline": "Immediate decision, with continuous monitoring required.",
+            "approval_required": "Risk Owner (CIO / L1 Head) and Risk Approver (RCAC) are required, as this is a high-rated risk. A comprehensive cost-benefit analysis must be completed prior to approval.",
+            "monitoring_required": "Regular review of the accepted risk to ensure it remains within the organization's risk appetite, monitoring for changes in likelihood or impact, and re-evaluation at defined intervals (e.g., annually or bi-annually)."
+          },
+          {
+            "value": "TRANSFER",
+            "label": "Transfer the Risk",
+            "description": "Transferring this risk involves shifting the financial or operational impact of 'Bypass of Endpoint Protection via Exploitation of Significant Exclusions' to a third party. This could involve obtaining cyber insurance to cover financial losses from a breach or outsourcing the management of endpoint protection to a specialized MSSP. The goal is to mitigate the financial consequences or operational burden associated with managing this specific vulnerability.",
+            "recommendation": "While cyber insurance can help mitigate the financial impact of a successful bypass, it does not address the underlying technical vulnerability of significant exclusions. Outsourcing endpoint protection management to an MSSP could be a viable transfer mechanism if the MSSP can effectively review and minimize exclusions. However, the organization must ensure the MSSP's capabilities and contractual obligations directly address this specific threat.",
+            "consequences": "Transferring the risk can reduce the direct financial burden of a security incident resulting from a bypass and potentially leverage external expertise. However, it incurs ongoing costs (premiums, service fees) and requires careful contract management to define scope and liabilities. The organization retains ultimate accountability for the security of its data and systems, and may still face reputational damage or operational disruption not fully covered by the transfer mechanism.",
+            "estimated_cost": "$10,000 - $100,000+ annually (for cyber insurance premiums or MSSP fees).",
+            "typical_timeline": "1-3 months (for vendor selection, contract negotiation, and implementation).",
+            "approval_required": "Risk Owner (CIO / L1 Head), Legal/Procurement for contract review, and potentially executive management for significant financial commitments.",
+            "monitoring_required": "Periodic review of the transfer mechanism (e.g., insurance policy renewal, vendor performance against SLA), monitoring of residual risks, and ensuring the third party is meeting its obligations as per the agreement."
+          },
+          {
+            "value": "TERMINATE",
+            "label": "Terminate the Risk",
+            "description": "Terminating this risk means eliminating the possibility of 'Bypass of Endpoint Protection via Exploitation of Significant Exclusions' by ceasing the activity or decommissioning the asset that presents the risk. For an Endpoint Protection Platform, this would imply discontinuing its use or the systems it protects. This is a drastic measure, typically reserved for situations where the asset or activity is no longer essential or poses an unacceptable level of risk.",
+            "recommendation": "This option is generally not feasible or recommended for a core 'Company-wide Endpoint Protection Platform' as it would mean discontinuing endpoint protection entirely, which is critical for business operations. Terminating the risk would only be appropriate if the platform itself is deemed irreparable or obsolete, and a complete replacement or alternative strategy is immediately available to maintain security coverage.",
+            "consequences": "Terminating the use of a company-wide endpoint protection platform would eliminate this specific risk but would introduce far greater, unmanaged security risks across the organization. It would lead to significant operational disruption, potential loss of critical business functions, and massive exposure to all forms of cyber threats. The costs associated with decommissioning and finding an alternative solution could also be substantial.",
+            "estimated_cost": "$10,000 - $500,000+ (for decommissioning, data migration, and potential loss of business functionality).",
+            "typical_timeline": "3-6 months (for planning, decommissioning, and managing dependencies).",
+            "approval_required": "Risk Owner (CIO / L1 Head), Asset Class Owner, and executive management due to the significant impact on business operations and security posture.",
+            "monitoring_required": "Verification that the activity/asset has been fully ceased/decommissioned, confirmation that associated risks are eliminated, and monitoring for any unforeseen residual impacts or new risks introduced by the termination."
+          }
+        ],
+        "recommended_controls": [
+          {
+            "control_id": "A.8.7 / A.8.9",
+            "control_name": "Review and Minimize Significant Exclusions",
+            "control_type": "Preventive",
+            "priority": "HIGH",
+            "rationale": "Directly addresses the vulnerability by reducing the attack surface and closing potential bypasses for endpoint protection.",
+            "expected_effectiveness": 4,
+            "estimated_cost": "$2,000 - $10,000 (personnel time for review, testing, and policy updates)",
+            "implementation_timeline": "4-8 weeks",
+            "expected_risk_reduction": "Significant reduction in bypass likelihood (e.g., 20-30% reduction in overall risk rating)",
+            "risk_owner": "CIO / L1 Head"
+          }
+        ],
+        "control_gaps": [
+          {
+            "gap_description": "Significant Exclusions in Endpoint Protection Policies",
+            "evidence": "User indicated: 'Yes, significant exclusions exist'",
+            "impact": "Creates known pathways for attackers to bypass security controls, increasing the probability of successful exploitation.",
+            "severity": "HIGH"
+          }
+        ]
+      },
+      "threat_3": {
+        "threat_name": "Operational Disruption from Unintentional Software Failure on Manufacturing Endpoints",
+        "threat_index": 3,
+        "risk_rating": "2/5",
+        "residual_risk": "-1/5",
+        "decision_options": [
+          {
+            "value": "TREAT",
+            "label": "Treat the Risk (Implement Controls)",
+            "description": "Treating this risk involves implementing specific controls to reduce the likelihood and impact of unintentional software failures on manufacturing endpoints. This strategy aims to enhance the stability and reliability of the endpoint protection platform in critical operational technology (OT) environments. It focuses on proactive measures to prevent software conflicts or undetected issues that could lead to operational disruption. The goal is to ensure continuous and stable operation of manufacturing processes.",
+            "recommendation": "While the current risk rating is 2/5 (acceptable), implementing the recommended control 'Implement Full Real-time Scanning Coverage' can further enhance stability and prevent unforeseen software conflicts. This is particularly important for manufacturing endpoints where operational disruption can have significant business impact. This treatment can be considered a continuous improvement effort to maintain a low residual risk.",
+            "consequences": "Choosing to treat this risk will lead to improved software stability, reduced likelihood of operational disruption, and enhanced reliability of manufacturing endpoints. The primary consequence is the investment of resources (time, budget, personnel) for control implementation and ongoing maintenance. Failure to implement effective controls could result in continued exposure to software failures, leading to production downtime and financial losses.",
+            "estimated_cost": "$5,000 - $15,000 (configuration changes, testing, potential license upgrades)",
+            "typical_timeline": "2-4 weeks (for planning, implementation, and initial verification)",
+            "approval_required": "Risk Owner (CIO / L1 Head) for the Risk Treatment Plan, potentially the Manufacturing/Operations Head for changes affecting OT environments.",
+            "monitoring_required": "Continuous monitoring of software performance on manufacturing endpoints, regular review of system logs for anomalies, and periodic testing of endpoint protection stability in OT environments."
+          },
+          {
+            "value": "ACCEPT",
+            "label": "Accept the Risk",
+            "description": "Accepting this risk means making an informed decision to tolerate the 'Operational Disruption from Unintentional Software Failure on Manufacturing Endpoints' without implementing further treatment controls. This strategy is appropriate when the risk is already within the organization's acceptable risk appetite, as indicated by its current risk rating of 2/5. It acknowledges the potential for software failures but relies on existing controls and incident response capabilities to manage any occurrences.",
+            "recommendation": "This option is highly recommended for 'Operational Disruption from Unintentional Software Failure on Manufacturing Endpoints' given its current risk rating of 2/5, which falls within the organization's acceptable risk criteria. The existing controls are already strong, resulting in a low residual risk. Therefore, formal acceptance with ongoing monitoring is an appropriate and cost-effective strategy.",
+            "consequences": "Accepting this risk means the organization acknowledges the possibility of unintentional software failures but deems the current level of risk acceptable. While direct treatment costs are avoided, the organization assumes the burden of potential minor disruptions and recovery efforts if the risk materializes. This approach is suitable when the likelihood and impact are low and managed by existing robust controls.",
+            "estimated_cost": "$0 (direct cost), with minimal potential for indirect costs due to the low residual risk.",
+            "typical_timeline": "Immediate decision, with continuous monitoring required.",
+            "approval_required": "Risk Owner (CIO / L1 Head) is required, as the risk rating is 2/5 (acceptable). No further Risk Approver (RCAC) approval is needed for acceptable risks.",
+            "monitoring_required": "Regular review of the accepted risk to ensure it remains within the organization's risk appetite, monitoring for changes in likelihood or impact, and re-evaluation at defined intervals (e.g., annually or bi-annually)."
+          },
+          {
+            "value": "TRANSFER",
+            "label": "Transfer the Risk",
+            "description": "Transferring this risk involves shifting the financial or operational impact of 'Operational Disruption from Unintentional Software Failure on Manufacturing Endpoints' to a third party. This could involve obtaining specialized insurance for operational technology (OT) environments or outsourcing the management and maintenance of endpoint protection on manufacturing systems to a vendor with expertise in industrial control systems. The goal is to mitigate the financial consequences or operational burden associated with this specific threat.",
+            "recommendation": "Given the acceptable risk rating of 2/5 and the nature of unintentional software failure, transferring this risk might be considered for specific financial protection (e.g., business interruption insurance for manufacturing). However, it is less effective for directly preventing the technical issue. If outsourcing, ensure the vendor has proven expertise in managing endpoint protection in sensitive OT environments to avoid introducing new risks.",
+            "consequences": "Transferring the risk can reduce the direct financial burden of an operational disruption and potentially leverage external expertise for specialized OT environments. However, it incurs ongoing costs (premiums, service fees) and requires careful contract management to define scope and liabilities. The organization retains ultimate accountability for the continuous operation of its manufacturing processes and may still face reputational damage or operational disruption not fully covered by the transfer mechanism.",
+            "estimated_cost": "$5,000 - $50,000+ annually (for specialized insurance or managed services).",
+            "typical_timeline": "1-3 months (for vendor selection, contract negotiation, and implementation).",
+            "approval_required": "Risk Owner (CIO / L1 Head), Legal/Procurement for contract review, and potentially the Manufacturing/Operations Head for agreements affecting OT.",
+            "monitoring_required": "Periodic review of the transfer mechanism (e.g., insurance policy renewal, vendor performance against SLA), monitoring of residual risks, and ensuring the third party is meeting its obligations as per the agreement."
+          },
+          {
+            "value": "TERMINATE",
+            "label": "Terminate the Risk",
+            "description": "Terminating this risk means eliminating the possibility of 'Operational Disruption from Unintentional Software Failure on Manufacturing Endpoints' by ceasing the activity or decommissioning the asset that presents the risk. For manufacturing endpoints, this would imply discontinuing the use of the endpoint protection platform on these critical systems or even decommissioning the manufacturing endpoints themselves. This is a drastic measure, typically reserved for situations where the asset or activity is no longer essential or poses an unacceptable level of risk.",
+            "recommendation": "This option is not recommended for 'Operational Disruption from Unintentional Software Failure on Manufacturing Endpoints'. Discontinuing endpoint protection on manufacturing endpoints would expose them to far greater cybersecurity risks, potentially leading to catastrophic operational failures. Decommissioning manufacturing endpoints is also not a viable option as they are critical for business operations. This option is only considered if the entire manufacturing process or specific endpoints are being retired without replacement.",
+            "consequences": "Terminating the use of endpoint protection on manufacturing endpoints would eliminate this specific risk but would introduce far greater, unmanaged cybersecurity risks across the manufacturing environment. This would lead to severe operational disruption, potential safety hazards, and massive exposure to cyber threats. The costs associated with decommissioning and finding an alternative solution could also be substantial, alongside potential loss of production and revenue.",
+            "estimated_cost": "$10,000 - $500,000+ (for decommissioning, data migration, and potential loss of business functionality).",
+            "typical_timeline": "3-6 months (for planning, decommissioning, and managing dependencies).",
+            "approval_required": "Risk Owner (CIO / L1 Head), Asset Class Owner, and executive management, especially the Manufacturing/Operations Head, due to the significant impact on critical business operations.",
+            "monitoring_required": "Verification that the activity/asset has been fully ceased/decommissioned, confirmation that associated risks are eliminated, and monitoring for any unforeseen residual impacts or new risks introduced by the termination."
+          }
+        ],
+        "recommended_controls": [
+          {
+            "control_id": "A.8.7",
+            "control_name": "Implement Full Real-time Scanning Coverage",
+            "control_type": "Preventive",
+            "priority": "MEDIUM",
+            "rationale": "Ensuring full real-time scanning can prevent software conflicts or undetected issues that might lead to unintentional software failures on critical manufacturing endpoints.",
+            "expected_effectiveness": 5,
+            "estimated_cost": "$5,000 - $15,000 (configuration changes, testing, potential license upgrades)",
+            "implementation_timeline": "2-4 weeks",
+            "expected_risk_reduction": "Minor to moderate reduction in software failure likelihood (e.g., 5-10% reduction in overall risk rating)",
+            "risk_owner": "CIO / L1 Head"
+          }
+        ],
+        "control_gaps": [
+          {
+            "gap_description": "Partial Real-time Scanning Coverage",
+            "evidence": "User indicated: 'Partially'",
+            "impact": "Can lead to undetected issues or conflicts that contribute to software instability and potential operational disruption.",
+            "severity": "MEDIUM"
+          }
+        ]
+      }
+    }
+  },
+  "agent_5_result": null,
+  "last_updated": "2026-01-20 16:03:28",
+  "progress": {
+    "agent_1": "complete",
+    "agent_2": "complete",
+    "agent_3": "complete",
+    "agent_4": "complete",
+    "agent_5": "pending"
+  }
+}

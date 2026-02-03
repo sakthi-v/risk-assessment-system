@@ -1,0 +1,933 @@
+{
+  "session_id": "session_DB-PROD-001_20260105_160646",
+  "asset_data": {
+    "asset_name": "DB-PROD-001",
+    "asset_type": "Database Server",
+    "asset_owner": "John Doe",
+    "location": "On-premise Data Center (DC1)",
+    "description": "Stores customer order data for the e-commerce platform",
+    "questionnaire_answers": {
+      "asset_name": {
+        "question_text": "What is the unique name or identifier of this Database Server?",
+        "answer": "DB-PROD-001",
+        "question_type": "text",
+        "section": "1. Asset Identification",
+        "help_text": "e.g., DB-PROD-001, HR-Database-Server",
+        "why_this_matters": "Provides a unique reference for the asset being assessed."
+      },
+      "asset_description": {
+        "question_text": "Please provide a brief description of this Database Server's primary function and purpose.",
+        "answer": "Stores customer order data for the e-commerce platform",
+        "question_type": "textarea",
+        "section": "1. Asset Identification",
+        "help_text": "e.g., Stores customer order data for the e-commerce platform.",
+        "why_this_matters": "Helps understand the asset's role within the organization."
+      },
+      "asset_owner": {
+        "question_text": "Who is the primary owner or responsible party for this Database Server?",
+        "answer": "John Doe",
+        "question_type": "text",
+        "section": "1. Asset Identification",
+        "help_text": "Name or department of the asset owner.",
+        "why_this_matters": "Identifies the key stakeholder for accountability and further inquiries."
+      },
+      "asset_location": {
+        "question_text": "Where is this Database Server physically located or hosted?",
+        "answer": "On-premise Data Center (DC1)",
+        "question_type": "text",
+        "section": "1. Asset Identification",
+        "help_text": "e.g., On-premise Data Center (DC1), AWS (us-east-1), Azure (West US 2)",
+        "why_this_matters": "Provides context for physical and environmental security considerations."
+      },
+      "database_type": {
+        "question_text": "What type of database software is running on this server?",
+        "answer": "Microsoft SQL Server",
+        "question_type": "dropdown",
+        "section": "1. Asset Identification",
+        "help_text": "Specify if 'Other' is selected.",
+        "why_this_matters": "Different database types have different common vulnerabilities and security configurations."
+      },
+      "business_criticality": {
+        "question_text": "Based on its overall business value, what is the Asset Criticality Classification for this Database Server?",
+        "answer": "High Critical",
+        "question_type": "dropdown",
+        "section": "2. Business Context and Dependencies",
+        "help_text": "Reflects the overall impact on business if C, I, and A of the asset are compromised.",
+        "why_this_matters": "Provides the asset owner's overall perspective on the asset's importance, which informs Agent 1's CIA analysis."
+      },
+      "dependent_applications": {
+        "question_text": "Which key applications or services depend on this Database Server?",
+        "answer": "E-commerce and Web Applications, Customer Relationship Management (CRM), Enterprise Resource Planning (ERP)",
+        "question_type": "textarea",
+        "section": "2. Business Context and Dependencies",
+        "help_text": "List all critical applications, services, or business processes that rely on this database.",
+        "why_this_matters": "Identifies downstream impacts and critical dependencies, crucial for availability and integrity analysis."
+      },
+      "number_of_users": {
+        "question_text": "Approximately how many users (human and system accounts) regularly access this database?",
+        "answer": 100,
+        "question_type": "number",
+        "section": "2. Business Context and Dependencies",
+        "help_text": "Provide an estimated number or range.",
+        "why_this_matters": "Indicates the potential attack surface and scope of impact in case of a breach."
+      },
+      "peak_usage_times": {
+        "question_text": "Are there specific peak usage times or periods of high activity for this database?",
+        "answer": "9 AM - 5 PM business hours",
+        "question_type": "text",
+        "section": "2. Business Context and Dependencies",
+        "help_text": "e.g., 9 AM - 5 PM business hours, end-of-month reporting, 24/7",
+        "why_this_matters": "Helps understand availability requirements and potential impact of outages during critical periods."
+      },
+      "data_classification": {
+        "question_text": "What is the highest Information Asset Confidentiality Classification of data stored on this Database Server?",
+        "answer": "Restricted",
+        "question_type": "dropdown",
+        "section": "3. Data Stored and Sensitivity",
+        "help_text": "Select the highest classification based on the impact of confidentiality loss.",
+        "why_this_matters": "Directly informs Agent 1's Confidentiality impact assessment."
+      },
+      "stores_pii": {
+        "question_text": "Does this database store Personally Identifiable Information (PII)?",
+        "answer": "Yes",
+        "question_type": "dropdown",
+        "section": "3. Data Stored and Sensitivity",
+        "help_text": "PII includes names, addresses, SSN, email, etc.",
+        "why_this_matters": "A factual indicator of high confidentiality risk and regulatory compliance requirements."
+      },
+      "stores_sensitive_pii": {
+        "question_text": "Does this database store Sensitive Personally Identifiable Information (SPII)?",
+        "answer": "Yes",
+        "question_type": "dropdown",
+        "section": "3. Data Stored and Sensitivity",
+        "help_text": "SPII includes SSN, driver’s license, medical info, financial info, biometric data.",
+        "why_this_matters": "A factual indicator of extreme confidentiality risk and heightened regulatory compliance requirements."
+      },
+      "stores_phi": {
+        "question_text": "Does this database store Protected Health Information (PHI)?",
+        "answer": "Yes",
+        "question_type": "dropdown",
+        "section": "3. Data Stored and Sensitivity",
+        "help_text": "PHI is individually identifiable health information.",
+        "why_this_matters": "A factual indicator of high confidentiality risk and HIPAA compliance requirements."
+      },
+      "stores_cardholder_data": {
+        "question_text": "Does this database store Cardholder Data (e.g., Primary Account Number - PAN)?",
+        "answer": "Yes",
+        "question_type": "dropdown",
+        "section": "3. Data Stored and Sensitivity",
+        "help_text": "Cardholder data includes PAN, cardholder name, service code, expiration date.",
+        "why_this_matters": "A factual indicator of high confidentiality risk and PCI DSS compliance requirements."
+      },
+      "data_volume": {
+        "question_text": "What is the approximate volume of data stored on this database?",
+        "answer": "100 GB",
+        "question_type": "text",
+        "section": "3. Data Stored and Sensitivity",
+        "help_text": "e.g., 100 GB, 5 TB, 20 million records",
+        "why_this_matters": "Indicates the scale of potential data loss or breach impact."
+      },
+      "network_accessibility": {
+        "question_text": "Is this Database Server directly accessible from the public internet?",
+        "answer": "Yes",
+        "question_type": "dropdown",
+        "section": "4. Security Configuration and Controls (Facts)",
+        "help_text": "If partially, please specify which ports/services are exposed.",
+        "why_this_matters": "Directly impacts the likelihood of external attacks and overall exposure."
+      },
+      "data_at_rest_encryption": {
+        "question_text": "Is data stored on this database server encrypted at rest?",
+        "answer": "No",
+        "question_type": "dropdown",
+        "section": "4. Security Configuration and Controls (Facts)",
+        "help_text": "Specify the method if 'Yes'.",
+        "why_this_matters": "A factual control that mitigates confidentiality risk in case of physical access or storage compromise."
+      },
+      "data_in_transit_encryption": {
+        "question_text": "Is data encrypted in transit when accessed by applications or users?",
+        "answer": "No",
+        "question_type": "dropdown",
+        "section": "4. Security Configuration and Controls (Facts)",
+        "help_text": "If 'Yes', specify minimum TLS version if known (e.g., TLS 1.2).",
+        "why_this_matters": "A factual control that mitigates confidentiality and integrity risk during data transmission."
+      },
+      "mfa_for_admin": {
+        "question_text": "Is Multi-Factor Authentication (MFA) required for administrative access to the database server or database management interface?",
+        "answer": "Yes",
+        "question_type": "dropdown",
+        "section": "4. Security Configuration and Controls (Facts)",
+        "help_text": "",
+        "why_this_matters": "A factual control that significantly reduces the risk of unauthorized access via compromised credentials."
+      },
+      "least_privilege_access": {
+        "question_text": "Are access privileges to the database configured based on the principle of least privilege?",
+        "answer": "Partially",
+        "question_type": "dropdown",
+        "section": "4. Security Configuration and Controls (Facts)",
+        "help_text": "Users/applications only have the minimum necessary permissions to perform their function.",
+        "why_this_matters": "A factual control that limits the impact of a compromised account or application."
+      },
+      "access_logging_enabled": {
+        "question_text": "Are access attempts and database activities (e.g., queries, data modifications) logged?",
+        "answer": "Yes, basic logging",
+        "question_type": "dropdown",
+        "section": "4. Security Configuration and Controls (Facts)",
+        "help_text": "",
+        "why_this_matters": "A factual control that enables detection of suspicious activity and forensic analysis."
+      },
+      "logs_monitored": {
+        "question_text": "Are database access and activity logs regularly reviewed or monitored?",
+        "answer": "Yes, manual review (e.g., daily/weekly)",
+        "question_type": "dropdown",
+        "section": "4. Security Configuration and Controls (Facts)",
+        "help_text": "",
+        "why_this_matters": "A factual control that ensures logging is effective for detection."
+      },
+      "patching_frequency": {
+        "question_text": "How frequently are security patches and updates applied to the database server and database software?",
+        "answer": "Annually or less frequently",
+        "question_type": "dropdown",
+        "section": "4. Security Configuration and Controls (Facts)",
+        "help_text": "",
+        "why_this_matters": "A factual control that indicates the proactive management of known vulnerabilities."
+      },
+      "vulnerability_scans": {
+        "question_text": "Is this database server regularly subjected to vulnerability scanning or penetration testing?",
+        "answer": "Yes, annually",
+        "question_type": "dropdown",
+        "section": "4. Security Configuration and Controls (Facts)",
+        "help_text": "",
+        "why_this_matters": "A factual control that helps identify and remediate security weaknesses."
+      },
+      "backups_performed": {
+        "question_text": "Are regular backups of the database performed?",
+        "answer": "Yes",
+        "question_type": "dropdown",
+        "section": "5. Backup and Disaster Recovery (Facts)",
+        "help_text": "",
+        "why_this_matters": "A factual control critical for data availability and integrity in case of data loss or corruption."
+      },
+      "backup_frequency": {
+        "question_text": "How frequently are full backups performed?",
+        "answer": "Less frequently",
+        "question_type": "dropdown",
+        "section": "5. Backup and Disaster Recovery (Facts)",
+        "help_text": "If incremental/differential backups are also used, specify the full backup frequency.",
+        "why_this_matters": "Indicates the potential data loss window (RPO) in case of a disaster."
+      },
+      "backup_retention": {
+        "question_text": "What is the retention period for backups?",
+        "answer": " 7 days",
+        "question_type": "text",
+        "section": "5. Backup and Disaster Recovery (Facts)",
+        "help_text": "e.g., 7 days, 30 days, 1 year",
+        "why_this_matters": "Determines how far back data can be recovered."
+      },
+      "disaster_recovery_plan": {
+        "question_text": "Is there a documented Disaster Recovery (DR) plan specifically for this Database Server?",
+        "answer": "No",
+        "question_type": "dropdown",
+        "section": "5. Backup and Disaster Recovery (Facts)",
+        "help_text": "",
+        "why_this_matters": "A factual control indicating preparedness for major outages and data loss scenarios."
+      },
+      "dr_plan_tested": {
+        "question_text": "Has the Disaster Recovery (DR) plan for this database been tested within the last 12 months?",
+        "answer": "N/A (No DR plan)",
+        "question_type": "dropdown",
+        "section": "5. Backup and Disaster Recovery (Facts)",
+        "help_text": "",
+        "why_this_matters": "A factual control indicating the reliability and effectiveness of the DR plan."
+      },
+      "overall_impact_rating": {
+        "question_text": "Considering all identified risks and existing controls, what is the estimated overall 'Impact Rating' if this Database Server were to be severely compromised (e.g., data breach, prolonged outage, complete data loss)?",
+        "answer": 4,
+        "question_type": "dropdown",
+        "section": "6. Overall Risk Perspective",
+        "help_text": "This is your overall assessment of the business impact, not a breakdown by CIA.",
+        "why_this_matters": "Captures the asset owner's holistic, high-level perspective on potential business impact, which is a key input for risk evaluation."
+      },
+      "overall_probability_rating": {
+        "question_text": "Considering all identified threats and vulnerabilities, what is the estimated 'Probability Rating' of a severe compromise occurring to this Database Server within the next year?",
+        "answer": 4,
+        "question_type": "dropdown",
+        "section": "6. Overall Risk Perspective",
+        "help_text": "This is your overall assessment of the likelihood of a severe compromise.",
+        "why_this_matters": "Captures the asset owner's holistic, high-level perspective on the likelihood of a severe event, which is a key input for risk evaluation."
+      }
+    },
+    "questionnaire_metadata": {
+      "asset_type_assessed": "Database Server",
+      "questionnaire_title": "Risk Assessment Questionnaire for Database Server",
+      "completed_date": "2026-01-05 12:07:20",
+      "total_questions": 31,
+      "total_answers": 31
+    },
+    "threats_and_vulnerabilities": [
+      {
+        "threat": "Security threats to Database Server",
+        "risk_statement": "Comprehensive risk assessment for DB-PROD-001 based on 31 detailed questionnaire responses covering security posture, controls, and compliance",
+        "vulnerabilities": [
+          {
+            "vulnerability": "Security gaps identified through questionnaire assessment",
+            "description": "Analysis of 31 questionnaire answers covering access controls, data protection, backup strategies, monitoring capabilities, and incident response readiness"
+          }
+        ]
+      }
+    ]
+  },
+  "agent_1_result": {
+    "discovery_summary": {
+      "cia_methodology": "CIA (Confidentiality, Integrity, Availability)",
+      "cia_rating_scale": "4-level: Insignificant, Moderate, Serious, Extreme",
+      "cia_definitions_source": "Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx (Table 3)",
+      "business_value_calculation_method": "Asset Value Chart/Matrix",
+      "business_value_levels": [
+        "Very Low",
+        "Low",
+        "Medium",
+        "High",
+        "Very High"
+      ],
+      "business_value_source": "Risk Assessment Template_For Agentic AI RM Use Case.xlsx (Sheet Asset Inventorization Guideline, underlying lookup data)",
+      "criticality_classification_method": "Business Value to Criticality Mapping",
+      "criticality_levels": [
+        "Insignificant",
+        "Low Critical",
+        "Medium Critical",
+        "High Critical",
+        "Very high Critical"
+      ],
+      "criticality_source": "Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx (Table 4)",
+      "searches_performed": [
+        "What impact assessment methodology is used? CIA? DREAD? Custom?",
+        "How is Asset Business Value calculated or determined from CIA impact ratings? Is there a matrix, chart, or formula? Asset Value Chart"
+      ]
+    },
+    "threat_analysis": [
+      {
+        "threat_id": "threat_1",
+        "threat_name": "Security threats to Database Server",
+        "threat_description": "Comprehensive risk assessment for DB-PROD-001 based on 31 detailed questionnaire responses covering security posture, controls, and compliance",
+        "impact_assessment": {
+          "confidentiality": {
+            "rating": "Extreme",
+            "numeric_value": 4,
+            "reasoning": "Based on questionnaire answers [3. Data Stored and Sensitivity] stating 'highest Information Asset Confidentiality Classification of data stored on this Database Server? Answer: Restricted', and storing 'Personally Identifiable Information (PII)? Yes', 'Sensitive Personally Identifiable Information (SPII)? Yes', 'Protected Health Information (PHI)? Yes', and 'Cardholder Data (e.g., Primary Account Number - PAN)? Yes'. Furthermore, the asset is 'directly accessible from the public internet? Yes' and data is 'not encrypted at rest' or 'in transit'. Unauthorized disclosure would cause serious damage to the interests of the organization due to the highly sensitive nature of the data and lack of basic controls. This meets the discovered definition for 'Extreme': 'Unauthorized disclosure within or outside the organization would cause serious damage to the interests of the organization. Disclosure within the organization will be strictly on a ‘need-to-know’ basis.'"
+          },
+          "integrity": {
+            "rating": "Extreme",
+            "numeric_value": 4,
+            "reasoning": "Based on questionnaire answers [1. Asset Identification] stating 'primary function and purpose: Stores customer order data for the e-commerce platform' and [2. Business Context and Dependencies] indicating 'key applications or services depend on this Database Server: E-commerce and Web Applications, Customer Relationship Management (CRM), Enterprise Resource Planning (ERP)'. Access privileges are 'Partially' based on least privilege, and security patches are applied 'Annually or less frequently'. Unauthorized modification or damage of this critical customer order data would have severe and long-ranging adverse effects on business operations, customer trust, and financial accuracy. This meets the discovered definition for 'Extreme': 'Unauthorized modification or damage of information is expected to have severe and long ranging adverse effect on business operations.'"
+          },
+          "availability": {
+            "rating": "Extreme",
+            "numeric_value": 4,
+            "reasoning": "Based on questionnaire answers [1. Asset Identification] stating 'primary function and purpose: Stores customer order data for the e-commerce platform' and [2. Business Context and Dependencies] indicating 'key applications or services depend on this Database Server: E-commerce and Web Applications, Customer Relationship Management (CRM), Enterprise Resource Planning (ERP)'. Approximately '100' users access it during '9 AM - 5 PM business hours'. There is 'No' documented Disaster Recovery (DR) plan, and full backups are performed 'Less frequently' with only '7 days' retention. Unavailability would severely disrupt core business functions, leading to significant financial and reputational damage. This meets the discovered definition for 'Extreme': 'Impact of disruption of access or unavailability of information or information asset or services is expected to have severe and long ranging adverse effect on business operations.'"
+          }
+        },
+        "overall_impact_calculation": {
+          "confidentiality_numeric": 4,
+          "integrity_numeric": 4,
+          "availability_numeric": 4,
+          "calculation_method": "Directly provided by questionnaire for overall impact rating (1-5 scale)",
+          "calculation": "Questionnaire answer for overall 'Impact Rating' is 4",
+          "overall_impact": "High",
+          "overall_impact_numeric": 4
+        }
+      }
+    ],
+    "asset_business_value": {
+      "cia_combination": "Extreme, Extreme, Extreme",
+      "cia_combination_key": "Extreme|Extreme|Extreme",
+      "business_value_rating": "Very High",
+      "calculation_method": "Asset Value Chart (discovered from Risk Assessment Template_For Agentic AI RM Use Case.xlsx)",
+      "calculation_details": "Per discovered Asset Value Chart: CIA combination (Confidentiality: Extreme, Integrity: Extreme, Availability: Extreme) maps to Business Value 'Very High'",
+      "source_reference": "Risk Assessment Template_For Agentic AI RM Use Case.xlsx - Sheet Asset Inventorization Guideline (underlying lookup data)",
+      "reasoning": "Based on calculated CIA ratings (Confidentiality: Extreme, Integrity: Extreme, Availability: Extreme), per the discovered Asset Value Chart in the organizational guidelines, the Asset Business Value is 'Very High'."
+    },
+    "asset_criticality": {
+      "criticality_classification": "Very high Critical",
+      "business_value_input": "Very High",
+      "calculation_method": "Criticality Classification Table (discovered from Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx)",
+      "calculation_details": "Per discovered Criticality Classification Table: Business Value 'Very High' maps to Criticality 'Very high Critical'",
+      "source_reference": "Asset Management Guidelines_For RM Agentic AI Use Case v1.0.docx - Table 4",
+      "reasoning": "Based on calculated Asset Business Value 'Very High', per the discovered Criticality Classification Table in organizational Asset Management Guidelines, the Asset Criticality Classification is 'Very high Critical'."
+    }
+  },
+  "agent_2_result": {
+    "discovery_summary": {
+      "methodology": "Semi-quantitative, numerical scales for Impact and Probability, formula-based Risk Value",
+      "risk_calculation": {
+        "method": "Formula",
+        "formula": "Risk Value (RV) = Risk Impact (RI) × Risk Probability (RP)",
+        "description": "Risk Value is computed by multiplying the numerical Risk Impact rating (1-5) by the numerical Risk Probability rating (1-5)."
+      },
+      "probability_scale": {
+        "type": "Numeric (1-5) with categorical definitions based on frequency",
+        "levels": [
+          "1: Very Low (Greater than one year)",
+          "2: Low (Once every year)",
+          "3: Medium (Moderate / Medium: once every 4-6 months)",
+          "4: High (Major / High: once every 1-3 months)",
+          "5: Very High (Severe / Very high: more than once per month)"
+        ],
+        "range": "1-5"
+      },
+      "impact_scale": {
+        "type": "Numeric (1-5) with categorical definitions",
+        "levels": [
+          "1: Very Low (negligible impact)",
+          "2: Low (not significant impact)",
+          "3: Medium (minimum impact)",
+          "4: High (serious impact)",
+          "5: Very High (catastrophic impact)"
+        ],
+        "range": "1-5"
+      },
+      "risk_level_mapping": {
+        "method": "Risk Value score mapped to a Risk Evaluation Rating (1-5)",
+        "levels": [
+          "1: Very Low",
+          "2: Low",
+          "3: Medium",
+          "4: High",
+          "5: Extreme"
+        ],
+        "thresholds": "Risk Value 0-5 -> Rating 1 (Very Low); Risk Value 6-10 -> Rating 2 (Low); Risk Value 11-15 -> Rating 3 (Medium); Risk Value 16-20 -> Rating 4 (High); Risk Value 21-25 -> Rating 5 (Extreme)"
+      },
+      "acceptance_criteria": "Residual Risk Values of 1, 2, or 3 are 'Acceptable'; Residual Risk Values of 4 or 5 are 'Non-acceptable'. (Applied to initial Risk Evaluation Rating for this assessment)",
+      "questionnaire_answers_used": true
+    },
+    "summary": {
+      "total_threats_assessed": 1,
+      "highest_risk_value": 16,
+      "non_acceptable_risks_count": 1,
+      "acceptable_risks_count": 0,
+      "overall_risk_level": "High"
+    },
+    "threat_risk_quantification": [
+      {
+        "threat": "Security threats to Database Server",
+        "vulnerabilities": [
+          "Security gaps identified through questionnaire assessment"
+        ],
+        "risk_statement": "Comprehensive risk assessment for DB-PROD-001 based on 31 detailed questionnaire responses covering security posture, controls, and compliance",
+        "risk_impact": {
+          "rating": 4,
+          "category": "High",
+          "reasoning": "Based on Agent 1 CIA assessment: Confidentiality=Extreme (4), Integrity=Extreme (4), Availability=Extreme (4). Overall impact rating from questionnaire (Q30) is 4. This aligns with the discovered definition for 'High': 'Risk has serious impact on business and operations'."
+        },
+        "risk_probability": {
+          "rating": 4,
+          "category": "High",
+          "reasoning": "The asset owner's direct assessment in questionnaire Q31 states an estimated 'Probability Rating' of 4 (High). This is supported by several factors: The database server is 'directly accessible from the public internet' (Q16), significantly increasing external threat probability. Security patches are applied 'Annually or less frequently' (Q23), leaving long windows for known vulnerabilities. Data is 'not encrypted at rest' (Q17) or 'in transit' (Q18). Access privileges are only 'Partially' based on least privilege (Q20). While MFA is required for admin access (Q19) and basic logging is in place (Q21), these are partially offset by manual log review (Q22) and infrequent vulnerability scanning (Q24). The combination of these factors indicates a 'High' probability of a severe compromise, aligning with the discovered definition of 'Major / High: once every 1-3 months'."
+        },
+        "risk_value": {
+          "value": 16,
+          "calculation": "4 (impact) × 4 (probability) = 16"
+        },
+        "risk_evaluation_rating": {
+          "rating": 4,
+          "level": "High",
+          "mapping_rationale": "Risk value 16 falls within the 16-20 range, which maps to a Risk Evaluation Rating of 4. This rating is categorized as 'High' based on the inferred categorical mapping."
+        },
+        "risk_classification": {
+          "classification": "NON-ACCEPTABLE",
+          "criteria_applied": "Residual Risk Values of 4 or 5 are 'Non-acceptable'",
+          "justification": "The calculated Risk Evaluation Rating is 4, which is classified as 'Non-acceptable' per the organizational risk acceptance criteria."
+        }
+      }
+    ],
+    "rag_queries_performed": [
+      "risk quantification methodology"
+    ],
+    "rag_sources_consulted": [
+      "Risk Management Guidelines_For RM Agentic AI Use Case v1.0.docx",
+      "Risk Management SOP_For RM Agentic AI Use Case v1.0.docx"
+    ]
+  },
+  "agent_3_result": {
+    "discovery_summary": {
+      "control_framework": "ISO 27001 and IT General Controls (ITGC)",
+      "control_categories": [
+        "Organizational",
+        "People",
+        "Physical",
+        "Technological",
+        "Access to Programs and Data",
+        "Program Change Management",
+        "Program Development",
+        "Computer Operations",
+        "System / Infrastructure Security",
+        "IT Governance / Policy Management"
+      ],
+      "control_types": [
+        "Preventive",
+        "Detective",
+        "Corrective"
+      ],
+      "effectiveness_scale": {
+        "type": "Numeric",
+        "range": "1-5",
+        "definitions": "1=Non-existent or has major deficiencies; 2=Limited, high level of risk remains, significant deficiencies; 3=Controls in place with few deficiencies in terms of medium risk issues; 4=Designed and operating, with few deficiencies in terms of low risk issues; 5=Designed and operating, with no deficiencies."
+      },
+      "control_rating_method": "Weighted average: (Preventive Control Rating × 1.0 + Detective Control Rating × 0.75 + Corrective Control Rating × 0.5) / 3, rounded to two decimal places.",
+      "residual_risk_method": "Risk Evaluation Rating - Control Rating",
+      "questionnaire_answers_used": true
+    },
+    "threat_control_evaluation": [
+      {
+        "threat": "Security threats to Database Server",
+        "vulnerabilities": [
+          "Lack of data encryption at rest",
+          "Lack of data encryption in transit",
+          "No documented Disaster Recovery plan",
+          "Untested Disaster Recovery plan"
+        ],
+        "controls_identified": [
+          {
+            "control_id": "A.5.34",
+            "control_name": "PII Data Handling and Classification",
+            "category": "Preventive",
+            "current_rating": 3,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes' to storing PII",
+            "effectiveness": "ADEQUATE"
+          },
+          {
+            "control_id": "A.5.34",
+            "control_name": "SPII Data Handling and Classification",
+            "category": "Preventive",
+            "current_rating": 3,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes' to storing SPII",
+            "effectiveness": "ADEQUATE"
+          },
+          {
+            "control_id": "A.5.34",
+            "control_name": "PHI Data Handling and Classification",
+            "category": "Preventive",
+            "current_rating": 3,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes' to storing PHI",
+            "effectiveness": "ADEQUATE"
+          },
+          {
+            "control_id": "A.5.34",
+            "control_name": "Cardholder Data Handling and PCI DSS Compliance",
+            "category": "Preventive",
+            "current_rating": 3,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes' to storing Cardholder Data",
+            "effectiveness": "ADEQUATE"
+          },
+          {
+            "control_id": "A.8.20",
+            "control_name": "Network Security and Firewall Controls (for direct internet access)",
+            "category": "Preventive",
+            "current_rating": 2,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes' to direct public internet accessibility",
+            "effectiveness": "LIMITED"
+          },
+          {
+            "control_id": "A.8.2",
+            "control_name": "Multi-Factor Authentication (MFA) for Administrative Access",
+            "category": "Preventive",
+            "current_rating": 4,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes' to MFA for administrative access",
+            "effectiveness": "STRONG"
+          },
+          {
+            "control_id": "A.8.16",
+            "control_name": "Database Access and Activity Logging (Basic)",
+            "category": "Detective",
+            "current_rating": 3,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, basic logging' for access attempts and activities",
+            "effectiveness": "ADEQUATE"
+          },
+          {
+            "control_id": "A.8.16",
+            "control_name": "Manual Database Log Review and Monitoring",
+            "category": "Detective",
+            "current_rating": 3,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, manual review (e.g., daily/weekly)' for log review",
+            "effectiveness": "ADEQUATE"
+          },
+          {
+            "control_id": "A.8.35",
+            "control_name": "Annual Vulnerability Scanning and Penetration Testing",
+            "category": "Detective",
+            "current_rating": 3,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes, annually' for vulnerability scanning/penetration testing",
+            "effectiveness": "ADEQUATE"
+          },
+          {
+            "control_id": "A.8.13",
+            "control_name": "Regular Database Backups",
+            "category": "Corrective",
+            "current_rating": 4,
+            "source": "Questionnaire",
+            "evidence": "User confirmed: 'Yes' for regular backups",
+            "effectiveness": "STRONG"
+          }
+        ],
+        "control_rating_calculation": {
+          "weighted_preventive": "3.0 × 1.0 = 3.0",
+          "weighted_detective": "3.0 × 0.75 = 2.25",
+          "weighted_corrective": "4.0 × 0.5 = 2.0",
+          "average_weighted": 2.4166666666666665,
+          "control_rating": 2.42,
+          "control_rating_text": "LIMITED"
+        },
+        "control_category_averages": {
+          "preventive_avg": 3.0,
+          "detective_avg": 3.0,
+          "corrective_avg": 4.0
+        },
+        "risk_evaluation_rating": 4,
+        "residual_risk": {
+          "risk_evaluation_rating": 4,
+          "control_rating": 2.42,
+          "residual_risk_value": 1.58,
+          "residual_risk_classification": "Medium",
+          "calculation": "Risk Evaluation Rating 4 - Control Rating 2.42 = 1.58",
+          "formula": "risk_evaluation_rating - control_rating"
+        },
+        "control_gaps": [
+          {
+            "gap_description": "Data Encryption at Rest missing",
+            "evidence": "User indicated: 'No' for data encrypted at rest",
+            "impact": "Increases the risk of data confidentiality compromise if the underlying storage is accessed without authorization.",
+            "severity": "HIGH"
+          },
+          {
+            "gap_description": "Data Encryption in Transit missing",
+            "evidence": "User indicated: 'No' for data encrypted in transit",
+            "impact": "Increases the risk of data confidentiality compromise during network transmission between the database and applications/users.",
+            "severity": "HIGH"
+          },
+          {
+            "gap_description": "Documented Disaster Recovery Plan missing",
+            "evidence": "User indicated: 'No' for a documented Disaster Recovery (DR) plan",
+            "impact": "Increases the risk of prolonged outage, significant data loss, and inability to recover critical services in the event of a disaster.",
+            "severity": "HIGH"
+          },
+          {
+            "gap_description": "Disaster Recovery Plan Testing missing",
+            "evidence": "User indicated: 'N/A (No DR plan)' for DR plan testing",
+            "impact": "Without testing, the effectiveness and readiness of any recovery procedures are unknown, potentially leading to failure during an actual disaster.",
+            "severity": "HIGH"
+          }
+        ],
+        "recommended_controls": [
+          {
+            "control_id": "A.8.12",
+            "control_name": "Implement Data Encryption at Rest (e.g., TDE for SQL Server)",
+            "control_type": "Preventive",
+            "priority": "HIGH",
+            "rationale": "Protects sensitive data (PII, SPII, PHI, Cardholder Data) from unauthorized access if the underlying storage is compromised, addressing a critical confidentiality gap.",
+            "expected_effectiveness": 4
+          },
+          {
+            "control_id": "A.8.20",
+            "control_name": "Implement Data Encryption in Transit (e.g., TLS/SSL for database connections)",
+            "control_type": "Preventive",
+            "priority": "HIGH",
+            "rationale": "Protects sensitive data (PII, SPII, PHI, Cardholder Data) from eavesdropping and tampering during network communication, addressing a critical confidentiality gap.",
+            "expected_effectiveness": 4
+          },
+          {
+            "control_id": "A.5.30",
+            "control_name": "Develop and Document Disaster Recovery Plan",
+            "control_type": "Corrective",
+            "priority": "HIGH",
+            "rationale": "Establishes formal procedures to ensure business continuity and minimize data loss/downtime in the event of a disaster, addressing a critical availability gap.",
+            "expected_effectiveness": 4
+          },
+          {
+            "control_id": "A.5.30",
+            "control_name": "Conduct Regular Disaster Recovery Plan Testing",
+            "control_type": "Corrective",
+            "priority": "HIGH",
+            "rationale": "Verifies the effectiveness and readiness of the DR plan, identifying and addressing potential issues before a real disaster, ensuring the plan is viable.",
+            "expected_effectiveness": 4
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "total_threats_evaluated": 1,
+      "total_controls_identified": 10,
+      "average_control_rating": 2.42,
+      "high_residual_risks": 0
+    }
+  },
+  "agent_4_result": {
+    "metadata": {
+      "questionnaire_type": "RTP",
+      "asset_name": "DB-PROD-001",
+      "generation_date": "2026-01-05"
+    },
+    "risk_context": {
+      "risk_summary": "This questionnaire addresses the high-rated security risk associated with the database server DB-PROD-001. The current risk rating is 4/5, indicating a significant threat to the asset. While existing controls provide some protection (Current Control Rating: 2.42/5), a substantial residual risk of 1.58/5 remains, necessitating immediate attention and a clear treatment decision.",
+      "threat_description": "Security threats to Database Server (DB-PROD-001), including potential for unauthorized access, data breaches, and service disruption.",
+      "risk_rating": {
+        "initial_risk": "4/5 (High)",
+        "current_control_rating": "2.42/5 (Limited effectiveness, significant deficiencies)",
+        "residual_risk": "1.58/5 (Still above acceptable threshold of 1-2, requiring further action)"
+      },
+      "urgency_justification": "The residual risk of 1.58/5 is above the organization's acceptable risk criteria (1-2). This indicates that current measures are insufficient, and the asset remains vulnerable to significant security threats. Prompt action is required to reduce this risk to an acceptable level and protect sensitive data (PII, SPII, PHI, Cardholder Data) stored on DB-PROD-001.",
+      "existing_controls_overview": "DB-PROD-001 currently has 10 controls in place, covering data handling, network security, authentication, logging, vulnerability management, and backups. While some controls like MFA for administrative access and regular backups are strong (rating 4), others like Network Security and Firewall Controls for direct internet access are limited (rating 2).",
+      "control_gaps_identified": [
+        {
+          "gap_description": "Data Encryption at Rest missing",
+          "evidence": "User indicated: 'No' for data encrypted at rest",
+          "impact": "Increases the risk of data confidentiality compromise if the underlying storage is accessed without authorization.",
+          "severity": "HIGH"
+        },
+        {
+          "gap_description": "Data Encryption in Transit missing",
+          "evidence": "User indicated: 'No' for data encrypted in transit",
+          "impact": "Increases the risk of data confidentiality compromise during network transmission between the database and applications/users.",
+          "severity": "HIGH"
+        },
+        {
+          "gap_description": "Documented Disaster Recovery Plan missing",
+          "evidence": "User indicated: 'No' for a documented Disaster Recovery (DR) plan",
+          "impact": "Increases the risk of prolonged outage, significant data loss, and inability to recover critical services in the event of a disaster.",
+          "severity": "HIGH"
+        },
+        {
+          "gap_description": "Disaster Recovery Plan Testing missing",
+          "evidence": "User indicated: 'N/A (No DR plan)' for DR plan testing",
+          "impact": "Without testing, the effectiveness and readiness of any recovery procedures are unknown, potentially leading to failure during an actual disaster.",
+          "severity": "HIGH"
+        }
+      ],
+      "recommended_controls_to_implement": [
+        {
+          "control_id": "A.8.12",
+          "control_name": "Implement Data Encryption at Rest (e.g., TDE for SQL Server)",
+          "control_type": "Preventive",
+          "priority": "HIGH",
+          "rationale": "Protects sensitive data (PII, SPII, PHI, Cardholder Data) from unauthorized access if the underlying storage is compromised, addressing a critical confidentiality gap.",
+          "expected_effectiveness": 4,
+          "estimated_cost": "$5,000 - $15,000 (Software licenses, configuration, testing)",
+          "implementation_timeline": "2-4 weeks",
+          "expected_risk_reduction": "Significant reduction in data confidentiality risk (e.g., 0.5-1 point reduction in residual risk)",
+          "addresses_gap": "Data Encryption at Rest missing"
+        },
+        {
+          "control_id": "A.8.20",
+          "control_name": "Implement Data Encryption in Transit (e.g., TLS/SSL for database connections)",
+          "control_type": "Preventive",
+          "priority": "HIGH",
+          "rationale": "Protects sensitive data (PII, SPII, PHI, Cardholder Data) from eavesdropping and tampering during network communication, addressing a critical confidentiality gap.",
+          "expected_effectiveness": 4,
+          "estimated_cost": "$2,000 - $8,000 (Certificate acquisition, configuration, testing)",
+          "implementation_timeline": "1-3 weeks",
+          "expected_risk_reduction": "Significant reduction in data confidentiality risk during transmission (e.g., 0.5-1 point reduction in residual risk)",
+          "addresses_gap": "Data Encryption in Transit missing"
+        },
+        {
+          "control_id": "A.5.30",
+          "control_name": "Develop and Document Disaster Recovery Plan",
+          "control_type": "Corrective",
+          "priority": "HIGH",
+          "rationale": "Establishes formal procedures to ensure business continuity and minimize data loss/downtime in the event of a disaster, addressing a critical availability gap.",
+          "expected_effectiveness": 4,
+          "estimated_cost": "$10,000 - $30,000 (Consulting, internal resource time for documentation)",
+          "implementation_timeline": "4-8 weeks",
+          "expected_risk_reduction": "Moderate reduction in availability risk by establishing clear recovery procedures (e.g., 0.5 point reduction in residual risk)",
+          "addresses_gap": "Documented Disaster Recovery Plan missing"
+        },
+        {
+          "control_id": "A.5.30",
+          "control_name": "Conduct Regular Disaster Recovery Plan Testing",
+          "control_type": "Corrective",
+          "priority": "HIGH",
+          "rationale": "Verifies the effectiveness and readiness of the DR plan, identifying and addressing potential issues before a real disaster, ensuring the plan is viable.",
+          "expected_effectiveness": 4,
+          "estimated_cost": "$5,000 - $20,000 (Resource time, potential third-party testing services)",
+          "implementation_timeline": "Ongoing (e.g., annually) after initial plan development",
+          "expected_risk_reduction": "Further reduction in availability risk by validating and improving recovery capabilities (e.g., 0.5 point reduction in residual risk)",
+          "addresses_gap": "Disaster Recovery Plan Testing missing"
+        }
+      ]
+    },
+    "sections": [
+      {
+        "section_id": "s1_treatment_decision",
+        "section_title": "Risk Treatment Decision for DB-PROD-001",
+        "questions": [
+          {
+            "question_id": "Q_TREATMENT_OPTION",
+            "question_text": "Given the current high residual risk (1.58/5) for DB-PROD-001, please select the most appropriate risk treatment option. Consider the recommended controls and their potential impact.",
+            "question_type": "radio",
+            "required": true,
+            "options": [
+              {
+                "value": "TREAT",
+                "label": "Treat the Risk (Implement Controls)",
+                "description": "Treating the risk involves implementing new or enhanced controls to reduce the likelihood or impact of the risk event. This option aims to bring the residual risk down to an acceptable level (typically a rating of 1 or 2) by actively managing the vulnerabilities and threats. It requires a commitment to allocate resources for control implementation and ongoing maintenance.",
+                "recommendation": "This option is highly recommended for DB-PROD-001, especially given the identified critical control gaps (e.g., data encryption, DR plan) and the high residual risk. It is appropriate when the organization has the capability and resources to implement effective controls and desires to actively reduce its exposure to the identified threats.",
+                "consequences": "Choosing to treat the risk will lead to a stronger security posture for DB-PROD-001, reducing the likelihood of data breaches and improving resilience. It involves upfront investment in resources (time, money, personnel) but mitigates potential future losses from risk realization. Failure to implement effectively could result in continued high risk.",
+                "estimated_cost": "$22,000 - $73,000 (Based on recommended controls, excluding ongoing maintenance)",
+                "typical_timeline": "2-8 weeks for initial implementation of critical controls, with ongoing efforts for DR testing and maintenance.",
+                "approval_required": "Risk Owner (CIO/L1 Head for infrastructure assets) must approve the Risk Treatment Plan. Control Owners will be responsible for implementation.",
+                "monitoring_required": "Ongoing monitoring of control effectiveness, regular review of residual risk, and periodic re-assessment of the risk treatment plan."
+              },
+              {
+                "value": "ACCEPT",
+                "label": "Accept the Risk",
+                "description": "Risk acceptance is an informed decision to take a particular risk without implementing further controls to reduce it. This is typically chosen when the risk is already at an acceptable level (rating 1 or 2), or when the cost of treatment outweighs the potential impact of the risk, or when treatment is not feasible. It requires formal acknowledgment and approval from relevant stakeholders.",
+                "recommendation": "Accepting the current residual risk of 1.58/5 for DB-PROD-001 is generally not recommended as it is above the organization's acceptable threshold (1-2). This option should only be considered if implementing the recommended controls is demonstrably not feasible due to severe financial, administrative, or technical constraints, and the organization is prepared to bear the full consequences if the risk materializes.",
+                "consequences": "Accepting the risk means the organization is willing to bear the potential consequences (e.g., data breach, system outage, regulatory fines) if the security threats to DB-PROD-001 materialize. While it avoids immediate treatment costs, it exposes the organization to potentially much higher costs and reputational damage in the long run. The risk will remain at its current high level.",
+                "estimated_cost": "$0 (Immediate control implementation cost) but potentially 'High' in indirect costs if risk materializes (e.g., millions for data breach, regulatory fines).",
+                "typical_timeline": "Immediate decision, with ongoing monitoring. Consequences can occur at any time.",
+                "approval_required": "Risk Owner (CIO/L1 Head) must decide to accept. Risk Approver (RCAC for infrastructure/application impact) must formally approve the acceptance, especially since the risk is above the acceptable threshold.",
+                "monitoring_required": "Regular monitoring of the accepted risk to ensure its impact and likelihood do not increase, and to confirm the initial acceptance rationale remains valid. Periodic review of the risk acceptance decision."
+              },
+              {
+                "value": "TRANSFER",
+                "label": "Transfer the Risk",
+                "description": "Risk transfer involves sharing the burden of potential loss with another party, typically through contractual agreements such as insurance policies, outsourcing, or service level agreements. This option does not eliminate the risk but shifts the financial or operational responsibility to a third party. It requires careful negotiation and clear definition of responsibilities.",
+                "recommendation": "This option could be considered for DB-PROD-001 to mitigate specific financial impacts, such as data breach insurance or leveraging a cloud provider with strong security SLAs. It is most appropriate for risks where a third party is better equipped to manage or absorb the financial consequences, or where the risk is inherent to a service provided by an external vendor.",
+                "consequences": "Transferring the risk can reduce the organization's direct financial exposure to certain risk events. However, it does not absolve the organization of all responsibility (e.g., reputational damage, regulatory compliance). There will be ongoing costs (premiums, service fees), and the effectiveness depends heavily on the terms of the transfer agreement. Residual risks may still remain.",
+                "estimated_cost": "$5,000 - $50,000+ annually (e.g., cyber insurance premiums, enhanced vendor contracts).",
+                "typical_timeline": "1-3 months (for contract negotiation, policy acquisition, or vendor onboarding).",
+                "approval_required": "Risk Owner (CIO/L1 Head) in consultation with Legal and Procurement departments. Senior Management approval may be required for significant financial commitments or strategic outsourcing.",
+                "monitoring_required": "Ongoing monitoring of the third-party's performance, adherence to SLAs, and regular review of insurance policy coverage and terms. Ensure the transferred risk is adequately covered."
+              },
+              {
+                "value": "TERMINATE",
+                "label": "Terminate the Risk (Avoid)",
+                "description": "Risk termination, or avoidance, involves eliminating the activity or objective that gives rise to the risk. This is the most drastic option, as it means ceasing operations or discontinuing the use of an asset that presents an unacceptable level of risk. It is chosen when the risk is too high to treat or accept, and its presence outweighs the benefits of the activity.",
+                "recommendation": "Terminating the risk for DB-PROD-001 would mean decommissioning the database server or discontinuing the business function it supports. This is generally only recommended if the asset or its function is deemed non-essential, or if the risk is so catastrophic and untreatable that its continued operation poses an existential threat to the organization. Given the 'PROD' designation, this is likely a critical asset.",
+                "consequences": "Choosing to terminate the risk would eliminate the specific threats associated with DB-PROD-001, but it would also result in the loss of the business functionality or data provided by this critical asset. This could lead to significant operational disruption, loss of revenue, or the need to find costly alternative solutions. It is a high-impact decision.",
+                "estimated_cost": "$10,000 - $100,000+ (Decommissioning costs, data migration, loss of business revenue, cost of alternative solutions).",
+                "typical_timeline": "1-6 months (for planning, data migration, decommissioning, and transitioning to alternative solutions if any).",
+                "approval_required": "Risk Owner (CIO/L1 Head) and Senior Management/Business Unit Head due to the significant operational and business impact. Potentially Board-level approval for critical assets.",
+                "monitoring_required": "Monitoring to ensure the activity or asset is fully decommissioned and does not re-emerge. Monitoring for any new risks created by the termination or by alternative solutions."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "section_id": "s2_treatment_details",
+        "section_title": "Treatment Details (If 'Treat' is selected)",
+        "questions": [
+          {
+            "question_id": "Q_TREAT_CONTROLS_SELECTION",
+            "question_text": "If 'Treat the Risk' is selected, please confirm which of the recommended controls you commit to implementing. You may also propose alternative controls.",
+            "question_type": "checkbox_with_text_input",
+            "required": false,
+            "options": [
+              {
+                "value": "A.8.12_Encryption_at_Rest",
+                "label": "Implement Data Encryption at Rest (e.g., TDE for SQL Server)",
+                "details": "Rationale: Protects sensitive data (PII, SPII, PHI, Cardholder Data) from unauthorized access if the underlying storage is compromised, addressing a critical confidentiality gap. Expected Effectiveness: 4. Estimated Cost: $5,000 - $15,000. Timeline: 2-4 weeks. Expected Risk Reduction: Significant.",
+                "default_selected": true
+              },
+              {
+                "value": "A.8.20_Encryption_in_Transit",
+                "label": "Implement Data Encryption in Transit (e.g., TLS/SSL for database connections)",
+                "details": "Rationale: Protects sensitive data (PII, SPII, PHI, Cardholder Data) from eavesdropping and tampering during network communication, addressing a critical confidentiality gap. Expected Effectiveness: 4. Estimated Cost: $2,000 - $8,000. Timeline: 1-3 weeks. Expected Risk Reduction: Significant.",
+                "default_selected": true
+              },
+              {
+                "value": "A.5.30_Develop_DRP",
+                "label": "Develop and Document Disaster Recovery Plan",
+                "details": "Rationale: Establishes formal procedures to ensure business continuity and minimize data loss/downtime in the event of a disaster, addressing a critical availability gap. Expected Effectiveness: 4. Estimated Cost: $10,000 - $30,000. Timeline: 4-8 weeks. Expected Risk Reduction: Moderate.",
+                "default_selected": true
+              },
+              {
+                "value": "A.5.30_Test_DRP",
+                "label": "Conduct Regular Disaster Recovery Plan Testing",
+                "details": "Rationale: Verifies the effectiveness and readiness of the DR plan, identifying and addressing potential issues before a real disaster, ensuring the plan is viable. Expected Effectiveness: 4. Estimated Cost: $5,000 - $20,000. Timeline: Ongoing (e.g., annually). Expected Risk Reduction: Further reduction.",
+                "default_selected": true
+              }
+            ],
+            "text_input_label": "Propose alternative controls or provide additional details for selected controls:"
+          },
+          {
+            "question_id": "Q_TREAT_OWNER_ACCOUNTABILITY",
+            "question_text": "Who will be accountable for the overall implementation and effectiveness of the selected controls?",
+            "question_type": "text",
+            "required": true,
+            "suggested_value": "CIO/L1 Head (as Risk Owner for DB-PROD-001)",
+            "placeholder": "e.g., CIO, Head of Infrastructure, Database Administrator Lead"
+          },
+          {
+            "question_id": "Q_TREAT_RESOURCES_BUDGET",
+            "question_text": "What is the estimated budget required for implementing the selected controls, and from which budget line item will it be allocated?",
+            "question_type": "text",
+            "required": true,
+            "suggested_value": "Approx. $22,000 - $73,000 (based on recommended controls). Allocation from IT Security Budget / Infrastructure Project Budget.",
+            "placeholder": "e.g., $50,000 from IT Security Budget"
+          },
+          {
+            "question_id": "Q_TREAT_DEADLINES",
+            "question_text": "What are the proposed start and completion deadlines for implementing these controls?",
+            "question_type": "text",
+            "required": true,
+            "suggested_value": "Start: Within 2 weeks of approval. Completion: Critical controls within 2 months, DR plan development within 3 months, DR testing annually thereafter.",
+            "placeholder": "e.g., Start: YYYY-MM-DD, Completion: YYYY-MM-DD"
+          },
+          {
+            "question_id": "Q_TREAT_MONITORING",
+            "question_text": "Describe the plan for monitoring the effectiveness of the implemented controls and the residual risk.",
+            "question_type": "textarea",
+            "required": true,
+            "suggested_value": "Regular security audits, quarterly control effectiveness reviews, annual penetration testing, and continuous monitoring of database logs and security alerts. Residual risk to be re-evaluated semi-annually.",
+            "placeholder": "e.g., Monthly reviews, quarterly audits, annual re-assessment"
+          }
+        ]
+      },
+      {
+        "section_id": "s3_risk_owner_details",
+        "section_title": "Risk Owner and Approval",
+        "questions": [
+          {
+            "question_id": "Q_RISK_OWNER",
+            "question_text": "Who is the designated Risk Owner for DB-PROD-001?",
+            "question_type": "text",
+            "required": true,
+            "suggested_value": "CIO / L1 Head (for Infrastructure/Application assets)",
+            "placeholder": "e.g., CIO, Head of IT Operations"
+          },
+          {
+            "question_id": "Q_RISK_APPROVER",
+            "question_text": "Who is the designated Risk Approver for this treatment decision?",
+            "question_type": "text",
+            "required": true,
+            "suggested_value": "RCAC (Risk & Compliance Apex Committee) - for risks affecting infrastructure/application and requiring acceptance above threshold, or for approving treatment plans.",
+            "placeholder": "e.g., RCAC, CISO, Delivery Compliance Officer - Lead"
+          },
+          {
+            "question_id": "Q_ADDITIONAL_COMMENTS",
+            "question_text": "Please provide any additional comments or rationale for your decision.",
+            "question_type": "textarea",
+            "required": false
+          }
+        ]
+      }
+    ]
+  },
+  "agent_5_result": null,
+  "last_updated": "2026-01-05 16:06:46",
+  "progress": {
+    "agent_1": "complete",
+    "agent_2": "complete",
+    "agent_3": "complete",
+    "agent_4": "complete",
+    "agent_5": "pending"
+  }
+}
