@@ -13,7 +13,7 @@ streamlit>=1.28.0
 # ============================================================================
 # AI & AGENT FRAMEWORK
 # ============================================================================
-crewai==0.86.0
+crewai>=1.0.0
 crewai-tools>=0.73.1
 langchain==0.3.13
 langchain-google-genai==2.0.8
@@ -53,7 +53,7 @@ libsql-client>=0.3.0
 # ============================================================================
 # EMAIL INTEGRATION (For Questionnaire Email Workflow)
 # ============================================================================
-pywin32>=305  # For Outlook email integration (local only)
+# pywin32>=305  # For Outlook email integration (local Windows only - commented out for cloud deployment)
 
 # ============================================================================
 # ADDITIONAL DEPENDENCIES (Auto-installed with above packages)
