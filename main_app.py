@@ -140,11 +140,11 @@ try:
             
             st.info("💡 Go to Follow-up page to complete follow-up questionnaires for these risks.")
 except Exception as e:
-    # 🔧 FIX: Show error in development, silent in production
-    import os
-    if os.getenv('DEBUG', 'false').lower() == 'true':
-        st.error(f"⚠️ Follow-up check failed: {str(e)}")
-    pass
+    # 🔧 DEBUG: Always show error to diagnose cloud issue
+    st.error(f"⚠️ Follow-up check failed: {str(e)}")
+    import traceback
+    with st.expander("🔍 Debug Info"):
+        st.code(traceback.format_exc())
 
 # ===================================================================
 # PERSISTENT STORAGE PATHS
