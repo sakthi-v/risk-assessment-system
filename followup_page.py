@@ -20,6 +20,7 @@ from phase2_risk_resolver.database.save_followup import save_followup_to_risk_re
 from phase2_risk_resolver.database.risk_register_queries import get_overdue_followups
 from phase2_risk_resolver.agents.monitoring_logic import get_all_risk_alerts, get_monitoring_stats
 import sqlite3
+from database_manager import get_database_connection
 
 
 def analyze_followup_answers(answers: Dict[str, Any], questionnaire: Dict[str, Any]) -> Dict[str, Any]:
@@ -249,7 +250,7 @@ def render_followup_page(api_key: str):
             st.rerun()
     
     try:
-        conn = sqlite3.connect('database/risk_register.db')
+        conn = get_database_connection()
         cursor = conn.cursor()
         
         # Check if risk_id column exists, add if missing
@@ -304,7 +305,7 @@ def render_followup_page(api_key: str):
                             questionnaire = json.loads(q['questions']) if isinstance(q['questions'], str) else q['questions']
                             
                             # Get risk from database
-                            conn = sqlite3.connect('database/risk_register.db')
+                            conn = get_database_connection()
                             cursor = conn.cursor()
                             cursor.execute("SELECT * FROM risks WHERE risk_id = ?", (q['risk_id'],))
                             risk_row = cursor.fetchone()
@@ -332,7 +333,7 @@ def render_followup_page(api_key: str):
                                         with col1:
                                             st.markdown("**BEFORE**")
                                             # 🔧 FIX: Get old residual risk from database
-                                            conn = sqlite3.connect('database/risk_register.db')
+                                            conn = get_database_connection()
                                             cursor = conn.cursor()
                                             cursor.execute("SELECT residual_risk_rating FROM risks WHERE risk_id = ?", (q['risk_id'],))
                                             row = cursor.fetchone()
@@ -414,7 +415,7 @@ def render_followup_page(api_key: str):
                                         st.rerun()
                                     
                                     # Mark questionnaire as saved (will disappear from pending list)
-                                    conn = sqlite3.connect('database/risk_register.db')
+                                    conn = get_database_connection()
                                     cursor = conn.cursor()
                                     cursor.execute("UPDATE pending_questionnaires SET status = 'saved' WHERE token = ?", (q['token'],))
                                     conn.commit()
@@ -456,7 +457,7 @@ def render_followup_page(api_key: str):
     
     # ✅ PHASE 3: Show overdue follow-up alerts
     try:
-        conn = sqlite3.connect('database/risk_register.db')
+        conn = get_database_connection()
         cursor = conn.cursor()
         
         # Add missing columns for follow-up tracking
