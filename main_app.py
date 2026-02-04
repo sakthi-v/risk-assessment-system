@@ -104,15 +104,22 @@ if params.get('test') == '1':
         
         st.info("Calling get_risks_needing_followup()...")
         from phase2_risk_resolver.database.followup_checker import get_risks_needing_followup
-        risks = get_risks_needing_followup(days_threshold=5)
         
-        st.success(f"✅ Returned {len(risks) if risks else 0} risks")
+        # Test with different thresholds
+        st.write("Testing with 5 days threshold:")
+        risks = get_risks_needing_followup(days_threshold=5)
+        st.write(f"Result: {len(risks) if risks else 0} risks")
+        
+        st.write("Testing with -400 days threshold (future dates):")
+        risks = get_risks_needing_followup(days_threshold=-400)
+        st.write(f"Result: {len(risks) if risks else 0} risks")
         
         if risks:
+            st.success(f"✅ Found {len(risks)} risks with -400 days!")
             for r in risks[:3]:
                 st.write(r)
         else:
-            st.error("❌ No risks returned!")
+            st.error("❌ Still no risks!")
             
     except Exception as e:
         st.error(f"❌ Error: {str(e)}")
