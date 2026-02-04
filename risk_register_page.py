@@ -373,6 +373,12 @@ def render_risk_register_page():
             current_residual = risk.get('current_residual_risk')
             residual_risk = current_residual if current_residual else risk.get('residual_risk_rating', 0)
             
+            # Convert to float safely
+            try:
+                residual_risk = float(residual_risk) if residual_risk else 0.0
+            except (ValueError, TypeError):
+                residual_risk = 0.0
+            
             # Extract delay_reason from latest follow-up answers
             delay_reason = 'N/A'
             followup_answers = risk.get('followup_answers')
