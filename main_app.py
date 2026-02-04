@@ -118,6 +118,7 @@ if params.get('page') == 'form' and params.get('token'):
 try:
     from phase2_risk_resolver.database.followup_checker import get_risks_needing_followup
     
+    # 🔧 FIX: Use UTC-based date calculation (consistent with updated followup_checker.py)
     # Check for risks needing follow-up (5 days threshold)
     risks_needing_followup = get_risks_needing_followup(days_threshold=5)
     
@@ -139,7 +140,10 @@ try:
             
             st.info("💡 Go to Follow-up page to complete follow-up questionnaires for these risks.")
 except Exception as e:
-    # Silently fail if database doesn't exist yet
+    # 🔧 FIX: Show error in development, silent in production
+    import os
+    if os.getenv('DEBUG', 'false').lower() == 'true':
+        st.error(f"⚠️ Follow-up check failed: {str(e)}")
     pass
 
 # ===================================================================
