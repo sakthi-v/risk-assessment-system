@@ -105,21 +105,48 @@ if params.get('test') == '1':
         st.info("Calling get_risks_needing_followup()...")
         from phase2_risk_resolver.database.followup_checker import get_risks_needing_followup
         
-        # Test with different thresholds
-        st.write("Testing with 5 days threshold:")
+        # Check last_followup_date column
+        st.write("Checking last_followup_date column:")
+        cursor = conn.cursor()
+        cursor.execute("SELECT risk_id, created_at, last_followup_date, status FROM risks LIMIT 5")
+        followup_data = cursor.fetchall()
+        st.write(followup_data)
+        
+        # Test the actual SQL query
+        st.write("Testing actual SQL query:")
+        from datetime import datetime, timedelta, timezone
+        from datetime import timedelta as td
+        ist = timezone(td(hours=5, minutes=30))
+        now_ist = datetime.now(ist)
+        cutoff_date = (now_ist - timedelta(days=5)).strftime('%Y-%m-%d')
+        st.write(f"Cutoff date: {cutoff_date}")
+        st.write(f"Today (IST): {now_ist.strftime('%Y-%m-%d')}")
+        
+        cursor.execute("""
+            SELECT risk_id, created_at, last_followup_date, status
+            FROM risks
+            WHERE treatment_decision IS NOT NULL
+            AND treatment_decision != ''
+            AND status NOT IN ('Closed')
+            AND SUBSTR(created_at, 1, 10) <= ?
+            AND last_followup_date IS NULL
+            LIMIT 5
+        """, (cutoff_date,))
+        query_results = cursor.fetchall()
+        st.write(f"Query returned {len(query_results)} rows:")
+        st.write(query_results)
+        
+        # Now test the function
+        st.write("Testing function:")
         risks = get_risks_needing_followup(days_threshold=5)
         st.write(f"Result: {len(risks) if risks else 0} risks")
         
-        st.write("Testing with -400 days threshold (future dates):")
-        risks = get_risks_needing_followup(days_threshold=-400)
-        st.write(f"Result: {len(risks) if risks else 0} risks")
-        
         if risks:
-            st.success(f"✅ Found {len(risks)} risks with -400 days!")
+            st.success(f"✅ Found {len(risks)} risks!")
             for r in risks[:3]:
                 st.write(r)
         else:
-            st.error("❌ Still no risks!")
+            st.error("❌ No risks returned!")
             
     except Exception as e:
         st.error(f"❌ Error: {str(e)}")
