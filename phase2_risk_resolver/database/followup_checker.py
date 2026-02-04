@@ -38,6 +38,7 @@ def get_risks_needing_followup(days_threshold: int = 5) -> List[Dict[str, Any]]:
         # 2. Recurring follow-ups: next_followup_date is due
         # 3. treatment_decision exists (TREAT/ACCEPT/TRANSFER/TERMINATE)
         # 4. Risk not closed
+        # 🔧 FIX: Use SUBSTR for Turso compatibility instead of date()
         cursor.execute("""
             SELECT 
                 risk_id,
@@ -64,13 +65,13 @@ def get_risks_needing_followup(days_threshold: int = 5) -> List[Dict[str, Any]]:
             AND status NOT IN ('Closed')
             AND (
                 -- First follow-up: 5+ days after creation, no follow-up done yet
-                (date(created_at) <= ? AND last_followup_date IS NULL)
+                (SUBSTR(created_at, 1, 10) <= ? AND last_followup_date IS NULL)
                 OR
                 -- Recurring follow-ups: next_followup_date is due
-                (next_followup_date IS NOT NULL AND next_followup_date <= date('now'))
+                (next_followup_date IS NOT NULL AND next_followup_date <= ?)
             )
             ORDER BY created_at ASC
-        """, (cutoff_date,))
+        """, (cutoff_date, cutoff_date))
         
         risks = []
         for row in cursor.fetchall():
