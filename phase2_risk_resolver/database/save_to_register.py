@@ -277,7 +277,7 @@ def save_assessment_to_risk_register(
     print(f"✅ Risk register database found at: {db_path}\n")
     
     # Connect to database
-    conn = sqlite3.connect(db_path)
+    conn = get_database_connection()
     cursor = conn.cursor()
     
     risk_ids = []

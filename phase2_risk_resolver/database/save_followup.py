@@ -38,7 +38,7 @@ def save_followup_to_risk_register(risk_id: str, answers: Dict[str, Any], questi
         # ✅ FIX: Convert date objects to strings before JSON serialization
         answers = _convert_dates_to_strings(answers)
         
-        conn = sqlite3.connect(str(db_path))
+        conn = get_database_connection()
         cursor = conn.cursor()
         
         # Get existing follow-up history

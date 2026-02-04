@@ -17,7 +17,7 @@ def get_risks_needing_followup(days_threshold: int = 5) -> List[Dict[str, Any]]:
         List of risk records that need follow-up
     """
     try:
-        conn = sqlite3.connect('database/risk_register.db')
+        conn = get_database_connection()
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
         
