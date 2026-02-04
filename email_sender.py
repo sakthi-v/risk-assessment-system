@@ -47,11 +47,11 @@ def send_email_smtp(recipient_email, subject, html_body):
             server.login(email_address, email_password)
             server.send_message(msg)
         
-        print(f"✅ Email sent via SMTP to {recipient_email}")
+        print(f"[SUCCESS] Email sent via SMTP to {recipient_email}")
         return True
         
     except Exception as e:
-        print(f"❌ SMTP send failed: {e}")
+        print(f"[ERROR] SMTP send failed: {e}")
         return False
 
 def send_email_outlook(recipient_email, subject, html_body):
@@ -72,11 +72,11 @@ def send_email_outlook(recipient_email, subject, html_body):
         mail.Send()
         
         pythoncom.CoUninitialize()
-        print(f"✅ Email sent via Outlook to {recipient_email}")
+        print(f"[SUCCESS] Email sent via Outlook to {recipient_email}")
         return True
         
     except Exception as e:
-        print(f"❌ Outlook send failed: {e}")
+        print(f"[ERROR] Outlook send failed: {e}")
         try:
             import pythoncom
             pythoncom.CoUninitialize()
@@ -137,7 +137,7 @@ def send_questionnaire_email(recipient_email, asset_name, questionnaire, questio
     
     # If SMTP fails, try Outlook (local only)
     if not email_sent:
-        print("⚠️ SMTP failed, trying Outlook...")
+        print("[WARNING] SMTP failed, trying Outlook...")
         email_sent = send_email_outlook(recipient_email, subject, html_body)
     
     # If email sent successfully, save to database
@@ -166,11 +166,11 @@ def send_questionnaire_email(recipient_email, asset_name, questionnaire, questio
             
         except Exception as e:
             error_msg = f"Email sent but database save failed: {str(e)}"
-            print(f"❌ {error_msg}")
+            print(f"[ERROR] {error_msg}")
             return {'success': False, 'error': error_msg}
     else:
         error_msg = "Failed to send email via both SMTP and Outlook"
-        print(f"❌ {error_msg}")
+        print(f"[ERROR] {error_msg}")
         return {'success': False, 'error': error_msg}
 
 def check_questionnaire_status(token):
