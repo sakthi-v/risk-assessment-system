@@ -34,10 +34,11 @@ def get_risks_needing_followup(days_threshold: int = 5) -> List[Dict[str, Any]]:
         ist = timezone(td(hours=5, minutes=30))
         now_ist = datetime.now(ist)
         cutoff_date = (now_ist - timedelta(days=days_threshold)).strftime('%Y-%m-%d')
+        today_date = now_ist.strftime('%Y-%m-%d')
         
         # Query risks where:
         # 1. First follow-up: created_at >= 5 days ago AND no follow-up done yet
-        # 2. Recurring follow-ups: next_followup_date is due
+        # 2. Recurring follow-ups: next_followup_date is due (on or before today)
         # 3. treatment_decision exists (TREAT/ACCEPT/TRANSFER/TERMINATE)
         # 4. Risk not closed
         # 🔧 FIX: Use SUBSTR for Turso compatibility instead of date()
@@ -69,11 +70,11 @@ def get_risks_needing_followup(days_threshold: int = 5) -> List[Dict[str, Any]]:
                 -- First follow-up: 5+ days after creation, no follow-up done yet
                 (SUBSTR(created_at, 1, 10) <= ? AND last_followup_date IS NULL)
                 OR
-                -- Recurring follow-ups: next_followup_date is due
+                -- Recurring follow-ups: next_followup_date is due (on or before today)
                 (next_followup_date IS NOT NULL AND next_followup_date <= ?)
             )
             ORDER BY created_at ASC
-        """, (cutoff_date, cutoff_date))
+        """, (cutoff_date, today_date))
         
         for row in cursor.fetchall():
             # 🔧 FIX: Access by index since row_factory is disabled for Turso
