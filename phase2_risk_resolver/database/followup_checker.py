@@ -76,7 +76,10 @@ def get_risks_needing_followup(days_threshold: int = 5) -> List[Dict[str, Any]]:
         risks = []
         for row in cursor.fetchall():
             # Handle both date and datetime formats for created_at
-            created_str = row['created_at'].split()[0] if ' ' in str(row['created_at']) else str(row['created_at'])
+            created_str = row['created_at']
+            # 🔧 FIX: Handle both "YYYY-MM-DD" and "YYYY-MM-DD HH:MM:SS" formats
+            if ' ' in str(created_str):
+                created_str = created_str.split()[0]  # Extract date part
             
             # 🔧 FIX: Use India time (IST)
             from datetime import timezone, timedelta as td
@@ -84,10 +87,14 @@ def get_risks_needing_followup(days_threshold: int = 5) -> List[Dict[str, Any]]:
             now_ist = datetime.now(ist).date()
             
             # Calculate days since creation or last follow-up
-            if row['last_followup_date']:
-                days_since = (now_ist - datetime.strptime(row['last_followup_date'], '%Y-%m-%d').date()).days
-            else:
-                days_since = (now_ist - datetime.strptime(created_str, '%Y-%m-%d').date()).days
+            try:
+                if row['last_followup_date']:
+                    days_since = (now_ist - datetime.strptime(row['last_followup_date'], '%Y-%m-%d').date()).days
+                else:
+                    days_since = (now_ist - datetime.strptime(created_str, '%Y-%m-%d').date()).days
+            except Exception as e:
+                # Skip this risk if date parsing fails
+                continue
             
             risks.append({
                 'risk_id': row['risk_id'],
