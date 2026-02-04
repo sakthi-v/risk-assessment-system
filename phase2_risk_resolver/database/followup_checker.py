@@ -115,8 +115,8 @@ def get_risks_needing_followup(days_threshold: int = 5) -> List[Dict[str, Any]]:
                 'inherent_risk_rating': row['inherent_risk_rating'],
                 'control_rating': row['control_rating'],
                 'residual_risk_rating': row['residual_risk_rating'],
-                # 🔧 FIX: Use India time (IST)
-                'days_since_creation': (now_ist - datetime.strptime(created_str, '%Y-%m-%d').date()).days,
+                # 🔧 FIX: Use already calculated days_since
+                'days_since_creation': days_since,
                 'days_since_last_followup': days_since
             })
         
