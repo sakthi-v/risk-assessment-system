@@ -17,6 +17,7 @@ sys.path.insert(0, str(project_root))
 
 from phase2_risk_resolver.agents.agent_3_followup import run_agent_3_followup
 from phase2_risk_resolver.agents.agent_2_followup import run_agent_2_followup
+from database_manager import get_database_connection
 
 
 def save_followup_to_risk_register(risk_id: str, answers: Dict[str, Any], questionnaire: Dict[str, Any], api_key: str = None) -> Dict[str, Any]:

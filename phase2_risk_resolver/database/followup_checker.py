@@ -4,6 +4,12 @@ Follow-up Checker - Identifies risks that need follow-up after 5 days
 from datetime import datetime, timedelta
 from typing import List, Dict, Any
 import sqlite3
+import sys
+import os
+
+# Add parent directory to path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+from database_manager import get_database_connection
 
 
 def get_risks_needing_followup(days_threshold: int = 5) -> List[Dict[str, Any]]:
