@@ -22,6 +22,7 @@ def get_risks_needing_followup(days_threshold: int = 5) -> List[Dict[str, Any]]:
     Returns:
         List of risk records that need follow-up
     """
+    risks = []
     try:
         conn = get_database_connection()
         conn.row_factory = sqlite3.Row
@@ -73,7 +74,6 @@ def get_risks_needing_followup(days_threshold: int = 5) -> List[Dict[str, Any]]:
             ORDER BY created_at ASC
         """, (cutoff_date, cutoff_date))
         
-        risks = []
         for row in cursor.fetchall():
             # Handle both date and datetime formats for created_at
             created_str = row['created_at']
@@ -82,19 +82,14 @@ def get_risks_needing_followup(days_threshold: int = 5) -> List[Dict[str, Any]]:
                 created_str = created_str.split()[0]  # Extract date part
             
             # 🔧 FIX: Use India time (IST)
-            from datetime import timezone, timedelta as td
             ist = timezone(td(hours=5, minutes=30))
             now_ist = datetime.now(ist).date()
             
             # Calculate days since creation or last follow-up
-            try:
-                if row['last_followup_date']:
-                    days_since = (now_ist - datetime.strptime(row['last_followup_date'], '%Y-%m-%d').date()).days
-                else:
-                    days_since = (now_ist - datetime.strptime(created_str, '%Y-%m-%d').date()).days
-            except Exception as e:
-                # Skip this risk if date parsing fails
-                continue
+            if row['last_followup_date']:
+                days_since = (now_ist - datetime.strptime(row['last_followup_date'], '%Y-%m-%d').date()).days
+            else:
+                days_since = (now_ist - datetime.strptime(created_str, '%Y-%m-%d').date()).days
             
             risks.append({
                 'risk_id': row['risk_id'],
@@ -125,7 +120,9 @@ def get_risks_needing_followup(days_threshold: int = 5) -> List[Dict[str, Any]]:
         
     except Exception as e:
         print(f"Error checking follow-ups: {str(e)}")
-        return []
+        import traceback
+        traceback.print_exc()
+        return risks  # Return whatever we collected so far
 
 
 def get_followup_count() -> int:
