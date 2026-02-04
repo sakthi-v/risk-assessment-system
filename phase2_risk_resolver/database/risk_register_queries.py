@@ -85,6 +85,11 @@ def get_all_risks(
     cursor.execute(query, params)
     rows = cursor.fetchall()
     
+    # Get column names dynamically from first query
+    cursor.execute("PRAGMA table_info(risks)")
+    schema_info = cursor.fetchall()
+    column_names = [col[1] if isinstance(col, tuple) else col for col in schema_info]
+    
     # Convert to list of dictionaries
     risks = []
     for row in rows:
@@ -92,17 +97,11 @@ def get_all_risks(
         if hasattr(row, 'keys'):
             risk = dict(row)
         else:
-            columns = ['risk_id', 'asset_name', 'asset_type', 'asset_owner', 'threat_name', 'threat_description', 
-                      'threat_source', 'vulnerability', 'existing_controls', 'control_gaps', 'recommended_controls',
-                      'confidentiality_impact', 'integrity_impact', 'availability_impact', 'likelihood', 
-                      'inherent_risk_rating', 'inherent_risk_level', 'residual_risk_rating', 'residual_risk_level',
-                      'risk_owner', 'priority', 'status', 'treatment_decision', 'treatment_plan', 'identified_date',
-                      'last_updated', 'rtp_answers', 'agent_1_raw', 'agent_2_raw', 'agent_3_raw', 'agent_4_raw',
-                      'business_justification', 'cost_benefit_analysis', 'monitoring_plan', 'approver_risk_owner',
-                      'approver_ciso', 'approver_cio', 'acceptance_form', 'valid_until_date', 'review_frequency',
-                      'next_review_date', 'created_at', 'followup_count', 'last_followup_date', 'next_followup_date',
-                      'completion_percentage', 'timeline_status']
-            risk = dict(zip(columns, row))
+            # Use actual column names from schema
+            risk = dict(zip(column_names, row)) if len(column_names) == len(row) else {}
+            # Fallback if column count mismatch
+            if not risk:
+                risk = {'risk_id': row[0] if len(row) > 0 else 'Unknown'}
         
         # Parse JSON fields (existing + ACCEPT fields)
         json_fields = [
@@ -149,20 +148,15 @@ def get_risk_by_id(risk_id: str) -> Optional[Dict[str, Any]]:
         conn.close()
         return None
     
+    # Get column names dynamically
+    cursor.execute("PRAGMA table_info(risks)")
+    schema_info = cursor.fetchall()
+    column_names = [col[1] if isinstance(col, tuple) else col for col in schema_info]
+    
     if hasattr(row, 'keys'):
         risk = dict(row)
     else:
-        columns = ['risk_id', 'asset_name', 'asset_type', 'asset_owner', 'threat_name', 'threat_description', 
-                  'threat_source', 'vulnerability', 'existing_controls', 'control_gaps', 'recommended_controls',
-                  'confidentiality_impact', 'integrity_impact', 'availability_impact', 'likelihood', 
-                  'inherent_risk_rating', 'inherent_risk_level', 'residual_risk_rating', 'residual_risk_level',
-                  'risk_owner', 'priority', 'status', 'treatment_decision', 'treatment_plan', 'identified_date',
-                  'last_updated', 'rtp_answers', 'agent_1_raw', 'agent_2_raw', 'agent_3_raw', 'agent_4_raw',
-                  'business_justification', 'cost_benefit_analysis', 'monitoring_plan', 'approver_risk_owner',
-                  'approver_ciso', 'approver_cio', 'acceptance_form', 'valid_until_date', 'review_frequency',
-                  'next_review_date', 'created_at', 'followup_count', 'last_followup_date', 'next_followup_date',
-                  'completion_percentage', 'timeline_status']
-        risk = dict(zip(columns, row))
+        risk = dict(zip(column_names, row)) if len(column_names) == len(row) else {}
     
     # Parse JSON fields (existing + ACCEPT fields)
     json_fields = [
@@ -450,22 +444,17 @@ def get_risks_expiring_soon(days: int = 30) -> List[Dict[str, Any]]:
     
     rows = cursor.fetchall()
     
+    # Get column names
+    cursor.execute("PRAGMA table_info(risks)")
+    schema_info = cursor.fetchall()
+    column_names = [col[1] if isinstance(col, tuple) else col for col in schema_info]
+    
     risks = []
     for row in rows:
         if hasattr(row, 'keys'):
             risk = dict(row)
         else:
-            columns = ['risk_id', 'asset_name', 'asset_type', 'asset_owner', 'threat_name', 'threat_description', 
-                      'threat_source', 'vulnerability', 'existing_controls', 'control_gaps', 'recommended_controls',
-                      'confidentiality_impact', 'integrity_impact', 'availability_impact', 'likelihood', 
-                      'inherent_risk_rating', 'inherent_risk_level', 'residual_risk_rating', 'residual_risk_level',
-                      'risk_owner', 'priority', 'status', 'treatment_decision', 'treatment_plan', 'identified_date',
-                      'last_updated', 'rtp_answers', 'agent_1_raw', 'agent_2_raw', 'agent_3_raw', 'agent_4_raw',
-                      'business_justification', 'cost_benefit_analysis', 'monitoring_plan', 'approver_risk_owner',
-                      'approver_ciso', 'approver_cio', 'acceptance_form', 'valid_until_date', 'review_frequency',
-                      'next_review_date', 'created_at', 'followup_count', 'last_followup_date', 'next_followup_date',
-                      'completion_percentage', 'timeline_status']
-            risk = dict(zip(columns, row))
+            risk = dict(zip(column_names, row)) if len(column_names) == len(row) else {}
         
         # Parse JSON fields
         json_fields = [
