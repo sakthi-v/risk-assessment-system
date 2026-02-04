@@ -25,7 +25,8 @@ def get_risks_needing_followup(days_threshold: int = 5) -> List[Dict[str, Any]]:
     risks = []
     try:
         conn = get_database_connection()
-        conn.row_factory = sqlite3.Row
+        # 🔧 FIX: Don't use row_factory with Turso - it doesn't support it
+        # conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
         
         # 🔧 FIX: Use India time (IST = UTC+5:30)
@@ -75,8 +76,28 @@ def get_risks_needing_followup(days_threshold: int = 5) -> List[Dict[str, Any]]:
         """, (cutoff_date, cutoff_date))
         
         for row in cursor.fetchall():
+            # 🔧 FIX: Access by index since row_factory is disabled for Turso
+            risk_id = row[0]
+            asset_name = row[1]
+            threat_name = row[2]
+            treatment_decision = row[3]
+            created_at = row[4]
+            followup_status = row[5]
+            followup_date = row[6]
+            followup_answers = row[7]
+            next_followup_date = row[8]
+            followup_count = row[9]
+            last_followup_date = row[10]
+            status = row[11]
+            completion_percentage = row[12]
+            current_blockers = row[13]
+            timeline_status = row[14]
+            inherent_risk_rating = row[15]
+            control_rating = row[16]
+            residual_risk_rating = row[17]
+            
             # Handle both date and datetime formats for created_at
-            created_str = row['created_at']
+            created_str = created_at
             # 🔧 FIX: Handle both "YYYY-MM-DD" and "YYYY-MM-DD HH:MM:SS" formats
             if ' ' in str(created_str):
                 created_str = created_str.split()[0]  # Extract date part
@@ -86,30 +107,30 @@ def get_risks_needing_followup(days_threshold: int = 5) -> List[Dict[str, Any]]:
             now_ist = datetime.now(ist).date()
             
             # Calculate days since creation or last follow-up
-            if row['last_followup_date']:
-                days_since = (now_ist - datetime.strptime(row['last_followup_date'], '%Y-%m-%d').date()).days
+            if last_followup_date:
+                days_since = (now_ist - datetime.strptime(last_followup_date, '%Y-%m-%d').date()).days
             else:
                 days_since = (now_ist - datetime.strptime(created_str, '%Y-%m-%d').date()).days
             
             risks.append({
-                'risk_id': row['risk_id'],
-                'asset_name': row['asset_name'],
-                'threat_name': row['threat_name'],
-                'treatment_decision': row['treatment_decision'],
-                'created_at': row['created_at'],
-                'followup_status': row['followup_status'],
-                'followup_date': row['followup_date'],
-                'followup_answers': row['followup_answers'],
-                'next_followup_date': row['next_followup_date'],
-                'followup_count': row['followup_count'] or 0,
-                'last_followup_date': row['last_followup_date'],
-                'status': row['status'] or 'Open',
-                'completion_percentage': row['completion_percentage'] or 0,
-                'current_blockers': row['current_blockers'],
-                'timeline_status': row['timeline_status'],
-                'inherent_risk_rating': row['inherent_risk_rating'],
-                'control_rating': row['control_rating'],
-                'residual_risk_rating': row['residual_risk_rating'],
+                'risk_id': risk_id,
+                'asset_name': asset_name,
+                'threat_name': threat_name,
+                'treatment_decision': treatment_decision,
+                'created_at': created_at,
+                'followup_status': followup_status,
+                'followup_date': followup_date,
+                'followup_answers': followup_answers,
+                'next_followup_date': next_followup_date,
+                'followup_count': followup_count or 0,
+                'last_followup_date': last_followup_date,
+                'status': status or 'Open',
+                'completion_percentage': completion_percentage or 0,
+                'current_blockers': current_blockers,
+                'timeline_status': timeline_status,
+                'inherent_risk_rating': inherent_risk_rating,
+                'control_rating': control_rating,
+                'residual_risk_rating': residual_risk_rating,
                 # 🔧 FIX: Use already calculated days_since
                 'days_since_creation': days_since,
                 'days_since_last_followup': days_since
