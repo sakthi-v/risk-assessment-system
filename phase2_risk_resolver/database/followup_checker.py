@@ -27,8 +27,9 @@ def get_risks_needing_followup(days_threshold: int = 5) -> List[Dict[str, Any]]:
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
         
+        # 🔧 FIX: Use UTC consistently for timezone-independent calculations
         # Calculate cutoff date (5 days ago from today)
-        cutoff_date = (datetime.now() - timedelta(days=days_threshold)).strftime('%Y-%m-%d')
+        cutoff_date = (datetime.utcnow() - timedelta(days=days_threshold)).strftime('%Y-%m-%d')
         
         # Query risks where:
         # 1. First follow-up: created_at >= 5 days ago AND no follow-up done yet
@@ -74,11 +75,12 @@ def get_risks_needing_followup(days_threshold: int = 5) -> List[Dict[str, Any]]:
             # Handle both date and datetime formats for created_at
             created_str = row['created_at'].split()[0] if ' ' in str(row['created_at']) else str(row['created_at'])
             
+            # 🔧 FIX: Use UTC consistently for timezone-independent calculations
             # Calculate days since creation or last follow-up
             if row['last_followup_date']:
-                days_since = (datetime.now().date() - datetime.strptime(row['last_followup_date'], '%Y-%m-%d').date()).days
+                days_since = (datetime.utcnow().date() - datetime.strptime(row['last_followup_date'], '%Y-%m-%d').date()).days
             else:
-                days_since = (datetime.now().date() - datetime.strptime(created_str, '%Y-%m-%d').date()).days
+                days_since = (datetime.utcnow().date() - datetime.strptime(created_str, '%Y-%m-%d').date()).days
             
             risks.append({
                 'risk_id': row['risk_id'],
@@ -99,7 +101,8 @@ def get_risks_needing_followup(days_threshold: int = 5) -> List[Dict[str, Any]]:
                 'inherent_risk_rating': row['inherent_risk_rating'],
                 'control_rating': row['control_rating'],
                 'residual_risk_rating': row['residual_risk_rating'],
-                'days_since_creation': (datetime.now().date() - datetime.strptime(created_str, '%Y-%m-%d').date()).days,
+                # 🔧 FIX: Use UTC consistently
+                'days_since_creation': (datetime.utcnow().date() - datetime.strptime(created_str, '%Y-%m-%d').date()).days,
                 'days_since_last_followup': days_since
             })
         

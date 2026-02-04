@@ -293,7 +293,8 @@ def get_followup_metrics() -> Dict[str, Any]:
     metrics['overdue_followups'] = cursor.fetchone()[0]
     
     # Never followed up (created 5+ days ago, no follow-up done)
-    cutoff_date = (datetime.now() - timedelta(days=5)).strftime('%Y-%m-%d')
+    # 🔧 FIX: Use UTC consistently
+    cutoff_date = (datetime.utcnow() - timedelta(days=5)).strftime('%Y-%m-%d')
     cursor.execute("""
         SELECT COUNT(*) FROM risks 
         WHERE created_at <= ?
@@ -431,7 +432,8 @@ def get_risks_expiring_soon(days: int = 30) -> List[Dict[str, Any]]:
     cursor = conn.cursor()
     
     # Calculate expiry threshold
-    threshold_date = (datetime.now() + timedelta(days=days)).strftime('%Y-%m-%d')
+    # 🔧 FIX: Use UTC consistently
+    threshold_date = (datetime.utcnow() + timedelta(days=days)).strftime('%Y-%m-%d')
     
     cursor.execute("""
         SELECT * FROM risks 
@@ -504,7 +506,7 @@ def update_risk_field(risk_id: str, field: str, value: Any) -> bool:
             UPDATE risks 
             SET {field} = ?, last_updated = ?
             WHERE risk_id = ?
-        """, (value, datetime.now().strftime('%Y-%m-%d'), risk_id))
+        """, (value, datetime.utcnow().strftime('%Y-%m-%d'), risk_id))
         
         conn.commit()
         success = cursor.rowcount > 0
