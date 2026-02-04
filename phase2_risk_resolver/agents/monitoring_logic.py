@@ -7,6 +7,7 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Any
 import sqlite3
 
+from database_manager import get_database_connection
 
 def check_risk_progress(risk_data: Dict[str, Any]) -> Dict[str, Any]:
     """
@@ -126,7 +127,7 @@ def get_all_risk_alerts() -> Dict[str, List[Dict[str, Any]]]:
     """
     
     try:
-        conn = sqlite3.connect('database/risk_register.db')
+        conn = get_database_connection()
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
         
@@ -233,7 +234,7 @@ def get_risk_recommendations(risk_id: str) -> List[str]:
     """
     
     try:
-        conn = sqlite3.connect('database/risk_register.db')
+        conn = get_database_connection()
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
         

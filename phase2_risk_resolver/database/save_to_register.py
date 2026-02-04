@@ -11,6 +11,7 @@ from datetime import datetime
 from typing import Dict, List, Any, Optional
 import os
 
+from database_manager import get_database_connection
 
 def convert_cia_numeric_to_text(numeric_value: float) -> str:
     """

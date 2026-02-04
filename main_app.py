@@ -1,4 +1,4 @@
-﻿"""
+"""
 Risk Resolver - Integrated Streamlit Application
 Phase 1: RAG Knowledge Base
 Phase 2: Complete 6-Agent Risk Assessment Pipeline (TRULY AGENTIC)
@@ -64,7 +64,7 @@ from followup_page import render_followup_page
 # Configure page
 st.set_page_config(
     page_title="Risk Resolver - Truly Agentic AI System",
-    page_icon="🎯",
+    page_icon="??",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -74,6 +74,7 @@ st.set_page_config(
 # ===================================================================
 from dotenv import load_dotenv
 load_dotenv()
+from database_manager import get_database_connection
 
 params = st.query_params
 is_questionnaire_form = params.get('page') == 'form' and params.get('token')
@@ -83,22 +84,22 @@ if not is_questionnaire_form:
         st.session_state.authenticated = False
     
     if not st.session_state.authenticated:
-        st.title("🔒 Risk Assessment System")
+        st.title("?? Risk Assessment System")
         st.markdown("### Admin Login Required")
-        st.info("ℹ️ This system is password-protected. Please enter the admin password to continue.")
+        st.info("?? This system is password-protected. Please enter the admin password to continue.")
         
         password = st.text_input("Password", type="password", key="login_password")
         
         col1, col2 = st.columns([1, 2])
         with col1:
-            if st.button("🔓 Login", type="primary", use_container_width=True):
+            if st.button("?? Login", type="primary", use_container_width=True):
                 admin_password = os.getenv('ADMIN_PASSWORD', 'RiskApp2024!Secure')
                 if password == admin_password:
                     st.session_state.authenticated = True
-                    st.success("✅ Login successful!")
+                    st.success("? Login successful!")
                     st.rerun()
                 else:
-                    st.error("❌ Incorrect password. Please try again.")
+                    st.error("? Incorrect password. Please try again.")
         with col2:
             st.caption("Forgot password? Contact system administrator.")
         st.stop()
@@ -122,9 +123,9 @@ try:
     
     if risks_needing_followup:
         # Display alert at top of page
-        st.warning(f"⚠️ **{len(risks_needing_followup)} risk(s) need follow-up!** These risks were created 5+ days ago and require follow-up assessment.")
+        st.warning(f"?? **{len(risks_needing_followup)} risk(s) need follow-up!** These risks were created 5+ days ago and require follow-up assessment.")
         
-        with st.expander("📋 View Risks Needing Follow-up", expanded=False):
+        with st.expander("?? View Risks Needing Follow-up", expanded=False):
             for risk in risks_needing_followup:
                 col1, col2, col3, col4 = st.columns([2, 2, 2, 1])
                 with col1:
@@ -136,7 +137,7 @@ try:
                 with col4:
                     st.caption(f"**{risk['days_since_creation']} days ago**")
             
-            st.info("💡 Go to Follow-up page to complete follow-up questionnaires for these risks.")
+            st.info("?? Go to Follow-up page to complete follow-up questionnaires for these risks.")
 except Exception as e:
     # Silently fail if database doesn't exist yet
     pass
@@ -245,7 +246,7 @@ def create_risk_heatmap(threats):
             if cell:
                 hover_text_str = f"<b>Impact: {impact}, Probability: {probability}</b><br>"
                 hover_text_str += f"<b>Risk Value: {risk_value}</b><br><br>"
-                hover_text_str += "<br>".join([f"� {threat}" for threat in cell])
+                hover_text_str += "<br>".join([f"? {threat}" for threat in cell])
             else:
                 hover_text_str = f"<b>Impact: {impact}, Probability: {probability}</b><br>"
                 hover_text_str += f"<b>Risk Value: {risk_value}</b><br><br>No threats"
@@ -305,14 +306,14 @@ def create_risk_heatmap(threats):
     # Update layout
     fig.update_layout(
         title=dict(
-            text="<b>Risk Heatmap Matrix (5�5)</b>",
+            text="<b>Risk Heatmap Matrix (5?5)</b>",
             x=0.5,
             xanchor='center',
             font=dict(size=20, color='#2c3e50')
         ),
         xaxis=dict(
             title=dict(
-                text="<b>Probability 📊</b>",
+                text="<b>Probability ??</b>",
                 font=dict(size=14, color='#2c3e50')
             ),
             side='bottom',
@@ -320,7 +321,7 @@ def create_risk_heatmap(threats):
         ),
         yaxis=dict(
             title=dict(
-                text="<b>⚠️ Impact</b>",
+                text="<b>?? Impact</b>",
                 font=dict(size=14, color='#2c3e50')
             ),
             tickfont=dict(size=11)
@@ -442,7 +443,7 @@ def extract_assets_from_json(uploaded_file) -> List[Dict]:
 
 def render_home_page():
     """Render home page with system status"""
-    st.title("🎯 Risk Resolver - Truly Agentic AI System")
+    st.title("?? Risk Resolver - Truly Agentic AI System")
     st.markdown("### Automated Risk Assessment powered by Adaptive AI Agents")
     
     st.markdown("---")
@@ -452,7 +453,7 @@ def render_home_page():
     
     with col1:
         st.metric(
-            label="📚 Knowledge Base",
+            label="?? Knowledge Base",
             value="Ready" if st.session_state.processed else "Not Loaded",
             delta=f"{len(st.session_state.documents)} docs" if st.session_state.processed else "Upload needed"
         )
@@ -460,7 +461,7 @@ def render_home_page():
     with col2:
         agents_ready = "6 Agents" if st.session_state.rag_initialized else "Initializing"
         st.metric(
-            label="🤖 Agent System",
+            label="?? Agent System",
             value=agents_ready,
             delta="Truly Agentic"
         )
@@ -473,14 +474,14 @@ def render_home_page():
             1 if st.session_state.decision_result else 0
         ])
         st.metric(
-            label="✅ Completed",
+            label="? Completed",
             value=f"{completed}/4",
             delta="Agents executed"
         )
     
     with col4:
         st.metric(
-            label="📊 Assets Loaded",
+            label="?? Assets Loaded",
             value=len(st.session_state.sample_assets),
             delta="Ready for assessment"
         )
@@ -488,10 +489,10 @@ def render_home_page():
     st.markdown("---")
     
     # NEW: Highlight Truly Agentic Feature
-    st.info("ℹ️ **Truly Agentic System** - Agents learn YOUR methodology from documents! No hardcoding.")
+    st.info("?? **Truly Agentic System** - Agents learn YOUR methodology from documents! No hardcoding.")
     
     # Quick Start Guide
-    st.markdown("### 📖 Quick Start Guide")
+    st.markdown("### ?? Quick Start Guide")
 
     st.markdown("""
     **Phase 1: Knowledge Base Setup** (One-time)
@@ -510,11 +511,11 @@ def render_home_page():
     3. Submit and run Agents 1-4
     
     **Agents:**
-    - 0️⃣ **Agent 0**: Questionnaire Generator (learns your process)
-    - 1️⃣ **Agent 1**: Impact Assessment (discovers your methodology)
-    - 2️⃣ **Agent 2**: Risk Quantification (learns your formula)
-    - 3️⃣ **Agent 3**: Control Discovery (identifies your frameworks)
-    - 4️⃣ **Agent 4**: Risk Decision (applies your treatment options)
+    - 0?? **Agent 0**: Questionnaire Generator (learns your process)
+    - 1?? **Agent 1**: Impact Assessment (discovers your methodology)
+    - 2?? **Agent 2**: Risk Quantification (learns your formula)
+    - 3?? **Agent 3**: Control Discovery (identifies your frameworks)
+    - 4?? **Agent 4**: Risk Decision (applies your treatment options)
     """)
 
 # ===================================================================
@@ -523,12 +524,12 @@ def render_home_page():
 
 def render_knowledge_base_page(api_key):
     """Render Knowledge Base management page"""
-    st.title("📚 Knowledge Base Management")
+    st.title("?? Knowledge Base Management")
     
     if st.session_state.processed:
-        st.success(f"✅ Knowledge Base Active: {len(st.session_state.documents)} documents loaded")
+        st.success(f"? Knowledge Base Active: {len(st.session_state.documents)} documents loaded")
         
-        with st.expander("📄 View Loaded Documents"):
+        with st.expander("?? View Loaded Documents"):
             for doc in st.session_state.documents:
                 col1, col2 = st.columns([4, 1])
                 with col1:
@@ -537,7 +538,7 @@ def render_knowledge_base_page(api_key):
                     st.code(doc['file_type'])
         
         st.markdown("---")
-        st.subheader("❓ Ask Questions")
+        st.subheader("? Ask Questions")
         
         if 'rag_system' not in st.session_state and api_key:
             from phase1_rag_app import RAGSystem
@@ -555,7 +556,7 @@ def render_knowledge_base_page(api_key):
             with st.chat_message("assistant"):
                 st.write(chat['answer'])
                 if 'sources' in chat:
-                    with st.expander("📚 Sources"):
+                    with st.expander("?? Sources"):
                         for source in chat['sources']:
                             st.markdown(f"- **{source['filename']}** (Relevance: {source['similarity']:.2%})")
         
@@ -576,7 +577,7 @@ def render_knowledge_base_page(api_key):
                         answer = st.session_state.rag_system.generate_answer(question, relevant_docs)
                         st.write(answer)
                         
-                        with st.expander("📚 Sources"):
+                        with st.expander("?? Sources"):
                             for doc in relevant_docs:
                                 st.markdown(f"- **{doc['filename']}** (Relevance: {doc['similarity']:.2%})")
                         
@@ -587,8 +588,8 @@ def render_knowledge_base_page(api_key):
                         })
     
     else:
-        st.warning("⚠️ Knowledge base not found. Please upload documents to create it.")
-        st.info("ℹ️ Go to sidebar to upload and process documents")
+        st.warning("?? Knowledge base not found. Please upload documents to create it.")
+        st.info("?? Go to sidebar to upload and process documents")
 
 # ===================================================================
 # PAGE: RISK ASSESSMENT
@@ -596,29 +597,29 @@ def render_knowledge_base_page(api_key):
 
 def render_risk_assessment_page(api_key):
     """Render Risk Assessment page with complete 6-agent pipeline"""
-    st.title("🎯 Risk Assessment - Truly Agentic 6-Agent Pipeline")
+    st.title("?? Risk Assessment - Truly Agentic 6-Agent Pipeline")
     
-    # 💾 SESSION RESTORE UI - Show at top of page
+    # ?? SESSION RESTORE UI - Show at top of page
     show_session_restore_ui()
     
     # Check prerequisites
     if not st.session_state.processed:
-        st.error("❌ Knowledge Base not loaded! Please upload documents first.")
-        st.info("ℹ️ Go to 'Knowledge Base' page to upload documents")
+        st.error("? Knowledge Base not loaded! Please upload documents first.")
+        st.info("?? Go to 'Knowledge Base' page to upload documents")
         return
     
     if not api_key:
-        st.error("❌ API Key required! Please enter your Gemini API key in the sidebar.")
+        st.error("? API Key required! Please enter your Gemini API key in the sidebar.")
         return
     
     # Initialize RAG for agents if needed (with current API key)
     if not st.session_state.rag_initialized:
-        with st.spinner("⏳ Initializing Truly Agentic Agent System..."):
+        with st.spinner("? Initializing Truly Agentic Agent System..."):
             try:
                 from phase2_risk_resolver.tools.rag_tool import initialize_rag
                 initialize_rag(api_key, KNOWLEDGE_BASE_DIR)
                 st.session_state.rag_initialized = True
-                st.success("✅ Agent system initialized with discovery capabilities!")
+                st.success("? Agent system initialized with discovery capabilities!")
             except Exception as e:
                 st.error(f"Failed to initialize: {str(e)}")
                 return
@@ -633,14 +634,14 @@ def render_risk_assessment_page(api_key):
     st.markdown("---")
     st.header(" Generate Intelligent Questionnaire")
 
-    st.info("💡 **Don't have asset data?** Tell us what asset type you want to assess, and our AI will intelligently figure out what questions to ask!")
+    st.info("?? **Don't have asset data?** Tell us what asset type you want to assess, and our AI will intelligently figure out what questions to ask!")
 
     # Pure text input - NO dropdown!
     col1, col2 = st.columns([3, 1])
 
     with col1:
         st.markdown("### What Asset Do You Want to Assess?")
-        st.caption("💡 **Enter a description** (e.g., 'Database Server', 'Employee Laptop') - AI will ask for specific name and type in the questionnaire!")
+        st.caption("?? **Enter a description** (e.g., 'Database Server', 'Employee Laptop') - AI will ask for specific name and type in the questionnaire!")
         
         asset_type_input = st.text_input(
             "Asset Description",
@@ -650,7 +651,7 @@ def render_risk_assessment_page(api_key):
         )
         
         # Examples to help users
-        with st.expander("💡 Need ideas? See examples"):
+        with st.expander("?? Need ideas? See examples"):
             st.markdown("""
             **Technology Assets:**
             - Database Server, Web Application, Mobile App, API Service
@@ -674,26 +675,26 @@ def render_risk_assessment_page(api_key):
             - Brand, Reputation, Customer Relationships
             
             **And literally ANY other asset you can think of!**
-            The AI will figure it out! 🤖
+            The AI will figure it out! ??
             """)
 
     with col2:
         st.markdown("### AI Status")
         if asset_type_input and asset_type_input.strip():
-            st.success(f"✅ **Will assess:**\n\n{asset_type_input}")
+            st.success(f"? **Will assess:**\n\n{asset_type_input}")
             st.caption("AI will intelligently determine relevant questions")
         else:
-            st.info("ℹ️ **Generic mode**")
+            st.info("?? **Generic mode**")
             st.caption("Leave blank for generic questionnaire")
 
     # Generate button
-    generate_button_text = f"🤖 Generate Intelligent Questionnaire{' for ' + asset_type_input if asset_type_input and asset_type_input.strip() else ''}"
+    generate_button_text = f"?? Generate Intelligent Questionnaire{' for ' + asset_type_input if asset_type_input and asset_type_input.strip() else ''}"
 
     if st.button(generate_button_text, type="primary", use_container_width=True, disabled=False):
         
         final_asset_type = asset_type_input.strip() if asset_type_input else None
         
-        with st.spinner(f"🤖 AI is thinking about '{final_asset_type}' and intelligently determining what questions to ask..."):
+        with st.spinner(f"?? AI is thinking about '{final_asset_type}' and intelligently determining what questions to ask..."):
             try:
                 result = execute_agent_with_retry(
                     run_questionnaire_generator,
@@ -702,18 +703,18 @@ def render_risk_assessment_page(api_key):
                 )
                 
                 if 'error' in result:
-                    st.error(f"❌ Error: {result['error']}")
+                    st.error(f"? Error: {result['error']}")
                     if 'raw_output' in result:
                         with st.expander("View Raw Output"):
                             st.text(result['raw_output'])
                 else:
                     st.session_state.questionnaire_result = result
                     st.session_state.current_asset_type = final_asset_type
-                    st.success(f"✅ AI has intelligently generated a questionnaire for: {final_asset_type or 'Generic Asset'}!")
+                    st.success(f"? AI has intelligently generated a questionnaire for: {final_asset_type or 'Generic Asset'}!")
                     st.rerun()
                     
             except Exception as e:
-                st.error(f"❌ Error generating questionnaire: {str(e)}")
+                st.error(f"? Error generating questionnaire: {str(e)}")
                 import traceback
                 with st.expander("View Error Details"):
                     st.code(traceback.format_exc())
@@ -721,18 +722,18 @@ def render_risk_assessment_page(api_key):
     # Display questionnaire if generated
     if st.session_state.questionnaire_result:
         st.markdown("---")
-        st.subheader("📝 AI-Generated Questionnaire")
+        st.subheader("?? AI-Generated Questionnaire")
         
         questionnaire = st.session_state.questionnaire_result
         current_asset = st.session_state.get('current_asset_type', 'Asset')
         
-        # 📧 EMAIL OPTION - Send questionnaire to stakeholder
-        st.info("💡 **Choose how to fill the questionnaire:**")
+        # ?? EMAIL OPTION - Send questionnaire to stakeholder
+        st.info("?? **Choose how to fill the questionnaire:**")
         
         col_option1, col_option2 = st.columns(2)
         
         with col_option1:
-            st.markdown("### 📧 Option 1: Send via Email")
+            st.markdown("### ?? Option 1: Send via Email")
             st.caption("Send questionnaire to asset owner/stakeholder")
             
             recipient_email = st.text_input(
@@ -742,8 +743,8 @@ def render_risk_assessment_page(api_key):
                 help="Email address of the person who will fill the questionnaire"
             )
             
-            if st.button("📧 Send Questionnaire Email", type="primary", disabled=not recipient_email):
-                with st.spinner(f"📧 Sending email to {recipient_email}..."):
+            if st.button("?? Send Questionnaire Email", type="primary", disabled=not recipient_email):
+                with st.spinner(f"?? Sending email to {recipient_email}..."):
                     try:
                         from email_sender import send_questionnaire_email
                         
@@ -755,13 +756,13 @@ def render_risk_assessment_page(api_key):
                         )
                         
                         if result and result.get('success'):
-                            st.success(f"✅ Email sent successfully to {recipient_email}!")
-                            st.info(f"📋 **Tracking Token:** {result['token']}")
+                            st.success(f"? Email sent successfully to {recipient_email}!")
+                            st.info(f"?? **Tracking Token:** {result['token']}")
                             st.caption("The recipient will receive a link to fill the questionnaire online.")
                         else:
                             error_msg = result.get('error', 'Unknown error') if result else 'No response'
-                            st.error(f"❌ Failed to send email: {error_msg}")
-                            with st.expander("💡 Troubleshooting"):
+                            st.error(f"? Failed to send email: {error_msg}")
+                            with st.expander("?? Troubleshooting"):
                                 st.markdown("""
                                 **Common Issues:**
                                 - Outlook not installed or not running
@@ -776,29 +777,29 @@ def render_risk_assessment_page(api_key):
                                 4. Check Windows Firewall/Antivirus settings
                                 """)
                     except Exception as e:
-                        st.error(f"❌ Error: {str(e)}")
+                        st.error(f"? Error: {str(e)}")
                         import traceback
-                        with st.expander("🔍 Error Details"):
+                        with st.expander("?? Error Details"):
                             st.code(traceback.format_exc())
         
         with col_option2:
-            st.markdown("### ✍️ Option 2: Fill Manually")
+            st.markdown("### ?? Option 2: Fill Manually")
             st.caption("Fill the questionnaire yourself right now")
-            st.info("👇 Scroll down to see the questionnaire form below")
+            st.info("?? Scroll down to see the questionnaire form below")
         
         st.markdown("---")
         
         # Show AI's intelligence summary
         if 'intelligence_summary' in questionnaire:
-            with st.expander("🧠 AI's Intelligence - How it figured out what to ask", expanded=True):
+            with st.expander("?? AI's Intelligence - How it figured out what to ask", expanded=True):
                 intelligence = questionnaire['intelligence_summary']
                 
                 # Asset Understanding
-                st.markdown("### 🧠 AI's Understanding of the Asset")
+                st.markdown("### ?? AI's Understanding of the Asset")
                 st.info(intelligence.get('asset_understanding', 'N/A'))
                 
                 # Key Risk Factors
-                st.markdown("### 🎯 Key Risk Factors Identified")
+                st.markdown("### ?? Key Risk Factors Identified")
                 st.success("The AI identified these factors as critical for assessing this asset's risk:")
                 risk_factors = intelligence.get('key_risk_factors', [])
                 if risk_factors:
@@ -811,19 +812,19 @@ def render_risk_assessment_page(api_key):
                 col1, col2 = st.columns(2)
                 
                 with col1:
-                    st.markdown("### 📋 Organization's Methodology")
+                    st.markdown("### ?? Organization's Methodology")
                     st.info(intelligence.get('methodology_discovered', 'N/A'))
                     
-                    st.markdown("### 📊 Rating Scales Found")
+                    st.markdown("### ?? Rating Scales Found")
                     st.info(intelligence.get('scales_discovered', 'N/A'))
                 
                 with col2:
-                    st.markdown("### 🧠 AI's Reasoning")
+                    st.markdown("### ?? AI's Reasoning")
                     st.success(intelligence.get('why_these_questions', 'The AI crafted these questions based on its expertise in risk assessment'))
                     
                     # Searches performed
                     if 'searches_performed' in intelligence:
-                        st.markdown("### 🔍 Searches AI Performed")
+                        st.markdown("### ?? Searches AI Performed")
                         searches = intelligence['searches_performed']
                         if searches:
                             for i, search in enumerate(searches, 1):
@@ -831,14 +832,14 @@ def render_risk_assessment_page(api_key):
         
         # Instructions
         st.markdown("---")
-        st.success(f"✅ **Fill out the questionnaire below for your {current_asset}, then click Submit to create asset data for risk assessment!**")
+        st.success(f"? **Fill out the questionnaire below for your {current_asset}, then click Submit to create asset data for risk assessment!**")
         
         # Create form
         with st.form("questionnaire_form"):
             answers = {}
             
             for section_idx, section in enumerate(questionnaire.get('sections', [])):
-                st.markdown(f"### 📋 {section.get('section_name', f'Section {section_idx + 1}')}")
+                st.markdown(f"### ?? {section.get('section_name', f'Section {section_idx + 1}')}")
                 
                 # Section purpose
                 if section.get('section_purpose'):
@@ -860,7 +861,7 @@ def render_risk_assessment_page(api_key):
                     
                     # Add "why this matters" to help text
                     if question.get('why_this_matters'):
-                        q_help += f"\n\n💡 Why this matters: {question['why_this_matters']}"
+                        q_help += f"\n\n?? Why this matters: {question['why_this_matters']}"
                     
                     # Display question based on type
                     if q_type == 'text':
@@ -908,7 +909,7 @@ def render_risk_assessment_page(api_key):
                         else:
                             answers[q_id] = value_to_label_map.get(selected_label, selected_label)
                         
-                        # ✅ FIX: Show text box if "Other" option is selected (works in forms)
+                        # ? FIX: Show text box if "Other" option is selected (works in forms)
                         if selected_label and selected_label != '-- Select --':
                             selected_lower = str(selected_label).lower()
                             # Check if option contains "other" or "specify" keywords
@@ -983,7 +984,7 @@ def render_risk_assessment_page(api_key):
             
             # Submit button
             submitted = st.form_submit_button(
-                "✅ Submit Questionnaire & Create Asset Data", 
+                "? Submit Questionnaire & Create Asset Data", 
                 type="primary", 
                 use_container_width=True
             )
@@ -992,7 +993,7 @@ def render_risk_assessment_page(api_key):
         if submitted:
             st.session_state.questionnaire_answers = answers
             
-            with st.spinner("⏳ Converting your answers to asset data format..."):
+            with st.spinner("? Converting your answers to asset data format..."):
                 try:
                     # Create ENHANCED asset_data with ALL questionnaire answers
                     asset_data = {
@@ -1002,10 +1003,10 @@ def render_risk_assessment_page(api_key):
                         'location': '',
                         'description': '',
                         
-                        # 🆕 NEW: Store ALL questionnaire answers with full context
+                        # ?? NEW: Store ALL questionnaire answers with full context
                         'questionnaire_answers': {},
                         
-                        # 🆕 NEW: Store questionnaire metadata
+                        # ?? NEW: Store questionnaire metadata
                         'questionnaire_metadata': {
                             'asset_type_assessed': current_asset,
                             'questionnaire_title': questionnaire.get('questionnaire_title', 'Risk Assessment Questionnaire'),
@@ -1032,7 +1033,7 @@ def render_risk_assessment_page(api_key):
                                 if question.get('question_id') == q_id:
                                     q_text = question.get('question_text', '').lower()
                                     
-                                    # 🆕 NEW: Store answer with full question context
+                                    # ?? NEW: Store answer with full question context
                                     asset_data['questionnaire_answers'][q_id] = {
                                         'question_text': question.get('question_text'),
                                         'answer': answer,
@@ -1042,7 +1043,7 @@ def render_risk_assessment_page(api_key):
                                         'why_this_matters': question.get('why_this_matters', '')
                                     }
                                     
-                                    # 🔧 FIX: Map to basic fields for backwards compatibility
+                                    # ?? FIX: Map to basic fields for backwards compatibility
                                     # Asset Name
                                     if any(word in q_text.lower() for word in ['name', 'title', 'called', 'identifier']) and 'type' not in q_text.lower() and 'owner' not in q_text.lower():
                                         if not asset_data['asset_name']:
@@ -1077,14 +1078,14 @@ def render_risk_assessment_page(api_key):
                     if not asset_data['asset_name']:
                         asset_data['asset_name'] = f"New {current_asset}" if current_asset else "New Asset"
                     
-                    # 🔧 FIX: Set asset_type default if not extracted from questionnaire
+                    # ?? FIX: Set asset_type default if not extracted from questionnaire
                     if not asset_data['asset_type']:
                         asset_data['asset_type'] = current_asset or 'Unknown Asset'
                     
-                    # 🆕 NEW: Call Agent 0.5 to discover intelligent threats from questionnaire answers
-                    st.info("ℹ️ **Agent 0.5 is analyzing your answers to discover specific threats...**")
+                    # ?? NEW: Call Agent 0.5 to discover intelligent threats from questionnaire answers
+                    st.info("?? **Agent 0.5 is analyzing your answers to discover specific threats...**")
                     
-                    with st.spinner("🤖 Agent 0.5: Intelligent Threat Discovery..."):
+                    with st.spinner("?? Agent 0.5: Intelligent Threat Discovery..."):
                         try:
                             threat_discovery_result = execute_agent_with_retry(
                                 run_threat_discovery,
@@ -1093,7 +1094,7 @@ def render_risk_assessment_page(api_key):
                             )
                             
                             if 'error' in threat_discovery_result or not threat_discovery_result.get('threats_discovered'):
-                                st.warning("⚠️ Agent 0.5 couldn't discover threats. Using placeholder.")
+                                st.warning("?? Agent 0.5 couldn't discover threats. Using placeholder.")
                                 # Fallback to placeholder
                                 asset_data['threats_and_vulnerabilities'] = [{
                                     'threat': f"Risk assessment required for {asset_data['asset_name']}",
@@ -1104,7 +1105,7 @@ def render_risk_assessment_page(api_key):
                                     }]
                                 }]
                             else:
-                                # ✅ SUCCESS: Use discovered threats
+                                # ? SUCCESS: Use discovered threats
                                 discovered_threats = threat_discovery_result['threats_discovered']
                                 
                                 # Convert to threats_and_vulnerabilities format
@@ -1126,10 +1127,10 @@ def render_risk_assessment_page(api_key):
                                 # Store full discovery result for later use
                                 asset_data['threat_discovery_result'] = threat_discovery_result
                                 
-                                st.success(f"✅ Agent 0.5 discovered {len(discovered_threats)} specific threats!")
+                                st.success(f"? Agent 0.5 discovered {len(discovered_threats)} specific threats!")
                                 
                         except Exception as e:
-                            st.error(f"❌ Agent 0.5 error: {str(e)}")
+                            st.error(f"? Agent 0.5 error: {str(e)}")
                             # Fallback to placeholder
                             asset_data['threats_and_vulnerabilities'] = [{
                                 'threat': f"Risk assessment required for {asset_data['asset_name']}",
@@ -1143,20 +1144,20 @@ def render_risk_assessment_page(api_key):
                     # Add to session state
                     st.session_state.sample_assets = [asset_data]
                     st.session_state.questionnaire_answers_stored = answers
-                    # ✅ FIX: Clear any previous email questionnaire token (manual questionnaire has no token)
+                    # ? FIX: Clear any previous email questionnaire token (manual questionnaire has no token)
                     if 'loaded_questionnaire_token' in st.session_state:
                         del st.session_state.loaded_questionnaire_token
                     
-                    st.success(f"✅ Asset data created: **{asset_data['asset_name']}**")
-                    st.success(f"✅ Captured **{answer_count} detailed answers** from questionnaire!")
-                    st.info("ℹ️ **Agent 1 will analyze all your answers to assess CIA impact!**")
+                    st.success(f"? Asset data created: **{asset_data['asset_name']}**")
+                    st.success(f"? Captured **{answer_count} detailed answers** from questionnaire!")
+                    st.info("?? **Agent 1 will analyze all your answers to assess CIA impact!**")
                     
                     # Show what was captured
-                    with st.expander("📄 View Complete Asset Data (with ALL Questionnaire Answers)"):
+                    with st.expander("?? View Complete Asset Data (with ALL Questionnaire Answers)"):
                         st.json(asset_data)
                     
                     # Show summary of captured data
-                    with st.expander("📋 Summary of Captured Information"):
+                    with st.expander("?? Summary of Captured Information"):
                         st.markdown("### Basic Asset Info:")
                         st.markdown(f"- **Name:** {asset_data['asset_name']}")
                         st.markdown(f"- **Type:** {asset_data['asset_type']}")
@@ -1169,29 +1170,29 @@ def render_risk_assessment_page(api_key):
                             st.markdown(f"**A:** {q_data['answer']}")
                             st.markdown("---")
                     
-                    st.info("ℹ️ **Scroll down to 'Step 1: Upload Asset Data' to continue!**")
+                    st.info("?? **Scroll down to 'Step 1: Upload Asset Data' to continue!**")
                     
                     st.rerun()
                     
                 except Exception as e:
-                    st.error(f"❌ Error converting questionnaire: {str(e)}")
+                    st.error(f"? Error converting questionnaire: {str(e)}")
                     import traceback
                     with st.expander("View Error Details"):
                         st.code(traceback.format_exc())
 
-    # 🔧 FIXED: Step 1 - Upload Asset Data (starts here, NO else:)
+    # ?? FIXED: Step 1 - Upload Asset Data (starts here, NO else:)
     st.markdown("---")
-    st.header("1️⃣ Step 1: Upload Asset Data File (Alternative)")
+    st.header("1?? Step 1: Upload Asset Data File (Alternative)")
     
-    st.info("ℹ️ **Already have asset data?** Upload Excel or JSON file directly.")
+    st.info("?? **Already have asset data?** Upload Excel or JSON file directly.")
     
-    # 📧 NEW: Check Pending Questionnaires Section
-    with st.expander("📧 Check Pending Questionnaires (Email Responses)", expanded=True):
+    # ?? NEW: Check Pending Questionnaires Section
+    with st.expander("?? Check Pending Questionnaires (Email Responses)", expanded=True):
         col_caption, col_refresh = st.columns([4, 1])
         with col_caption:
             st.caption("View questionnaires sent via email and load completed responses")
         with col_refresh:
-            if st.button("🔄 Refresh", key="refresh_pending_q", help="Check for new completed questionnaires"):
+            if st.button("?? Refresh", key="refresh_pending_q", help="Check for new completed questionnaires"):
                 st.rerun()
         
         try:
@@ -1201,44 +1202,44 @@ def render_risk_assessment_page(api_key):
             pending_list = get_all_pending_questionnaires()
             
             if not pending_list:
-                st.info("ℹ️ No questionnaires sent yet. Use Agent 0 to generate and send questionnaires.")
+                st.info("?? No questionnaires sent yet. Use Agent 0 to generate and send questionnaires.")
             else:
                 # Separate completed and pending - FIX: Case-insensitive comparison
                 completed = [q for q in pending_list if q['status'].lower() == 'completed']
                 pending = [q for q in pending_list if q['status'].lower() == 'pending']
                 
-                # 🔧 UPDATED: Separate questionnaires by type
+                # ?? UPDATED: Separate questionnaires by type
                 agent0_completed = [q for q in completed if q.get('questionnaire_type', 'Agent0') == 'Agent0']
                 agent0_pending = [q for q in pending if q.get('questionnaire_type', 'Agent0') == 'Agent0']
                 
                 decision_completed = [q for q in completed if q.get('questionnaire_type', 'Agent0') in ['ACCEPT', 'TRANSFER', 'TERMINATE']]
                 decision_pending = [q for q in pending if q.get('questionnaire_type', 'Agent0') in ['ACCEPT', 'TRANSFER', 'TERMINATE']]
                 
-                # 📋 Agent 0 Questionnaires Section
-                st.markdown("### 📋 Agent 0 Questionnaires (Asset Data Collection)")
+                # ?? Agent 0 Questionnaires Section
+                st.markdown("### ?? Agent 0 Questionnaires (Asset Data Collection)")
                 
                 col1, col2 = st.columns(2)
                 with col1:
-                    st.metric("✅ Completed", len(agent0_completed))
+                    st.metric("? Completed", len(agent0_completed))
                 with col2:
-                    st.metric("⏳ Pending", len(agent0_pending))
+                    st.metric("? Pending", len(agent0_pending))
                 
                 # Display Agent 0 completed questionnaires
                 if agent0_completed:
-                    st.success(f"✅ {len(agent0_completed)} Agent 0 Questionnaire(s) - Ready to Load")
+                    st.success(f"? {len(agent0_completed)} Agent 0 Questionnaire(s) - Ready to Load")
                     
                     for q in agent0_completed:
                         col_info, col_action = st.columns([3, 1])
                         
                         with col_info:
                             st.markdown(f"**Asset:** {q['asset_name']}")
-                            st.caption(f"📧 Sent to: {q['recipient_email']} | ⏰ Completed: {q.get('created_date', 'N/A')}")
+                            st.caption(f"?? Sent to: {q['recipient_email']} | ? Completed: {q.get('created_date', 'N/A')}")
                         
                         with col_action:
-                            if st.button(f"📥 Load", key=f"load_{q['token']}", type="primary"):
-                                with st.spinner("📥 Loading and analyzing questionnaire..."): 
+                            if st.button(f"?? Load", key=f"load_{q['token']}", type="primary"):
+                                with st.spinner("?? Loading and analyzing questionnaire..."): 
                                     # Fetch answers from database
-                                    conn = sqlite3.connect('database/risk_register.db')
+                                    conn = get_database_connection()
                                     cursor = conn.cursor()
                                     cursor.execute("""
                                         SELECT answers, questions
@@ -1252,11 +1253,11 @@ def render_risk_assessment_page(api_key):
                                         answers = json.loads(result[0])
                                         questions = json.loads(result[1])
                                         
-                                        # 🔧 FIX: Ensure answers is a dict
+                                        # ?? FIX: Ensure answers is a dict
                                         if isinstance(answers, str):
                                             answers = json.loads(answers)
                                         
-                                        # ✅ FIX: Use EXACT same extraction logic as manual questionnaire (lines 1000-1050)
+                                        # ? FIX: Use EXACT same extraction logic as manual questionnaire (lines 1000-1050)
                                         asset_name = q['asset_name']
                                         asset_type = ''
                                         asset_owner = ''
@@ -1320,13 +1321,13 @@ def render_risk_assessment_page(api_key):
                                                 'token': q['token'],
                                                 'completed_date': q.get('created_date', 'N/A'),
                                                 'total_answers': len(answers),
-                                                'asset_type_assessed': asset_type  # ✅ FIX: Add asset_type for display
+                                                'asset_type_assessed': asset_type  # ? FIX: Add asset_type for display
                                             },
                                             'threats_and_vulnerabilities': []
                                         }
                                         
-                                        # 🤖 Run Agent 0.5 to discover threats
-                                        st.info("🤖 Agent 0.5: Analyzing answers to discover threats...")
+                                        # ?? Run Agent 0.5 to discover threats
+                                        st.info("?? Agent 0.5: Analyzing answers to discover threats...")
                                         
                                         try:
                                             threat_result = execute_agent_with_retry(
@@ -1351,10 +1352,10 @@ def render_risk_assessment_page(api_key):
                                                         'threat_source': 'Agent 0.5 (Email)'
                                                     })
                                                 asset_data['threat_discovery_result'] = threat_result
-                                                st.success(f"✅ Agent 0.5 discovered {len(threat_result['threats_discovered'])} threats!")
+                                                st.success(f"? Agent 0.5 discovered {len(threat_result['threats_discovered'])} threats!")
                                             else:
                                                 # Fallback
-                                                st.warning("⚠️ Agent 0.5 couldn't discover threats. Using placeholder.")
+                                                st.warning("?? Agent 0.5 couldn't discover threats. Using placeholder.")
                                                 asset_data['threats_and_vulnerabilities'] = [{
                                                     'threat': f"Risk assessment for {q['asset_name']}",
                                                     'risk_statement': 'Assessment based on email questionnaire',
@@ -1364,7 +1365,7 @@ def render_risk_assessment_page(api_key):
                                                     }]
                                                 }]
                                         except Exception as e:
-                                            st.error(f"❌ Agent 0.5 error: {str(e)}")
+                                            st.error(f"? Agent 0.5 error: {str(e)}")
                                             asset_data['threats_and_vulnerabilities'] = [{
                                                 'threat': f"Risk assessment for {q['asset_name']}",
                                                 'risk_statement': 'Assessment based on email questionnaire',
@@ -1376,35 +1377,35 @@ def render_risk_assessment_page(api_key):
                                         
                                         # Load into session state
                                         st.session_state.sample_assets = [asset_data]
-                                        # ✅ FIX: Store questionnaire token for later removal
+                                        # ? FIX: Store questionnaire token for later removal
                                         st.session_state.loaded_questionnaire_token = q['token']
-                                        st.success(f"✅ Loaded: {q['asset_name']}")
-                                        st.info("📊 Scroll down to Step 2 to select and continue with Agent 1-4")
+                                        st.success(f"? Loaded: {q['asset_name']}")
+                                        st.info("?? Scroll down to Step 2 to select and continue with Agent 1-4")
 
                 # Display Agent 0 pending questionnaires
                 if agent0_pending:
-                    st.warning(f"⏳ {len(agent0_pending)} Agent 0 Questionnaire(s) - Waiting for Response")
+                    st.warning(f"? {len(agent0_pending)} Agent 0 Questionnaire(s) - Waiting for Response")
                     
                     for q in agent0_pending:
                         st.markdown(f"**Asset:** {q['asset_name']}")
-                        st.caption(f"📧 Sent to: {q['recipient_email']} | ⏰ Sent: {q.get('created_date', 'N/A')}")
-                        st.caption(f"🔗 Token: {q['token']}")
+                        st.caption(f"?? Sent to: {q['recipient_email']} | ? Sent: {q.get('created_date', 'N/A')}")
+                        st.caption(f"?? Token: {q['token']}")
                         st.markdown("---")
                 
                 st.markdown("---")
                 
-                # 🎯 Decision Questionnaires Section
-                st.markdown("### 🎯 Decision Questionnaires (ACCEPT/TRANSFER/TERMINATE)")
+                # ?? Decision Questionnaires Section
+                st.markdown("### ?? Decision Questionnaires (ACCEPT/TRANSFER/TERMINATE)")
                 
                 col1, col2 = st.columns(2)
                 with col1:
-                    st.metric("✅ Completed", len(decision_completed))
+                    st.metric("? Completed", len(decision_completed))
                 with col2:
-                    st.metric("⏳ Pending", len(decision_pending))
+                    st.metric("? Pending", len(decision_pending))
                 
                 # Display Decision completed questionnaires
                 if decision_completed:
-                    st.success(f"✅ {len(decision_completed)} Decision Questionnaire(s) - Ready to Process")
+                    st.success(f"? {len(decision_completed)} Decision Questionnaire(s) - Ready to Process")
                     
                     for q in decision_completed:
                         col_info, col_action = st.columns([3, 1])
@@ -1412,19 +1413,19 @@ def render_risk_assessment_page(api_key):
                         with col_info:
                             decision_type = q.get('questionnaire_type', 'DECISION')
                             st.markdown(f"**Asset:** {q['asset_name']} - **{decision_type}**")
-                            st.caption(f"📧 Sent to: {q['recipient_email']} | ⏰ Completed: {q.get('created_date', 'N/A')}")
+                            st.caption(f"?? Sent to: {q['recipient_email']} | ? Completed: {q.get('created_date', 'N/A')}")
                         
                         with col_action:
                             if q['questionnaire_type'] in ['ACCEPT', 'TRANSFER', 'TERMINATE']:
-                                # 🆕 2-STEP WORKFLOW: Generate Form → Show Form → Save
+                                # ?? 2-STEP WORKFLOW: Generate Form ? Show Form ? Save
                                 form_key = f"email_form_{q['token']}"
                                 
                                 # STEP 1: Generate Form Button
                                 if form_key not in st.session_state:
-                                    if st.button(f"📋 Generate {q['questionnaire_type']} Form", key=f"gen_{q['token']}", type="primary"):
-                                        with st.spinner(f"🤖 Generating {q['questionnaire_type']} form..."):
+                                    if st.button(f"?? Generate {q['questionnaire_type']} Form", key=f"gen_{q['token']}", type="primary"):
+                                        with st.spinner(f"?? Generating {q['questionnaire_type']} form..."):
                                             try:
-                                                conn = sqlite3.connect('database/risk_register.db')
+                                                conn = get_database_connection()
                                                 cursor = conn.cursor()
                                                 cursor.execute("SELECT answers, questions, agent_results FROM pending_questionnaires WHERE token = ?", (q['token'],))
                                                 result = cursor.fetchone()
@@ -1439,7 +1440,7 @@ def render_risk_assessment_page(api_key):
                                                         answers = json.loads(answers)
                                                     
                                                     if not agent_results:
-                                                        st.error("❌ Agent results not found. Please run Agents 1-3 first.")
+                                                        st.error("? Agent results not found. Please run Agents 1-3 first.")
                                                     else:
                                                         threat_data = agent_results.get('threat_data', {})
                                                         
@@ -1460,7 +1461,7 @@ def render_risk_assessment_page(api_key):
                                                         if q['questionnaire_type'] == 'ACCEPT':
                                                             from phase2_risk_resolver.agents.agent_4_acceptance_form import generate_acceptance_form
                                                             
-                                                            # ✅ FIX: Get actual risk_id from questionnaire or generate next available
+                                                            # ? FIX: Get actual risk_id from questionnaire or generate next available
                                                             actual_risk_id = 'RSK-001'  # Default
                                                             try:
                                                                 # Try to get from questionnaire first
@@ -1472,7 +1473,7 @@ def render_risk_assessment_page(api_key):
                                                                 
                                                                 # If not found, generate next available from database
                                                                 if actual_risk_id == 'RSK-001':
-                                                                    conn_temp = sqlite3.connect('database/risk_register.db')
+                                                                    conn_temp = get_database_connection()
                                                                     cursor_temp = conn_temp.cursor()
                                                                     cursor_temp.execute("SELECT MAX(CAST(SUBSTR(risk_id, 5) AS INTEGER)) FROM risks WHERE risk_id LIKE 'RSK-%'")
                                                                     result_temp = cursor_temp.fetchone()
@@ -1482,7 +1483,7 @@ def render_risk_assessment_page(api_key):
                                                             except:
                                                                 actual_risk_id = 'RSK-001'
                                                             
-                                                            # ✅ FIX: Get risk_category from Agent 2 results
+                                                            # ? FIX: Get risk_category from Agent 2 results
                                                             selected_asset = agent_results.get('selected_asset', {'asset_name': q['asset_name'], 'asset_type': 'Unknown'})
                                                             risk_category = 'Security Risk'  # Default
                                                             try:
@@ -1528,12 +1529,12 @@ def render_risk_assessment_page(api_key):
                                                             'agent_results': agent_results,
                                                             'questionnaire_type': q['questionnaire_type']
                                                         }
-                                                        st.success(f"✅ {q['questionnaire_type']} Form Generated!")
+                                                        st.success(f"? {q['questionnaire_type']} Form Generated!")
                                                         st.rerun()
                                                 else:
-                                                    st.error("❌ No answers found")
+                                                    st.error("? No answers found")
                                             except Exception as e:
-                                                st.error(f"❌ Form generation failed: {str(e)}")
+                                                st.error(f"? Form generation failed: {str(e)}")
                                                 import traceback
                                                 with st.expander("Debug"):
                                                     st.code(traceback.format_exc())
@@ -1555,7 +1556,7 @@ def render_risk_assessment_page(api_key):
                                 q_type = form_data['questionnaire_type']
                                 
                                 st.markdown("---")
-                                st.success(f"✅ {q_type} Form Generated - Review Below")
+                                st.success(f"? {q_type} Form Generated - Review Below")
                                 
                                 # Clean HTML entities
                                 import html
@@ -1571,18 +1572,18 @@ def render_risk_assessment_page(api_key):
                                 form = clean_html_recursive(form)
                                 
                                 # Display form full-width
-                                st.markdown(f"## 📋 {q_type} Form")
-                                with st.expander(f"📄 View Details", expanded=True):
-                                        emoji_map = {'metadata': '📋', 'risk_context': '⚠️', 'engagement_project': '🏢', 
-                                                     'compensating_controls': '🛡️', 'justification': '📝', 
-                                                     'approvals': '✅', 'signoff': '✍️', 'transfer_details': '🔄',
-                                                     'third_party_information': '🏢', 'termination_details': '🚫'}
+                                st.markdown(f"## ?? {q_type} Form")
+                                with st.expander(f"?? View Details", expanded=True):
+                                        emoji_map = {'metadata': '??', 'risk_context': '??', 'engagement_project': '??', 
+                                                     'compensating_controls': '???', 'justification': '??', 
+                                                     'approvals': '?', 'signoff': '??', 'transfer_details': '??',
+                                                     'third_party_information': '??', 'termination_details': '??'}
                                         
-                                        st.markdown(f"### 📋 {q_type} Form")
+                                        st.markdown(f"### ?? {q_type} Form")
                                         st.markdown("---")
                                         
                                         for key, value in form.items():
-                                            emoji = emoji_map.get(key, '📌')
+                                            emoji = emoji_map.get(key, '??')
                                             section_title = key.replace('_', ' ').title()
                                             
                                             if key == 'metadata':
@@ -1598,14 +1599,14 @@ def render_risk_assessment_page(api_key):
                                                 if isinstance(v, dict):
                                                     st.markdown(f"**{field_name}:**")
                                                     for dk, dv in v.items():
-                                                        st.write(f"  • **{dk.replace('_', ' ').title()}:** {dv}")
+                                                        st.write(f"  � **{dk.replace('_', ' ').title()}:** {dv}")
                                                 elif isinstance(v, list) and v and isinstance(v[0], dict):
                                                     st.markdown(f"**{field_name}:**")
                                                     for idx, item in enumerate(v, 1):
                                                         label = item.get('name') or item.get('label') or item.get('gap_description') or item.get('control_name') or item.get('description') or f"Item {idx}"
                                                         if len(str(label)) > 50:
                                                             label = str(label)[:50] + "..."
-                                                        with st.expander(f"🔹 {label}", expanded=False):
+                                                        with st.expander(f"?? {label}", expanded=False):
                                                             for ik, iv in item.items():
                                                                 st.write(f"**{ik.replace('_', ' ').title()}:** {iv}")
                                                 elif isinstance(v, list):
@@ -1627,28 +1628,28 @@ def render_risk_assessment_page(api_key):
                                             else:
                                                 st.write(value)
                                         
-                                        with st.expander("📄 Raw JSON", expanded=False):
+                                        with st.expander("?? Raw JSON", expanded=False):
                                             st.json(form)
                                 
                                 # STEP 2.5: Regenerate Form Button
                                 col_save, col_regen = st.columns([3, 1])
                                 with col_regen:
-                                    if st.button(f"🔄 Regenerate", key=f"regen_{q['token']}", help="Regenerate form with updated data"):
+                                    if st.button(f"?? Regenerate", key=f"regen_{q['token']}", help="Regenerate form with updated data"):
                                         # Clear cached form
                                         if form_key in st.session_state:
                                             del st.session_state[form_key]
-                                        st.success("✅ Form cleared! Click 'Generate Form' again.")
+                                        st.success("? Form cleared! Click 'Generate Form' again.")
                                         st.rerun()
                                 
                                 # STEP 3: Save Button (only after form is shown)
                                 with col_save:
-                                    save_button = st.button(f"💾 Save to Risk Register", key=f"save_{q['token']}", type="primary", use_container_width=True)
+                                    save_button = st.button(f"?? Save to Risk Register", key=f"save_{q['token']}", type="primary", use_container_width=True)
                                 
                                 if save_button:
-                                    with st.spinner("💾 Saving to Risk Register..."):
+                                    with st.spinner("?? Saving to Risk Register..."):
                                             try:
                                                 # Retrieve answers from database
-                                                conn = sqlite3.connect('database/risk_register.db')
+                                                conn = get_database_connection()
                                                 cursor = conn.cursor()
                                                 cursor.execute("SELECT answers FROM pending_questionnaires WHERE token = ?", (q['token'],))
                                                 answers_row = cursor.fetchone()
@@ -1664,7 +1665,7 @@ def render_risk_assessment_page(api_key):
                                                 # Get threat name for filtering
                                                 threat_name = threat_data.get('threat', threat_data.get('threat_name', 'Unknown Threat'))
                                                 
-                                                # ✅ FIX: Extract ORIGINAL Agent 2 threat data (not reformatted Agent 4 data)
+                                                # ? FIX: Extract ORIGINAL Agent 2 threat data (not reformatted Agent 4 data)
                                                 agent_2_threats = agent_2_results.get('threat_risk_quantification', [])
                                                 original_threat = next((t for t in agent_2_threats if t.get('threat') == threat_name), threat_data)
                                                 
@@ -1710,9 +1711,9 @@ def render_risk_assessment_page(api_key):
                                                 )
                                                 
                                                 if risk_ids and len(risk_ids) > 0:
-                                                    st.success(f"✅ Saved! Risk ID: {risk_ids[0]}")
+                                                    st.success(f"? Saved! Risk ID: {risk_ids[0]}")
                                                     # Update questionnaire status to 'saved' so it disappears from pending list
-                                                    conn = sqlite3.connect('database/risk_register.db')
+                                                    conn = get_database_connection()
                                                     cursor = conn.cursor()
                                                     cursor.execute("UPDATE pending_questionnaires SET status = 'saved' WHERE token = ?", (q['token'],))
                                                     conn.commit()
@@ -1721,9 +1722,9 @@ def render_risk_assessment_page(api_key):
                                                     time.sleep(1)
                                                     st.rerun()
                                                 else:
-                                                    st.error("❌ Save returned no Risk IDs")
+                                                    st.error("? Save returned no Risk IDs")
                                             except Exception as e:
-                                                st.error(f"❌ Save failed: {str(e)}")
+                                                st.error(f"? Save failed: {str(e)}")
                                                 import traceback
                                                 with st.expander("Debug"):
                                                     st.code(traceback.format_exc())
@@ -1735,17 +1736,17 @@ def render_risk_assessment_page(api_key):
                 
                 # Display Decision pending questionnaires
                 if decision_pending:
-                    st.warning(f"⏳ {len(decision_pending)} Decision Questionnaire(s) - Waiting for Response")
+                    st.warning(f"? {len(decision_pending)} Decision Questionnaire(s) - Waiting for Response")
                     
                     for q in decision_pending:
                         decision_type = q.get('questionnaire_type', 'DECISION')
                         st.markdown(f"**Asset:** {q['asset_name']} - **{decision_type}**")
-                        st.caption(f"📧 Sent to: {q['recipient_email']} | ⏰ Sent: {q.get('created_date', 'N/A')}")
-                        st.caption(f"🔗 Token: {q['token']}")
+                        st.caption(f"?? Sent to: {q['recipient_email']} | ? Sent: {q.get('created_date', 'N/A')}")
+                        st.caption(f"?? Token: {q['token']}")
                         st.markdown("---")
         
         except Exception as e:
-            st.error(f"❌ Error loading questionnaires: {str(e)}")
+            st.error(f"? Error loading questionnaires: {str(e)}")
     
     uploaded_asset_file = st.file_uploader(
         "Upload Asset Data",
@@ -1766,29 +1767,29 @@ def render_risk_assessment_page(api_key):
         
         if assets:
             st.session_state.sample_assets = assets
-            st.success(f"✅ Loaded {len(assets)} asset(s)")
+            st.success(f"? Loaded {len(assets)} asset(s)")
     
-    # 🔧 FIXED: Step 2 - Select Asset (defines selected_asset variable)
+    # ?? FIXED: Step 2 - Select Asset (defines selected_asset variable)
     if st.session_state.sample_assets:
         st.markdown("---")
         
-        # 🔧 FIX: Auto-update selected_asset from sample_assets on page load
+        # ?? FIX: Auto-update selected_asset from sample_assets on page load
         if st.session_state.sample_assets and len(st.session_state.sample_assets) > 0:
             first_asset = st.session_state.sample_assets[0]
             # Update selected_asset to match current sample_assets data
             if not st.session_state.selected_asset or st.session_state.selected_asset.get('asset_name') != first_asset.get('asset_name'):
                 st.session_state.selected_asset = first_asset
         
-        # 📋 NEW: Display Questionnaire Answers Summary (if available)
+        # ?? NEW: Display Questionnaire Answers Summary (if available)
         if st.session_state.sample_assets and len(st.session_state.sample_assets) > 0:
             first_asset = st.session_state.sample_assets[0]
             if 'questionnaire_answers' in first_asset and first_asset['questionnaire_answers']:
-                st.success("✅ Questionnaire Completed - Review Your Answers")
+                st.success("? Questionnaire Completed - Review Your Answers")
                 
-                with st.expander("📋 View Questionnaire Answers", expanded=False):
+                with st.expander("?? View Questionnaire Answers", expanded=False):
                     answers = first_asset['questionnaire_answers']
                     
-                    # 🔧 FIX: Ensure answers is a dict (might be JSON string from database)
+                    # ?? FIX: Ensure answers is a dict (might be JSON string from database)
                     if isinstance(answers, str):
                         answers = json.loads(answers)
                     
@@ -1809,7 +1810,7 @@ def render_risk_assessment_page(api_key):
                     st.markdown("---")
                     st.markdown("### Your Answers:")
                     
-                    # 🔧 FIX: Handle both formats - simple dict {"Q1": "answer"} OR nested dict {"Q1": {"question_text": "...", "answer": "..."}}
+                    # ?? FIX: Handle both formats - simple dict {"Q1": "answer"} OR nested dict {"Q1": {"question_text": "...", "answer": "..."}}
                     if answers and isinstance(answers, dict):
                         # Check format by looking at first value
                         first_value = next(iter(answers.values()), None)
@@ -1821,7 +1822,7 @@ def render_risk_assessment_page(api_key):
                                 section = q_data.get('section', 'General')
                                 
                                 if section != current_section:
-                                    st.markdown(f"#### 📌 {section}")
+                                    st.markdown(f"#### ?? {section}")
                                     current_section = section
                                 
                                 question_text = q_data.get('question_text', 'Question')
@@ -1853,7 +1854,7 @@ def render_risk_assessment_page(api_key):
                         st.warning("No answers found")
         
         st.markdown("---")
-        st.subheader("📋 Step 2: Select Asset for Assessment")
+        st.subheader("?? Step 2: Select Asset for Assessment")
         
         asset_names = [asset['asset_name'] for asset in st.session_state.sample_assets]
         
@@ -1865,12 +1866,12 @@ def render_risk_assessment_page(api_key):
         
         selected_asset = next((a for a in st.session_state.sample_assets if a['asset_name'] == selected_asset_name), None)
         
-        # 🔧 FIX: Store selected_asset in session state so it's available throughout the workflow
+        # ?? FIX: Store selected_asset in session state so it's available throughout the workflow
         st.session_state.selected_asset = selected_asset
         
         if selected_asset:
             # Display asset details
-            with st.expander("📋 Asset Details", expanded=True):
+            with st.expander("?? Asset Details", expanded=True):
                 col1, col2 = st.columns(2)
                 
                 with col1:
@@ -1899,9 +1900,9 @@ def render_risk_assessment_page(api_key):
                         if threat_name == 'To be assessed by agents':
                             threat_name = f"Security Assessment for {selected_asset['asset_type']}"
                         
-                        # 🆕 NEW: Show contextual description if available (from Agent 0.5)
+                        # ?? NEW: Show contextual description if available (from Agent 0.5)
                         if has_contextual and threat.get('contextual_description'):
-                            with st.expander(f"⚠️ Threat {idx}: {threat_name}", expanded=(idx == 1)):
+                            with st.expander(f"?? Threat {idx}: {threat_name}", expanded=(idx == 1)):
                                 # Contextual description
                                 st.info(threat['contextual_description'])
                                 
@@ -1923,11 +1924,11 @@ def render_risk_assessment_page(api_key):
                                 if threat.get('evidence'):
                                     st.markdown("**Evidence from Questionnaire:**")
                                     for evidence in threat['evidence'][:3]:  # Show first 3
-                                        st.caption(f"📋 {evidence}")
+                                        st.caption(f"?? {evidence}")
                                 
                                 # Source
                                 if threat.get('threat_source'):
-                                    st.caption(f"📚 Source: {threat['threat_source']}")
+                                    st.caption(f"?? Source: {threat['threat_source']}")
                         else:
                             # Old format (placeholder)
                             st.markdown(f"- **{threat_name}**")
@@ -1942,36 +1943,36 @@ def render_risk_assessment_page(api_key):
                             
                             st.markdown(f"  - *Vulnerabilities:* {len(threat.get('vulnerabilities', []))} identified")
             
-            # 🔧 FIXED: Step 3 - Run Assessments
+            # ?? FIXED: Step 3 - Run Assessments
             st.markdown("---")
-            st.subheader("▶️ Step 3: Run Complete Risk Assessment Pipeline")
+            st.subheader("?? Step 3: Run Complete Risk Assessment Pipeline")
             
             # Clear individual agent buttons
-            with st.expander("🗑️ Clear Individual Agent Results", expanded=False):
+            with st.expander("??? Clear Individual Agent Results", expanded=False):
                 st.caption("Clear specific agent results to re-run them")
                 
                 col_clear1, col_clear2, col_clear3, col_clear4, col_clear5 = st.columns(5)
                 
                 with col_clear1:
-                    if st.button("🗑️ Clear Agent 1", use_container_width=True, disabled=not st.session_state.impact_result):
+                    if st.button("??? Clear Agent 1", use_container_width=True, disabled=not st.session_state.impact_result):
                         st.session_state.impact_result = None
-                        st.success("✅ Agent 1 cleared")
+                        st.success("? Agent 1 cleared")
                         st.rerun()
                 
                 with col_clear2:
-                    if st.button("🗑️ Clear Agent 2", use_container_width=True, disabled=not st.session_state.risk_result):
+                    if st.button("??? Clear Agent 2", use_container_width=True, disabled=not st.session_state.risk_result):
                         st.session_state.risk_result = None
-                        st.success("✅ Agent 2 cleared")
+                        st.success("? Agent 2 cleared")
                         st.rerun()
                 
                 with col_clear3:
-                    if st.button("🗑️ Clear Agent 3", use_container_width=True, disabled=not st.session_state.control_result):
+                    if st.button("??? Clear Agent 3", use_container_width=True, disabled=not st.session_state.control_result):
                         st.session_state.control_result = None
-                        st.success("✅ Agent 3 cleared")
+                        st.success("? Agent 3 cleared")
                         st.rerun()
                 
                 with col_clear4:
-                    if st.button("🗑️ Clear Agent 4", use_container_width=True, disabled=not st.session_state.decision_result):
+                    if st.button("??? Clear Agent 4", use_container_width=True, disabled=not st.session_state.decision_result):
                         st.session_state.decision_result = None
                         # Also clear Agent 4 workflow state
                         if 'treatment_decision' in st.session_state:
@@ -1982,21 +1983,21 @@ def render_risk_assessment_page(api_key):
                             del st.session_state.rtp_answers
                         if 'acceptance_questionnaire' in st.session_state:
                             del st.session_state.acceptance_questionnaire
-                        st.success("✅ Agent 4 cleared (including workflow)")
+                        st.success("? Agent 4 cleared (including workflow)")
                         st.rerun()
                 
                 with col_clear5:
-                    if st.button("🗑️ Clear Database", use_container_width=True, disabled=not st.session_state.output_result):
+                    if st.button("??? Clear Database", use_container_width=True, disabled=not st.session_state.output_result):
                         st.session_state.output_result = None
-                        st.success("✅ Database save cleared")
+                        st.success("? Database save cleared")
                         st.rerun()
             
             col1, col2, col3, col4, col5 = st.columns(5)
             
             # Agent 1: Impact Assessment with Auto-Retry
             with col1:
-                if st.button("🔍 Agent 1\nImpact", type="primary", use_container_width=True):
-                    with st.spinner("🔍 Agent 1 discovering methodology..."):
+                if st.button("?? Agent 1\nImpact", type="primary", use_container_width=True):
+                    with st.spinner("?? Agent 1 discovering methodology..."):
                         result = execute_agent_with_retry(
                             run_impact_assessment,
                             "Agent 1: Impact Assessment",
@@ -2004,16 +2005,16 @@ def render_risk_assessment_page(api_key):
                         )
                         st.session_state.impact_result = result
                         if 'error' not in result:
-                            st.success("✅ Done!")
-                            # ✅ AUTO-SAVE SESSION
+                            st.success("? Done!")
+                            # ? AUTO-SAVE SESSION
                             auto_save_session()
                         st.rerun()
             
             # Agent 2: Risk Quantification with Auto-Retry
             with col2:
-                if st.button("📊 Agent 2\nRisk", type="primary", use_container_width=True, 
+                if st.button("?? Agent 2\nRisk", type="primary", use_container_width=True, 
                             disabled=not st.session_state.impact_result):
-                    with st.spinner("📊 Agent 2 quantifying risk..."):
+                    with st.spinner("?? Agent 2 quantifying risk..."):
                         result = execute_agent_with_retry(
                             run_risk_quantification,
                             "Agent 2: Risk Quantification",
@@ -2022,16 +2023,16 @@ def render_risk_assessment_page(api_key):
                         )
                         st.session_state.risk_result = result
                         if 'error' not in result:
-                            st.success("✅ Done!")
-                            # ✅ AUTO-SAVE SESSION
+                            st.success("? Done!")
+                            # ? AUTO-SAVE SESSION
                             auto_save_session()
                         st.rerun()
             
             # Agent 3: Control Discovery with Auto-Retry
             with col3:
-                if st.button("🛡️ Agent 3\nControls", type="primary", use_container_width=True,
+                if st.button("??? Agent 3\nControls", type="primary", use_container_width=True,
                             disabled=not st.session_state.risk_result):
-                    with st.spinner("🛡️ Agent 3 discovering controls..."):
+                    with st.spinner("??? Agent 3 discovering controls..."):
                         result = execute_agent_with_retry(
                             run_control_discovery,
                             "Agent 3: Control Discovery",
@@ -2041,14 +2042,14 @@ def render_risk_assessment_page(api_key):
                         )
                         st.session_state.control_result = result
                         if 'error' not in result:
-                            st.success("✅ Done!")
-                            # ✅ AUTO-SAVE SESSION
+                            st.success("? Done!")
+                            # ? AUTO-SAVE SESSION
                             auto_save_session()
                         st.rerun()
             
             # Agent 4: Risk Decision with Auto-Retry
             with col4:
-                if st.button("🎯 Agent 4\nDecision", type="primary", use_container_width=True,
+                if st.button("?? Agent 4\nDecision", type="primary", use_container_width=True,
                             disabled=not st.session_state.control_result):
                     # Clear previous Agent 4 workflow state
                     if 'treatment_decision' in st.session_state:
@@ -2058,7 +2059,7 @@ def render_risk_assessment_page(api_key):
                     if 'rtp_answers' in st.session_state:
                         del st.session_state.rtp_answers
                     
-                    with st.spinner("🎯 Agent 4 making decisions..."):
+                    with st.spinner("?? Agent 4 making decisions..."):
                         result = execute_agent_with_retry(
                             run_risk_decision,
                             "Agent 4: Risk Decision",
@@ -2069,15 +2070,15 @@ def render_risk_assessment_page(api_key):
                         )
                         st.session_state.decision_result = result
                         if 'error' not in result:
-                            st.success("✅ Done!")
-                            # ✅ AUTO-SAVE SESSION
+                            st.success("? Done!")
+                            # ? AUTO-SAVE SESSION
                             auto_save_session()
                         st.rerun()
             
             
             # Display Results
             st.markdown("---")
-            st.markdown("## 📊 Assessment Results")
+            st.markdown("## ?? Assessment Results")
             
             # Show progress bar
             progress = sum([
@@ -2091,16 +2092,16 @@ def render_risk_assessment_page(api_key):
             st.progress(progress)
             st.caption(f"Progress: {int(progress * 100)}% complete")
             
-            # 🔧 FIXED: Tabs section (with corrected variable names)
+            # ?? FIXED: Tabs section (with corrected variable names)
             if any([st.session_state.impact_result, st.session_state.risk_result, 
                     st.session_state.control_result, st.session_state.decision_result,
                     st.session_state.output_result]):
                 
                 tab1, tab2, tab3, tab4 = st.tabs([
-                    "🔍 Agent 1: Impact",
-                    "📊 Agent 2: Risk", 
-                    "🛡️ Agent 3: Controls",
-                    "🎯 Agent 4: Decision"
+                    "?? Agent 1: Impact",
+                    "?? Agent 2: Risk", 
+                    "??? Agent 3: Controls",
+                    "?? Agent 4: Decision"
                 ])
                 
                 # Agent 1 Results Tab
@@ -2108,10 +2109,10 @@ def render_risk_assessment_page(api_key):
                     if st.session_state.impact_result:
                         result = st.session_state.impact_result
                         
-                        # ✅ NEW: Display Asset-Level CIA First (Maximum across all threats)
+                        # ? NEW: Display Asset-Level CIA First (Maximum across all threats)
                         if 'asset_cia_ratings' in result:
-                            st.markdown("### 🏛️ Asset-Level CIA Ratings (Maximum Across All Threats)")
-                            st.caption("💡 These are the maximum CIA values across all threats, used for Asset Business Value calculation")
+                            st.markdown("### ??? Asset-Level CIA Ratings (Maximum Across All Threats)")
+                            st.caption("?? These are the maximum CIA values across all threats, used for Asset Business Value calculation")
                             
                             asset_cia = result['asset_cia_ratings']
                             
@@ -2121,38 +2122,38 @@ def render_risk_assessment_page(api_key):
                                 conf = asset_cia.get('confidentiality', {})
                                 conf_rating = conf.get('rating', 'N/A')
                                 conf_numeric = conf.get('numeric_value', 0)
-                                st.metric("🔐 Confidentiality (Asset)", conf_rating, delta="🔴" if conf_numeric >= 4 else "🟡" if conf_numeric >= 3 else "🟢")
-                                with st.expander("💭 Reasoning"):
+                                st.metric("?? Confidentiality (Asset)", conf_rating, delta="??" if conf_numeric >= 4 else "??" if conf_numeric >= 3 else "??")
+                                with st.expander("?? Reasoning"):
                                     st.write(conf.get('reasoning', 'Maximum value across all threats'))
                             
                             with col_i:
                                 integ = asset_cia.get('integrity', {})
                                 integ_rating = integ.get('rating', 'N/A')
                                 integ_numeric = integ.get('numeric_value', 0)
-                                st.metric("✅ Integrity (Asset)", integ_rating, delta="🔴" if integ_numeric >= 4 else "🟡" if integ_numeric >= 3 else "🟢")
-                                with st.expander("💭 Reasoning"):
+                                st.metric("? Integrity (Asset)", integ_rating, delta="??" if integ_numeric >= 4 else "??" if integ_numeric >= 3 else "??")
+                                with st.expander("?? Reasoning"):
                                     st.write(integ.get('reasoning', 'Maximum value across all threats'))
                             
                             with col_a:
                                 avail = asset_cia.get('availability', {})
                                 avail_rating = avail.get('rating', 'N/A')
                                 avail_numeric = avail.get('numeric_value', 0)
-                                st.metric("⚡ Availability (Asset)", avail_rating, delta="🔴" if avail_numeric >= 4 else "🟡" if avail_numeric >= 3 else "🟢")
-                                with st.expander("💭 Reasoning"):
+                                st.metric("? Availability (Asset)", avail_rating, delta="??" if avail_numeric >= 4 else "??" if avail_numeric >= 3 else "??")
+                                with st.expander("?? Reasoning"):
                                     st.write(avail.get('reasoning', 'Maximum value across all threats'))
                             
                             st.markdown("---")
                         
-                        # 🔧 UPDATED: Per-Threat CIA (show all threats)
-                        st.markdown("### ⚠️ Per-Threat CIA Ratings")
-                        st.caption("💡 CIA ratings calculated for each individual threat")
+                        # ?? UPDATED: Per-Threat CIA (show all threats)
+                        st.markdown("### ?? Per-Threat CIA Ratings")
+                        st.caption("?? CIA ratings calculated for each individual threat")
                         
                         threat_analysis = result.get('threat_analysis', [])
                         if threat_analysis and len(threat_analysis) > 0:
                             for threat_idx, threat_data in enumerate(threat_analysis, 1):
                                 threat_name = threat_data.get('threat_name', f'Threat {threat_idx}')
                                 
-                                with st.expander(f"⚠️ Threat {threat_idx}: {threat_name}", expanded=(threat_idx == 1)):
+                                with st.expander(f"?? Threat {threat_idx}: {threat_name}", expanded=(threat_idx == 1)):
                                     impact = threat_data.get('impact_assessment', {})
                                     
                                     col_c, col_i, col_a = st.columns(3)
@@ -2161,24 +2162,24 @@ def render_risk_assessment_page(api_key):
                                         conf = impact.get('confidentiality', {})
                                         conf_rating = conf.get('rating', 'N/A')
                                         conf_numeric = conf.get('numeric_value', 0)
-                                        st.metric("Confidentiality", conf_rating, delta="🔴" if conf_numeric >= 4 else "🟡" if conf_numeric >= 3 else "🟢")
-                                        with st.expander("💭 Reasoning"):
+                                        st.metric("Confidentiality", conf_rating, delta="??" if conf_numeric >= 4 else "??" if conf_numeric >= 3 else "??")
+                                        with st.expander("?? Reasoning"):
                                             st.write(conf.get('reasoning', 'No reasoning provided'))
                                     
                                     with col_i:
                                         integ = impact.get('integrity', {})
                                         integ_rating = integ.get('rating', 'N/A')
                                         integ_numeric = integ.get('numeric_value', 0)
-                                        st.metric("Integrity", integ_rating, delta="🔴" if integ_numeric >= 4 else "🟡" if integ_numeric >= 3 else "🟢")
-                                        with st.expander("💭 Reasoning"):
+                                        st.metric("Integrity", integ_rating, delta="??" if integ_numeric >= 4 else "??" if integ_numeric >= 3 else "??")
+                                        with st.expander("?? Reasoning"):
                                             st.write(integ.get('reasoning', 'No reasoning provided'))
                                     
                                     with col_a:
                                         avail = impact.get('availability', {})
                                         avail_rating = avail.get('rating', 'N/A')
                                         avail_numeric = avail.get('numeric_value', 0)
-                                        st.metric("Availability", avail_rating, delta="🔴" if avail_numeric >= 4 else "🟡" if avail_numeric >= 3 else "🟢")
-                                        with st.expander("💭 Reasoning"):
+                                        st.metric("Availability", avail_rating, delta="??" if avail_numeric >= 4 else "??" if avail_numeric >= 3 else "??")
+                                        with st.expander("?? Reasoning"):
                                             st.write(avail.get('reasoning', 'No reasoning provided'))
                                     
                                     # Overall impact for this threat
@@ -2193,18 +2194,18 @@ def render_risk_assessment_page(api_key):
                                         else:
                                             display_value = str(overall_impact)
                                         
-                                        delta = "🔴" if overall_impact_numeric and overall_impact_numeric >= 4 else "🟡" if overall_impact_numeric and overall_impact_numeric >= 3 else "🟢"
+                                        delta = "??" if overall_impact_numeric and overall_impact_numeric >= 4 else "??" if overall_impact_numeric and overall_impact_numeric >= 3 else "??"
                                         st.metric("Overall Impact", display_value, delta=delta)
                         else:
-                            st.warning("⚠️ No threat analysis found")
+                            st.warning("?? No threat analysis found")
                         
                         st.markdown("---")
-                        st.markdown("### 💰 Asset Valuation & Classification")
+                        st.markdown("### ?? Asset Valuation & Classification")
                         
                         col1, col2 = st.columns(2)
                         
                         with col1:
-                            st.markdown("#### 💰 Asset Business Value")
+                            st.markdown("#### ?? Asset Business Value")
                             if 'asset_business_value' in result:
                                 business_value = result['asset_business_value']
                                 if isinstance(business_value, dict):
@@ -2223,26 +2224,26 @@ def render_risk_assessment_page(api_key):
                                 # Color based on rating level
                                 bv_lower = bv_rating.lower()
                                 if 'very high' in bv_lower or 'critical' in bv_lower or 'extreme' in bv_lower:
-                                    color = "🔴"
+                                    color = "??"
                                 elif 'high' in bv_lower:
-                                    color = "🔴"
+                                    color = "??"
                                 elif 'medium' in bv_lower or 'moderate' in bv_lower:
-                                    color = "🔴"
+                                    color = "??"
                                 else:
-                                    color = "🔴"
+                                    color = "??"
                                 
                                 st.metric("Business Value", bv_rating, delta=color)
-                                st.caption(f"📊 **Calculated from CIA:** {bv_cia_combo}")
+                                st.caption(f"?? **Calculated from CIA:** {bv_cia_combo}")
                                 
-                                with st.expander("📊 Calculation Details"):
+                                with st.expander("?? Calculation Details"):
                                     st.markdown(f"**Method:** {bv_method}")
                                     st.markdown(f"**Source:** {bv_source}")
                                     st.markdown(f"**Reasoning:** {bv_reasoning}")
                             else:
-                                st.info("ℹ️ Business Value not calculated")
+                                st.info("?? Business Value not calculated")
                         
                         with col2:
-                            st.markdown("#### 🎯 Asset Criticality Classification")
+                            st.markdown("#### ?? Asset Criticality Classification")
                             if 'asset_criticality' in result:
                                 criticality = result['asset_criticality']
                                 if isinstance(criticality, dict):
@@ -2261,30 +2262,30 @@ def render_risk_assessment_page(api_key):
                                 # Color based on criticality level
                                 crit_lower = crit_class.lower()
                                 if 'very high' in crit_lower or 'critical' in crit_lower or 'extreme' in crit_lower:
-                                    color = "🔴"
+                                    color = "??"
                                 elif 'high' in crit_lower:
-                                    color = "🔴"
+                                    color = "??"
                                 elif 'medium' in crit_lower or 'moderate' in crit_lower:
-                                    color = "🔴"
+                                    color = "??"
                                 else:
-                                    color = "🔴"
+                                    color = "??"
                                 
                                 st.metric("Criticality", crit_class, delta=color)
-                                st.caption(f"📊 **Derived from Business Value:** {crit_bv_input}")
+                                st.caption(f"?? **Derived from Business Value:** {crit_bv_input}")
                                 
-                                with st.expander("📊 Classification Details"):
+                                with st.expander("?? Classification Details"):
                                     st.markdown(f"**Method:** {crit_method}")
                                     st.markdown(f"**Source:** {crit_source}")
                                     st.markdown(f"**Reasoning:** {crit_reasoning}")
                             else:
-                                st.info("ℹ️ Criticality not classified")
+                                st.info("?? Criticality not classified")
                         
                         st.markdown("---")
                         
                         if 'discovery_summary' in result:
-                            with st.expander("📚 Discovered Methodologies (RAG Sources)"):
+                            with st.expander("?? Discovered Methodologies (RAG Sources)"):
                                 discovery = result['discovery_summary']
-                                st.markdown("#### 🔍 What Agent 1 Discovered from Documents:")
+                                st.markdown("#### ?? What Agent 1 Discovered from Documents:")
                                 st.markdown("**1. CIA Rating Scale:**")
                                 st.write(f"   - {discovery.get('cia_rating_scale', 'N/A')}")
                                 st.write(f"   - Source: {discovery.get('cia_definitions_source', 'Unknown')}")
@@ -2306,17 +2307,17 @@ def render_risk_assessment_page(api_key):
                                     for search in discovery.get('searches_performed', []):
                                         st.write(f"   - {search}")
                                 
-                                st.success("✅ All methodologies discovered from organizational documents - NO HARDCODING!")
+                                st.success("? All methodologies discovered from organizational documents - NO HARDCODING!")
                         
                         st.download_button(
-                            label="📥 Download Agent 1 Complete Results (JSON)",
+                            label="?? Download Agent 1 Complete Results (JSON)",
                             data=json.dumps(result, indent=2),
                             file_name=f"agent1_complete_{selected_asset['asset_name'].replace(' ', '_')}.json",
                             mime="application/json",
                             use_container_width=True
                         )
                     else:
-                        st.info("ℹ️ Run Agent 1 to see complete CIA assessment with Business Value and Criticality")
+                        st.info("?? Run Agent 1 to see complete CIA assessment with Business Value and Criticality")
                 
                 # Agent 2 Results Tab
                 with tab2:
@@ -2325,18 +2326,18 @@ def render_risk_assessment_page(api_key):
                         
                         # Check for error
                         if 'error' in result:
-                            st.error(f"❌ Agent 2 Error: {result['error']}")
+                            st.error(f"? Agent 2 Error: {result['error']}")
                             if 'details' in result:
-                                with st.expander("❌ Error Details"):
+                                with st.expander("? Error Details"):
                                     st.text(result['details'])
                             if 'raw_response' in result:
-                                with st.expander("📄 Raw Output"):
+                                with st.expander("?? Raw Output"):
                                     st.text(result['raw_response'][:2000])
                             
                             # Show retry suggestion
-                            st.info("ℹ️ Try clicking the Agent 2 button again. The system will automatically rotate API keys if needed.")
+                            st.info("?? Try clicking the Agent 2 button again. The system will automatically rotate API keys if needed.")
                         else:
-                            st.markdown("### 📊 Risk Summary")
+                            st.markdown("### ?? Risk Summary")
                             
                             # Handle summary with defaults
                             summary = result.get('summary', {})
@@ -2350,12 +2351,12 @@ def render_risk_assessment_page(api_key):
                                 st.metric("Highest Risk Value", summary.get('highest_risk_value', 0))
                             
                             with col3:
-                                st.metric("Non-Acceptable Risks", summary.get('non_acceptable_risks_count', 0), delta="🔴")
+                                st.metric("Non-Acceptable Risks", summary.get('non_acceptable_risks_count', 0), delta="??")
                             
                             with col4:
-                                st.metric("Acceptable Risks", summary.get('acceptable_risks_count', 0), delta="🔴")
+                                st.metric("Acceptable Risks", summary.get('acceptable_risks_count', 0), delta="??")
                         
-                            st.markdown("### ⚠️ Threat Risk Analysis")
+                            st.markdown("### ?? Threat Risk Analysis")
                             
                             # Get threat list with fallback
                             threats = result.get('threat_risk_quantification', result.get('risk_assessments', []))
@@ -2403,21 +2404,21 @@ def render_risk_assessment_page(api_key):
                                         risk_eval = threat_risk.get('risk_evaluation_rating', {})
                                         if isinstance(risk_eval, dict):
                                             rating = risk_eval.get('rating', 0)
-                                            color = "🔴" if rating >= 4 else "🟡" if rating == 3 else "🟢"
+                                            color = "??" if rating >= 4 else "??" if rating == 3 else "??"
                                             st.metric("Risk Rating", f"{rating}/5", delta=f"{color}")
                                         else:
                                             st.metric("Risk Rating", risk_eval)
                         
                             # Download button
                             st.download_button(
-                                label="📥 Download Agent 2 Results (JSON)",
+                                label="?? Download Agent 2 Results (JSON)",
                                 data=json.dumps(result, indent=2),
                                 file_name=f"agent2_risk_{selected_asset['asset_name'].replace(' ', '_')}.json",
                                 mime="application/json",
                                 use_container_width=True
                             )
                     else:
-                        st.info("ℹ️ Run Agent 2 to see risk quantification results")
+                        st.info("?? Run Agent 2 to see risk quantification results")
                 
                 # Agent 3 Results Tab
                 with tab3:
@@ -2426,16 +2427,16 @@ def render_risk_assessment_page(api_key):
                         
                         # Check for error
                         if 'error' in result:
-                            st.error(f"❌ Agent 3 Error: {result['error']}")
+                            st.error(f"? Agent 3 Error: {result['error']}")
                             if 'details' in result:
-                                with st.expander("❌ Error Details"):
+                                with st.expander("? Error Details"):
                                     st.text(result['details'])
                             if 'raw_response' in result:
-                                with st.expander("📄 Raw Output"):
+                                with st.expander("?? Raw Output"):
                                     st.text(result['raw_response'][:2000])
-                            st.info("ℹ️ Try clicking the Agent 3 button again. The system will automatically rotate API keys if needed.")
+                            st.info("?? Try clicking the Agent 3 button again. The system will automatically rotate API keys if needed.")
                         else:
-                            st.markdown("### 📊 Control Evaluation Summary")
+                            st.markdown("### ?? Control Evaluation Summary")
                             
                             # Get threat control evaluation with fallback
                             threat_controls = result.get('threat_control_evaluation', [])
@@ -2473,7 +2474,7 @@ def render_risk_assessment_page(api_key):
                                             for t in threat_controls
                                         ]
                                         highest_residual = max(residual_values) if residual_values else 0
-                                        color = "🔴" if highest_residual >= 3 else "🟡" if highest_residual >= 2 else "🟢"
+                                        color = "??" if highest_residual >= 3 else "??" if highest_residual >= 2 else "??"
                                         st.metric("Highest Residual Risk", f"{highest_residual:.2f}", delta=color)
                                     except:
                                         st.metric("Highest Residual Risk", "N/A")
@@ -2481,9 +2482,9 @@ def render_risk_assessment_page(api_key):
                                     st.metric("Highest Residual Risk", "N/A")
                             
                             if not threat_controls:
-                                st.warning("⚠️ No threat control evaluations found in results")
+                                st.warning("?? No threat control evaluations found in results")
                             else:
-                                st.markdown("### 📊 Threat Control Analysis")
+                                st.markdown("### ?? Threat Control Analysis")
                                 
                                 for idx, threat_ctrl in enumerate(threat_controls, 1):
                                     threat_name = threat_ctrl.get('threat', f'Threat {idx}')
@@ -2517,7 +2518,7 @@ def render_risk_assessment_page(api_key):
                                             residual_risk = threat_ctrl.get('residual_risk', {})
                                             residual = residual_risk.get('residual_risk_value', 0)
                                             classification = residual_risk.get('residual_risk_classification', '')
-                                            color = "🔴" if residual >= 3 else "🟢"
+                                            color = "??" if residual >= 3 else "??"
                                             st.metric("Residual Risk", residual, delta=f"{color} {classification}")
                                 
                                         if 'control_category_averages' in threat_ctrl:
@@ -2553,7 +2554,7 @@ def render_risk_assessment_page(api_key):
                                             st.dataframe(df, use_container_width=True, hide_index=True)
                                 
                                         if 'control_rating_calculation' in threat_ctrl:
-                                            with st.expander("📊 Control Rating Calculation"):
+                                            with st.expander("?? Control Rating Calculation"):
                                                 calc = threat_ctrl['control_rating_calculation']
                                                 
                                                 def extract_value(calc_str):
@@ -2570,7 +2571,7 @@ def render_risk_assessment_page(api_key):
                                                     ctrl_rating = calc.get('control_rating', 'N/A')
                                                     
                                                     st.markdown(f"""
-                                                    **Formula:** Control Rating = FLOOR(AVERAGE(P_avg � 1.0, D_avg � 0.75, C_avg � 0.5))
+                                                    **Formula:** Control Rating = FLOOR(AVERAGE(P_avg ? 1.0, D_avg ? 0.75, C_avg ? 0.5))
                                                     
                                                     **Step 1: Weighted Values**
                                                     - Preventive: {weighted_p:.4f}
@@ -2587,14 +2588,14 @@ def render_risk_assessment_page(api_key):
                                                     st.warning(f"Could not display calculation details: {str(e)}")
                         
                         st.download_button(
-                            label="📥 Download Agent 3 Results (JSON)",
+                            label="?? Download Agent 3 Results (JSON)",
                             data=json.dumps(result, indent=2),
                             file_name=f"agent3_controls_{selected_asset['asset_name'].replace(' ', '_')}.json",
                             mime="application/json",
                             use_container_width=True
                         )
                     else:
-                        st.info("ℹ️ Run Agent 3 to see control evaluation results")
+                        st.info("?? Run Agent 3 to see control evaluation results")
                 
                 # Agent 4 Results Tab
                 with tab4:
@@ -2603,15 +2604,15 @@ def render_risk_assessment_page(api_key):
                         
                         # Check for error
                         if 'error' in result:
-                            st.error(f"❌ Agent 4 Error: {result['error']}")
+                            st.error(f"? Agent 4 Error: {result['error']}")
                             if 'details' in result:
-                                with st.expander("❌ Error Details"):
+                                with st.expander("? Error Details"):
                                     st.text(result['details'])
-                            st.info("ℹ️ Try clicking the Agent 4 button again.")
+                            st.info("?? Try clicking the Agent 4 button again.")
                         
                         #  CHECK FOR NEW FORMAT FIRST (management_decisions)
                         elif 'management_decisions' in result and isinstance(result.get('management_decisions'), dict):
-                            st.success("✅ Management Decisions Generated!")
+                            st.success("? Management Decisions Generated!")
                             
                             decisions = result['management_decisions']
                             
@@ -2621,7 +2622,7 @@ def render_risk_assessment_page(api_key):
                                 threat_name = threat_data.get('threat_name', 'Unknown Threat')
                                 threat_index = threat_data.get('threat_index', 0)
                                 
-                                st.markdown(f"### ⚠️ Threat {threat_index}: {threat_name}")
+                                st.markdown(f"### ?? Threat {threat_index}: {threat_name}")
                                 
                                 # Risk metrics
                                 col1, col2, col3 = st.columns(3)
@@ -2633,22 +2634,22 @@ def render_risk_assessment_page(api_key):
                                     gaps = threat_data.get('control_gaps', [])
                                     st.metric("Control Gaps", len(gaps))
                                 
-                                # ⚠️ CONTROL GAPS DETAILS (NEW - EXPANDED)
+                                # ?? CONTROL GAPS DETAILS (NEW - EXPANDED)
                                 if gaps:
-                                    with st.expander("⚠️ Control Gaps Identified", expanded=True):
+                                    with st.expander("?? Control Gaps Identified", expanded=True):
                                         for idx, gap in enumerate(gaps, 1):
                                             if isinstance(gap, dict):
                                                 st.warning(f"**Gap {idx}: {gap.get('gap_description', 'Unknown gap')}**")
                                                 col_a, col_b = st.columns(2)
                                                 with col_a:
                                                     if gap.get('evidence'):
-                                                        st.caption(f"📄 Evidence: {gap['evidence']}")
+                                                        st.caption(f"?? Evidence: {gap['evidence']}")
                                                     if gap.get('impact'):
-                                                        st.caption(f"⚠️ Impact: {gap['impact']}")
+                                                        st.caption(f"?? Impact: {gap['impact']}")
                                                 with col_b:
                                                     if gap.get('severity'):
                                                         severity = gap['severity']
-                                                        color = "🔴" if severity == "HIGH" else "🟡" if severity == "MEDIUM" else "🟢"
+                                                        color = "??" if severity == "HIGH" else "??" if severity == "MEDIUM" else "??"
                                                         st.caption(f"{color} Severity: {severity}")
                                             else:
                                                 st.warning(f"**Gap {idx}:** {gap}")
@@ -2656,24 +2657,24 @@ def render_risk_assessment_page(api_key):
                                 # Recommended controls
                                 recommended = threat_data.get('recommended_controls', [])
                                 if recommended:
-                                    with st.expander(f"✅ Recommended Controls ({len(recommended)})", expanded=False):
+                                    with st.expander(f"? Recommended Controls ({len(recommended)})", expanded=False):
                                         for idx, ctrl in enumerate(recommended, 1):
                                             if isinstance(ctrl, dict):
                                                 st.success(f"**{idx}. {ctrl.get('control_name', ctrl.get('control_id', 'Control'))}**")
                                                 col_a, col_b = st.columns(2)
                                                 with col_a:
                                                     if ctrl.get('control_type'):
-                                                        st.caption(f"🏷️ Type: {ctrl['control_type']}")
+                                                        st.caption(f"??? Type: {ctrl['control_type']}")
                                                     if ctrl.get('priority'):
-                                                        st.caption(f"🔥 Priority: {ctrl['priority']}")
+                                                        st.caption(f"?? Priority: {ctrl['priority']}")
                                                 with col_b:
                                                     if ctrl.get('rationale'):
-                                                        st.caption(f"💭 {ctrl['rationale']}")
+                                                        st.caption(f"?? {ctrl['rationale']}")
                                             else:
                                                 st.success(f"{idx}. {ctrl}")
                                 
                                 # Decision options
-                                st.markdown("#### 🎯 Decision Options")
+                                st.markdown("#### ?? Decision Options")
                                 
                                 decision_options = threat_data.get('decision_options', [])
                                 for opt in decision_options:
@@ -2682,15 +2683,15 @@ def render_risk_assessment_page(api_key):
                                     
                                     # Emoji based on decision type
                                     if value == 'TREAT':
-                                        emoji = "🔧"
+                                        emoji = "??"
                                     elif value == 'ACCEPT':
-                                        emoji = "⚠️"
+                                        emoji = "??"
                                     elif value == 'TRANSFER':
-                                        emoji = "✅"
+                                        emoji = "?"
                                     elif value == 'TERMINATE':
-                                        emoji = "🚫"
+                                        emoji = "??"
                                     else:
-                                        emoji = "✅"
+                                        emoji = "?"
                                     
                                     with st.expander(f"{emoji} {value} - {label}", expanded=(value == 'TREAT')):
                                         st.markdown(f"**Description:**")
@@ -2708,15 +2709,15 @@ def render_risk_assessment_page(api_key):
                                         
                                         col1, col2 = st.columns(2)
                                         with col1:
-                                            st.markdown(f"**💰 Cost:** {opt.get('estimated_cost', 'N/A')}")
-                                            st.markdown(f"**⏱️ Timeline:** {opt.get('typical_timeline', 'N/A')}")
+                                            st.markdown(f"**?? Cost:** {opt.get('estimated_cost', 'N/A')}")
+                                            st.markdown(f"**?? Timeline:** {opt.get('typical_timeline', 'N/A')}")
                                         with col2:
-                                            st.markdown(f"**✅ Approval:** {opt.get('approval_required', 'N/A')}")
-                                            st.markdown(f"**📊 Monitoring:** {opt.get('monitoring_required', 'N/A')}")
+                                            st.markdown(f"**? Approval:** {opt.get('approval_required', 'N/A')}")
+                                            st.markdown(f"**?? Monitoring:** {opt.get('monitoring_required', 'N/A')}")
                                         
                                         # ? SELECTION BUTTON (NEW)
                                         st.markdown("---")
-                                        if st.button(f"🎯 Select {value} for Threat {threat_index}", 
+                                        if st.button(f"?? Select {value} for Threat {threat_index}", 
                                                    key=f"select_{threat_key}_{value}",
                                                    type="primary" if value == "TREAT" else "secondary",
                                                    use_container_width=True):
@@ -2733,14 +2734,14 @@ def render_risk_assessment_page(api_key):
                                 # Show selected decision for this threat
                                 if 'threat_decisions' in st.session_state and threat_key in st.session_state.threat_decisions:
                                     selected = st.session_state.threat_decisions[threat_key]
-                                    st.success(f"✅ **Selected Decision:** {selected['decision']}")
+                                    st.success(f"? **Selected Decision:** {selected['decision']}")
                                 
                                 st.markdown("---")
                             
                             # ? DECISION SUMMARY (NEW)
                             if 'threat_decisions' in st.session_state and st.session_state.threat_decisions:
                                 st.markdown("---")
-                                st.markdown("## 📊 Decision Summary")
+                                st.markdown("## ?? Decision Summary")
                                 
                                 # Count decisions by type
                                 decision_counts = {}
@@ -2751,19 +2752,19 @@ def render_risk_assessment_page(api_key):
                                 # Display summary
                                 col1, col2, col3, col4 = st.columns(4)
                                 with col1:
-                                    st.metric("🔧 TREAT", decision_counts.get('TREAT', 0))
+                                    st.metric("?? TREAT", decision_counts.get('TREAT', 0))
                                 with col2:
-                                    st.metric("✅ ACCEPT", decision_counts.get('ACCEPT', 0))
+                                    st.metric("? ACCEPT", decision_counts.get('ACCEPT', 0))
                                 with col3:
-                                    st.metric("🔄 TRANSFER", decision_counts.get('TRANSFER', 0))
+                                    st.metric("?? TRANSFER", decision_counts.get('TRANSFER', 0))
                                 with col4:
-                                    st.metric("🚫 TERMINATE", decision_counts.get('TERMINATE', 0))
+                                    st.metric("?? TERMINATE", decision_counts.get('TERMINATE', 0))
                                 
                                 # List all decisions
                                 st.markdown("### Selected Decisions:")
                                 for threat_key in sorted(st.session_state.threat_decisions.keys()):
                                     decision_data = st.session_state.threat_decisions[threat_key]
-                                    st.markdown(f"- **Threat {decision_data['threat_index']}:** {decision_data['threat_name']} → **{decision_data['decision']}** ")
+                                    st.markdown(f"- **Threat {decision_data['threat_index']}:** {decision_data['threat_name']} ? **{decision_data['decision']}** ")
                                 
                                 # Proceed button
                                 total_threats = len(decisions)
@@ -2771,26 +2772,26 @@ def render_risk_assessment_page(api_key):
                                 
                                 if selected_threats > 0:
                                     if selected_threats == total_threats:
-                                        st.success(f"✅ All {total_threats} threats have decisions selected!")
+                                        st.success(f"? All {total_threats} threats have decisions selected!")
                                     else:
-                                        st.info(f"ℹ️ {selected_threats} of {total_threats} threats have decisions selected. You can proceed with selected threats or select more.")
+                                        st.info(f"?? {selected_threats} of {total_threats} threats have decisions selected. You can proceed with selected threats or select more.")
                                     
-                                    if st.button("🚀 Proceed with Selected Decisions", type="primary", use_container_width=True):
+                                    if st.button("?? Proceed with Selected Decisions", type="primary", use_container_width=True):
                                         st.session_state.processing_workflows = True
                                         st.rerun()
                                 else:
-                                    st.warning(f"⚠️ Please select at least one decision to proceed ({selected_threats}/{total_threats} selected)")
+                                    st.warning(f"?? Please select at least one decision to proceed ({selected_threats}/{total_threats} selected)")
                                 
                                 # Reset button
-                                if st.button("🔄 Reset All Decisions", use_container_width=True):
+                                if st.button("?? Reset All Decisions", use_container_width=True):
                                     st.session_state.threat_decisions = {}
-                                    # ✅ FIX: Also clear workflow processing state
+                                    # ? FIX: Also clear workflow processing state
                                     if 'processing_workflows' in st.session_state:
                                         del st.session_state.processing_workflows
                                     if 'current_decision_index' in st.session_state:
                                         del st.session_state.current_decision_index
                                     
-                                    # ✅ FIX: Clear all cached questionnaires and forms
+                                    # ? FIX: Clear all cached questionnaires and forms
                                     keys_to_delete = []
                                     for key in st.session_state.keys():
                                         if any(x in key for x in ['_questionnaire_', '_form_', 'accept_q_', 'transfer_q_', 'terminate_q_', 'treat_key_']):
@@ -2809,9 +2810,9 @@ def render_risk_assessment_page(api_key):
                                 # Check if we should process workflows
                                 if st.session_state.get('processing_workflows', False):
                                     st.markdown("---")
-                                    st.markdown("## 🔄 Processing Selected Decisions")
+                                    st.markdown("## ?? Processing Selected Decisions")
                                     
-                                    # 🆕 SEQUENTIAL WORKFLOW: Track current decision index
+                                    # ?? SEQUENTIAL WORKFLOW: Track current decision index
                                     if 'current_decision_index' not in st.session_state:
                                         st.session_state.current_decision_index = 0
                                     
@@ -2831,9 +2832,9 @@ def render_risk_assessment_page(api_key):
                                         threat_key = sorted_threat_keys[current_idx]
                                     else:
                                         # All decisions completed
-                                        st.success("✅ All decisions processed!")
-                                        st.info("📊 View Risk Register to see all saved risks")
-                                        if st.button("🔄 Start Over", type="primary"):
+                                        st.success("? All decisions processed!")
+                                        st.info("?? View Risk Register to see all saved risks")
+                                        if st.button("?? Start Over", type="primary"):
                                             st.session_state.current_decision_index = 0
                                             st.session_state.processing_workflows = False
                                             st.rerun()
@@ -2848,12 +2849,12 @@ def render_risk_assessment_page(api_key):
                                         # Get threat data from decisions
                                         threat_data = decisions.get(threat_key, {})
                                         
-                                        st.markdown(f"### 🎯 Threat {threat_index}: {threat_name}")
+                                        st.markdown(f"### ?? Threat {threat_index}: {threat_name}")
                                         st.info(f"**Decision:** {decision}")
                                         
                                         # TREAT WORKFLOW
                                         if decision == "TREAT":
-                                            st.markdown(f"#### 🔧 Treatment Plan for: {threat_name}")
+                                            st.markdown(f"#### ?? Treatment Plan for: {threat_name}")
                                             
                                             control_gaps = threat_data.get('control_gaps', [])
                                             recommended_controls = threat_data.get('recommended_controls', [])
@@ -2867,7 +2868,7 @@ def render_risk_assessment_page(api_key):
                                                 st.metric("Risk Rating", threat_data.get('risk_rating', 'N/A'))
                                             
                                             if recommended_controls:
-                                                st.info(f"✅ Select controls to implement for **{threat_name}**:")
+                                                st.info(f"? Select controls to implement for **{threat_name}**:")
                                                 
                                                 threat_key = f"selected_controls_{threat_index}"
                                                 if threat_key not in st.session_state:
@@ -2883,16 +2884,16 @@ def render_risk_assessment_page(api_key):
                                                             st.session_state[threat_key].remove(idx)
                                                     with col_content:
                                                         control_name = control.get('control_name', control.get('control_id', f'Control {idx+1}'))
-                                                        with st.expander(f"🛡️ {control_name}", expanded=False):
+                                                        with st.expander(f"??? {control_name}", expanded=False):
                                                             col1, col2 = st.columns(2)
                                                             with col1:
                                                                 if control.get('control_type'):
-                                                                    st.caption(f"🏷️ Type: {control['control_type']}")
+                                                                    st.caption(f"??? Type: {control['control_type']}")
                                                                 if control.get('priority'):
-                                                                    st.caption(f"🔥 Priority: {control['priority']}")
+                                                                    st.caption(f"?? Priority: {control['priority']}")
                                                             with col2:
                                                                 if control.get('rationale'):
-                                                                    st.caption(f"💭 Rationale: {control['rationale']}")
+                                                                    st.caption(f"?? Rationale: {control['rationale']}")
                                                             if control.get('description'):
                                                                 st.info(control['description'])
                                                             if control.get('implementation_guidance'):
@@ -2902,30 +2903,30 @@ def render_risk_assessment_page(api_key):
                                                             if not any([control.get('description'), control.get('implementation_guidance'), control.get('addresses_gap'), control.get('rationale')]):
                                                                 st.caption("No additional details available")
                                                 
-                                                st.caption(f"✅ {len(st.session_state[threat_key])} of {len(recommended_controls)} controls selected")
+                                                st.caption(f"? {len(st.session_state[threat_key])} of {len(recommended_controls)} controls selected")
                                                 
-                                                if st.button(f"🤖 Generate Treatment Plan", key=f"gen_treat_{threat_index}", type="primary"):
+                                                if st.button(f"?? Generate Treatment Plan", key=f"gen_treat_{threat_index}", type="primary"):
                                                     if not st.session_state[threat_key]:
-                                                        st.error("❌ Select at least one control!")
+                                                        st.error("? Select at least one control!")
                                                     else:
-                                                        with st.spinner("🤖 Generating..."):
+                                                        with st.spinner("?? Generating..."):
                                                             from phase2_risk_resolver.agents.agent_4_treatment_plan import generate_treatment_plan
                                                             selected_controls = [recommended_controls[i] for i in st.session_state[threat_key] if i < len(recommended_controls)]
                                                             risk_data = {'asset_name': selected_asset.get('asset_name'), 'asset_type': selected_asset.get('asset_type'), 'threat_name': threat_name, 'risk_rating': threat_data.get('risk_rating', 0), 'selected_controls': selected_controls, 'control_gaps': control_gaps}
                                                             plan = execute_agent_with_retry(generate_treatment_plan, "Treatment Plan", agent_3_results=st.session_state.control_result, risk_data=risk_data)
                                                             if 'error' not in plan:
                                                                 st.session_state[f"treatment_plan_{threat_index}"] = plan
-                                                                st.success("✅ Generated!")
+                                                                st.success("? Generated!")
                                                                 st.rerun()
                                                             else:
-                                                                st.error(f"❌ {plan.get('error')}")
+                                                                st.error(f"? {plan.get('error')}")
                                             else:
-                                                st.warning("⚠️ No recommended controls found")
+                                                st.warning("?? No recommended controls found")
                                             
                                             treat_key = f"treatment_plan_{threat_index}"
                                             if treat_key in st.session_state:
                                                 st.markdown("---")
-                                                st.markdown("### 📋 Generated Treatment Plan")
+                                                st.markdown("### ?? Generated Treatment Plan")
                                                 
                                                 plan = st.session_state[treat_key]
                                                 
@@ -2933,7 +2934,7 @@ def render_risk_assessment_page(api_key):
                                                 if isinstance(plan, dict):
                                                     # Treatment Actions
                                                     if plan.get('treatment_actions'):
-                                                        st.markdown("#### 🔧 Treatment Actions")
+                                                        st.markdown("#### ?? Treatment Actions")
                                                         actions = plan['treatment_actions']
                                                         if isinstance(actions, list):
                                                             for idx, action in enumerate(actions, 1):
@@ -2951,18 +2952,18 @@ def render_risk_assessment_page(api_key):
                                                                         col1, col2 = st.columns(2)
                                                                         with col1:
                                                                             if action.get('implementation_priority'):
-                                                                                st.caption(f"🔥 Priority: {action['implementation_priority']}")
+                                                                                st.caption(f"?? Priority: {action['implementation_priority']}")
                                                                             if action.get('implementation_responsibility'):
-                                                                                st.caption(f"👤 Responsible: {action['implementation_responsibility']}")
+                                                                                st.caption(f"?? Responsible: {action['implementation_responsibility']}")
                                                                             if action.get('estimated_cost'):
-                                                                                st.caption(f"💰 Cost: {action['estimated_cost']}")
+                                                                                st.caption(f"?? Cost: {action['estimated_cost']}")
                                                                         with col2:
                                                                             if action.get('proposed_start_date'):
-                                                                                st.caption(f"📅 Start: {action['proposed_start_date']}")
+                                                                                st.caption(f"?? Start: {action['proposed_start_date']}")
                                                                             if action.get('proposed_completion_date'):
-                                                                                st.caption(f"⏱️ Complete: {action['proposed_completion_date']}")
+                                                                                st.caption(f"?? Complete: {action['proposed_completion_date']}")
                                                                             if action.get('estimated_duration_days'):
-                                                                                st.caption(f"⏳ Duration: {action['estimated_duration_days']} days")
+                                                                                st.caption(f"? Duration: {action['estimated_duration_days']} days")
                                                                         
                                                                         # Resources
                                                                         if action.get('necessary_resources'):
@@ -2974,13 +2975,13 @@ def render_risk_assessment_page(api_key):
                                                                         
                                                                         # Expected risk reduction
                                                                         if action.get('expected_risk_reduction'):
-                                                                            st.caption(f"📉 Expected Risk Reduction: {action['expected_risk_reduction']}")
+                                                                            st.caption(f"?? Expected Risk Reduction: {action['expected_risk_reduction']}")
                                                                 else:
                                                                     st.write(f"{idx}. {action}")
                                                     
                                                     # Summary
                                                     if plan.get('summary'):
-                                                        st.markdown("#### 📊 Summary")
+                                                        st.markdown("#### ?? Summary")
                                                         summary = plan['summary']
                                                         col1, col2, col3, col4 = st.columns(4)
                                                         with col1:
@@ -2993,18 +2994,18 @@ def render_risk_assessment_page(api_key):
                                                             st.metric("Expected Risk After", summary.get('expected_residual_risk_after', 'N/A'))
                                                     
                                                     # Show full JSON in expander for reference
-                                                    with st.expander("📄 View Full Plan (JSON)", expanded=False):
+                                                    with st.expander("?? View Full Plan (JSON)", expanded=False):
                                                         st.json(plan)
                                                 else:
                                                     # Fallback: show as JSON if not dict
                                                     st.json(plan)
                                                 
-                                                if st.button(f"💾 Save to Risk Register", key=f"save_treat_{threat_index}", type="primary"):
-                                                    with st.spinner("💾 Saving..."):
+                                                if st.button(f"?? Save to Risk Register", key=f"save_treat_{threat_index}", type="primary"):
+                                                    with st.spinner("?? Saving..."):
                                                         try:
                                                             from phase2_risk_resolver.database.save_to_register import save_assessment_to_risk_register
                                                             
-                                                            # ✅ FIX: Filter agent_2_results to include ONLY current threat
+                                                            # ? FIX: Filter agent_2_results to include ONLY current threat
                                                             all_threats = st.session_state.risk_result.get('threat_risk_quantification', [])
                                                             current_threat_data = None
                                                             for t in all_threats:
@@ -3013,7 +3014,7 @@ def render_risk_assessment_page(api_key):
                                                                     break
                                                             
                                                             if not current_threat_data:
-                                                                st.error(f"❌ Could not find threat data for: {threat_name}")
+                                                                st.error(f"? Could not find threat data for: {threat_name}")
                                                             else:
                                                                 # Create filtered agent_2_results with only current threat
                                                                 filtered_agent_2 = {
@@ -3030,28 +3031,28 @@ def render_risk_assessment_page(api_key):
                                                                 )
                                                                 
                                                                 if risk_ids and len(risk_ids) > 0:
-                                                                    st.success(f"✅ Saved! Risk ID: {risk_ids[0]}")
+                                                                    st.success(f"? Saved! Risk ID: {risk_ids[0]}")
                                                                     st.session_state.current_decision_index += 1
                                                                     st.rerun()
                                                                 else:
-                                                                    st.error("❌ Save returned no Risk IDs")
+                                                                    st.error("? Save returned no Risk IDs")
                                                         except Exception as e:
-                                                            st.error(f"❌ Save failed: {str(e)}")
+                                                            st.error(f"? Save failed: {str(e)}")
                                                             import traceback
                                                             with st.expander("Debug"):
                                                                 st.code(traceback.format_exc())
                                         
                                         # ACCEPT WORKFLOW
                                         elif decision == "ACCEPT":
-                                            st.markdown(f"#### ⚠️ Risk Acceptance for: {threat_name}")
+                                            st.markdown(f"#### ?? Risk Acceptance for: {threat_name}")
                                             
                                             accept_key = f"accept_q_{threat_key}"
                                             if accept_key not in st.session_state:
-                                                with st.spinner("🤖 Generating acceptance questionnaire..."):
+                                                with st.spinner("?? Generating acceptance questionnaire..."):
                                                     # Get actual Risk ID from database if it exists, otherwise use temp ID
                                                     import sqlite3
                                                     try:
-                                                        conn = sqlite3.connect('database/risk_register.db')
+                                                        conn = get_database_connection()
                                                         cursor = conn.cursor()
                                                         cursor.execute("SELECT MAX(CAST(SUBSTR(risk_id, 5) AS INTEGER)) FROM risks WHERE risk_id LIKE 'RSK-%'")
                                                         result = cursor.fetchone()
@@ -3079,7 +3080,7 @@ def render_risk_assessment_page(api_key):
                                                 risk_description = f"Asset: {selected_asset.get('asset_name')}, Threat: {threat_name}. Risk Rating: {current_risk}, Residual Risk: {residual_risk}"
                                                 
                                                 # Display risk context (AI pre-filled)
-                                                st.info("📊 **Risk Context** (Auto-filled by AI from Agents 1-3)")
+                                                st.info("?? **Risk Context** (Auto-filled by AI from Agents 1-3)")
                                                 col1, col2, col3 = st.columns(3)
                                                 with col1:
                                                     st.caption(f"**Risk ID:** {actual_risk_id}")
@@ -3091,13 +3092,13 @@ def render_risk_assessment_page(api_key):
                                                     st.caption(f"**Threat:** {threat_name[:80]}..." if len(threat_name) > 80 else f"**Threat:** {threat_name}")
                                                 st.markdown("---")
                                                 
-                                                # 📧 EMAIL OPTION - Choose between manual fill or email send
-                                                st.info("💡 **Choose how to complete the acceptance questionnaire:**")
+                                                # ?? EMAIL OPTION - Choose between manual fill or email send
+                                                st.info("?? **Choose how to complete the acceptance questionnaire:**")
                                                 
                                                 col_option1, col_option2 = st.columns(2)
                                                 
                                                 with col_option1:
-                                                    st.markdown("### 📧 Option 1: Send via Email")
+                                                    st.markdown("### ?? Option 1: Send via Email")
                                                     st.caption("Send questionnaire to risk owner/approver")
                                                     
                                                     recipient_email_accept = st.text_input(
@@ -3107,12 +3108,12 @@ def render_risk_assessment_page(api_key):
                                                         help="Email address of the person who will complete the acceptance questionnaire"
                                                     )
                                                     
-                                                    if st.button("📧 Send Acceptance Questionnaire Email", key=f"send_accept_email_{threat_key}", type="primary", disabled=not recipient_email_accept):
-                                                        with st.spinner(f"📧 Sending email to {recipient_email_accept}..."):
+                                                    if st.button("?? Send Acceptance Questionnaire Email", key=f"send_accept_email_{threat_key}", type="primary", disabled=not recipient_email_accept):
+                                                        with st.spinner(f"?? Sending email to {recipient_email_accept}..."):
                                                             try:
                                                                 from email_sender import send_questionnaire_email
                                                                 
-                                                                # 🆕 Prepare agent results for storage
+                                                                # ?? Prepare agent results for storage
                                                                 # Get ORIGINAL Agent 2 threat data
                                                                 agent_2_threats = st.session_state.get('risk_result', {}).get('threat_risk_quantification', [])
                                                                 original_threat = next((t for t in agent_2_threats if t.get('threat') == threat_name), threat_data)
@@ -3134,26 +3135,26 @@ def render_risk_assessment_page(api_key):
                                                                 )
                                                                 
                                                                 if result and result.get('success'):
-                                                                    st.success(f"✅ Email sent successfully to {recipient_email_accept}!")
-                                                                    st.info(f"📋 **Tracking Token:** {result['token']}")
+                                                                    st.success(f"? Email sent successfully to {recipient_email_accept}!")
+                                                                    st.info(f"?? **Tracking Token:** {result['token']}")
                                                                     st.caption("The recipient will receive a link to fill the questionnaire online. Once completed, it will appear in 'Pending Questionnaires' section.")
-                                                                    # ✅ Sequential workflow: Move to next threat after email send
+                                                                    # ? Sequential workflow: Move to next threat after email send
                                                                     st.session_state.current_decision_index += 1
                                                                     time.sleep(1)
                                                                     st.rerun()
                                                                 else:
                                                                     error_msg = result.get('error', 'Unknown error') if result else 'No response'
-                                                                    st.error(f"❌ Failed to send email: {error_msg}")
+                                                                    st.error(f"? Failed to send email: {error_msg}")
                                                             except Exception as e:
-                                                                st.error(f"❌ Error: {str(e)}")
+                                                                st.error(f"? Error: {str(e)}")
                                                                 import traceback
-                                                                with st.expander("🔍 Error Details"):
+                                                                with st.expander("?? Error Details"):
                                                                     st.code(traceback.format_exc())
                                                 
                                                 with col_option2:
-                                                    st.markdown("### ✍️ Option 2: Fill Manually")
+                                                    st.markdown("### ?? Option 2: Fill Manually")
                                                     st.caption("Fill the questionnaire yourself right now")
-                                                    st.info("👇 Scroll down to see the questionnaire form below")
+                                                    st.info("?? Scroll down to see the questionnaire form below")
                                                 
                                                 st.markdown("---")
                                                 
@@ -3165,7 +3166,7 @@ def render_risk_assessment_page(api_key):
                                                         # Show section help text
                                                         section_help = section.get('help_text', section.get('description', ''))
                                                         if section_help:
-                                                            st.caption(f"ℹ️ {section_help}")
+                                                            st.caption(f"?? {section_help}")
                                                     
                                                     # Handle both 'questions' and 'fields' keys
                                                     questions_list = section.get('questions', section.get('fields', []))
@@ -3200,7 +3201,7 @@ def render_risk_assessment_page(api_key):
                                                             elif 'RISK_DESCRIPTION' in str(display_value).upper() or 'risk_description' in q_id.lower():
                                                                 display_value = risk_description
                                                             
-                                                            st.info(f"ℹ️ {q_text} {display_value}")
+                                                            st.info(f"?? {q_text} {display_value}")
                                                             continue
                                                         
                                                         if q_type in ['text_area', 'textarea']:
@@ -3220,7 +3221,7 @@ def render_risk_assessment_page(api_key):
                                                             # Display question text as plain text (already cleaned)
                                                             st.write(f"**{q_text}**")
                                                             if q_help:
-                                                                st.caption(f"ℹ️ {q_help}")
+                                                                st.caption(f"?? {q_help}")
                                                             for idx, opt in enumerate(options):
                                                                 if isinstance(opt, dict):
                                                                     # Handle both control_gaps structure and treatment controls structure
@@ -3228,7 +3229,7 @@ def render_risk_assessment_page(api_key):
                                                                     # Clean markdown from control name
                                                                     ctrl_name = str(ctrl_name).replace('**', '')
                                                                     
-                                                                    with st.expander(f"🛡️ {ctrl_name}", expanded=False):
+                                                                    with st.expander(f"??? {ctrl_name}", expanded=False):
                                                                         # Show description or gap details
                                                                         if opt.get('description'):
                                                                             desc = str(opt['description']).replace('**', '')
@@ -3239,29 +3240,29 @@ def render_risk_assessment_page(api_key):
                                                                         
                                                                         # Show evidence, impact, severity for control gaps
                                                                         if opt.get('evidence'):
-                                                                            st.caption(f"📋 Evidence: {opt['evidence']}")
+                                                                            st.caption(f"?? Evidence: {opt['evidence']}")
                                                                         if opt.get('impact'):
-                                                                            st.caption(f"⚠️ Impact: {opt['impact']}")
+                                                                            st.caption(f"?? Impact: {opt['impact']}")
                                                                         if opt.get('severity'):
-                                                                            severity_color = {"CRITICAL": "🔴", "HIGH": "🔴", "MEDIUM": "🟡", "LOW": "🟢"}.get(opt['severity'], "⚪")
+                                                                            severity_color = {"CRITICAL": "??", "HIGH": "??", "MEDIUM": "??", "LOW": "??"}.get(opt['severity'], "?")
                                                                             st.caption(f"{severity_color} Severity: {opt['severity']}")
                                                                         
                                                                         # Show control details (for treatment controls)
                                                                         col1, col2 = st.columns(2)
                                                                         with col1:
                                                                             if opt.get('priority'):
-                                                                                st.caption(f"🔥 Priority: {opt['priority']}")
+                                                                                st.caption(f"?? Priority: {opt['priority']}")
                                                                             if opt.get('cost'):
-                                                                                st.caption(f"💰 Cost: {opt['cost']}")
+                                                                                st.caption(f"?? Cost: {opt['cost']}")
                                                                             if opt.get('control_type'):
-                                                                                st.caption(f"🏷️ Type: {opt['control_type']}")
+                                                                                st.caption(f"??? Type: {opt['control_type']}")
                                                                         with col2:
                                                                             if opt.get('timeline'):
-                                                                                st.caption(f"⏱️ Timeline: {opt['timeline']}")
+                                                                                st.caption(f"?? Timeline: {opt['timeline']}")
                                                                             if opt.get('risk_reduction'):
-                                                                                st.caption(f"📉 Risk Reduction: {opt['risk_reduction']}")
+                                                                                st.caption(f"?? Risk Reduction: {opt['risk_reduction']}")
                                                                             if opt.get('complexity'):
-                                                                                st.caption(f"⚙️ Complexity: {opt['complexity']}")
+                                                                                st.caption(f"?? Complexity: {opt['complexity']}")
                                                                         if opt.get('addresses_gap'):
                                                                             st.warning(f"**Addresses Gap:** {opt['addresses_gap']}")
                                                                         
@@ -3271,7 +3272,7 @@ def render_risk_assessment_page(api_key):
                                                         else:
                                                             st.text_input(display_text, key=widget_key, help=q_help, placeholder=q_placeholder)
                                                 
-                                                if st.button("✅ Submit & Generate Acceptance Form", key=f"sub_acc_{threat_key}", type="primary"):
+                                                if st.button("? Submit & Generate Acceptance Form", key=f"sub_acc_{threat_key}", type="primary"):
                                                     # Collect answers - MUST iterate with same indices as rendering
                                                     answers = {}
                                                     for section_idx, section in enumerate(q.get('sections', [])):
@@ -3299,7 +3300,7 @@ def render_risk_assessment_page(api_key):
                                                                 answers[q_id] = val
                                                     
                                                     # Generate acceptance form
-                                                    with st.spinner("🤖 Generating acceptance form..."):
+                                                    with st.spinner("?? Generating acceptance form..."):
                                                         from phase2_risk_resolver.agents.agent_4_acceptance_form import generate_acceptance_form
                                                         ctx = {'risk_id': actual_risk_id, 'asset_name': selected_asset.get('asset_name'), 'threat_name': threat_name, 'inherent_risk_rating': threat_data.get('risk_rating', 0), 'residual_risk_rating': threat_data.get('residual_risk', 0)}
                                                         form = generate_acceptance_form(risk_context=ctx, questionnaire_answers=answers, questionnaire_structure=q, api_key=api_key)
@@ -3314,7 +3315,7 @@ def render_risk_assessment_page(api_key):
                                                     form = st.session_state[f"acceptance_form_{threat_key}"]
                                                     answers = st.session_state.get(f"acceptance_answers_{threat_key}", {})
                                                     
-                                                    # 🔧 FIX: Convert malformed selected_controls FIRST (before HTML cleaning)
+                                                    # ?? FIX: Convert malformed selected_controls FIRST (before HTML cleaning)
                                                     if 'compensating_controls' in form and isinstance(form['compensating_controls'], dict):
                                                         sc = form['compensating_controls'].get('selected_controls')
                                                         # Check if it's a dict with numeric keys {0: {...}, 1: {...}}
@@ -3328,7 +3329,7 @@ def render_risk_assessment_page(api_key):
                                                             except:
                                                                 pass
                                                     
-                                                    # 🔧 FIX: Clean HTML entities from entire form recursively
+                                                    # ?? FIX: Clean HTML entities from entire form recursively
                                                     import html
                                                     def clean_html_recursive(obj):
                                                         if isinstance(obj, str):
@@ -3342,19 +3343,19 @@ def render_risk_assessment_page(api_key):
                                                     form = clean_html_recursive(form)
                                                     
                                                     if 'error' not in form:
-                                                        st.success("✅ Acceptance Form Generated!")
+                                                        st.success("? Acceptance Form Generated!")
                                                         
-                                                        # 🆕 100% DYNAMIC FORM DISPLAY - No hardcoded sections
-                                                        emoji_map = {'metadata': '📋', 'risk_context': '⚠️', 'engagement_project': '🏢', 
-                                                                     'compensating_controls': '🛡️', 'justification': '📝', 
-                                                                     'approvals': '✅', 'signoff': '✍️'}
+                                                        # ?? 100% DYNAMIC FORM DISPLAY - No hardcoded sections
+                                                        emoji_map = {'metadata': '??', 'risk_context': '??', 'engagement_project': '??', 
+                                                                     'compensating_controls': '???', 'justification': '??', 
+                                                                     'approvals': '?', 'signoff': '??'}
                                                         
-                                                        # 📋 RISK ACCEPTANCE FORM HEADING
-                                                        st.markdown("### 📋 Risk Acceptance Form")
+                                                        # ?? RISK ACCEPTANCE FORM HEADING
+                                                        st.markdown("### ?? Risk Acceptance Form")
                                                         st.markdown("---")
                                                         
                                                         for key, value in form.items():
-                                                            emoji = emoji_map.get(key, '📌')
+                                                            emoji = emoji_map.get(key, '??')
                                                             section_title = key.replace('_', ' ').title()
                                                             
                                                             # Display metadata fields without section heading
@@ -3366,7 +3367,7 @@ def render_risk_assessment_page(api_key):
                                                             
                                                             st.markdown(f"### {emoji} {section_title}")
                                                             
-                                                            # 🆕 100% DYNAMIC: Parse any stringified data recursively
+                                                            # ?? 100% DYNAMIC: Parse any stringified data recursively
                                                             def parse_value(val):
                                                                 """Recursively parse stringified JSON/dicts"""
                                                                 if isinstance(val, str) and (val.strip().startswith('{') or val.strip().startswith('[')):
@@ -3394,7 +3395,7 @@ def render_risk_assessment_page(api_key):
                                                                     # Nested dict - show as grouped section
                                                                     st.markdown(f"**{field_name}:**")
                                                                     for dk, dv in v.items():
-                                                                        st.write(f"  • **{dk.replace('_', ' ').title()}:** {dv}")
+                                                                        st.write(f"  � **{dk.replace('_', ' ').title()}:** {dv}")
                                                                 elif isinstance(v, list) and v and isinstance(v[0], dict):
                                                                     # List of dicts - show in expanders
                                                                     st.markdown(f"**{field_name}:**")
@@ -3402,7 +3403,7 @@ def render_risk_assessment_page(api_key):
                                                                         label = item.get('name') or item.get('label') or item.get('description') or item.get('gap_description') or f"Item {idx}"
                                                                         if len(str(label)) > 50:
                                                                             label = str(label)[:50] + "..."
-                                                                        with st.expander(f"📋 {label}", expanded=False):
+                                                                        with st.expander(f"?? {label}", expanded=False):
                                                                             for ik, iv in item.items():
                                                                                 st.write(f"**{ik.replace('_', ' ').title()}:** {iv}")
                                                                 elif isinstance(v, list):
@@ -3426,11 +3427,11 @@ def render_risk_assessment_page(api_key):
                                                             else:
                                                                 st.write(value)
                                                         
-                                                        with st.expander("📄 Raw JSON"):
+                                                        with st.expander("?? Raw JSON"):
                                                             st.json(form)
                                                         
-                                                        if st.button(f"💾 Save to Risk Register", key=f"save_acc_{threat_key}", type="primary"):
-                                                            with st.spinner("💾 Saving..."):
+                                                        if st.button(f"?? Save to Risk Register", key=f"save_acc_{threat_key}", type="primary"):
+                                                            with st.spinner("?? Saving..."):
                                                                 try:
                                                                     from phase2_risk_resolver.database.save_to_register import save_assessment_to_risk_register
                                                                     
@@ -3443,7 +3444,7 @@ def render_risk_assessment_page(api_key):
                                                                             break
                                                                     
                                                                     if not current_threat_data:
-                                                                        st.error(f"❌ Could not find threat data for: {threat_name}")
+                                                                        st.error(f"? Could not find threat data for: {threat_name}")
                                                                     else:
                                                                         # Create filtered agent_2_results with only current threat
                                                                         filtered_agent_2 = {
@@ -3460,20 +3461,20 @@ def render_risk_assessment_page(api_key):
                                                                         )
                                                                         
                                                                         if risk_ids and len(risk_ids) > 0:
-                                                                            st.success(f"✅ Saved! Risk ID: {risk_ids[0]}")
+                                                                            st.success(f"? Saved! Risk ID: {risk_ids[0]}")
                                                                             st.session_state.current_decision_index += 1
                                                                             st.rerun()
                                                                         else:
-                                                                            st.error("❌ Save returned no Risk IDs")
+                                                                            st.error("? Save returned no Risk IDs")
                                                                 except Exception as e:
-                                                                    st.error(f"❌ Save failed: {str(e)}")
+                                                                    st.error(f"? Save failed: {str(e)}")
                                                                     import traceback
                                                                     with st.expander("Debug"):
                                                                         st.code(traceback.format_exc())
                                                     else:
-                                                        st.error(f"❌ Error: {form.get('error')}")
+                                                        st.error(f"? Error: {form.get('error')}")
                                             else:
-                                                st.error(f"❌ {q.get('error')}")
+                                                st.error(f"? {q.get('error')}")
                                         
                                         # TRANSFER WORKFLOW
                                         elif decision == "TRANSFER":
@@ -3481,13 +3482,13 @@ def render_risk_assessment_page(api_key):
                                             transfer_q_key = f"transfer_questionnaire_{threat_key}"
                                             
                                             if transfer_q_key not in st.session_state:
-                                                st.markdown("#### 📋 Step 1: Generate Transfer Questionnaire")
+                                                st.markdown("#### ?? Step 1: Generate Transfer Questionnaire")
                                                 
-                                                with st.spinner("🤖 Generating transfer questionnaire..."):
-                                                    # 🔧 FIX: Get actual Risk ID from database
+                                                with st.spinner("?? Generating transfer questionnaire..."):
+                                                    # ?? FIX: Get actual Risk ID from database
                                                     import sqlite3
                                                     try:
-                                                        conn = sqlite3.connect('database/risk_register.db')
+                                                        conn = get_database_connection()
                                                         cursor = conn.cursor()
                                                         cursor.execute("SELECT MAX(CAST(SUBSTR(risk_id, 5) AS INTEGER)) FROM risks WHERE risk_id LIKE 'RSK-%'")
                                                         result = cursor.fetchone()
@@ -3522,17 +3523,17 @@ def render_risk_assessment_page(api_key):
                                             actual_risk_id = st.session_state.get(f"{transfer_q_key}_risk_id", f"RSK-{threat_index:03d}")
                                             
                                             if 'error' in transfer_questionnaire:
-                                                st.error(f"❌ Error: {transfer_questionnaire.get('error')}")
+                                                st.error(f"? Error: {transfer_questionnaire.get('error')}")
                                             else:
-                                                # 🔧 FIX: Handle both 'sections' and 'questionnaire' keys
+                                                # ?? FIX: Handle both 'sections' and 'questionnaire' keys
                                                 sections = transfer_questionnaire.get('sections', transfer_questionnaire.get('questionnaire', []))
                                                 if not sections:
-                                                    st.error("❌ No sections found in questionnaire")
+                                                    st.error("? No sections found in questionnaire")
                                                 else:
-                                                    st.markdown("#### 📋 Risk Transfer Questionnaire")
+                                                    st.markdown("#### ?? Risk Transfer Questionnaire")
                                                 
                                                 # Display AI-known risk context (read-only)
-                                                st.markdown("##### 📊 Risk Context (Auto-filled by AI)")
+                                                st.markdown("##### ?? Risk Context (Auto-filled by AI)")
                                                 risk_ctx = transfer_questionnaire.get('risk_context', {})
                                                 
                                                 import html
@@ -3554,17 +3555,17 @@ def render_risk_assessment_page(api_key):
                                                 st.markdown("---")
                                                 
                                                 # EMAIL OPTION
-                                                st.info("💡 **Choose how to complete the transfer questionnaire:**")
+                                                st.info("?? **Choose how to complete the transfer questionnaire:**")
                                                 col_opt1, col_opt2 = st.columns(2)
                                                 with col_opt1:
-                                                    st.markdown("### 📧 Send via Email")
+                                                    st.markdown("### ?? Send via Email")
                                                     st.caption("Send to third party")
                                                     email_transfer = st.text_input("Email", placeholder="vendor@company.com", key=f"email_tr_{threat_key}")
-                                                    if st.button("📧 Send", key=f"send_tr_{threat_key}", type="primary", disabled=not email_transfer):
-                                                        with st.spinner("📧 Sending..."):
+                                                    if st.button("?? Send", key=f"send_tr_{threat_key}", type="primary", disabled=not email_transfer):
+                                                        with st.spinner("?? Sending..."):
                                                             try:
                                                                 from email_sender import send_questionnaire_email
-                                                                # 🆕 Prepare agent results for storage
+                                                                # ?? Prepare agent results for storage
                                                                 # Get ORIGINAL Agent 2 threat data
                                                                 agent_2_threats = st.session_state.get('risk_result', {}).get('threat_risk_quantification', [])
                                                                 original_threat = next((t for t in agent_2_threats if t.get('threat') == threat_name), threat_data)
@@ -3584,28 +3585,28 @@ def render_risk_assessment_page(api_key):
                                                                     agent_results=agent_results
                                                                 )
                                                                 if result and result.get('success'):
-                                                                    st.success(f"✅ Email sent to {email_transfer}!")
-                                                                    st.info(f"📋 Token: {result['token']}")
+                                                                    st.success(f"? Email sent to {email_transfer}!")
+                                                                    st.info(f"?? Token: {result['token']}")
                                                                     st.caption("Moving to next threat...")
                                                                     st.session_state.current_decision_index += 1
                                                                     time.sleep(1)
                                                                     st.rerun()
                                                                 else:
-                                                                    st.error(f"❌ Failed to send email")
+                                                                    st.error(f"? Failed to send email")
                                                             except Exception as e:
-                                                                st.error(f"❌ Error: {str(e)}")
+                                                                st.error(f"? Error: {str(e)}")
                                                 with col_opt2:
-                                                    st.markdown("### ✍️ Fill Manually")
-                                                    st.info("👇 Scroll down")
+                                                    st.markdown("### ?? Fill Manually")
+                                                    st.info("?? Scroll down")
                                                 st.markdown("---")
                                                 
-                                                st.markdown("##### 📝 Transfer Details (Please Fill)")
+                                                st.markdown("##### ?? Transfer Details (Please Fill)")
                                                 st.caption("Provide the following transfer-specific information:")
                                                 
                                                 # Render questionnaire (NO FORM - same pattern as ACCEPT)
                                                 transfer_answers = {}
                                                 
-                                                # 🔧 FIX: Use sections variable from above
+                                                # ?? FIX: Use sections variable from above
                                                 for section_idx, section in enumerate(sections):
                                                     section_title = section.get('title') or section.get('section_title', 'Section')
                                                     st.markdown(f"##### {section_title}")
@@ -3632,7 +3633,7 @@ def render_risk_assessment_page(api_key):
                                                         widget_key = f"transfer_{threat_key}_s{section_idx}_q{q_idx}_{q_id}"
                                                         default_value = st.session_state.get(widget_key, '')
                                                         
-                                                        # ✅ FIX: Replace placeholder with actual Risk ID in default value
+                                                        # ? FIX: Replace placeholder with actual Risk ID in default value
                                                         if not default_value or default_value == '':
                                                             default_value = question.get('value', '')
                                                         if 'AI_GENERATED_RISK_ID' in str(default_value) or ('risk' in q_text.lower() and 'id' in q_text.lower() and default_value == ''):
@@ -3645,7 +3646,7 @@ def render_risk_assessment_page(api_key):
                                                         # Handle display-only fields (AI pre-filled)
                                                         if q_type == 'display':
                                                             display_value = question.get('value', '')
-                                                            # ✅ FIX: Replace placeholder in display fields too
+                                                            # ? FIX: Replace placeholder in display fields too
                                                             if 'AI_GENERATED_RISK_ID' in str(display_value):
                                                                 display_value = actual_risk_id
                                                             st.info(f"**{q_text}**\n\n{display_value}")
@@ -3681,16 +3682,16 @@ def render_risk_assessment_page(api_key):
                                                             transfer_answers[q_id] = val
                                                 
                                                 # Submit button
-                                                if st.button(f"✅ Submit & Generate Transfer Form", key=f"submit_transfer_{threat_key}", type="primary", use_container_width=True):
+                                                if st.button(f"? Submit & Generate Transfer Form", key=f"submit_transfer_{threat_key}", type="primary", use_container_width=True):
                                                     # Read values from session_state
                                                     transfer_answers_final = {}
-                                                    # 🔧 FIX: Use sections variable and handle display fields
+                                                    # ?? FIX: Use sections variable and handle display fields
                                                     for section_idx, section in enumerate(sections):
                                                         for q_idx, question in enumerate(section.get('questions', section.get('fields', []))):
                                                             q_id = question.get('id', question.get('question_id', question.get('field_id', question.get('field_name', 'Q'))))
                                                             q_type = question.get('type', question.get('question_type', 'text'))
                                                             
-                                                            # ✅ FIX: Handle display fields - get value from question, not session_state
+                                                            # ? FIX: Handle display fields - get value from question, not session_state
                                                             if q_type == 'display':
                                                                 transfer_answers_final[q_id] = question.get('value', '')
                                                             else:
@@ -3703,8 +3704,8 @@ def render_risk_assessment_page(api_key):
                                                             transfer_answers_final[key] = value.strftime('%Y-%m-%d')
                                                     
                                                     # Generate transfer form with retry
-                                                    with st.spinner("🤖 Generating transfer form..."):
-                                                        # ✅ FIX: Use actual_risk_id from session state
+                                                    with st.spinner("?? Generating transfer form..."):
+                                                        # ? FIX: Use actual_risk_id from session state
                                                         risk_context = {
                                                             'risk_id': actual_risk_id,
                                                             'asset_name': selected_asset.get('asset_name', 'Unknown'),
@@ -3723,14 +3724,14 @@ def render_risk_assessment_page(api_key):
                                                         )
                                                         
                                                         if 'error' not in transfer_form:
-                                                            # ✅ STORE FORM IN SESSION STATE
+                                                            # ? STORE FORM IN SESSION STATE
                                                             st.session_state[f"transfer_form_{threat_key}"] = transfer_form
-                                                            st.success("✅ Transfer Form Generated!")
+                                                            st.success("? Transfer Form Generated!")
                                                             st.rerun()
                                                         else:
-                                                            st.error(f"❌ Error: {transfer_form.get('error')}")
+                                                            st.error(f"? Error: {transfer_form.get('error')}")
                                                 
-                                                # ✅ FIX: Display form OUTSIDE submit button block (like ACCEPT workflow)
+                                                # ? FIX: Display form OUTSIDE submit button block (like ACCEPT workflow)
                                                 if f"transfer_form_{threat_key}" in st.session_state:
                                                     transfer_form = st.session_state[f"transfer_form_{threat_key}"]
                                                     
@@ -3751,10 +3752,10 @@ def render_risk_assessment_page(api_key):
                                                     form = clean_html_recursive(form)
                                                     
                                                     st.markdown("---")
-                                                    st.success("✅ Transfer Form Generated!")
+                                                    st.success("? Transfer Form Generated!")
                                                     
                                                     # Display form heading
-                                                    st.markdown("### 📋 Risk Transfer Form")
+                                                    st.markdown("### ?? Risk Transfer Form")
                                                     
                                                     # Display risk context summary (asset & threat)
                                                     if 'risk_context' in form and isinstance(form['risk_context'], dict):
@@ -3771,12 +3772,12 @@ def render_risk_assessment_page(api_key):
                                                     
                                                     # Display all sections
                                                     section_emoji_map = {
-                                                        'risk identification': '⚠️',
-                                                        'risk rating': '📊',
-                                                        'risk transfer': '🔄',
-                                                        'transfer management': '👥',
-                                                        'ownership': '👥',
-                                                        'review': '👥'
+                                                        'risk identification': '??',
+                                                        'risk rating': '??',
+                                                        'risk transfer': '??',
+                                                        'transfer management': '??',
+                                                        'ownership': '??',
+                                                        'review': '??'
                                                     }
                                                     
                                                     if 'sections' in form and isinstance(form['sections'], list):
@@ -3785,7 +3786,7 @@ def render_risk_assessment_page(api_key):
                                                                 section_title = section.get('title', 'Section')
                                                                 
                                                                 # Get emoji based on keywords in title
-                                                                emoji = '📌'
+                                                                emoji = '??'
                                                                 section_lower = section_title.lower()
                                                                 for key, em in section_emoji_map.items():
                                                                     if key in section_lower:
@@ -3806,14 +3807,14 @@ def render_risk_assessment_page(api_key):
                                                     # Generation Date at bottom
                                                     st.markdown("---")
                                                     if transfer_form.get('generation_date'):
-                                                        st.caption(f"📅 Generated: {transfer_form['generation_date']}")
+                                                        st.caption(f"?? Generated: {transfer_form['generation_date']}")
                                                     
-                                                    with st.expander("📄 View Raw JSON", expanded=False):
+                                                    with st.expander("?? View Raw JSON", expanded=False):
                                                         st.json(transfer_form)
                                                     
                                                     # Save to risk register
-                                                    if st.button(f"💾 Save Transfer Form to Risk Register", key=f"save_transfer_{threat_key}", type="primary", use_container_width=True):
-                                                        with st.spinner("💾 Saving..."):
+                                                    if st.button(f"?? Save Transfer Form to Risk Register", key=f"save_transfer_{threat_key}", type="primary", use_container_width=True):
+                                                        with st.spinner("?? Saving..."):
                                                             try:
                                                                 from phase2_risk_resolver.database.save_to_register import save_assessment_to_risk_register
                                                                 
@@ -3826,7 +3827,7 @@ def render_risk_assessment_page(api_key):
                                                                         break
                                                                 
                                                                 if not current_threat_data:
-                                                                    st.error(f"❌ Could not find threat data for: {threat_name}")
+                                                                    st.error(f"? Could not find threat data for: {threat_name}")
                                                                 else:
                                                                     # Create filtered agent_2_results with only current threat
                                                                     filtered_agent_2 = {
@@ -3834,8 +3835,8 @@ def render_risk_assessment_page(api_key):
                                                                         'threat_risk_quantification': [current_threat_data]
                                                                     }
                                                                     
-                                                                    # ✅ DEBUG: Show what we're saving
-                                                                    with st.expander("🔍 Debug: Data being saved", expanded=False):
+                                                                    # ? DEBUG: Show what we're saving
+                                                                    with st.expander("?? Debug: Data being saved", expanded=False):
                                                                         st.write("Threat name:", threat_name)
                                                                         st.write("Transfer form keys:", list(transfer_form.keys()) if isinstance(transfer_form, dict) else "Not a dict")
                                                                         st.json({'management_decision': 'TRANSFER', 'transfer_form': transfer_form})
@@ -3849,14 +3850,14 @@ def render_risk_assessment_page(api_key):
                                                                     )
                                                                     
                                                                     if risk_ids and len(risk_ids) > 0:
-                                                                        st.success(f"✅ Saved! Risk ID: {risk_ids[0]}")
+                                                                        st.success(f"? Saved! Risk ID: {risk_ids[0]}")
                                                                         st.session_state.current_decision_index += 1
                                                                         st.rerun()
                                                                     else:
-                                                                        st.error("❌ Save returned no Risk IDs")
-                                                                        st.warning("⚠️ Check the console/terminal for detailed error messages")
+                                                                        st.error("? Save returned no Risk IDs")
+                                                                        st.warning("?? Check the console/terminal for detailed error messages")
                                                             except Exception as e:
-                                                                st.error(f"❌ Save failed: {str(e)}")
+                                                                st.error(f"? Save failed: {str(e)}")
                                                                 import traceback
                                                                 with st.expander("Debug"):
                                                                     st.code(traceback.format_exc())
@@ -3869,13 +3870,13 @@ def render_risk_assessment_page(api_key):
                                             terminate_q_key = f"terminate_questionnaire_{threat_key}"
                                             
                                             if terminate_q_key not in st.session_state:
-                                                st.markdown("#### 📋 Step 1: Generate Termination Questionnaire")
+                                                st.markdown("#### ?? Step 1: Generate Termination Questionnaire")
                                                 
-                                                with st.spinner("🤖 Generating termination questionnaire..."):
+                                                with st.spinner("?? Generating termination questionnaire..."):
                                                     # Get actual Risk ID from database
                                                     import sqlite3
                                                     try:
-                                                        conn = sqlite3.connect('database/risk_register.db')
+                                                        conn = get_database_connection()
                                                         cursor = conn.cursor()
                                                         cursor.execute("SELECT MAX(CAST(SUBSTR(risk_id, 5) AS INTEGER)) FROM risks WHERE risk_id LIKE 'RSK-%'")
                                                         result = cursor.fetchone()
@@ -3910,12 +3911,12 @@ def render_risk_assessment_page(api_key):
                                             actual_risk_id = st.session_state.get(f"{terminate_q_key}_risk_id", f"RSK-{threat_index:03d}")
                                             
                                             if 'error' in terminate_questionnaire:
-                                                st.error(f"❌ Error: {terminate_questionnaire.get('error')}")
+                                                st.error(f"? Error: {terminate_questionnaire.get('error')}")
                                             else:
-                                                st.markdown("### 📋 Risk Termination Questionnaire")
+                                                st.markdown("### ?? Risk Termination Questionnaire")
                                                 
                                                 # Display AI-known risk context (read-only)
-                                                st.markdown("##### 📊 Risk Context (Auto-filled by AI)")
+                                                st.markdown("##### ?? Risk Context (Auto-filled by AI)")
                                                 risk_ctx = terminate_questionnaire.get('risk_context', {})
                                                 
                                                 col1, col2 = st.columns(2)
@@ -3933,14 +3934,14 @@ def render_risk_assessment_page(api_key):
                                                 
                                                 st.markdown("---")
                                                 # EMAIL OPTION
-                                                st.info("💡 **Choose how to complete the termination questionnaire:**")
+                                                st.info("?? **Choose how to complete the termination questionnaire:**")
                                                 col_opt1, col_opt2 = st.columns(2)
                                                 with col_opt1:
-                                                    st.markdown("### 📧 Send via Email")
+                                                    st.markdown("### ?? Send via Email")
                                                     st.caption("Send to stakeholder")
                                                     email_terminate = st.text_input("Email", placeholder="owner@company.com", key=f"email_tm_{threat_key}")
-                                                    if st.button("📧 Send", key=f"send_tm_{threat_key}", type="primary", disabled=not email_terminate):
-                                                        with st.spinner("📧 Sending..."):
+                                                    if st.button("?? Send", key=f"send_tm_{threat_key}", type="primary", disabled=not email_terminate):
+                                                        with st.spinner("?? Sending..."):
                                                             try:
                                                                 from email_sender import send_questionnaire_email
                                                                 # Get ORIGINAL Agent 2 threat data
@@ -3962,22 +3963,22 @@ def render_risk_assessment_page(api_key):
                                                                     agent_results=agent_results
                                                                 )
                                                                 if result and result.get('success'):
-                                                                    st.success(f"✅ Email sent to {email_terminate}!")
-                                                                    st.info(f"📋 Token: {result['token']}")
+                                                                    st.success(f"? Email sent to {email_terminate}!")
+                                                                    st.info(f"?? Token: {result['token']}")
                                                                     st.caption("Moving to next threat...")
                                                                     st.session_state.current_decision_index += 1
                                                                     time.sleep(1)
                                                                     st.rerun()
                                                                 else:
-                                                                    st.error(f"❌ Failed to send email")
+                                                                    st.error(f"? Failed to send email")
                                                             except Exception as e:
-                                                                st.error(f"❌ Error: {str(e)}")
+                                                                st.error(f"? Error: {str(e)}")
                                                 with col_opt2:
-                                                    st.markdown("### ✍️ Fill Manually")
-                                                    st.info("👇 Scroll down")
+                                                    st.markdown("### ?? Fill Manually")
+                                                    st.info("?? Scroll down")
                                                 st.markdown("---")
                                                 
-                                                st.markdown("##### 📝 Termination Details (Please Fill)")
+                                                st.markdown("##### ?? Termination Details (Please Fill)")
                                                 st.caption("Provide the following termination-specific information:")
                                                 
                                                 # Render questionnaire
@@ -4008,7 +4009,7 @@ def render_risk_assessment_page(api_key):
                                                         if q_required:
                                                             q_text = f"{q_text} *"
                                                         
-                                                        # 🆕 Display-only fields (AI pre-filled)
+                                                        # ?? Display-only fields (AI pre-filled)
                                                         if q_type == 'display':
                                                             pre_filled_value = question.get('value', question.get('default_value', 'N/A'))
                                                             st.info(f"**{q_text}:** {pre_filled_value}")
@@ -4041,7 +4042,7 @@ def render_risk_assessment_page(api_key):
                                                             terminate_answers[q_id] = val
                                                 
                                                 # Submit button
-                                                if st.button(f"✅ Submit & Generate Termination Form", key=f"submit_terminate_{threat_key}", type="primary", use_container_width=True):
+                                                if st.button(f"? Submit & Generate Termination Form", key=f"submit_terminate_{threat_key}", type="primary", use_container_width=True):
                                                     terminate_answers_final = {}
                                                     for section_idx, section in enumerate(terminate_questionnaire.get('sections', [])):
                                                         for q_idx, question in enumerate(section.get('questions', section.get('fields', []))):
@@ -4055,7 +4056,7 @@ def render_risk_assessment_page(api_key):
                                                             terminate_answers_final[key] = value.strftime('%Y-%m-%d')
                                                     
                                                     # Generate termination form with retry
-                                                    with st.spinner("🤖 Generating termination form..."):
+                                                    with st.spinner("?? Generating termination form..."):
                                                         risk_context = {
                                                             'risk_id': actual_risk_id,
                                                             'asset_name': selected_asset.get('asset_name', 'Unknown'),
@@ -4075,15 +4076,15 @@ def render_risk_assessment_page(api_key):
                                                         )
                                                         
                                                         if 'error' not in terminate_form:
-                                                            # ✅ STORE FORM IN SESSION STATE
+                                                            # ? STORE FORM IN SESSION STATE
                                                             st.session_state[f"terminate_form_{threat_key}"] = terminate_form
-                                                            st.success("✅ Termination Form Generated!")
+                                                            st.success("? Termination Form Generated!")
                                                             st.rerun()
                                                             
                                                         else:
-                                                            st.error(f"❌ Error: {terminate_form.get('error')}")
+                                                            st.error(f"? Error: {terminate_form.get('error')}")
                                                 
-                                                # ✅ FIX: Display form OUTSIDE submit button block (like ACCEPT and TRANSFER workflows)
+                                                # ? FIX: Display form OUTSIDE submit button block (like ACCEPT and TRANSFER workflows)
                                                 if f"terminate_form_{threat_key}" in st.session_state:
                                                     terminate_form = st.session_state[f"terminate_form_{threat_key}"]
                                                     
@@ -4104,28 +4105,28 @@ def render_risk_assessment_page(api_key):
                                                     form = clean_html_recursive(form)
                                                     
                                                     st.markdown("---")
-                                                    st.success("✅ Termination Form Generated!")
+                                                    st.success("? Termination Form Generated!")
                                                     
                                                     # Display form heading
-                                                    st.markdown("### 📋 Risk Termination Form")
+                                                    st.markdown("### ?? Risk Termination Form")
                                                     st.markdown("")  # Spacing
                                                     
-                                                    # 🆕 100% DYNAMIC - Display sections with smart emoji selection
+                                                    # ?? 100% DYNAMIC - Display sections with smart emoji selection
                                                     if 'sections' in form and isinstance(form['sections'], list):
                                                         for section in form['sections']:
                                                             if isinstance(section, dict):
                                                                 section_title = section.get('title', 'Section')
                                                                 # Smart emoji based on keywords
-                                                                emoji = '📌'
+                                                                emoji = '??'
                                                                 title_lower = section_title.lower()
                                                                 if 'information' in title_lower or 'identification' in title_lower:
-                                                                    emoji = '📊'
+                                                                    emoji = '??'
                                                                 elif 'termination' in title_lower or 'details' in title_lower:
-                                                                    emoji = '🚫'
+                                                                    emoji = '??'
                                                                 elif 'approval' in title_lower or 'action' in title_lower:
-                                                                    emoji = '✅'
+                                                                    emoji = '?'
                                                                 elif 'status' in title_lower or 'closure' in title_lower:
-                                                                    emoji = '🔒'
+                                                                    emoji = '??'
                                                                 
                                                                 st.markdown(f"### {emoji} {section_title}")
                                                                 
@@ -4141,14 +4142,14 @@ def render_risk_assessment_page(api_key):
                                                     # Generation Date at bottom
                                                     st.markdown("---")
                                                     if terminate_form.get('generation_date'):
-                                                        st.caption(f"📅 Generated: {terminate_form['generation_date']}")
+                                                        st.caption(f"?? Generated: {terminate_form['generation_date']}")
                                                     
-                                                    with st.expander("📄 View Raw JSON", expanded=False):
+                                                    with st.expander("?? View Raw JSON", expanded=False):
                                                         st.json(terminate_form)
                                                     
                                                     # Save to risk register
-                                                    if st.button(f"💾 Save Termination Form to Risk Register", key=f"save_terminate_{threat_key}", type="primary", use_container_width=True):
-                                                        with st.spinner("💾 Saving..."):
+                                                    if st.button(f"?? Save Termination Form to Risk Register", key=f"save_terminate_{threat_key}", type="primary", use_container_width=True):
+                                                        with st.spinner("?? Saving..."):
                                                             try:
                                                                 from phase2_risk_resolver.database.save_to_register import save_assessment_to_risk_register
                                                                 
@@ -4161,7 +4162,7 @@ def render_risk_assessment_page(api_key):
                                                                         break
                                                                 
                                                                 if not current_threat_data:
-                                                                    st.error(f"❌ Could not find threat data for: {threat_name}")
+                                                                    st.error(f"? Could not find threat data for: {threat_name}")
                                                                 else:
                                                                     # Create filtered agent_2_results with only current threat
                                                                     filtered_agent_2 = {
@@ -4178,13 +4179,13 @@ def render_risk_assessment_page(api_key):
                                                                     )
                                                                     
                                                                     if risk_ids and len(risk_ids) > 0:
-                                                                        st.success(f"✅ Saved! Risk ID: {risk_ids[0]}")
+                                                                        st.success(f"? Saved! Risk ID: {risk_ids[0]}")
                                                                         st.session_state.current_decision_index += 1
                                                                         st.rerun()
                                                                     else:
-                                                                        st.error("❌ Save returned no Risk IDs")
+                                                                        st.error("? Save returned no Risk IDs")
                                                             except Exception as e:
-                                                                st.error(f"❌ Save failed: {str(e)}")
+                                                                st.error(f"? Save failed: {str(e)}")
                                                                 import traceback
                                                                 with st.expander("Debug"):
                                                                     st.code(traceback.format_exc())
@@ -4193,7 +4194,7 @@ def render_risk_assessment_page(api_key):
                             
                             # Download button
                             st.download_button(
-                                label="📥 Download Management Decisions (JSON)",
+                                label="?? Download Management Decisions (JSON)",
                                 data=json.dumps(result, indent=2),
                                 file_name=f"agent4_decisions_{selected_asset['asset_name'].replace(' ', '_')}.json",
                                 mime="application/json",
@@ -4211,12 +4212,12 @@ def render_risk_assessment_page(api_key):
                             if 'treatment_decision' not in st.session_state:
                                 # User hasn't made a decision yet - show summary first!
                                 
-                                st.success("✅ RTP Questionnaire Generated!")
+                                st.success("? RTP Questionnaire Generated!")
                                 
                                 # Display metadata
                                 if 'metadata' in result:
                                     metadata = result['metadata']
-                                    st.markdown("### 🎯 Risk Treatment Decision Required")
+                                    st.markdown("### ?? Risk Treatment Decision Required")
                                     
                                     col1, col2, col3 = st.columns(3)
                                     with col1:
@@ -4311,8 +4312,8 @@ def render_risk_assessment_page(api_key):
                                 # ============================================================
                                 
                                 st.markdown("---")
-                                st.markdown("## 🎯 Management Decision Required")
-                                st.info("ℹ️ **Review the risk information below and select your treatment decision**")
+                                st.markdown("## ?? Management Decision Required")
+                                st.info("?? **Review the risk information below and select your treatment decision**")
                                 
                                 # Current risk status
                                 col1, col2, col3, col4 = st.columns(4)
@@ -4349,23 +4350,23 @@ def render_risk_assessment_page(api_key):
                                     st.metric("Control Gaps", len(control_gaps))
                                 
                                 # Control gaps identified
-                                st.markdown("### ⚠️ Control Gaps Identified")
+                                st.markdown("### ?? Control Gaps Identified")
                                 if control_gaps:
                                     for idx, gap in enumerate(control_gaps, 1):
                                         if isinstance(gap, dict):
-                                            st.warning(f"⚠️ **Gap {idx}:** {gap.get('gap_description', 'Unknown')}")
+                                            st.warning(f"?? **Gap {idx}:** {gap.get('gap_description', 'Unknown')}")
                                         else:
-                                            st.warning(f"⚠️ **Gap {idx}:** {gap}")
+                                            st.warning(f"?? **Gap {idx}:** {gap}")
                                 else:
                                     st.info("No control gaps found")
                                 
                                 # Decision options info
-                                st.markdown("### 🎯 Your Decision Options")
+                                st.markdown("### ?? Your Decision Options")
                                 col1, col2 = st.columns(2)
                                 
                                 with col1:
                                     st.info("""
-**🔧 TREAT the Risk:**
+**?? TREAT the Risk:**
 - Implement controls to reduce risk
 - AI will generate treatment plan
 - Select from recommended controls
@@ -4374,7 +4375,7 @@ def render_risk_assessment_page(api_key):
                                 
                                 with col2:
                                     st.warning(f"""
-**✅ ACCEPT the Risk:**
+**? ACCEPT the Risk:**
 - Risk remains at **{risk_rating}/5**
 - Requires management approval
 - Must provide justification
@@ -4439,7 +4440,7 @@ def render_risk_assessment_page(api_key):
 
 
                                 if 'discovery_summary' in result:
-                                    with st.expander("🔍 AI Discovery Summary", expanded=False):
+                                    with st.expander("?? AI Discovery Summary", expanded=False):
                                         discovery = result['discovery_summary']
                                         
                                         col1, col2 = st.columns(2)
@@ -4466,7 +4467,7 @@ def render_risk_assessment_page(api_key):
                                 # ============================================================
                                 
                                 st.markdown("---")
-                                st.markdown("## 🎯 What is your treatment decision?")
+                                st.markdown("## ?? What is your treatment decision?")
                                 st.info("Based on the information above, select your treatment decision:")
                                 
                                 # Get options from decision question
@@ -4494,19 +4495,19 @@ def render_risk_assessment_page(api_key):
                                             
                                             # Determine emoji
                                             if value == 'TREAT':
-                                                emoji = "🔧"
+                                                emoji = "??"
                                                 expanded = True  # TREAT expanded by default
                                             elif value == 'ACCEPT':
-                                                emoji = "✅"
+                                                emoji = "?"
                                                 expanded = False
                                             elif value == 'TRANSFER':
-                                                emoji = "🚫"
+                                                emoji = "??"
                                                 expanded = False
                                             elif value == 'TERMINATE':
-                                                emoji = "⛔"
+                                                emoji = "?"
                                                 expanded = False
                                             else:
-                                                emoji = "❓"
+                                                emoji = "?"
                                                 expanded = False
                                             
                                             # Create expander with full details
@@ -4533,11 +4534,11 @@ def render_risk_assessment_page(api_key):
                                                 col1, col2 = st.columns(2)
                                                 with col1:
                                                     if cost:
-                                                        st.markdown(f"**💰 Estimated Cost:**")
+                                                        st.markdown(f"**?? Estimated Cost:**")
                                                         st.code(cost)
                                                 with col2:
                                                     if timeline:
-                                                        st.markdown(f"**⏱️ Timeline:**")
+                                                        st.markdown(f"**?? Timeline:**")
                                                         st.code(timeline)
                                                 
                                                 # Approval/Monitoring requirements
@@ -4545,13 +4546,13 @@ def render_risk_assessment_page(api_key):
                                                 monitoring = opt.get('monitoring_required', '')
                                                 
                                                 if approval:
-                                                    st.caption(f"✅ {approval}")
+                                                    st.caption(f"? {approval}")
                                                 if monitoring:
-                                                    st.caption(f"📊 {monitoring}")
+                                                    st.caption(f"?? {monitoring}")
                                                 
                                                 # Selection button
                                                 st.markdown("---")
-                                                if st.button(f"✅ Select {value}", 
+                                                if st.button(f"? Select {value}", 
                                                            key=f"decision_{value}",
                                                            type="primary" if value == "TREAT" else "secondary",
                                                            use_container_width=True):
@@ -4569,10 +4570,10 @@ def render_risk_assessment_page(api_key):
                                 
                                 decision = st.session_state.treatment_decision
                                 
-                                st.success(f"✅ You selected: **{decision}**")
+                                st.success(f"? You selected: **{decision}**")
                                 
                                 # Back button
-                                if st.button("🔄 Change Decision", key="change_decision"):
+                                if st.button("?? Change Decision", key="change_decision"):
                                     del st.session_state.treatment_decision
                                     st.rerun()
                                 
@@ -4587,8 +4588,8 @@ def render_risk_assessment_page(api_key):
                                     if 'showing_acceptance_questionnaire' not in st.session_state:
                                         st.session_state.showing_acceptance_questionnaire = True
                                     
-                                    st.markdown("### 📝 Risk Acceptance Questionnaire")
-                                    st.info("📝 **Step 1:** Fill out the questionnaire to document your risk acceptance")
+                                    st.markdown("### ?? Risk Acceptance Questionnaire")
+                                    st.info("?? **Step 1:** Fill out the questionnaire to document your risk acceptance")
                                     
                                     # Get threat info for context
                                     questions_sections = result.get('questions', result.get('sections', []))
@@ -4639,18 +4640,18 @@ def render_risk_assessment_page(api_key):
                                         acceptance_questionnaire = st.session_state.acceptance_questionnaire
 
                                     # DEBUG: Show questionnaire structure
-                                    with st.expander("🐛 DEBUG: View Questionnaire Structure", expanded=False):
+                                    with st.expander("?? DEBUG: View Questionnaire Structure", expanded=False):
                                         st.json(acceptance_questionnaire)
                                     
                                     # Check if questionnaire generation succeeded
                                     if 'error' in acceptance_questionnaire:
-                                        st.error("❌ Failed to generate acceptance questionnaire")
+                                        st.error("? Failed to generate acceptance questionnaire")
                                         st.error(f"**Error:** {acceptance_questionnaire.get('error', 'Unknown error')}")
                                         
                                         if '429' in str(acceptance_questionnaire.get('error', '')):
-                                            st.warning("⚠️ **API Quota Exhausted!**")
+                                            st.warning("?? **API Quota Exhausted!**")
                                             st.info("""
-                                            💡 **Solutions:**
+                                            ?? **Solutions:**
                                             1. Wait 24 hours for quota reset
                                             2. Add more API keys to .env file (GEMINI_API_KEY_7, etc.)
                                             3. Upgrade to paid tier for higher limits
@@ -4661,7 +4662,7 @@ def render_risk_assessment_page(api_key):
                                         st.stop()
                                     
                                     if 'sections' not in acceptance_questionnaire:
-                                        st.error("❌ Invalid questionnaire format - missing 'sections' key")
+                                        st.error("? Invalid questionnaire format - missing 'sections' key")
                                         st.json(acceptance_questionnaire)
                                         st.stop()
 
@@ -4744,7 +4745,7 @@ def render_risk_assessment_page(api_key):
                                                             complexity = opt.get('complexity', 'N/A')
                                                             risk_reduction = opt.get('risk_reduction', 'N/A')
                                                             
-                                                            with st.expander(f"✅ {control_name}", expanded=False):
+                                                            with st.expander(f"? {control_name}", expanded=False):
                                                                 col1, col2 = st.columns(2)
                                                                 
                                                                 with col1:
@@ -4753,9 +4754,9 @@ def render_risk_assessment_page(api_key):
                                                                     st.markdown(f"**Type:** {control_type}")
                                                                 
                                                                 with col2:
-                                                                    st.markdown(f"**💰 Cost:** {cost}")
-                                                                    st.markdown(f"**⏱️ Timeline:** {timeline}")
-                                                                    st.markdown(f"**📉 Risk Reduction:** {risk_reduction}")
+                                                                    st.markdown(f"**?? Cost:** {cost}")
+                                                                    st.markdown(f"**?? Timeline:** {timeline}")
+                                                                    st.markdown(f"**?? Risk Reduction:** {risk_reduction}")
                                                                 
                                                                 st.markdown(f"**Complexity:** {complexity}")
                                                                 
@@ -4767,21 +4768,21 @@ def render_risk_assessment_page(api_key):
                                                     
                                                     acceptance_answers[q_id] = selected
                                                 else:
-                                                    st.warning(f"⚠️ No options available for {q_text}")
+                                                    st.warning(f"?? No options available for {q_text}")
                                                     acceptance_answers[q_id] = []
                                             else:
                                                 val = st.text_input(q_text, key=f"accept_{q_id}", help=q_help)
                                                 acceptance_answers[q_id] = val
                                     
                                     # Submit button OUTSIDE form
-                                    submitted = st.button("✅ Submit & Generate Acceptance Form", type="primary", use_container_width=True, key="submit_acceptance_form")
+                                    submitted = st.button("? Submit & Generate Acceptance Form", type="primary", use_container_width=True, key="submit_acceptance_form")
                                     
                                     if submitted:
-                                        # 🔧 FIX: Read values from session state AFTER form submission
+                                        # ?? FIX: Read values from session state AFTER form submission
                                         # Streamlit forms clear widget values, so we must read from st.session_state
                                         
                                         # DEBUG: Show ALL session state keys that start with 'accept_'
-                                        with st.expander("🐛 DEBUG: Session State Keys", expanded=True):
+                                        with st.expander("?? DEBUG: Session State Keys", expanded=True):
                                             accept_keys = {k: v for k, v in st.session_state.items() if k.startswith('accept_')}
                                             st.markdown(f"**Found {len(accept_keys)} keys starting with 'accept_':**")
                                             for k, v in accept_keys.items():
@@ -4831,7 +4832,7 @@ def render_risk_assessment_page(api_key):
                                                     
                                                     # DEBUG: Show what we captured for this field
                                                     if 'SIGNATURE' in q_id.upper() or 'SIGNOFF' in q_text.upper():
-                                                        st.warning(f"🐛 DEBUG: Signature field '{q_id}' ('{q_text}')")
+                                                        st.warning(f"?? DEBUG: Signature field '{q_id}' ('{q_text}')")
                                                         st.code(f"Widget key: {widget_key}")
                                                         st.code(f"Value from session_state: '{value_from_state}'")
                                                         st.code(f"Is in session_state: {widget_key in st.session_state}")
@@ -4846,7 +4847,7 @@ def render_risk_assessment_page(api_key):
                                         acceptance_answers = acceptance_answers_final
 
                                         # DEBUG: Show what we captured
-                                        with st.expander("🐛 DEBUG: Captured Values Before Validation", expanded=True):
+                                        with st.expander("?? DEBUG: Captured Values Before Validation", expanded=True):
                                             st.markdown("### Values in acceptance_answers:")
                                             for k, v in acceptance_answers.items():
                                                 st.markdown(f"**{k}:** `{v}` (type: {type(v).__name__}, empty: {not v or v == '' or v == []})") 
@@ -4892,51 +4893,51 @@ def render_risk_assessment_page(api_key):
                                                     missing_critical.append(q_text)
                                         
                                         if missing_critical:
-                                            st.error(f"❌ Please fill out the following required fields:")
+                                            st.error(f"? Please fill out the following required fields:")
                                             for field in missing_critical:
-                                                st.warning(f"• {field}")
-                                            st.info("ℹ️ Scroll up to fill out the missing fields, then click Submit again.")
+                                                st.warning(f"� {field}")
+                                            st.info("?? Scroll up to fill out the missing fields, then click Submit again.")
                                             st.stop()
                                         
                                         # Store answers
                                         st.session_state.rtp_answers = {**acceptance_answers, 'Q1.1': 'ACCEPT'}
 
                                         # DEBUG: Show submitted answers
-                                        with st.expander("🐛 DEBUG: View Submitted Answers", expanded=True):
-                                            st.markdown("### 📋 Captured Answers:")
+                                        with st.expander("?? DEBUG: View Submitted Answers", expanded=True):
+                                            st.markdown("### ?? Captured Answers:")
                                             st.json(acceptance_answers)
                                             st.markdown(f"**Total fields captured:** {len(acceptance_answers)}")
                                             
                                             # Show which fields are empty
                                             empty_fields = [k for k, v in acceptance_answers.items() if not v or v == '' or v == []]
                                             if empty_fields:
-                                                st.warning(f"⚠️ **Empty fields:** {len(empty_fields)}")
+                                                st.warning(f"?? **Empty fields:** {len(empty_fields)}")
                                                 st.code(', '.join(empty_fields))
                                             else:
-                                                st.success("✅ All fields have values!")
+                                                st.success("? All fields have values!")
 
                                         st.info(" **Step 2:** Generating Risk Acceptance Form...")
                                         
-                                        with st.spinner("⏳ Generating acceptance form..."):
+                                        with st.spinner("? Generating acceptance form..."):
                                             try:
                                                 from phase2_risk_resolver.agents.agent_4_acceptance_form import generate_acceptance_form
                                                 
                                                 # DEBUG: Verify API key before calling
                                                 if not api_key or api_key.strip() == '':
-                                                    st.error("🔑 API key is empty! Attempting to retrieve from manager...")
+                                                    st.error("?? API key is empty! Attempting to retrieve from manager...")
                                                     try:
                                                         from api_key_manager import get_active_api_key
                                                         api_key = get_active_api_key()
                                                         if api_key:
-                                                            st.success(f"🔑 Retrieved API key from manager (length: {len(api_key)})")
+                                                            st.success(f"?? Retrieved API key from manager (length: {len(api_key)})")
                                                         else:
-                                                            st.error("🔑 Failed to retrieve API key from manager")
+                                                            st.error("?? Failed to retrieve API key from manager")
                                                             st.stop()
                                                     except Exception as e:
-                                                        st.error(f"❌ Error getting API key: {str(e)}")
+                                                        st.error(f"? Error getting API key: {str(e)}")
                                                         st.stop()
                                                 else:
-                                                    st.info(f"🔑 API key available (length: {len(api_key)})")
+                                                    st.info(f"?? API key available (length: {len(api_key)})")
                                                 
                                                 # Recreate risk context for form generation
                                                 risk_context = {
@@ -4960,7 +4961,7 @@ def render_risk_assessment_page(api_key):
                                                 )
                                                 
                                                 # DEBUG: Show what was returned
-                                                with st.expander("🐛 DEBUG: Raw Form Output", expanded=True):
+                                                with st.expander("?? DEBUG: Raw Form Output", expanded=True):
                                                     st.json(acceptance_form)
                                                     st.markdown(f"**Type:** {type(acceptance_form)}")
                                                     if isinstance(acceptance_form, dict):
@@ -4969,15 +4970,15 @@ def render_risk_assessment_page(api_key):
                                                 
                                                 # Check if form has error
                                                 if isinstance(acceptance_form, dict) and 'error' in acceptance_form:
-                                                    st.error(f"❌ Form generation failed: {acceptance_form.get('error')}")
+                                                    st.error(f"? Form generation failed: {acceptance_form.get('error')}")
                                                     st.stop()
                                                 
                                                 # Check if form is empty
                                                 if not acceptance_form or (isinstance(acceptance_form, dict) and len(acceptance_form) == 0):
-                                                    st.error("📋 Form is EMPTY! Agent returned nothing.")
+                                                    st.error("?? Form is EMPTY! Agent returned nothing.")
                                                     st.stop()
                                                 
-                                                st.success(f"📋 Form has {len(acceptance_form)} sections")
+                                                st.success(f"?? Form has {len(acceptance_form)} sections")
                                                 
                                                 # Store in session state
                                                 st.session_state.treatment_plan = {
@@ -4992,11 +4993,11 @@ def render_risk_assessment_page(api_key):
                                                     'generation_timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                                                 }
                                                 
-                                                st.success("✅ Risk Acceptance Form Generated!")
+                                                st.success("? Risk Acceptance Form Generated!")
                                                 st.rerun()
                                                 
                                             except Exception as e:
-                                                st.error(f"❌ Error: {str(e)}")
+                                                st.error(f"? Error: {str(e)}")
                                                 import traceback
                                                 with st.expander("Debug"):
                                                     st.code(traceback.format_exc())
@@ -5006,13 +5007,13 @@ def render_risk_assessment_page(api_key):
                                 # ============================================================
                                 
                                 else:
-                                    st.markdown("### 🔧 Auto-Generate Treatment Plan")
-                                    st.info("🤖 **AI will auto-generate treatment plan from control gaps - No questionnaire needed!**")
+                                    st.markdown("### ?? Auto-Generate Treatment Plan")
+                                    st.info("?? **AI will auto-generate treatment plan from control gaps - No questionnaire needed!**")
                                     
-                                    # 🔧 FIX: Check for both old and new structure
+                                    # ?? FIX: Check for both old and new structure
                                     questions_sections = result.get('questions', result.get('sections', []))
                                     
-                                    # 🔧 FIX: Extract threat_info from risk_context if new structure
+                                    # ?? FIX: Extract threat_info from risk_context if new structure
                                     if 'sections' in result and 'risk_context' in result:
                                         # New structure - get from risk_context
                                         risk_ctx = result['risk_context']
@@ -5035,7 +5036,7 @@ def render_risk_assessment_page(api_key):
                                         else:
                                             residual_risk = float(residual_risk_str) if residual_risk_str else 0
                                         
-                                        # 🔧 FIX: Get control gaps AND recommended controls from Agent 3
+                                        # ?? FIX: Get control gaps AND recommended controls from Agent 3
                                         control_gaps = risk_ctx.get('control_gaps_identified', [])
                                         recommended_controls = []
                                         
@@ -5068,12 +5069,12 @@ def render_risk_assessment_page(api_key):
                                     if threat_info:
                                         
                                         # Display summary of what will be treated
-                                        st.markdown("#### 📊 Risk Summary")
+                                        st.markdown("#### ?? Risk Summary")
                                         col1, col2, col3, col4 = st.columns(4)
                                         
                                         with col1:
                                             control_gaps = threat_info.get('control_gaps', [])
-                                            st.metric("Control Gaps", len(control_gaps), delta="🔴")
+                                            st.metric("Control Gaps", len(control_gaps), delta="??")
                                         
                                         with col2:
                                             risk_rating = threat_info.get('risk_rating', 0)
@@ -5087,15 +5088,15 @@ def render_risk_assessment_page(api_key):
                                             risk_level = threat_info.get('risk_level', 'Unknown')
                                             st.metric("Risk Level", risk_level)
                                         
-                                        # 🆕 NEW: Show RECOMMENDED CONTROLS (not just gaps)
-                                        st.markdown("#### ✅ Recommended Controls to Implement")
+                                        # ?? NEW: Show RECOMMENDED CONTROLS (not just gaps)
+                                        st.markdown("#### ? Recommended Controls to Implement")
                                         
                                         # Get recommended controls from threat_info
                                         recommended_controls = threat_info.get('recommended_controls', [])
                                         
                                         if recommended_controls:
-                                            st.success(f"🤖 Agent 3 discovered {len(recommended_controls)} controls to address the gaps")
-                                            st.info("📋 **Select which controls you want to implement:**")
+                                            st.success(f"?? Agent 3 discovered {len(recommended_controls)} controls to address the gaps")
+                                            st.info("?? **Select which controls you want to implement:**")
                                             
                                             # Initialize session state for selected controls
                                             if 'selected_controls_for_treatment' not in st.session_state:
@@ -5119,7 +5120,7 @@ def render_risk_assessment_page(api_key):
                                                     
                                                     with col_content:
                                                         control_name = control.get('control_name', control.get('control_id', f'Control {idx+1}'))
-                                                        with st.expander(f"✅ {control_name}", expanded=False):
+                                                        with st.expander(f"? {control_name}", expanded=False):
                                                             col1, col2 = st.columns(2)
                                                             
                                                             with col1:
@@ -5140,7 +5141,7 @@ def render_risk_assessment_page(api_key):
                                                             
                                                             # Show which gap this addresses
                                                             if control.get('addresses_gap'):
-                                                                st.warning(f"⚠️ **Addresses Gap:** {control['addresses_gap']}")
+                                                                st.warning(f"?? **Addresses Gap:** {control['addresses_gap']}")
                                                             
                                                             # Show ALL other fields dynamically
                                                             other_fields = {k: v for k, v in control.items() 
@@ -5152,16 +5153,16 @@ def render_risk_assessment_page(api_key):
                                                                 st.markdown("**Additional Details:**")
                                                                 for key, value in other_fields.items():
                                                                     field_name = key.replace('_', ' ').title()
-                                                                    st.caption(f"� {field_name}: {value}")
+                                                                    st.caption(f"? {field_name}: {value}")
                                                 else:
-                                                    st.info(f"✅ Control {idx+1}: {control}")
+                                                    st.info(f"? Control {idx+1}: {control}")
                                             
-                                            st.caption(f"📊 **{len(st.session_state.selected_controls_for_treatment)} of {len(recommended_controls)} controls selected**")
+                                            st.caption(f"?? **{len(st.session_state.selected_controls_for_treatment)} of {len(recommended_controls)} controls selected**")
                                         
                                         else:
                                             # Fallback: Show control gaps if no recommended controls
-                                            st.warning("⚠️ No recommended controls found in Agent 3 results")
-                                            st.info("ℹ️ Showing control gaps instead:")
+                                            st.warning("?? No recommended controls found in Agent 3 results")
+                                            st.info("?? Showing control gaps instead:")
                                             
                                             control_gaps = threat_info.get('control_gaps', [])
                                             
@@ -5188,44 +5189,44 @@ def render_risk_assessment_page(api_key):
                                                         
                                                         with col_content:
                                                             st.warning(f"**Gap {idx+1}:** {gap.get('gap_description', 'Unknown gap')}")
-                                                            st.caption(f"⚠️ Severity: {gap.get('severity', 'N/A')}")
+                                                            st.caption(f"?? Severity: {gap.get('severity', 'N/A')}")
                                                             if gap.get('evidence'):
                                                                 st.caption(f"*Evidence: {gap.get('evidence')}*")
                                                     else:
                                                         st.warning(f"**Gap {idx+1}:** {gap}")
                                                 
-                                                st.caption(f"📊 **{len(st.session_state.selected_gaps_for_treatment)} of {len(control_gaps)} gaps selected**")
+                                                st.caption(f"?? **{len(st.session_state.selected_gaps_for_treatment)} of {len(control_gaps)} gaps selected**")
                                             else:
-                                                st.error("✅ No control gaps or recommended controls found!")
+                                                st.error("? No control gaps or recommended controls found!")
                                         
                                         st.markdown("---")
-                                        st.markdown("#### 🤖 AI Treatment Plan Generation")
+                                        st.markdown("#### ?? AI Treatment Plan Generation")
                                         st.info("""
 **What AI will do:**
-1. 🔍 Discover Treatment Plan template from your documents
-2. 🔧 Generate implementation details for selected controls
-3. 💰 Estimate resources, costs, and timelines
-4. 📊 Define success metrics
-5. ✅ Create complete treatment plan
+1. ?? Discover Treatment Plan template from your documents
+2. ?? Generate implementation details for selected controls
+3. ?? Estimate resources, costs, and timelines
+4. ?? Define success metrics
+5. ? Create complete treatment plan
 
 **No questionnaire needed!**
                                         """)
                                         
                                         # Auto-generate button
-                                        if st.button("🤖 Auto-Generate Treatment Plan", type="primary", use_container_width=True, key="auto_generate_treatment"):
-                                            # 🔧 FIX: Check for selected CONTROLS (not gaps)
+                                        if st.button("?? Auto-Generate Treatment Plan", type="primary", use_container_width=True, key="auto_generate_treatment"):
+                                            # ?? FIX: Check for selected CONTROLS (not gaps)
                                             recommended_controls = threat_info.get('recommended_controls', [])
                                             
                                             if recommended_controls:
                                                 # User is selecting from recommended controls
                                                 if not st.session_state.get('selected_controls_for_treatment', []):
-                                                    st.error("❌ Please select at least one control to implement!")
+                                                    st.error("? Please select at least one control to implement!")
                                                 else:
-                                                    with st.spinner("🤖 AI is generating treatment plan for selected controls..."):
+                                                    with st.spinner("?? AI is generating treatment plan for selected controls..."):
                                                         try:
                                                             from phase2_risk_resolver.agents.agent_4_treatment_plan import generate_treatment_plan
                                                             
-                                                            # 🔧 FIX: Get SELECTED CONTROLS (not gaps)
+                                                            # ?? FIX: Get SELECTED CONTROLS (not gaps)
                                                             selected_indices = st.session_state.selected_controls_for_treatment
                                                             selected_controls = [recommended_controls[i] for i in selected_indices if i < len(recommended_controls)]
                                                             
@@ -5235,10 +5236,10 @@ def render_risk_assessment_page(api_key):
                                                             asset_type = selected_asset_data.get('asset_type', 'Unknown')
                                                             
                                                             # DEBUG: Show what we're passing
-                                                            st.info(f"🐛 DEBUG: Asset Name = '{asset_name}', Asset Type = '{asset_type}'")
-                                                            st.info(f"🐛 DEBUG: Selected {len(selected_controls)} controls: {[c.get('control_name', c.get('control_id', 'N/A')) for c in selected_controls]}")
+                                                            st.info(f"?? DEBUG: Asset Name = '{asset_name}', Asset Type = '{asset_type}'")
+                                                            st.info(f"?? DEBUG: Selected {len(selected_controls)} controls: {[c.get('control_name', c.get('control_id', 'N/A')) for c in selected_controls]}")
                                                             
-                                                            # 🔧 FIX: Pass SELECTED CONTROLS (not gaps) to treatment plan generator
+                                                            # ?? FIX: Pass SELECTED CONTROLS (not gaps) to treatment plan generator
                                                             risk_data = {
                                                                 'asset_name': asset_name,
                                                                 'asset_type': asset_type,
@@ -5250,7 +5251,7 @@ def render_risk_assessment_page(api_key):
                                                                 'risk_owner': threat_info.get('risk_owner', 'IT Security Team')
                                                             }
                                                             
-                                                            # 🆕 NEW: Call fully agentic function with API key rotation
+                                                            # ?? NEW: Call fully agentic function with API key rotation
                                                             treatment_plan_result = execute_agent_with_retry(
                                                                 agent_function=generate_treatment_plan,
                                                                 agent_name="Agent 4: Treatment Plan",
@@ -5259,7 +5260,7 @@ def render_risk_assessment_page(api_key):
                                                             )
                                                             
                                                             if 'error' in treatment_plan_result:
-                                                                st.error(f"❌ Error: {treatment_plan_result['error']}")
+                                                                st.error(f"? Error: {treatment_plan_result['error']}")
                                                                 if 'raw_output' in treatment_plan_result:
                                                                     with st.expander("View Raw Output"):
                                                                         st.text(treatment_plan_result['raw_output'][:1000])
@@ -5274,20 +5275,20 @@ def render_risk_assessment_page(api_key):
                                                                     'selected_controls': selected_controls,  # Store which controls were selected
                                                                     'selected_control_count': len(selected_controls)  # Store count for display
                                                                 }
-                                                                st.success("✅ Treatment Plan Auto-Generated!")
-                                                                st.info("ℹ️ **Scroll down to review your treatment plan**")
+                                                                st.success("? Treatment Plan Auto-Generated!")
+                                                                st.info("?? **Scroll down to review your treatment plan**")
                                                                 st.rerun()
                                                         except Exception as e:
-                                                            st.error(f"❌ Error: {str(e)}")
+                                                            st.error(f"? Error: {str(e)}")
                                                             import traceback
                                                             with st.expander("Debug"):
                                                                 st.code(traceback.format_exc())
                                             else:
                                                 # Fallback: User is selecting from gaps (old behavior)
                                                 if not st.session_state.get('selected_gaps_for_treatment', []):
-                                                    st.error("❌ Please select at least one control gap to treat!")
+                                                    st.error("? Please select at least one control gap to treat!")
                                                 else:
-                                                    with st.spinner("🤖 AI is discovering template structure and generating treatment plan..."):
+                                                    with st.spinner("?? AI is discovering template structure and generating treatment plan..."):
                                                         try:
                                                             from phase2_risk_resolver.agents.agent_4_treatment_plan import generate_treatment_plan
                                                             
@@ -5301,8 +5302,8 @@ def render_risk_assessment_page(api_key):
                                                             asset_type = selected_asset_data.get('asset_type', 'Unknown')
                                                             
                                                             # DEBUG: Show what we're passing
-                                                            st.info(f"🐛 DEBUG: Asset Name = '{asset_name}', Asset Type = '{asset_type}'")
-                                                            st.info(f"🐛 DEBUG: Selected {len(selected_gaps)} gaps with control_ids: {[g.get('control_id', 'N/A') for g in selected_gaps]}")
+                                                            st.info(f"?? DEBUG: Asset Name = '{asset_name}', Asset Type = '{asset_type}'")
+                                                            st.info(f"?? DEBUG: Selected {len(selected_gaps)} gaps with control_ids: {[g.get('control_id', 'N/A') for g in selected_gaps]}")
                                                             
                                                             # Prepare risk data
                                                             risk_data = {
@@ -5315,7 +5316,7 @@ def render_risk_assessment_page(api_key):
                                                                 'risk_owner': threat_info.get('risk_owner', 'IT Security Team')
                                                             }
                                                         
-                                                            # 🆕 NEW: Call fully agentic function with API key rotation
+                                                            # ?? NEW: Call fully agentic function with API key rotation
                                                             treatment_plan_result = execute_agent_with_retry(
                                                                 agent_function=generate_treatment_plan,
                                                                 agent_name="Agent 4: Treatment Plan",
@@ -5324,7 +5325,7 @@ def render_risk_assessment_page(api_key):
                                                             )
                                                             
                                                             if 'error' in treatment_plan_result:
-                                                                st.error(f"❌ Error: {treatment_plan_result['error']}")
+                                                                st.error(f"? Error: {treatment_plan_result['error']}")
                                                                 if 'raw_output' in treatment_plan_result:
                                                                     with st.expander("View Raw Output"):
                                                                         st.text(treatment_plan_result['raw_output'][:1000])
@@ -5339,16 +5340,16 @@ def render_risk_assessment_page(api_key):
                                                                     'selected_gaps': selected_gaps,  # Store which gaps were selected
                                                                     'selected_gap_count': len(selected_gaps)  # Store count for display
                                                                 }
-                                                                st.success("✅ Treatment Plan Auto-Generated!")
-                                                                st.info("ℹ️ **Scroll down to review your treatment plan**")
+                                                                st.success("? Treatment Plan Auto-Generated!")
+                                                                st.info("?? **Scroll down to review your treatment plan**")
                                                                 st.rerun()
                                                         except Exception as e:
-                                                            st.error(f"❌ Error: {str(e)}")
+                                                            st.error(f"? Error: {str(e)}")
                                                             import traceback
                                                             with st.expander("Debug"):
                                                                 st.code(traceback.format_exc())
                                     else:
-                                        st.warning("⚠️ No questionnaire data available")
+                                        st.warning("?? No questionnaire data available")
                             
                             # ============================================================
                             # STEP 3: DISPLAY TREATMENT PLAN (keep existing code)
@@ -5364,10 +5365,10 @@ def render_risk_assessment_page(api_key):
                                 
                                 if 'acceptance_form' in treatment_plan_data:
                                     # ACCEPTANCE FORM DISPLAY
-                                    st.success("✅ Risk Acceptance Form Generated!")
+                                    st.success("? Risk Acceptance Form Generated!")
                                     
-                                    st.markdown("## 📋 Risk Acceptance Form")
-                                    st.info("✅ **Step 2 Complete:** Review your acceptance form below")
+                                    st.markdown("## ?? Risk Acceptance Form")
+                                    st.info("? **Step 2 Complete:** Review your acceptance form below")
                                     
                                     acceptance_form = treatment_plan_data['acceptance_form']
                                     
@@ -5384,21 +5385,21 @@ def render_risk_assessment_page(api_key):
                                             
                                             # Add emoji based on section name
                                             if 'risk' in section_key.lower():
-                                                emoji = "✅"
+                                                emoji = "?"
                                             elif 'project' in section_key.lower() or 'engagement' in section_key.lower():
-                                                emoji = "�"
+                                                emoji = "?"
                                             elif 'accept' in section_key.lower():
                                                 emoji = "?"
                                             elif 'monitor' in section_key.lower():
-                                                emoji = "✅"
+                                                emoji = "?"
                                             elif 'valid' in section_key.lower() or 'date' in section_key.lower():
-                                                emoji = "✅"
+                                                emoji = "?"
                                             elif 'approval' in section_key.lower():
                                                 emoji = "?"
                                             elif 'metadata' in section_key.lower():
-                                                emoji = "✅"
+                                                emoji = "?"
                                             else:
-                                                emoji = "✅"
+                                                emoji = "?"
                                             
                                             st.markdown(f"### {emoji} {section_title}")
                                             
@@ -5437,7 +5438,7 @@ def render_risk_assessment_page(api_key):
                                                                     if value and isinstance(value[0], dict):
                                                                         st.markdown(f"**{field_name}:**")
                                                                         for idx, item in enumerate(value, 1):
-                                                                            with st.expander(f"✅ {item.get('control_name', item.get('label', f'Item {idx}'))}", expanded=False):
+                                                                            with st.expander(f"? {item.get('control_name', item.get('label', f'Item {idx}'))}", expanded=False):
                                                                                 for k, v in item.items():
                                                                                     if k not in ['control_name', 'label']:
                                                                                         st.markdown(f"**{k.replace('_', ' ').title()}:** {v}")
@@ -5462,7 +5463,7 @@ def render_risk_assessment_page(api_key):
                                                                     if value and isinstance(value[0], dict):
                                                                         st.markdown(f"**{field_name}:**")
                                                                         for idx, item in enumerate(value, 1):
-                                                                            with st.expander(f"✅ {item.get('control_name', item.get('label', f'Item {idx}'))}", expanded=False):
+                                                                            with st.expander(f"? {item.get('control_name', item.get('label', f'Item {idx}'))}", expanded=False):
                                                                                 for k, v in item.items():
                                                                                     if k not in ['control_name', 'label']:
                                                                                         st.markdown(f"**{k.replace('_', ' ').title()}:** {v}")
@@ -5487,7 +5488,7 @@ def render_risk_assessment_page(api_key):
                                                                 if value and isinstance(value[0], dict):
                                                                     st.markdown(f"**{field_name}:**")
                                                                     for idx, item in enumerate(value, 1):
-                                                                        with st.expander(f"✅ {item.get('control_name', item.get('label', f'Item {idx}'))}", expanded=False):
+                                                                        with st.expander(f"? {item.get('control_name', item.get('label', f'Item {idx}'))}", expanded=False):
                                                                             for k, v in item.items():
                                                                                 if k not in ['control_name', 'label']:
                                                                                     st.markdown(f"**{k.replace('_', ' ').title()}:** {v}")
@@ -5515,7 +5516,7 @@ def render_risk_assessment_page(api_key):
                                                     if 'compensating' in section_key.lower() or 'control' in section_key.lower():
                                                         # Format controls with rich display
                                                         for idx, control in enumerate(section_value, 1):
-                                                            with st.expander(f"✅ Control {idx}: {control.get('control_name', control.get('label', 'Control'))}", expanded=False):
+                                                            with st.expander(f"? Control {idx}: {control.get('control_name', control.get('label', 'Control'))}", expanded=False):
                                                                 col1, col2 = st.columns(2)
                                                                 
                                                                 with col1:
@@ -5528,11 +5529,11 @@ def render_risk_assessment_page(api_key):
                                                                 
                                                                 with col2:
                                                                     if control.get('cost'):
-                                                                        st.markdown(f"**💰 Cost:** {control['cost']}")
+                                                                        st.markdown(f"**?? Cost:** {control['cost']}")
                                                                     if control.get('timeline'):
-                                                                        st.markdown(f"**⏱️ Timeline:** {control['timeline']}")
+                                                                        st.markdown(f"**?? Timeline:** {control['timeline']}")
                                                                     if control.get('risk_reduction'):
-                                                                        st.markdown(f"**📉 Risk Reduction:** {control['risk_reduction']}")
+                                                                        st.markdown(f"**?? Risk Reduction:** {control['risk_reduction']}")
                                                                 
                                                                 if control.get('complexity'):
                                                                     st.markdown(f"**Complexity:** {control['complexity']}")
@@ -5566,7 +5567,7 @@ def render_risk_assessment_page(api_key):
                                             st.markdown("---")
                                         
                                         # Raw JSON in expander (for technical users) - Use code block to prevent HTML encoding
-                                        with st.expander("📄 View Raw JSON", expanded=False):
+                                        with st.expander("?? View Raw JSON", expanded=False):
                                             st.code(json.dumps(acceptance_form, indent=2), language="json")
                                     
                                     elif isinstance(acceptance_form, str):
@@ -5577,7 +5578,7 @@ def render_risk_assessment_page(api_key):
                                     st.markdown("---")
                                     if isinstance(acceptance_form, str):
                                         st.download_button(
-                                            label="📥 Download Acceptance Form (Markdown)",
+                                            label="?? Download Acceptance Form (Markdown)",
                                             data=acceptance_form,
                                             file_name=f"Risk_Acceptance_Form_{datetime.now().strftime('%Y%m%d')}.md",
                                             mime="text/markdown",
@@ -5585,7 +5586,7 @@ def render_risk_assessment_page(api_key):
                                         )
                                     else:
                                         st.download_button(
-                                            label="📥 Download Acceptance Form (JSON)",
+                                            label="?? Download Acceptance Form (JSON)",
                                             data=json.dumps(acceptance_form, indent=2),
                                             file_name=f"Risk_Acceptance_Form_{datetime.now().strftime('%Y%m%d')}.json",
                                             mime="application/json",
@@ -5593,8 +5594,8 @@ def render_risk_assessment_page(api_key):
                                         )
                                     
                                     # Save to database button
-                                    if st.button("💾 Save Acceptance Form to Risk Register", type="primary", use_container_width=True):
-                                        with st.spinner("💾 Saving to database..."):
+                                    if st.button("?? Save Acceptance Form to Risk Register", type="primary", use_container_width=True):
+                                        with st.spinner("?? Saving to database..."):
                                             try:
                                                 from phase2_risk_resolver.database.save_to_register import save_assessment_to_risk_register
                                                 
@@ -5618,18 +5619,18 @@ def render_risk_assessment_page(api_key):
                                                 st.session_state.risk_ids = risk_ids
                                                 st.session_state.output_result = {'status': 'saved', 'risk_ids': risk_ids}
                                                 
-                                                st.success(f"✅ Saved! Risk IDs: {', '.join(risk_ids)}")
-                                                st.info("ℹ️ **View in Risk Register page!**")
+                                                st.success(f"? Saved! Risk IDs: {', '.join(risk_ids)}")
+                                                st.info("?? **View in Risk Register page!**")
                                                 
                                             except Exception as e:
-                                                st.error(f"❌ Error: {str(e)}")
+                                                st.error(f"? Error: {str(e)}")
                                 
                                 else:
                                     # TREATMENT PLAN DISPLAY (original code)
-                                    st.success("📋 Treatment Plan Generated!")
+                                    st.success("?? Treatment Plan Generated!")
                                     
-                                    st.markdown("### 📋 Risk Treatment Plan")
-                                    st.info("✅ **Step 2 Complete:** Review your treatment plan below")
+                                    st.markdown("### ?? Risk Treatment Plan")
+                                    st.info("? **Step 2 Complete:** Review your treatment plan below")
                                     
                                     treatment_plan = treatment_plan_data.get('treatment_plan', {})
                                     
@@ -5638,7 +5639,7 @@ def render_risk_assessment_page(api_key):
                                     
                                     with col1:
                                         decision = treatment_plan.get('treatment_option', 'TREAT')
-                                        color = "🔴" if decision == "TREAT" else "🟢"
+                                        color = "??" if decision == "TREAT" else "??"
                                         st.metric("Decision", decision, delta=color)
                                     
                                     with col2:
@@ -5671,14 +5672,14 @@ def render_risk_assessment_page(api_key):
                                                     
                                                     # Special formatting for specific fields
                                                     if key == 'implementation_priority':
-                                                        priority_color = "🔴" if value == "CRITICAL" else "🟡" if value == "HIGH" else "🟢"
+                                                        priority_color = "??" if value == "CRITICAL" else "??" if value == "HIGH" else "??"
                                                         st.metric(field_name, f"{priority_color} {value}")
                                                     elif key in ['estimated_cost', 'cost', 'total_cost']:
-                                                        st.metric(f"📊 {field_name}", value)
+                                                        st.metric(f"?? {field_name}", value)
                                                     elif key in ['estimated_duration_days', 'duration', 'duration_days']:
-                                                        st.metric(f"📊 {field_name}", f"{value} days")
+                                                        st.metric(f"?? {field_name}", f"{value} days")
                                                     elif key in ['proposed_start_date', 'proposed_completion_date', 'actual_start_date', 'actual_completion_date']:
-                                                        st.caption(f"**📊 {field_name}:**")
+                                                        st.caption(f"**?? {field_name}:**")
                                                         st.info(value if value else 'TBD')
                                                     elif key in ['status', 'implementation_responsibility', 'risk_owner']:
                                                         st.caption(f"**{field_name}:**")
@@ -5693,7 +5694,7 @@ def render_risk_assessment_page(api_key):
                                     
                                     # Expected Outcomes
                                     st.markdown("---")
-                                    st.markdown("### 🎯 Expected Outcomes")
+                                    st.markdown("### ?? Expected Outcomes")
                                     
                                     expected = treatment_plan.get('expected_outcomes', {})
                                     _ = expected  # Satisfy linter
@@ -5704,7 +5705,7 @@ def render_risk_assessment_page(api_key):
                                         current = treatment_plan_data.get('risk_rating', 0)
                                         after = treatment_plan.get('summary', {}).get('expected_risk_rating_after', '0')
                                         _ = current  # Satisfy linter
-                                        st.metric("Risk Rating", f"{current} → {after}")
+                                        st.metric("Risk Rating", f"{current} ? {after}")
                                     
                                     with col2:
                                         reduction = expected.get('risk_reduction_percentage', '0%')
@@ -5714,16 +5715,16 @@ def render_risk_assessment_page(api_key):
                                                 reduction = f"{((current - after_num) / current) * 100:.0f}%" if after_num else '0%'
                                             except:
                                                 pass
-                                        st.metric("Risk Reduction", reduction, delta="🟢")
+                                        st.metric("Risk Reduction", reduction, delta="??")
                                     
                                     with col3:
                                         current_res = treatment_plan_data.get('residual_risk', 0)
                                         after_res = treatment_plan.get('summary', {}).get('expected_residual_risk_after', '0')
-                                        st.metric("Residual Risk", f"{current_res} → {after_res}")
+                                        st.metric("Residual Risk", f"{current_res} ? {after_res}")
                                     
                                     # Resource Summary
                                     st.markdown("---")
-                                    st.markdown("### 📊 Resource Summary")
+                                    st.markdown("### ?? Resource Summary")
                                     
                                     summary = treatment_plan.get('summary', {})
                                     
@@ -5739,7 +5740,7 @@ def render_risk_assessment_page(api_key):
                                         st.metric("Total Actions", summary.get('total_actions', len(actions)))
                                     
                                     # Show resources from each action
-                                    st.markdown("#### 📊 Resources by Action")
+                                    st.markdown("#### ?? Resources by Action")
                                     for action in actions:
                                         resources = action.get('necessary_resources', 'N/A')
                                         if resources and resources != 'N/A':
@@ -5748,15 +5749,15 @@ def render_risk_assessment_page(api_key):
                                     # Save to database button
                                     st.markdown("---")
                                     
-                                    if st.button("💾 Save Treatment Plan to Risk Register", type="primary", use_container_width=True):
-                                        with st.spinner("💾 Saving to database..."):
+                                    if st.button("?? Save Treatment Plan to Risk Register", type="primary", use_container_width=True):
+                                        with st.spinner("?? Saving to database..."):
                                             try:
                                                 from phase2_risk_resolver.database.save_to_register import save_assessment_to_risk_register
                                                 
                                                 # Enhance decision result with treatment plan
                                                 enhanced_decision = {
                                                     **result,
-                                                    'rtp_answers': st.session_state.get('rtp_answers', {'Q1.1': 'TREAT'}),  # 🔧 FIX: Use get() with default
+                                                    'rtp_answers': st.session_state.get('rtp_answers', {'Q1.1': 'TREAT'}),  # ?? FIX: Use get() with default
                                                     'treatment_plan': treatment_plan,
                                                     'completed': True
                                                 }
@@ -5772,15 +5773,15 @@ def render_risk_assessment_page(api_key):
                                                 st.session_state.risk_ids = risk_ids
                                                 st.session_state.output_result = {'status': 'saved', 'risk_ids': risk_ids}
                                                 
-                                                st.success(f"✅ Saved! Risk IDs: {', '.join(risk_ids)}")
-                                                st.info("ℹ️ **View in Risk Register page!**")
+                                                st.success(f"? Saved! Risk IDs: {', '.join(risk_ids)}")
+                                                st.info("?? **View in Risk Register page!**")
                                                 
                                             except Exception as e:
-                                                st.error(f"❌ Error: {str(e)}")
+                                                st.error(f"? Error: {str(e)}")
                                     
                                     # Download treatment plan
                                     st.download_button(
-                                        label="📥 Download Treatment Plan (JSON)",
+                                        label="?? Download Treatment Plan (JSON)",
                                         data=json.dumps(treatment_plan, indent=2),
                                         file_name=f"treatment_plan_{selected_asset['asset_name'].replace(' ', '_')}.json",
                                         mime="application/json",
@@ -5788,10 +5789,10 @@ def render_risk_assessment_page(api_key):
                                     )
                         
                         else:
-                            st.warning("⚠️ Unexpected format")
+                            st.warning("?? Unexpected format")
                     
                     else:
-                        st.info("ℹ️ Run Agent 4 to generate RTP questionnaire")
+                        st.info("?? Run Agent 4 to generate RTP questionnaire")
                 
 
 # ===================================================================
@@ -5801,7 +5802,7 @@ def render_risk_assessment_page(api_key):
 def render_sidebar():
     """Render sidebar with navigation and controls"""
     with st.sidebar:
-        st.markdown("# 🎯 Risk Resolver")
+        st.markdown("# ?? Risk Resolver")
         st.markdown("*Agentic AI Risk Assessment*")
         
         st.markdown("---")
@@ -5811,83 +5812,83 @@ def render_sidebar():
             manager = get_api_key_manager()
             status = manager.get_status()
             
-            st.markdown("### 🔑 API Keys (Auto-Rotate)")
-            st.success(f"🔑 Key #{status['current_index']}/{status['total_keys']}")
+            st.markdown("### ?? API Keys (Auto-Rotate)")
+            st.success(f"?? Key #{status['current_index']}/{status['total_keys']}")
             st.caption(f"Available: {status['available_count']} | Used: {status['failed_count']}")
             
-            if st.button("🔄 Reset Keys", help="Reset after quota period", use_container_width=True):
+            if st.button("?? Reset Keys", help="Reset after quota period", use_container_width=True):
                 manager.reset_failed_keys()
                 st.rerun()
             
             api_key = manager.get_current_key()
         except Exception as e:
-            st.error(f"❌ API Error: {str(e)}")
-            st.info("ℹ️ Add .env file with GEMINI_API_KEY_1, etc.")
+            st.error(f"? API Error: {str(e)}")
+            st.info("?? Add .env file with GEMINI_API_KEY_1, etc.")
             api_key = None
         
         st.markdown("---")
         
-        st.markdown("### 🧭 Navigation")
+        st.markdown("### ?? Navigation")
         
-        if st.button("🏠 Home", use_container_width=True):
+        if st.button("?? Home", use_container_width=True):
             st.session_state.current_page = "Home"
             st.rerun()
         
-        if st.button("📚 Knowledge Base", use_container_width=True):
+        if st.button("?? Knowledge Base", use_container_width=True):
             st.session_state.current_page = "Knowledge Base"
             st.rerun()
         
-        if st.button("🎯 Risk Assessment", use_container_width=True):
+        if st.button("?? Risk Assessment", use_container_width=True):
             st.session_state.current_page = "Risk Assessment"
             st.rerun()
 
         # NEW: Risk Register button
-        if st.button("📋 Risk Register", use_container_width=True):
+        if st.button("?? Risk Register", use_container_width=True):
             st.session_state.current_page = "Risk Register"
             st.rerun()
         
-        if st.button("📅 Follow-up", use_container_width=True):
+        if st.button("?? Follow-up", use_container_width=True):
             st.session_state.current_page = "Follow-up"
             st.rerun()
         
         st.markdown("---")
         
-        st.markdown("### 📊 System Status")
+        st.markdown("### ?? System Status")
         
         if st.session_state.processed:
-            st.success("✅ Knowledge Base: Ready")
+            st.success("? Knowledge Base: Ready")
             st.caption(f"Documents: {len(st.session_state.documents)}")
         else:
-            st.warning("⚠️ Knowledge Base: Not Loaded")
+            st.warning("?? Knowledge Base: Not Loaded")
         
         if st.session_state.rag_initialized:
-            st.success("✅ Agent System: Ready")
+            st.success("? Agent System: Ready")
             st.caption("Agents: 6 active")
         else:
-            st.info("⚠️ Agent System: Not Initialized")
+            st.info("?? Agent System: Not Initialized")
         
-        st.markdown("### 🤖 Agent Status")
+        st.markdown("### ?? Agent Status")
         
-        # 🔧 FIXED: Updated variable names
+        # ?? FIXED: Updated variable names
         if st.session_state.impact_result:  # Changed from cia_result!
-            st.success("✅ Agent 1: Impact Complete")
+            st.success("? Agent 1: Impact Complete")
         else:
-            st.info("⚪ Agent 1: Not run")
+            st.info("? Agent 1: Not run")
         
         if st.session_state.risk_result:
-            st.success("✅ Agent 2: Risk Complete")
+            st.success("? Agent 2: Risk Complete")
         else:
-            st.info("⚪ Agent 2: Not run")
+            st.info("? Agent 2: Not run")
         
         if st.session_state.control_result:
-            st.success("✅ Agent 3: Controls Complete")
+            st.success("? Agent 3: Controls Complete")
         else:
-            st.info("⚪ Agent 3: Not run")
+            st.info("? Agent 3: Not run")
         
         if st.session_state.decision_result:
-            st.success("✅ Agent 4: Decision Complete")
+            st.success("? Agent 4: Decision Complete")
         else:
-            st.info("⚪ Agent 4: Not run")
+            st.info("? Agent 4: Not run")
         
         return api_key
 

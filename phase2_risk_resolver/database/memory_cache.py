@@ -8,6 +8,7 @@ import hashlib
 from datetime import datetime
 from pathlib import Path
 
+from database_manager import get_database_connection
 DB_PATH = Path(__file__).parent / "../../database/risk_register.db"
 
 # ============================================================================
@@ -25,7 +26,7 @@ def get_methodology_cache(cache_key):
         Cached value (parsed JSON) or None if not found
     """
     try:
-        conn = sqlite3.connect(DB_PATH)
+        conn = get_database_connection()
         cursor = conn.cursor()
         
         cursor.execute("""
@@ -66,7 +67,7 @@ def save_methodology_cache(cache_key, cache_value):
         True if successful, False otherwise
     """
     try:
-        conn = sqlite3.connect(DB_PATH)
+        conn = get_database_connection()
         cursor = conn.cursor()
         
         cache_value_json = json.dumps(cache_value, ensure_ascii=False)
@@ -101,7 +102,7 @@ def get_questionnaire_template(template_type, template_key):
         Template (parsed JSON) or None if not found
     """
     try:
-        conn = sqlite3.connect(DB_PATH)
+        conn = get_database_connection()
         cursor = conn.cursor()
         
         cursor.execute("""
@@ -143,7 +144,7 @@ def save_questionnaire_template(template_type, template_key, template_json):
         True if successful, False otherwise
     """
     try:
-        conn = sqlite3.connect(DB_PATH)
+        conn = get_database_connection()
         cursor = conn.cursor()
         
         template_json_str = json.dumps(template_json, ensure_ascii=False)
@@ -179,7 +180,7 @@ def get_rag_cache(query_text):
     try:
         query_hash = hashlib.md5(query_text.encode()).hexdigest()
         
-        conn = sqlite3.connect(DB_PATH)
+        conn = get_database_connection()
         cursor = conn.cursor()
         
         cursor.execute("""
@@ -222,7 +223,7 @@ def save_rag_cache(query_text, cached_result):
     try:
         query_hash = hashlib.md5(query_text.encode()).hexdigest()
         
-        conn = sqlite3.connect(DB_PATH)
+        conn = get_database_connection()
         cursor = conn.cursor()
         
         cached_result_json = json.dumps(cached_result, ensure_ascii=False)
@@ -253,7 +254,7 @@ def get_cache_stats():
         Dictionary with cache statistics
     """
     try:
-        conn = sqlite3.connect(DB_PATH)
+        conn = get_database_connection()
         cursor = conn.cursor()
         
         cursor.execute("SELECT COUNT(*), SUM(usage_count) FROM methodology_cache")
