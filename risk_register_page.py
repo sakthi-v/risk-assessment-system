@@ -140,7 +140,11 @@ def render_risk_register_page():
             # Build rating counts
             rating_data = {}
             for risk in all_risks:
-                rating = int(risk.get('inherent_risk_rating', 0))
+                try:
+                    rating = float(risk.get('inherent_risk_rating', 0))
+                    rating = int(round(rating))
+                except (ValueError, TypeError):
+                    rating = 0
                 rating_data[rating] = rating_data.get(rating, 0) + 1
             
             if rating_data:
@@ -274,8 +278,11 @@ def render_risk_register_page():
     
     # Apply rating filter
     if selected_rating != 'All':
-        rating_value = int(selected_rating.split(' ')[0])
-        filtered_risks = [r for r in filtered_risks if int(r.get('inherent_risk_rating', 0)) == rating_value]
+        try:
+            rating_value = int(selected_rating.split(' ')[0])
+            filtered_risks = [r for r in filtered_risks if int(round(float(r.get('inherent_risk_rating', 0)))) == rating_value]
+        except (ValueError, TypeError, IndexError):
+            pass
     
     # Apply owner filter
     if selected_owner != 'All':
@@ -349,7 +356,10 @@ def render_risk_register_page():
         
         for risk in filtered_risks:
             # Color coding for risk rating
-            rating = risk.get('inherent_risk_rating', 0)
+            try:
+                rating = float(risk.get('inherent_risk_rating', 0))
+            except (ValueError, TypeError):
+                rating = 0
             if rating >= 5:
                 rating_display = f"🔴 {rating}/5"
             elif rating >= 4:
