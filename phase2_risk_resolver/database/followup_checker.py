@@ -27,9 +27,11 @@ def get_risks_needing_followup(days_threshold: int = 5) -> List[Dict[str, Any]]:
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
         
-        # 🔧 FIX: Use UTC consistently for timezone-independent calculations
-        # Calculate cutoff date (5 days ago from today)
-        cutoff_date = (datetime.utcnow() - timedelta(days=days_threshold)).strftime('%Y-%m-%d')
+        # 🔧 FIX: Use India time (IST = UTC+5:30)
+        from datetime import timezone, timedelta as td
+        ist = timezone(td(hours=5, minutes=30))
+        now_ist = datetime.now(ist)
+        cutoff_date = (now_ist - timedelta(days=days_threshold)).strftime('%Y-%m-%d')
         
         # Query risks where:
         # 1. First follow-up: created_at >= 5 days ago AND no follow-up done yet
@@ -75,12 +77,16 @@ def get_risks_needing_followup(days_threshold: int = 5) -> List[Dict[str, Any]]:
             # Handle both date and datetime formats for created_at
             created_str = row['created_at'].split()[0] if ' ' in str(row['created_at']) else str(row['created_at'])
             
-            # 🔧 FIX: Use UTC consistently for timezone-independent calculations
+            # 🔧 FIX: Use India time (IST)
+            from datetime import timezone, timedelta as td
+            ist = timezone(td(hours=5, minutes=30))
+            now_ist = datetime.now(ist).date()
+            
             # Calculate days since creation or last follow-up
             if row['last_followup_date']:
-                days_since = (datetime.utcnow().date() - datetime.strptime(row['last_followup_date'], '%Y-%m-%d').date()).days
+                days_since = (now_ist - datetime.strptime(row['last_followup_date'], '%Y-%m-%d').date()).days
             else:
-                days_since = (datetime.utcnow().date() - datetime.strptime(created_str, '%Y-%m-%d').date()).days
+                days_since = (now_ist - datetime.strptime(created_str, '%Y-%m-%d').date()).days
             
             risks.append({
                 'risk_id': row['risk_id'],
@@ -101,8 +107,8 @@ def get_risks_needing_followup(days_threshold: int = 5) -> List[Dict[str, Any]]:
                 'inherent_risk_rating': row['inherent_risk_rating'],
                 'control_rating': row['control_rating'],
                 'residual_risk_rating': row['residual_risk_rating'],
-                # 🔧 FIX: Use UTC consistently
-                'days_since_creation': (datetime.utcnow().date() - datetime.strptime(created_str, '%Y-%m-%d').date()).days,
+                # 🔧 FIX: Use India time (IST)
+                'days_since_creation': (now_ist - datetime.strptime(created_str, '%Y-%m-%d').date()).days,
                 'days_since_last_followup': days_since
             })
         
