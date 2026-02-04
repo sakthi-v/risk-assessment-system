@@ -105,11 +105,12 @@ if params.get('test') == '1':
         st.info("Calling get_risks_needing_followup()...")
         from phase2_risk_resolver.database.followup_checker import get_risks_needing_followup
         
-        # Check last_followup_date column
+        # Check last_followup_date column - reopen connection
         st.write("Checking last_followup_date column:")
-        cursor = conn.cursor()
-        cursor.execute("SELECT risk_id, created_at, last_followup_date, status FROM risks LIMIT 5")
-        followup_data = cursor.fetchall()
+        conn2 = get_database_connection()
+        cursor2 = conn2.cursor()
+        cursor2.execute("SELECT risk_id, created_at, last_followup_date, status FROM risks LIMIT 5")
+        followup_data = cursor2.fetchall()
         st.write(followup_data)
         
         # Test the actual SQL query
@@ -122,7 +123,7 @@ if params.get('test') == '1':
         st.write(f"Cutoff date: {cutoff_date}")
         st.write(f"Today (IST): {now_ist.strftime('%Y-%m-%d')}")
         
-        cursor.execute("""
+        cursor2.execute("""
             SELECT risk_id, created_at, last_followup_date, status
             FROM risks
             WHERE treatment_decision IS NOT NULL
@@ -132,9 +133,10 @@ if params.get('test') == '1':
             AND last_followup_date IS NULL
             LIMIT 5
         """, (cutoff_date,))
-        query_results = cursor.fetchall()
+        query_results = cursor2.fetchall()
         st.write(f"Query returned {len(query_results)} rows:")
         st.write(query_results)
+        conn2.close()
         
         # Now test the function
         st.write("Testing function:")
