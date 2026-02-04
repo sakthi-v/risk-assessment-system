@@ -25,6 +25,10 @@ def get_database_connection():
                 print("⚠️ Turso credentials not found, falling back to local SQLite")
                 return sqlite3.connect('database/risk_register.db')
             
+            # Convert libsql:// to https:// for HTTP protocol (more stable than WebSocket)
+            if url.startswith('libsql://'):
+                url = url.replace('libsql://', 'https://')
+            
             client = libsql_client.create_client_sync(
                 url=url,
                 auth_token=auth_token
