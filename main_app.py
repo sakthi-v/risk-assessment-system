@@ -40,6 +40,7 @@ from phase2_risk_resolver.tools.rag_tool import initialize_rag
 # API Key Management with Auto-Rotation
 from api_key_manager import get_api_key_manager, get_active_api_key
 from agent_executor import execute_agent_with_retry, execute_all_agents_with_retry
+from database_manager import get_database_connection
 
 # Session Management - Auto-save and restore
 from session_manager import get_session_manager, auto_save_session, show_session_restore_ui
