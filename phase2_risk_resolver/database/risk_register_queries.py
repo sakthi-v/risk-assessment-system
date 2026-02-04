@@ -7,16 +7,13 @@ Now properly parses ACCEPT fields!
 import sqlite3
 import json
 import os
+import sys
 from typing import List, Dict, Any, Optional
 from datetime import datetime, timedelta
 
-
-def get_database_path() -> str:
-    """Get the path to risk register database"""
-    db_path = os.path.join('database', 'risk_register.db')
-    if not os.path.exists(db_path):
-        raise FileNotFoundError(f"Database not found at: {db_path}")
-    return db_path
+# Add parent directory to path to import database_manager
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+from database_manager import get_database_connection
 
 
 def get_all_risks(
@@ -44,9 +41,7 @@ def get_all_risks(
         List of risk dictionaries
     """
     
-    db_path = get_database_path()
-    conn = sqlite3.connect(db_path)
-    conn.row_factory = sqlite3.Row  # Return rows as dictionaries
+    conn = get_database_connection()
     cursor = conn.cursor()
     
     # Build query
@@ -93,7 +88,21 @@ def get_all_risks(
     # Convert to list of dictionaries
     risks = []
     for row in rows:
-        risk = dict(row)
+        risk = {}
+        if hasattr(row, 'keys'):
+            risk = dict(row)
+        else:
+            columns = ['risk_id', 'asset_name', 'asset_type', 'asset_owner', 'threat_name', 'threat_description', 
+                      'threat_source', 'vulnerability', 'existing_controls', 'control_gaps', 'recommended_controls',
+                      'confidentiality_impact', 'integrity_impact', 'availability_impact', 'likelihood', 
+                      'inherent_risk_rating', 'inherent_risk_level', 'residual_risk_rating', 'residual_risk_level',
+                      'risk_owner', 'priority', 'status', 'treatment_decision', 'treatment_plan', 'identified_date',
+                      'last_updated', 'rtp_answers', 'agent_1_raw', 'agent_2_raw', 'agent_3_raw', 'agent_4_raw',
+                      'business_justification', 'cost_benefit_analysis', 'monitoring_plan', 'approver_risk_owner',
+                      'approver_ciso', 'approver_cio', 'acceptance_form', 'valid_until_date', 'review_frequency',
+                      'next_review_date', 'created_at', 'followup_count', 'last_followup_date', 'next_followup_date',
+                      'completion_percentage', 'timeline_status']
+            risk = dict(zip(columns, row))
         
         # Parse JSON fields (existing + ACCEPT fields)
         json_fields = [
@@ -130,9 +139,7 @@ def get_risk_by_id(risk_id: str) -> Optional[Dict[str, Any]]:
         Risk dictionary or None if not found
     """
     
-    db_path = get_database_path()
-    conn = sqlite3.connect(db_path)
-    conn.row_factory = sqlite3.Row
+    conn = get_database_connection()
     cursor = conn.cursor()
     
     cursor.execute("SELECT * FROM risks WHERE risk_id = ?", (risk_id,))
@@ -142,7 +149,20 @@ def get_risk_by_id(risk_id: str) -> Optional[Dict[str, Any]]:
         conn.close()
         return None
     
-    risk = dict(row)
+    if hasattr(row, 'keys'):
+        risk = dict(row)
+    else:
+        columns = ['risk_id', 'asset_name', 'asset_type', 'asset_owner', 'threat_name', 'threat_description', 
+                  'threat_source', 'vulnerability', 'existing_controls', 'control_gaps', 'recommended_controls',
+                  'confidentiality_impact', 'integrity_impact', 'availability_impact', 'likelihood', 
+                  'inherent_risk_rating', 'inherent_risk_level', 'residual_risk_rating', 'residual_risk_level',
+                  'risk_owner', 'priority', 'status', 'treatment_decision', 'treatment_plan', 'identified_date',
+                  'last_updated', 'rtp_answers', 'agent_1_raw', 'agent_2_raw', 'agent_3_raw', 'agent_4_raw',
+                  'business_justification', 'cost_benefit_analysis', 'monitoring_plan', 'approver_risk_owner',
+                  'approver_ciso', 'approver_cio', 'acceptance_form', 'valid_until_date', 'review_frequency',
+                  'next_review_date', 'created_at', 'followup_count', 'last_followup_date', 'next_followup_date',
+                  'completion_percentage', 'timeline_status']
+        risk = dict(zip(columns, row))
     
     # Parse JSON fields (existing + ACCEPT fields)
     json_fields = [
@@ -174,8 +194,7 @@ def get_dashboard_stats() -> Dict[str, Any]:
         Dictionary with dashboard stats
     """
     
-    db_path = get_database_path()
-    conn = sqlite3.connect(db_path)
+    conn = get_database_connection()
     cursor = conn.cursor()
     
     stats = {}
@@ -261,8 +280,7 @@ def get_followup_metrics() -> Dict[str, Any]:
         Dictionary with follow-up metrics
     """
     
-    db_path = get_database_path()
-    conn = sqlite3.connect(db_path)
+    conn = get_database_connection()
     cursor = conn.cursor()
     
     metrics = {}
@@ -337,9 +355,7 @@ def get_overdue_followups() -> List[Dict[str, Any]]:
         List of overdue risks with days overdue
     """
     
-    db_path = get_database_path()
-    conn = sqlite3.connect(db_path)
-    conn.row_factory = sqlite3.Row
+    conn = get_database_connection()
     cursor = conn.cursor()
     
     cursor.execute("""
@@ -359,7 +375,14 @@ def get_overdue_followups() -> List[Dict[str, Any]]:
     """)
     
     rows = cursor.fetchall()
-    overdue = [dict(row) for row in rows]
+    overdue = []
+    for row in rows:
+        if hasattr(row, 'keys'):
+            overdue.append(dict(row))
+        else:
+            columns = ['risk_id', 'asset_name', 'threat_name', 'next_followup_date', 'followup_count', 
+                      'completion_percentage', 'status', 'days_overdue']
+            overdue.append(dict(zip(columns, row)))
     
     conn.close()
     
@@ -368,8 +391,7 @@ def get_overdue_followups() -> List[Dict[str, Any]]:
 
 def get_unique_risk_owners() -> List[str]:
     """Get list of unique risk owners"""
-    db_path = get_database_path()
-    conn = sqlite3.connect(db_path)
+    conn = get_database_connection()
     cursor = conn.cursor()
     
     cursor.execute("SELECT DISTINCT risk_owner FROM risks WHERE risk_owner IS NOT NULL ORDER BY risk_owner")
@@ -381,8 +403,7 @@ def get_unique_risk_owners() -> List[str]:
 
 def get_unique_treatment_decisions() -> List[str]:
     """Get list of unique treatment decisions"""
-    db_path = get_database_path()
-    conn = sqlite3.connect(db_path)
+    conn = get_database_connection()
     cursor = conn.cursor()
     
     cursor.execute("SELECT DISTINCT treatment_decision FROM risks WHERE treatment_decision IS NOT NULL ORDER BY treatment_decision")
@@ -412,9 +433,7 @@ def get_risks_expiring_soon(days: int = 30) -> List[Dict[str, Any]]:
     Returns:
         List of risks expiring within specified days
     """
-    db_path = get_database_path()
-    conn = sqlite3.connect(db_path)
-    conn.row_factory = sqlite3.Row
+    conn = get_database_connection()
     cursor = conn.cursor()
     
     # Calculate expiry threshold
@@ -433,7 +452,20 @@ def get_risks_expiring_soon(days: int = 30) -> List[Dict[str, Any]]:
     
     risks = []
     for row in rows:
-        risk = dict(row)
+        if hasattr(row, 'keys'):
+            risk = dict(row)
+        else:
+            columns = ['risk_id', 'asset_name', 'asset_type', 'asset_owner', 'threat_name', 'threat_description', 
+                      'threat_source', 'vulnerability', 'existing_controls', 'control_gaps', 'recommended_controls',
+                      'confidentiality_impact', 'integrity_impact', 'availability_impact', 'likelihood', 
+                      'inherent_risk_rating', 'inherent_risk_level', 'residual_risk_rating', 'residual_risk_level',
+                      'risk_owner', 'priority', 'status', 'treatment_decision', 'treatment_plan', 'identified_date',
+                      'last_updated', 'rtp_answers', 'agent_1_raw', 'agent_2_raw', 'agent_3_raw', 'agent_4_raw',
+                      'business_justification', 'cost_benefit_analysis', 'monitoring_plan', 'approver_risk_owner',
+                      'approver_ciso', 'approver_cio', 'acceptance_form', 'valid_until_date', 'review_frequency',
+                      'next_review_date', 'created_at', 'followup_count', 'last_followup_date', 'next_followup_date',
+                      'completion_percentage', 'timeline_status']
+            risk = dict(zip(columns, row))
         
         # Parse JSON fields
         json_fields = [
@@ -471,8 +503,7 @@ def update_risk_field(risk_id: str, field: str, value: Any) -> bool:
         True if successful
     """
     
-    db_path = get_database_path()
-    conn = sqlite3.connect(db_path)
+    conn = get_database_connection()
     cursor = conn.cursor()
     
     try:
@@ -510,8 +541,7 @@ def delete_risk(risk_id: str) -> bool:
         True if successful
     """
     
-    db_path = get_database_path()
-    conn = sqlite3.connect(db_path)
+    conn = get_database_connection()
     cursor = conn.cursor()
     
     try:
