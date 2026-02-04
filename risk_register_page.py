@@ -180,9 +180,17 @@ def render_risk_register_page():
                     y=y_values,
                     labels={'x': 'Risk Rating (Severity)', 'y': 'No. of Risk Findings'},
                     color=colors,
-                    color_discrete_map=color_map
+                    color_discrete_map=color_map,
+                    text=y_values
                 )
-                fig_rating.update_layout(showlegend=True, height=300, legend_title_text='Risk Level')
+                fig_rating.update_traces(textposition='outside')
+                fig_rating.update_layout(
+                    showlegend=True, 
+                    height=300, 
+                    legend_title_text='Risk Level',
+                    xaxis_title='Risk Rating',
+                    yaxis_title='Number of Risks'
+                )
                 st.plotly_chart(fig_rating, use_container_width=True)
         
         with col2:
@@ -208,9 +216,11 @@ def render_risk_register_page():
                 fig_status = px.pie(
                     values=ordered_values,
                     names=ordered_names,
-                    color_discrete_sequence=ordered_colors
+                    color_discrete_sequence=ordered_colors,
+                    hole=0.3
                 )
-                fig_status.update_layout(height=300)
+                fig_status.update_traces(textposition='inside', textinfo='percent+label')
+                fig_status.update_layout(height=300, showlegend=True)
                 st.plotly_chart(fig_status, use_container_width=True)
     
     # ═══════════════════════════════════════════════════════════════
@@ -501,8 +511,10 @@ def render_risk_register_page():
                             agent_2_data = json.loads(agent_2_raw)
                         except:
                             agent_2_data = {}
-                    else:
+                    elif isinstance(agent_2_raw, dict):
                         agent_2_data = agent_2_raw
+                    else:
+                        agent_2_data = {}
                     
                     # Get first threat's risk quantification
                     risk_impact_rating = 0
@@ -530,30 +542,41 @@ def render_risk_register_page():
                                 risk_value = risk_val.get('value', 0)
                     
                     with col1:
-                        rating = selected_risk.get('inherent_risk_rating', 0)
+                        try:
+                            rating = float(selected_risk.get('inherent_risk_rating', 0))
+                        except (ValueError, TypeError):
+                            rating = 0
                         color = "🔴" if rating >= 4 else "🟠" if rating == 3 else "🟢"
-                        st.metric("Risk Rating", f"{rating}/5", delta=f"{color} {selected_risk.get('inherent_risk_level', '')}")
+                        st.metric("Risk Rating", f"{rating:.1f}/5", delta=f"{color} {selected_risk.get('inherent_risk_level', '')}")
                     
                     with col2:
-                        st.metric("Risk Impact", f"{risk_impact_rating}/5")
+                        try:
+                            st.metric("Risk Impact", f"{risk_impact_rating:.1f}/5")
+                        except:
+                            st.metric("Risk Impact", "N/A")
                     
                     with col3:
-                        st.metric("Risk Probability", f"{risk_probability_rating}/5")
+                        try:
+                            st.metric("Risk Probability", f"{risk_probability_rating:.1f}/5")
+                        except:
+                            st.metric("Risk Probability", "N/A")
                     
                     st.markdown("---")
                     
                     # CIA Impact - Extract text ratings from Agent 1
                     st.markdown("### 🔐 CIA Impact")
                     
-                    # Try to get text ratings from agent_1_raw
+                    # Extract CIA text ratings from Agent 1
                     agent_1_raw = selected_risk.get('agent_1_raw', '{}')
                     if isinstance(agent_1_raw, str):
                         try:
                             agent_1_data = json.loads(agent_1_raw)
                         except:
                             agent_1_data = {}
-                    else:
+                    elif isinstance(agent_1_raw, dict):
                         agent_1_data = agent_1_raw
+                    else:
+                        agent_1_data = {}
                     
                     # Extract CIA text ratings
                     c_text = "N/A"
@@ -606,29 +629,35 @@ def render_risk_register_page():
                     
                     with col2:
                         # Show ORIGINAL control rating from Agent 3 (never changes)
-                        original_ctrl = selected_risk.get('control_rating', 0)
-                        st.metric("Control Rating", f"{original_ctrl:.2f}/5")
+                        try:
+                            original_ctrl = float(selected_risk.get('control_rating', 0))
+                            st.metric("Control Rating", f"{original_ctrl:.2f}/5")
+                        except (ValueError, TypeError):
+                            st.metric("Control Rating", "N/A")
                     
                     with col3:
                         # Show ORIGINAL residual risk from Agent 2 (never changes)
-                        original_residual = selected_risk.get('residual_risk_rating', 0)
-                        # 🔧 FIX: Calculate risk level from residual_risk_rating value
-                        if original_residual >= 4.5:
-                            residual_level = 'Extreme'
-                            color = "🔴"
-                        elif original_residual >= 3.5:
-                            residual_level = 'High'
-                            color = "🔴"
-                        elif original_residual >= 2.5:
-                            residual_level = 'Medium'
-                            color = "🟡"
-                        elif original_residual >= 1.5:
-                            residual_level = 'Low'
-                            color = "🟢"
-                        else:
-                            residual_level = 'Very Low'
-                            color = "🟢"
-                        st.metric("Residual Risk", f"{original_residual:.2f}", delta=f"{color} {residual_level}")
+                        try:
+                            original_residual = float(selected_risk.get('residual_risk_rating', 0))
+                            # Calculate risk level from residual_risk_rating value
+                            if original_residual >= 4.5:
+                                residual_level = 'Extreme'
+                                color = "🔴"
+                            elif original_residual >= 3.5:
+                                residual_level = 'High'
+                                color = "🔴"
+                            elif original_residual >= 2.5:
+                                residual_level = 'Medium'
+                                color = "🟡"
+                            elif original_residual >= 1.5:
+                                residual_level = 'Low'
+                                color = "🟢"
+                            else:
+                                residual_level = 'Very Low'
+                                color = "🟢"
+                            st.metric("Residual Risk", f"{original_residual:.2f}", delta=f"{color} {residual_level}")
+                        except (ValueError, TypeError):
+                            st.metric("Residual Risk", "N/A")
                     
                     # Control Gaps
                     control_gaps = selected_risk.get('control_gaps', '[]')
