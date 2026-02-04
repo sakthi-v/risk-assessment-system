@@ -1,4 +1,4 @@
-﻿"""
+"""
 Risk Resolver - Integrated Streamlit Application
 Phase 1: RAG Knowledge Base
 Phase 2: Complete 6-Agent Risk Assessment Pipeline (TRULY AGENTIC)
